@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "About"
-description: "Hey, this is Hux."
-header-img: "img/about-bg.jpg"
+description: keep hungry keep foolish
+header-img: "assets/images/bg-bat2.jpg"
 ---
 
 <!-- Language Selector -->
@@ -64,23 +64,23 @@ header-img: "img/about-bg.jpg"
 
 
 
-{% if site.duoshuo_username %}
+{% if site.data.common.duoshuo_username %}
 <!-- 多说评论框 start -->
 <div class="comment">
     <div class="ds-thread"
-    {% if site.duoshuo_username == "huxblog" %}
+    {% if site.data.common.duoshuo_username == "huxblog" %}
         data-thread-id="1187623191091085319"
     {% else %}
-        data-thread-key="{{site.duoshuo_username}}/about"
+        data-thread-key="{{site.data.common.duoshuo_username}}/about"
     {% endif %}
 
     data-title="{{page.title}}"
-    data-url="{{site.url}}/about/"></div>
+    data-url="{{site.data.common.url}}/about/"></div>
 </div>
 <!-- 多说评论框 end -->
 
 <!-- Duoshuo hacking -->
-<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+<input id="dsUser" type="hidden" value="{{site.data.common.duoshuo_username}}"  />
 
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -101,7 +101,7 @@ header-img: "img/about-bg.jpg"
 {% endif %}
 
 
-{% if site.disqus_username %}
+{% if site.data.common.disqus_username %}
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread" class="disqus-thread">
@@ -113,9 +113,9 @@ header-img: "img/about-bg.jpg"
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
+    var disqus_shortname = "{{site.data.common.disqus_username}}";
+    var disqus_identifier = "{{site.data.common.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.data.common.url}}{{page.url}}";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

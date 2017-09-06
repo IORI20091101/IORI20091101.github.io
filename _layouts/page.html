@@ -3,24 +3,39 @@ layout: default
 ---
 
 <!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="intro-header" style="background-image: url('{{ site.data.common.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.data.common.header-img }}{% endif %}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.data.common.title }}{% endif %}</h1>
                     <!--<hr class="small">-->
-                    <span class="subheading">{{ page.description }}</span>
+                    <span class="subheading">{% if page.description %}{{ page.description }}{% else %}{{ site.data.common.description }}{% endif %}</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+<!--<div class="css-live-wrap">-->
+    <!--<hgroup class="percentage-pie">-->
+        <!--<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">-->
+            <!--<text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="" style="fill: #000"></text>-->
+            <!--&lt;!&ndash; Wave &ndash;&gt;-->
+            <!--<g id="wave">-->
+                <!--<path id="wave-2" fill="black" d="M 0 100 C 140.6 94.24 45.08 106.32 200 100 A 95 95 0 0 1 0 100 Z">-->
+                    <!--<animate dur="5s" repeatCount="indefinite" attributeName="d" attributeType="XML" values="M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z;-->
+														<!--M0 100 C145 100, 41 100, 200 100 A95 95 0 0 1 0 100 Z;-->
+														<!--M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z"></animate>-->
+                <!--</path>-->
+            <!--</g>-->
+        <!--</svg>-->
+    <!--</hgroup>-->
+<!--</div>-->
 
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
-        {% if site.sidebar == false %}
+        {% if site.data.common.sidebar == false %}
 <!-- NO SIDEBAR -->
     <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
@@ -33,14 +48,14 @@ layout: default
                 sidebar-container">
 
                 <!-- Featured Tags -->
-                {% if site.featured-tags %}
+                {% if site.data.common.featured-tags %}
                 <section>
                     <!-- no hr -->
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <h5><a href="{{'/tags/' | prepend: site.data.common.baseurl }}">FEATURED TAGS </a></h5>
                     <div class="tags">
         				{% for tag in site.tags %}
-                            {% if tag[1].size > site.featured-condition-size %}
-                				<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                            {% if tag[1].size > site.data.common.featured-condition-size %}
+                				<a href="{{ site.data.common.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                                     {{ tag[0] }}
                                 </a>
                             {% endif %}
@@ -50,11 +65,11 @@ layout: default
                 {% endif %}
 
                 <!-- Friends Blog -->
-                {% if site.friends %}
+                {% if site.data.common.friends %}
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
-                    {% for friend in site.friends %}
+                    {% for friend in site.data.common.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
@@ -82,14 +97,14 @@ layout: default
                 sidebar-container
             ">
                 <!-- Featured Tags -->
-                {% if site.featured-tags %}
+                {% if site.data.common.featured-tags %}
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <h5><a href="{{'/tags/' | prepend: site.data.common.baseurl }}">FEATURED TAGS</a></h5>
                     <div class="tags">
                         {% for tag in site.tags %}
-                            {% if tag[1].size > site.featured-condition-size %}
-                                <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                            {% if tag[1].size > site.data.common.featured-condition-size %}
+                                <a href="{{ site.data.common.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                                     {{ tag[0] }}
                                 </a>
                             {% endif %}
@@ -100,19 +115,19 @@ layout: default
 
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
-                    <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                    <hr><h5><a href="{{'/about/' | prepend: site.data.common.baseurl }}">ABOUT ME</a></h5>
                     <div class="short-about">
-                        {% if site.sidebar-avatar %}
-                            <img src="{{site.sidebar-avatar}}" />
+                        {% if site.data.common.sidebar-avatar %}
+                            <img class="avatar" src="{{site.data.common.sidebar-avatar}}" />
                         {% endif %}
-                        {% if site.sidebar-about-description %}
-                            <p>{{site.sidebar-about-description}}</p>
+                        {% if site.data.common.sidebar-about-description %}
+                            <p>{{site.data.common.sidebar-about-description}}</p>
                         {% endif %}
                         <!-- SNS Link -->
                         <ul class="list-inline">
-                            {% if site.RSS %}
+                            {% if site.data.common.RSS %}
                             <li>
-                                <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                                <a href="{{ "/feed.xml" | prepend: site.data.common.baseurl }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -120,9 +135,9 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            {% if site.twitter_username %}
+                            {% if site.data.common.twitter_username %}
                             <li>
-                                <a href="https://twitter.com/{{ site.twitter_username }}">
+                                <a href="https://twitter.com/{{ site.data.common.twitter_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -130,9 +145,9 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            {% if site.zhihu_username %}
+                            {% if site.data.common.zhihu_username %}
                             <li>
-                                <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
+                                <a target="_blank" href="https://www.zhihu.com/people/{{ site.data.common.zhihu_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -140,9 +155,9 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            {% if site.weibo_username %}
+                            {% if site.data.common.weibo_username %}
                             <li>
-                                <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
+                                <a target="_blank" href="http://weibo.com/{{ site.data.common.weibo_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -150,9 +165,9 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            {% if site.facebook_username %}
+                            {% if site.data.common.facebook_username %}
                             <li>
-                                <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
+                                <a target="_blank" href="https://www.facebook.com/{{ site.data.common.facebook_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
@@ -160,9 +175,9 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            {% if site.github_username %}
+                            {% if site.data.common.github_username %}
                             <li>
-                                <a target="_blank" href="https://github.com/{{ site.github_username }}">
+                                <a target="_blank" href="https://github.com/{{ site.data.common.github_username }}">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -174,11 +189,11 @@ layout: default
                     </div>
                 </section>
                 <!-- Friends Blog -->
-                {% if site.friends %}
+                {% if site.data.common.friends %}
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
-                    {% for friend in site.friends %}
+                    {% for friend in site.data.common.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
