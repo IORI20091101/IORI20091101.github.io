@@ -27,6 +27,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'github-pages'
 
+gem 'rdoc'
+
 gem 'jekyll-paginate', group: :jekyll_plugins
 
 # gem 'jekyll-admin', group: :jekyll_plugins
