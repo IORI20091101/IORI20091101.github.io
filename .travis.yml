@@ -26,4 +26,7 @@ env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 addons:
+  hosts:
+      - darknights.me
+      - joshkalderimis.com
   ssh_known_hosts: darknights.me
