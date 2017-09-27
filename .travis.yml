@@ -21,7 +21,7 @@ after_success:
 - git config user.email "sundongzhi11014111@126.com"
 - git add --all .
 - git commit -m "Travis CI Auto Builder"
-- git push --force https://$DEPLOY_TOKEN@github.com/IORI20091101/darknights.me.git
+- git push --force https://$JEKYLL_GITHUB_TOKEN@github.com/IORI20091101/darknights.me.git
   master
 - ssh root@darknights.me "docker restart darknights_jekyll"
 branches:
