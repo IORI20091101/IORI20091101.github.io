@@ -1,6 +1,13 @@
 language: ruby
 rvm:
   - 2.3.3
+
+addons:
+  hosts:
+      - darknights.me
+      - joshkalderimis.com
+  ssh_known_hosts: darknights.me
+
 before_install:
   - openssl aes-256-cbc -K $encrypted_8c66906ba4ac_key -iv $encrypted_8c66906ba4ac_iv
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
@@ -24,8 +31,4 @@ branches:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-addons:
-  hosts:
-      - darknights.me
-      - joshkalderimis.com
-  ssh_known_hosts: darknights.me
+
