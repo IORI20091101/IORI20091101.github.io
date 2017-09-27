@@ -23,7 +23,7 @@ after_success:
 - git commit -m "Travis CI Auto Builder"
 - git push --force https://$JEKYLL_GITHUB_TOKEN@github.com/IORI20091101/darknights.me.git
   master
-- ssh root@darknights.me "docker restart darknights_jekyll"
+- ssh root@darknights.me "docker restart darknights"
 branches:
   only:
   - master
