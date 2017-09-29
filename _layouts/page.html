@@ -84,13 +84,15 @@ layout: default
                 sidebar-container
             ">
                 <!-- Search Container -->
-                <input type="text" list="browsers" class="form-control search-input" id="search-input" placeholder="Search..." autocomplete="off">
-                <datalist id="browsers">
-                    {% for post in paginator.posts %}
-                        <option data-url="{{post.url}}" value="{{ post.title }}">
-                    {% endfor %}
+                <div class="hidden-xs">
+                    <div class="input-group">
+                        <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
+                        <span class="input-group-btn">
+                            <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
+                        </span>
+                    </div>
+                </div>
 
-                </datalist>
                 <!-- Featured Tags -->
                 {% if site.data.common.featured-tags %}
                 <section>

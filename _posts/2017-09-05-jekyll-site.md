@@ -21,15 +21,15 @@ comments: true
 而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。
 
 
-### 搭建博客的基本流程
+## 搭建博客的基本流程
 
-#### 1.安装Ruby, Rails
+### 1.安装Ruby, Rails
 建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux...) 或者 Mac Os X安装。
 
 * [Mac OS X上安装ruby](https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby) 来安装
 * 如果需要不同版本的ruby可以[安装 RVM](https://ruby-china.org/wiki/install_ruby_guide)来进行ruby版本管理
 
-#### 2.安装jekyll
+### 2.安装jekyll
 该博客使用了 [Jekyll](https://jekyllrb.com/), 当然好多同学可能会用 [Hexo](https://hexo.io/themes/) 这个就是萝卜青菜了。
 如果你选择使用Jekyll请安装下面步骤安装生成:
 
@@ -69,7 +69,7 @@ comments: true
 具体还有其他目录请参考[jekyll目录结构](https://jekyllrb.com/docs/structure/)
 
 
-#### 3.安装主题
+### 3.安装主题
 到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 [Jekyll 主题](http://jekyllthemes.org/) ,当然如果在套用别人主题的时候有问题可以看一下
 [Liquid语法](http://www.jianshu.com/p/4224b8ea0ec0),和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档
 
@@ -92,3 +92,8 @@ comments: true
 > * [杨缘的博客参考](https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/)
 > * [poison](http://yerl.cn/blog/use-jekyll-build-your-blog)
 > * [jekyll官网中文](http://jekyllcn.com/docs/plugins/)
+> * [适合程序员的Blog -- 基于github pages + jekyll + markdown打造自己的blog](http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/)
+
+
+
+

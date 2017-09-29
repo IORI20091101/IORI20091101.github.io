@@ -44,4 +44,3 @@ gem 'nokogiri', '1.6.8.1'
 gem 'rouge', '1.11.1'
 gem 'safe_yaml', '1.0.4'
 gem 'sass', '3.4.23'
-

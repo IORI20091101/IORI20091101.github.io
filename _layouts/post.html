@@ -41,7 +41,7 @@ layout: default
     <div class="container">
         <div class="row">
 
-    <!-- Post Container -->
+            <!-- Post Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -113,21 +113,33 @@ layout: default
             </div>
 
 
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5 id="catalog">
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body">
-                        <li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li><li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li><li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>
-                    </ul>
-                </div>
-            </div>
+            <!--<div class="-->
+                <!--col-lg-2 col-lg-offset-0-->
+                <!--visible-lg-block-->
+                <!--sidebar-container-->
+                <!--catalog-container">-->
+                <!--<div class="side-catalog">-->
+                    <!--&lt;!&ndash; Search Container &ndash;&gt;-->
+                    <!--<div class="hidden-xs">-->
+                        <!--<div class="input-group">-->
+                            <!--<input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">-->
+                        <!--<span class="input-group-btn">-->
+                            <!--<button class="btn  btn-default" id="search-btn" type="submit">Go</button>-->
+                        <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<hr class="hidden-sm hidden-xs">-->
+                    <!--<h5 id="catalog">-->
+                        <!--<a class="catalog-toggle" href="#">目录</a>-->
+                    <!--</h5>-->
+                    <!--<ul class="catalog-body">-->
+                        <!--<li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>-->
+                        <!--<li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>-->
+                        <!--<li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>-->
+                    <!--</ul>-->
+                    <!---->
+                <!--</div>-->
+            <!--</div>-->
 
     <!-- Sidebar Container -->
             <div class="
@@ -190,7 +202,7 @@ layout: default
           placement: 'right',
           icon: '¶'
         };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+        anchors.add(".post-container h3").remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
 </script>
 <style>

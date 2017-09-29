@@ -41,7 +41,7 @@ anchorjs: true
 # Baidu Analytics
 ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+ga_track_id: 'UA-107257239-1'            # Format: UA-xxxxxx-xx
 ga_domain: xtoshiba.me
 
 
@@ -50,7 +50,7 @@ ga_domain: xtoshiba.me
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。"
 sidebar-avatar: /assets/images/avatar.png      # use absolute URL, seeing it's used in both `/` and `/about/`
-
+anchorjs: true
 
 
 
