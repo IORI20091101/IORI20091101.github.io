@@ -1,3 +1,5 @@
+description: "Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验"
+keyword: "web,前端开发,网站设计,程序员,java,javascript,nodejs,python,Dark knight's"
 
 
 # Build settings
@@ -32,8 +34,6 @@ gems:
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
 
-markdown: kramdown
-
 
 markdown: kramdown
 kramdown:
@@ -54,5 +54,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - LICENSE
+  - docker_darknights
   - "vendor"
 
