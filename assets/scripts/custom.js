@@ -79,7 +79,7 @@ $(function() {
 
 
 $(function() {
-    if( $("#search-btn").length) {
+    if( $("#search-btn").length > 0 ) {
         function searchGoogle(keyWord) {
             if(keyWord) {
                 window.open('https://www.google.com/#q=site:darknights.me+'+ keyWord);
@@ -104,7 +104,7 @@ $(function() {
             searchGoogle(val);
         })
 
-        $.getJSON("{{ site.data.common.cdn | append: 'search.json' }}", function(res) {
+        $.getJSON("https://darknights.b0.upaiyun.com/assets/search.json", function(res) {
             window.searchData = res.data;
             $('input[name="q"]').autoComplete({
                 minChars: 1,
