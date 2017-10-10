@@ -28,4 +28,4 @@ tags:
 [杨缘的博客参考](https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/)
 [poison](http://yerl.cn/blog/use-jekyll-build-your-blog)
 [jekyll官网中文](http://jekyllcn.com/docs/plugins/)
-[]()
+[使用travis-ci自动部署hexo博客](http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/)

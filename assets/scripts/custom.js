@@ -76,3 +76,65 @@ $(function() {
     })
 
 });
+
+
+$(function() {
+    if( $("#search-btn").length) {
+        function searchGoogle(keyWord) {
+            if(keyWord) {
+                window.open('https://www.google.com/#q=site:darknights.me+'+ keyWord);
+            }
+        }
+        $("#autocomplete").keyup(function(e) {
+            if(e.which == 13) {
+                var val = $("#autocomplete").val();
+
+                $.each(window.searchData, function(i, item) {
+                    if(val == item.value || item.value.indexOf(val) > 0) {
+                        location.href = item.data;
+                    }
+                });
+
+            }
+
+        });
+
+        $("#search-btn").click(function() {
+            var val = $("#autocomplete").val();
+            searchGoogle(val);
+        })
+
+        $.getJSON("{{ site.data.common.cdn | append: 'search.json' }}", function(res) {
+            window.searchData = res.data;
+            $('input[name="q"]').autoComplete({
+                minChars: 1,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = res.data;
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~(choices[i].value+' '+choices[i].subtitle).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+
+                    console.log(suggestions);
+                    suggest(suggestions);
+                },
+                renderItem: function (item, search){
+                    return '<div class="autocomplete-suggestion" data-val="'+item.value+'" data-data="'+ item.data +'"  data-search="'+search+'"> '+item.value+'</div>';
+                },
+                onSelect: function(e, term, item){
+                    var $target = $(e.target),
+                        value = $target.data("val"),
+                        data = $target.data("data");
+                    if(!!data) location.href= data;
+
+                }
+            });
+        })
+    }
+});
+
+//语法高亮
+hljs.initHighlightingOnLoad();
+
+var $nav = document.querySelector("nav");
+if($nav) FastClick.attach($nav);
