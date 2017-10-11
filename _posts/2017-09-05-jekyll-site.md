@@ -93,7 +93,7 @@ comments: true
 > * [poison](http://yerl.cn/blog/use-jekyll-build-your-blog)
 > * [jekyll官网中文](http://jekyllcn.com/docs/plugins/)
 > * [适合程序员的Blog -- 基于github pages + jekyll + markdown打造自己的blog](http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/)
-
+> * [使用travis-ci自动部署hexo博客](http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/)
 
 
 
