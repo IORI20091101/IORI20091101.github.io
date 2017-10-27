@@ -24,11 +24,26 @@
                     <li>
                         <a href="{{ site.data.common.baseurl }}/">Home</a>
                     </li>
-                    {% for page in site.pages %}{% if page.title %}
                     <li>
-                        <a href="{{ page.url | prepend: site.data.common.baseurl }}">{{ page.title }}</a>
+                        <a href="{{ site.data.common.baseurl }}/category">category</a>
                     </li>
-                    {% endif %}{% endfor %}
+                    <li>
+                        <a href="{{ site.data.common.baseurl }}/tags">tags</a>
+                    </li>
+                    <li>
+                        <a href="{{ site.data.common.baseurl }}/essay">essay</a>
+                    </li>
+                    <li>
+                        <a href="{{ site.data.common.baseurl }}/news">news</a>
+                    </li>
+                    <li>
+                        <a href="{{ site.data.common.baseurl }}/about">about</a>
+                    </li>
+                    <!--{% for page in site.pages %}{% if page.title %}-->
+                    <!--<li>-->
+                        <!--<a href="{{ page.url | prepend: site.data.common.baseurl }}">{{ page.title }}</a>-->
+                    <!--</li>-->
+                    <!--{% endif %}{% endfor %}-->
                 </ul>
             </div>
         </div>
