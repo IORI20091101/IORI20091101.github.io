@@ -4,6 +4,11 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+
+$(document).ready(function() {
+    $('#toc').toc({title: "目录"});
+});
+
 // Tooltip Init
 $(function() {
     $("[data-toggle='tooltip']").tooltip();

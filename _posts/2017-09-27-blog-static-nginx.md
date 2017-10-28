@@ -10,6 +10,8 @@ tags:
     - jekyll
     - JavaScript
 ---
+categories:
+    - 技术文章
 
 # 第一次搭建博客
 

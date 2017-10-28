@@ -9,6 +9,8 @@ tags:
     - interview
     - JavaScript
 comments: true
+categories:
+    - 工作面试
 ---
 
 # 通过题目训练来提升自己的编程能力
@@ -29,7 +31,7 @@ comments: true
 
 
 
-### 参考文章
+参考文章
 
 > * [48 个你需要知道的 Jekyll 使用技巧
 ](https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html)
