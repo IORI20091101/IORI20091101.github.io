@@ -71,3 +71,11 @@ body {
   //  color: #0085a1;
   //}
 }
+
+.sidebar-container .tags a {
+  border-color: #bfbfbf;
+  color:#bfbfbf;
+  &:hover {
+    color:#337ab7;
+  }
+}
