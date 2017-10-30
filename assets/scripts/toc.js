@@ -25,8 +25,9 @@
         }
 
         function createLink (header) {
+            console.log(header)
             var innerText = (header.textContent === undefined) ? header.innerText : header.textContent;
-            return "<a href='#" + fixedEncodeURIComponent(header.id) + "'>" + innerText + "</a>";
+            return "<a href='#" + header.id + "'>" + innerText + "</a>";
         }
 
         var headers = $(settings.headers).filter(function() {
@@ -60,7 +61,7 @@
         var level = get_level(headers[0]),
             this_level,
             // html = settings.title + " <" +settings.listType + " class=\"" + settings.classes.list +"\">";
-            html = settings.title + " <" + settings.listType + " class = 'nav nav-pills nav-stacked'>";
+            html = settings.title + " <" + settings.listType + " class = 'nav nav-pills  nav-stacked'>";
 
         headers.on('click', function() {
             if (!settings.noBackToTopLinks) {

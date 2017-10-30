@@ -18,15 +18,15 @@
   padding-bottom: 1em;
 }
 .sidebar-container h5 a {
-  color: #808080 !important;
+  color: #808080 ;
   text-decoration: none;
 }
 .sidebar-container a {
-  color: #bfbfbf !important;
+  color: #bfbfbf ;
 }
 .sidebar-container a:hover,
 .sidebar-container a:active {
-  color: #0085a1 !important;
+  color: #0085a1 ;
 }
 .sidebar-container .tags a {
   border-color: #bfbfbf;
