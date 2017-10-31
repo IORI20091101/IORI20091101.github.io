@@ -33,7 +33,7 @@ facebook_username:  https://www.facebook.com/profile.php?id=100004675021382
 
 disqus_username: IORI
 disqus_share: true
-anchorjs: true
+anchorjs: false
 
 
 
@@ -50,7 +50,7 @@ ga_domain: xtoshiba.me
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。"
 sidebar-avatar: https://darknights.b0.upaiyun.com/assets/images/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
-anchorjs: true
+anchorjs: false
 
 
 

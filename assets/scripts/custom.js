@@ -13,10 +13,10 @@ $(document).ready(function() {
         offset: {
             top: 525,
             bottom: function () {
-                return (this.bottom = $('.footer').outerHeight(true))
+                return (this.bottom = $('.footer').outerHeight(true));
             }
         }
-    })
+    });
 });
 
 // Tooltip Init
