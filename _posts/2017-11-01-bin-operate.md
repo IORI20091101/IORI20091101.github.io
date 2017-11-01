@@ -11,7 +11,7 @@ tags :
     - 计算机基础
     - javascript
 categories:
-    - javascript
+    - 基础知识
 ---
 
 # 关于javascript中的~操作
@@ -20,7 +20,8 @@ categories:
 
 >!~location.href.search('abc')
 
-## 首先再次回顾一下js中的位运算
+首先再次回顾一下js中的位运算
+
 * & 与
 * \| 或
 * ~ 非
@@ -29,9 +30,9 @@ categories:
 * \>\> 算数右移(有符号右移)
 * \>\>\> 逻辑右移(无符号右移)
 
-##  Number.prototype.toString
+Number.prototype.toString
 
- Number.prototype.toString方法可以讲数字转化为字符串，有一个可选的参数，用来决定将数字显示为指定的进制，下面可以查看3的二进制表示
+Number.prototype.toString方法可以讲数字转化为字符串，有一个可选的参数，用来决定将数字显示为指定的进制，下面可以查看3的二进制表示
 
 ````
  3..toString(2)
@@ -88,10 +89,11 @@ categories:
 100
 ```
 
-## 再次分析开头的问题
+再次分析开头的问题
+
 首先关于indexOf获得的值可能有几种请求 -1,0,1 从这三种进行分析
 
-### ~-1
+## ~-1
 
 为了简便计算我这只取8位
 
@@ -109,7 +111,8 @@ categories:
 
 ```
 
-### ~0
+## ~0
+
 ```
 00000000  //这是0的原码 (真值的绝对值加上符号位)
 --------  //进行按位非操作后 这里会改变符号
@@ -126,7 +129,8 @@ categories:
 
 
 
-### ~1
+## ~1
+
 ```
 00000001  //这是1的原码 (真值的绝对值加上符号位)
 --------  //进行按位非操作后 这里会改变符号
@@ -166,3 +170,4 @@ categories:
 
 # 延伸阅读
 * [每一个JavaScript开发者应该了解的浮点知识](http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/)
+* [Numbers in JavaScript](http://jser.it/blog/2014/07/07/numbers-in-javascript/)

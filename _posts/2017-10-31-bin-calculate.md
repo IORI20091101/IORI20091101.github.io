@@ -8,9 +8,9 @@ header-img: "images/bg-bat-2.jpg"
 comments: true
 
 tags :
-    - 计算机基础
+    - 基础知识
 categories:
-    - 计算机基础
+    - 基础知识
 ---
 
 # 机器数和真值
