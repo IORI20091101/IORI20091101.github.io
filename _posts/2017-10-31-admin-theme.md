@@ -15,6 +15,12 @@ categories:
 ---
 
 ## 常用后台管理主题推荐
+
+* jQuey: [Bootstrap](http://www.bootcss.com/)
+* React: [ant.design](https://ant.design/index-cn)
+* Vue: [Element](http://element.eleme.io/#/zh-CN/component/layout)
+
+
 个人感觉基于bootstrap的管理模板都大同小异参考文章中的内容基本可以满足需求推荐以下免费主题供大家参考
 
 [thetheme.io](http://thetheme.io/theadmin/)

@@ -8,7 +8,6 @@ header-img: "images/post-bg-js-module.jpg"
 tags:
     - 博客搭建
     - jekyll
-    - JavaScript
 ---
 categories:
     - 技术文章
