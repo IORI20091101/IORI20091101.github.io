@@ -4,7 +4,7 @@ title:      "搭建jekyll 博客流程记录"
 subtitle:   "如何搭建个人博客以及注意点"
 date:       2017-09-05
 author:     "toshiba"
-header-img: "images/post-bg-js-module.jpg"
+header-img: "images/bg/batman/bat34.jpg"
 tags:
     - 博客搭建
     - JavaScript

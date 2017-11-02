@@ -4,7 +4,7 @@ title:      常用的后台管理主题模板
 subtitle:   推荐一些常用主题,后台模板可以直接套用
 date:       2017-10-31
 author:     "toshiba"
-header-img: "images/bg-spider.jpg"
+header-img: "images/bg/batman/bat29.jpg"
 comments: true
 
 tags :
