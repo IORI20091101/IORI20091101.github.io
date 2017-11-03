@@ -10,10 +10,13 @@ tags:
     - git
 
 categories:
-    - 技术文章
+    - 版本控制
 
 comments: true
 ---
+
+
+
 
 ## git的中级使用教程
 
@@ -67,12 +70,12 @@ cb926e7 HEAD@{3}: commit (initial): wrote a readme file
 ```
 $ ssh-keygen -t rsa -C "youremail@example.com"
 
-//生产的公钥私钥 会放到服务器的 .ssh/authorized_keys目录下
+//生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下
 
 ```
 
-### 本地文件夹添加远程仓库并且推送上去
-基础文章已经写过这里再次复习一遍
+### 添加远程仓库
+本地文件夹添加远程仓库并且推送上去,基础文章已经写过这里再次复习一遍
 ```
 $ git remote add origin git@github.com:michaelliao/learngit.git
 
@@ -121,19 +124,7 @@ $ git stash apply stash@{0} //指定要恢复的stash
 
 ```
 
-### 本地分支与远程分支对应
-要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是用这个命令创建本地dev分支：
-```
-$ git checkout -b dev origin/dev
 
-
-如果此时报错 no tracking information 需要将远程dev和本地dev分支建立链接
-
-$ git branch --set-upstream dev origin/dev
-
-//也可以选择git fetch 将远程相关的内容全拉取下来然后直接切换分支
-
-```
 
 ### 配置文件
 配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用
@@ -181,6 +172,91 @@ $ git add -f App.class
 
 $ git check-ignore -v App.class
 .gitignore:3:*.class    App.class
+```
+
+
+
+### 删除远程分支
+```
+$ git push origin :master 等同于下面的命令推送一个空分支对应远程分支
+
+$ git push origin --delete master
+
+```
+
+### 丢弃暂存区文件
+
+如果一个文件已经add到暂存区，还没有commit，此时如果不想要这个文件了，有两种方法
+```
+$ git reset HEAD   用版本库内容清空暂存区
+
+$ git rm --cache 删除缓存区内容
+```
+
+### 允许空提交
+即没有任何更改进行commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署
+```
+$ git commit --allow-empty -m "empty"
+```
+
+
+### 文件夹大小写问题
+git 提交文件夹默认是不区分大小写的也就是说max/file 和Max/file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是java起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题
+```
+$ git config core.ignorecase false  //默认是true
+
+```
+
+
+### 如何删除一些分支
+远程已经删除但是本地还存在。
+这种操作通常是我新建分支改完bug推送远程合并结束后,远程分支删掉了本地分支也删掉但是branch -a的时候还存在想删除本地远程分支数据库中的分支时使用。
+```
+
+$ git fetch origin --prune  //update the local database of remote branches
+
+$ git fetch -p origin      //这两条命令都在做一个事情,将本地分支库和远程分支库进行同步如果远程删掉了本地就删掉
+
+$ git fetch origin -p --progress  //可以显示过程
+
+$ git remote update --prune 也可以生效不过我没试过😓
+
+```
+
+总有最笨的方法
+```
+$ git branch -d -r origin/branch_name  //不嫌麻烦可以一条条删掉😂
+```
+
+
+
+## 本地分支与远程分支对应
+
+### 第一种情况
+
+新建分支直接创建新分支推送到远端即可
+
+### 第二种情况
+
+本地没有分支远端有分支dev
+
+可以git fetch ,然后直接新建分支<b>跟远端分支名字一样</b> dev就可以建立链接。
+### 另一种解决方案
+情况二的领域中解决方案
+要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是用这个命令创建本地dev分支
+
+```
+$ git checkout -b dev origin/dev
+
+
+如果此时报错 no tracking information 需要将远程dev和本地dev分支建立链接
+
+$ git branch --set-upstream dev origin/dev
+
+$ git branch --track  dev origin/dev  //该方法同上
+
+//也可以选择git fetch 将远程相关的内容全拉取下来然后直接切换分支
+
 ```
 
 
