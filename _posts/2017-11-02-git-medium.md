@@ -54,6 +54,9 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 ```
 $ git reflog
 
+git reflog --relative-date  //用相对的日期显示引用日志。(如 2 周前）。
+
+
 
 ea34578 HEAD@{0}: reset: moving to HEAD^
 3628164 HEAD@{1}: commit: append GPL
@@ -63,6 +66,92 @@ cb926e7 HEAD@{3}: commit (initial): wrote a readme file
 ```
 这样之后又可以使用 reset --hard xxx 乘坐时光机返回了。
 
+### git clean
+该命令将未跟踪的文件从工作目录中删除，同git status 然后手动删除一样。该命令无法撤销慎重使用。
+```
+$ git clean -n  //进行预演告诉你哪些文件会被删除并不是真的删除
+
+$ git clean -f  //删除所有未跟踪文件 <code>-f</code>是必须的
+
+$ git clean -f <path> //移除未跟踪的文件，但限制在某个路径下。
+
+$ git clean -df //移除未跟踪的文件，以及目录。
+
+$ git clean -xf //移除当前目录下未跟踪的文件，以及 Git 一般忽略的文件。
+
+```
+
+### reset+clean
+```
+# 编辑了一些文件
+# 新增了一些文件
+# 『糟糕』
+
+# 将跟踪的文件回滚回去
+git reset --hard
+
+# 移除未跟踪的文件
+git clean -df
+```
+在执行了 reset/clean 的流程之后，工作目录和缓存区和最近一次提交看上去一模一样，而 git status会认为这是一个干净的工作目录。你可以重新来过了。
+
+注意，不像 git reset 的第二个栗子，新的文件没有被加入到仓库中。因此，它们不会受到 git reset --hard 的影响，需要 git clean 来删除它们。
+
+### reset其他用法
+git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。
+```
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       modified:   readme.txt
+#
+
+$ git reset HEAD readme.txt
+Unstaged changes after reset:
+M       readme.txt
+
+
+
+# 另一个例子
+
+# 编辑了hello.py和main.py
+
+# 缓存了目录下所有文件
+git add .
+
+# 意识到hello.py和main.py中的修改
+# 应该在不同的快照中提交
+
+# 取消main.py缓存
+git reset main.py
+
+# 只提交hello.py
+git commit -m "Make some changes to hello.py"
+
+# 在另一份快照中提交main.py
+git add main.py
+git commit -m "Edit main.py"
+
+```
+
+> * git checkout -- xxx 丢弃工作区间的修改 此时没有add
+> * git reset HEAD xxx 将暂存区的文件撤销放回到工作区间 ，此时已经add
+
+### git checkout
+这里有个checkout的用法比较少用感觉用reset比较多，通常来说git checkout 会有三种用法： 检出文件，检出提交和检出分支，一般我们只关心前两种
+
+```
+$ git checkout master //切换分支
+
+$ git checkout <commit> <file>
+
+$ git checkout a1e8fb5 hello.py //将某个文件切到某次提交的的样子
+
+
+$ git checout <commit>  //将所有文件切换到某次提交的样子
+```
 
 
 ### 生产SSH Key
