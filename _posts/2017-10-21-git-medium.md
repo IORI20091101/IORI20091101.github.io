@@ -2,7 +2,7 @@
 layout:     post
 title:      "git的使用教程(二)"
 subtitle:   "git的中级教程(其他常用操作)"
-date:       2017-11-02
+date:       2017-10-21
 author:     "toshiba"
 header-img: "images/bg/batman/bat30.jpg"
 tags:
@@ -46,6 +46,100 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 ```
 结果如下
 ![](https://darknights.b0.upaiyun.com/assets/images/in-post/git-medium/0.png)
+
+
+
+### 生产SSH Key
+
+```
+$ ssh-keygen -t rsa -C "youremail@example.com"
+
+//生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下
+
+```
+
+### 添加远程仓库
+本地文件夹添加远程仓库并且推送上去,基础文章已经写过这里再次复习一遍
+```
+$ git remote add origin git@github.com:michaelliao/learngit.git
+
+$ git push -u origin master
+
+```
+
+### 分支管理策略<code>--no-ff</code>
+
+通常，合并分支时，如果可能，Git会用<code>Fast forward模式</code>，但这种模式下，删除分支后，会丢掉分支信息。
+
+如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+
+```
+$ git merge --no-ff -m "merge with no-ff" dev
+Merge made by the 'recursive' strategy.
+ readme.txt |    1 +
+ 1 file changed, 1 insertion(+)
+
+ //其他操作一样只是合并的时候可以带上 禁用ff模式并且加上注释。
+```
+
+合并后的结果如下
+```
+$ git log --graph --pretty=oneline --abbrev-commit
+*   7825a50 merge with no-ff
+|\
+| * 6224937 add merge
+|/
+*   59bc1cb conflict fixed
+...
+```
+
+### 保存工作现场
+```
+$ git stash
+Saved working directory and index state WIP on dev: 6224937 add merge
+HEAD is now at 6224937 add merge
+
+$ git stash list  //显示stash列表
+
+$ git stash pop   //相当于 git stash apply + git stash drop   恢复最近的一条
+
+
+$ git stash apply stash@{0} //指定要恢复的stash
+
+```
+
+
+### 删除远程分支
+```
+$ git push origin :master 等同于下面的命令推送一个空分支对应远程分支
+
+$ git push origin --delete master
+
+```
+
+### 丢弃暂存区文件
+
+如果一个文件已经add到暂存区，还没有commit，此时如果不想要这个文件了，有两种方法
+```
+$ git reset HEAD   用版本库内容清空暂存区
+
+$ git rm --cache 删除缓存区内容
+```
+
+### 允许空提交
+即没有任何更改进行commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署
+```
+$ git commit --allow-empty -m "empty"
+```
+
+
+### 文件夹大小写问题
+git 提交文件夹默认是不区分大小写的也就是说max/file 和Max/file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是java起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题
+```
+$ git config core.ignorecase false  //默认是true
+
+```
+
 
 
 ### git reset的后悔药
@@ -154,64 +248,7 @@ $ git checout <commit>  //将所有文件切换到某次提交的样子
 ```
 
 
-### 生产SSH Key
 
-```
-$ ssh-keygen -t rsa -C "youremail@example.com"
-
-//生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下
-
-```
-
-### 添加远程仓库
-本地文件夹添加远程仓库并且推送上去,基础文章已经写过这里再次复习一遍
-```
-$ git remote add origin git@github.com:michaelliao/learngit.git
-
-$ git push -u origin master
-
-```
-
-### 分支管理策略<code>--no-ff</code>
-
-通常，合并分支时，如果可能，Git会用<code>Fast forward模式</code>，但这种模式下，删除分支后，会丢掉分支信息。
-
-如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
-
-```
-$ git merge --no-ff -m "merge with no-ff" dev
-Merge made by the 'recursive' strategy.
- readme.txt |    1 +
- 1 file changed, 1 insertion(+)
-
- //其他操作一样只是合并的时候可以带上 禁用ff模式并且加上注释。
-```
-
-合并后的结果如下
-```
-$ git log --graph --pretty=oneline --abbrev-commit
-*   7825a50 merge with no-ff
-|\
-| * 6224937 add merge
-|/
-*   59bc1cb conflict fixed
-...
-```
-
-### 保存工作现场
-```
-$ git stash
-Saved working directory and index state WIP on dev: 6224937 add merge
-HEAD is now at 6224937 add merge
-
-$ git stash list  //显示stash列表
-
-$ git stash pop   //相当于 git stash apply + git stash drop   恢复最近的一条
-
-
-$ git stash apply stash@{0} //指定要恢复的stash
-
-```
 
 
 
@@ -265,39 +302,9 @@ $ git check-ignore -v App.class
 
 
 
-### 删除远程分支
-```
-$ git push origin :master 等同于下面的命令推送一个空分支对应远程分支
-
-$ git push origin --delete master
-
-```
-
-### 丢弃暂存区文件
-
-如果一个文件已经add到暂存区，还没有commit，此时如果不想要这个文件了，有两种方法
-```
-$ git reset HEAD   用版本库内容清空暂存区
-
-$ git rm --cache 删除缓存区内容
-```
-
-### 允许空提交
-即没有任何更改进行commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署
-```
-$ git commit --allow-empty -m "empty"
-```
 
 
-### 文件夹大小写问题
-git 提交文件夹默认是不区分大小写的也就是说max/file 和Max/file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是java起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题
-```
-$ git config core.ignorecase false  //默认是true
-
-```
-
-
-### 如何删除一些分支
+### 如何删除一些无用分支
 远程已经删除但是本地还存在。
 这种操作通常是我新建分支改完bug推送远程合并结束后,远程分支删掉了本地分支也删掉但是branch -a的时候还存在想删除本地远程分支数据库中的分支时使用。
 ```

@@ -57,21 +57,34 @@ anchorjs: false
 # Friends
 friends: [
     {
-        title: "Hux Blog",
-        href: "http://xtoshiba.me"
+
     },{
-        title: "Foo",
-        href: "#"
+        title: "阮一峰的网络日志",
+        href: "http://www.ruanyifeng.com/blog/"
     },{
-        title: "Bar",
-        href: "#"
+        title: "张鑫旭",
+        href: "http://www.zhangxinxu.com/wordpress/"
     },{
-        title: "Example Friends",
-        href: "#"
+        title: "汤姆大叔的博客",
+        href: "http://www.cnblogs.com/TomXu/tag/JavaScript/"
     },{
-        title: "It helps SEO",
-        href: "#"
+        title: "MacTalk By 池建强",
+        href: "http://macshuo.com/"
+    },{
+       title: "小胡子哥",
+       href: "http://www.barretlee.com/"
+    },{
+        title: "岁月如歌玉伯",
+        href: "https://lifesinger.wordpress.com/"
+    },{
+       title: "漠然",
+       href: "https://mritd.me"
+    },{
+       title: "Hux Blog",
+       href: "http://xtoshiba.me"
     }
+
+
 ]
 
 
