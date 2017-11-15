@@ -8,7 +8,7 @@ layout: null
       {
       "value" : "{{post.title| escape}}",
       "subtitle": "{{post.subtitle | escape}}",
-      "data" : "{{site.url}}{{post.url}}",
+      "data" : "{{post.url}}",
       "date": "{{post.date | date_to_utc | date: '%Y-%m-%d'}}"
       }
       {% if forloop.last == false %}

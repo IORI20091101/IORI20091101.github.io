@@ -25,8 +25,22 @@ $(function() {
 });
 
 
+
+$(function() {
+// only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        $.fn.tagcloud.defaults = {
+            //size: {start: 1, end: 1, unit: 'em'},
+            color: {start: '#bbbbee', end: '#0085a1'},
+        };
+        $('#tag_cloud a').tagcloud();
+    }
+})
+
+
+
 // make all images responsive
-/* 
+/*
  * Unuse by Hux
  * actually only Portfolio-Pages can't use it and only post-img need it.
  * so I modify the _layout/post and CSS to make post-img responsive!
