@@ -24,6 +24,8 @@ categories:
 
 * [原型发布与管理工具](https://axhub.im/)
 
+* [2018最好的vps推荐，带测试链接](https://www.10besty.com/best-vps/)
+
 * [做个导航页导航页](http://code.giffox.com/)
 * [导航页](http://chuangzaoshi.com/)
 * [NAS （网络附属存储）](https://detail.tmall.com/item.htm?spm=a230r.1.14.13.6b73eea0DWeJvr&id=43924640630&cm_id=140105335569ed55e27b&abbucket=15&skuId=3679227295210)
