@@ -8,10 +8,10 @@ header-img: "images/bg/batman/bat6.jpg"
 comments: true
 
 tags :
-    - es6
+    - ES6学习笔记
     - javascript
 categories:
-    - ES6学习笔记
+    - js基础知识
 ---
 
 ## 同步和异步

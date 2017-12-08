@@ -25,7 +25,6 @@
         }
 
         function createLink (header) {
-            console.log(header)
             var innerText = (header.textContent === undefined) ? header.innerText : header.textContent;
             return "<a href='#" + header.id + "'>" + innerText + "</a>";
         }

@@ -11,7 +11,7 @@ tags :
     - Lodash
     - javascript
 categories:
-    - 基础知识
+    - js基础知识
 ---
 
 ## Lodash.js源码阅读分析（一）

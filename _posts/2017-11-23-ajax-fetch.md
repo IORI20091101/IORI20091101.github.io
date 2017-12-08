@@ -8,10 +8,10 @@ header-img: "images/bg/batman/bat7.jpg"
 comments: true
 
 tags :
-    - es6
+    - ES6学习笔记
     - javascript
 categories:
-    - ES6学习笔记
+    - js基础知识
 ---
 
 ## Lodash.js源码阅读分析（一）

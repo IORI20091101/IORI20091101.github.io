@@ -11,7 +11,7 @@ tags :
     - 计算机基础
     - javascript
 categories:
-    - 基础知识
+    - js基础知识
 ---
 
 # 关于javascript中的~操作
