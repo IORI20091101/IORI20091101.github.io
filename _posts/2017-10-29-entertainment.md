@@ -31,3 +31,8 @@ categories:
 * [NAS （网络附属存储）](https://detail.tmall.com/item.htm?spm=a230r.1.14.13.6b73eea0DWeJvr&id=43924640630&cm_id=140105335569ed55e27b&abbucket=15&skuId=3679227295210)
 * [如何从外网访问家里的电脑](http://yukai.space/2017/06/05/%E5%A6%82%E4%BD%95%E4%BB%8E%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E5%AE%B6%E9%87%8C%E7%9A%84%E7%94%B5%E8%84%91/)
 * [nas云](http://www.nasyun.com/forum.php)
+
+* [在CentOS 7中，使用yum安装Nginx](http://www.itmuch.com/install/nginx-yum-install-in-centos7/)
+* [搭建Jetbrains家族IDE授权服务器](http://blog.csdn.net/Hmily_hui/article/details/77743705)
+* [IntelliJ IDEA License Server本地搭建教程
+](http://blog.lanyus.com/archives/174.html)
