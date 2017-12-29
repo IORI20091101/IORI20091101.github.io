@@ -18,6 +18,8 @@ categories:
 
 * [海盗湾](https://thepiratebay.org/)
 
+* [kickass-top.org](https://kickass-top.org/)
+
 * [BT电影天堂](http://www.btbtdy.com/)
 
 * [壁纸](https://wall.alphacoders.com/by_collection.php?id=39&lang=Chinese&page=1)
