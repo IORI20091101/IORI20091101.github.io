@@ -360,3 +360,5 @@ $ git branch --track  dev origin/dev  //该方法同上
 
 > * [git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
 > * [git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> * [Git 工作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
+> * [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
