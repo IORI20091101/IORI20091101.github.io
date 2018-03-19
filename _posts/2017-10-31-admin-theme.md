@@ -20,6 +20,12 @@ categories:
 * React: [ant.design](https://ant.design/index-cn)
 * Vue: [Element](http://element.eleme.io/#/zh-CN/component/layout)
 
+* [Mint-ui](http://elemefe.github.io/mint-ui/#/)
+
+### 个人ui框架
+* [iviewui](https://www.iviewui.com/)
+* [vux](https://github.com/airyland/vux)
+
 
 个人感觉基于bootstrap的管理模板都大同小异参考文章中的内容基本可以满足需求推荐以下免费主题供大家参考
 
