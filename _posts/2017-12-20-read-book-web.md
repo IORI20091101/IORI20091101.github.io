@@ -4,7 +4,7 @@ title:      高性能网站建设指南
 subtitle:   读书《高性能网站建设指南》总结
 date:       2017-12-20
 author:     "toshiba"
-header-img: "images/bg-bat-2.jpg"
+header-img: "images/bg/batman/bat8.jpg"
 comments: true
 
 tags :
