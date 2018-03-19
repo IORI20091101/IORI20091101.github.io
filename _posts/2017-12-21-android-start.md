@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      除涉Android
+title:      初涉Android
 subtitle:   Android环境安装
 date:       2017-12-20
 author:     "toshiba"
