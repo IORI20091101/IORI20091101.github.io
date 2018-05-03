@@ -1,6 +1,8 @@
 description: "Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验"
 keyword: "web,前端开发,网站设计,程序员,java,javascript,nodejs,python,Dark knight's"
-
+timezone: Asia/Shanghai
+encoding: "utf-8"
+side_bar_repo_limit: 5
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
