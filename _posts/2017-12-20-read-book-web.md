@@ -9,6 +9,7 @@ comments: true
 
 tags :
     - javascript
+    - 读书总结
 categories:
     - 读书总结
 ---
