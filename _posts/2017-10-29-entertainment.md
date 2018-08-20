@@ -24,6 +24,8 @@ categories:
 
 * [壁纸](https://wall.alphacoders.com/by_collection.php?id=39&lang=Chinese&page=1)
 
+* [壁纸2](https://alpha.wallhaven.cc/toplist?page=5)
+
 * [原型发布与管理工具](https://axhub.im/)
 
 * [2018最好的vps推荐，带测试链接](https://www.10besty.com/best-vps/)
