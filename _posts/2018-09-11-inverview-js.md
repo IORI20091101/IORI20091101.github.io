@@ -69,3 +69,17 @@ var f = function g() { return 17; }
 var g = null;
 
 ```
+
+方法调用
+
+```
+var username="test";
+
+function hello() {
+	"use strict";
+	return "hello, " + this.username;
+}
+
+hello(); "hello, undefined"
+
+```
