@@ -251,13 +251,13 @@ function plus(num){
 	var adder = function() {
 		var _args = [];
 
-		var _adder = function _adder() {
+		var _adder = function () {
 			[].push.apply(_args, [].slice.call(arguments));
 			return _adder;
 		}
 
 		_adder.toString = function() {
-			_args.reduce(function(a, b) {
+			return _args.reduce(function(a, b) {
 				return a + b;
 			});
 		}	

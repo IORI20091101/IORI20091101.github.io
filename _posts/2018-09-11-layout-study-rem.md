@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      理解rem布局 (五)
+title:      理解rem布局
 subtitle:   关于rem布局的研究和技术选型
 date:       2018-09-11
 author:     "toshiba"

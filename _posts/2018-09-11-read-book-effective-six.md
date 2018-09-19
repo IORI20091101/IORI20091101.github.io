@@ -93,7 +93,7 @@ averageOfArray([1, 2, 3, 7, 9]);
 
 // 本来average 只接受可变参数，假设我有这样一个数字数组， average函数中没有this引用，所以简单的传null就可以。
 var scores = getAllScores();
-average.call(null, scores)  
+average.apply(null, scores)  
 传入一个数组，调用时这样 average(scores[0], scores[1], scores[2])
 
 
