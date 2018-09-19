@@ -83,3 +83,58 @@ function hello() {
 hello(); "hello, undefined"
 
 ```
+
+
+bind绑定方法接收者，下面例子返回什么结果， 用尽可能多的方法修复该例子
+
+```
+var buffer = {
+	entries: [],
+	add: function(s) {
+		this.entries.push(s);
+	},
+	concat: function() {
+		return this.entries.join("");
+	}
+}
+
+var source = ["867", "-", "5309"];
+
+source.forEach(buffer.add);  // error: entries is undefined
+
+
+```
+
+
+函数柯里化 一道有难度的面试题,完成plus函数 满足通过所有的测试条件
+
+```
+
+'use strict';
+function plus(n){
+  
+}
+module.exports = plus
+
+
+'use strict';
+var assert = require('assert')
+
+var plus = require('../lib/assign-4')
+
+describe('闭包应用',function(){
+  it('plus(0) === 0',function(){
+    assert.equal(0,plus(0).toString())
+  })
+  it('plus(1)(1)(2)(3)(5) === 12',function(){
+    assert.equal(12,plus(1)(1)(2)(3)(5).toString())
+  })
+  it('plus(1)(4)(2)(3) === 10',function(){
+    assert.equal(10,plus(1)(4)(2)(3).toString())
+  })
+  it('方法引用',function(){
+    var plus2 = plus(1)(1)
+    assert.equal(12,plus2(1)(4)(2)(3).toString())
+  })
+})
+```

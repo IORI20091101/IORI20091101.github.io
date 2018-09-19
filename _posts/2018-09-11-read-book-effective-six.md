@@ -150,8 +150,229 @@ function average() {
 
 
 
+```
+
+
+## 永远不要修改arguments对象
+不要修改arguments对象，并且将arguments对象复制到一个真正的数组中再进行调整。
+
+```
+var obj = {
+	add: function(x, y) { return x + y; }
+}
+
+function callMethod(obj, method) {
+	var shift = [].shift;
+	shift.call(arguments);
+	shift.call(arguments);
+
+	return obj[method].apply(obj, arguments);
+}
+
+callMethod(obj, "add", 17, 25);  // cannot read property "apply" of undefined   17[25]
+
+这里的arguments 对象并不是函数参数的副本，所有命名参数都是arguments对象中对应索引的别名。
+
+```
+永远不要修改arguments对象是更为安全的，通过一开始复制参数中的元素到一个真正的数组的方式，很容易避免修改arguments对象。
+```
+var args = [].slice.call(argumants);
+
+slice会复制整个数组，其结果是一个真正的标准Array类型实例。
+
+function callMethod(obj, method) {
+	var args = [].slice.call(arguments, 2);
+	return obj[method].apply(obj, args);
+}
+
+callMethod(obj, "add", 17, 25);
+```
+
+## 使用变量保存arguments的引用
+
+```
+// 实现一个迭代器
+
+
+function values() {
+	var i = 0, n = arguments.length;
+	return {
+		hasNext: function() {
+			return i < n;
+		},
+		next: function() {
+			if(i >= n) {
+				throw new Error("end of iteration");
+			}
+			return arguments[i++]; // wrong arguments;
+		}
+	}
+}
+
+var it = values(1, 2, 3, 5, 78);
+
+it.next(); //undefined
+
+it.next(); //undefined
+
+it.next(); //undefined
+
+每次调用next的时候，next方法内部会存在一个arguments这里可能我们关心的只是values的arguments, 所以正确的方法是将values的arguments保存下来
+
+function values() {
+	var i = 0, n = arguments.length, arg = arguments;
+	return {
+		hasNext: function() {
+			return i < n;
+		},
+		next: function() {
+			if(i >= n) {
+				throw new Error("end of iteration");
+			}
+			return arg[i++];
+		}
+	}
+}
+
+```
+
+## 使用bind方法提取具有确定接收者的方法
+
+```
+var buffer = {
+	entries: [],
+	add: function(s) {
+		this.entries.push(s);
+	},
+	concat: function() {
+		return this.entries.join("");
+	}
+}
+
+var source = ["867", "-", "5309"];
+
+source.forEach(buffer.add);  // error: entries is undefined
+
+
+```
+buffer.add 方法的接收者并不是buffer对象，函数的接收者取决于它是如何被调用，
+不过我们并没有调用它，而是把它传给了forEach方法
+而我们并不知道forEach在哪里调用了它，事实上forEach方法的实现使用全局对象作为默认的接收者。由于全局对象没有entries属性所以这段代码抛出了一个错误。
+幸运的是forEach允许调用者提供一个可选的参数作为回调函数的接收者，所以我们可以很轻松的修复该例子。
+
+
+方法一
+```
+var source = ["867", "-", "5309"];
+
+source.forEach(buffer.add, buffer); 
 
 
 ```
 
- 
+
+并非所有的高阶函数都会为使用者提供其毁掉函数的接收者。如果forEach不接受额外的接收者参数怎么办
+
+方法二
+```
+source.forEach(function(s) {
+	buffer.add(s);
+});
+
+bujjer.join();
+
+```
+
+创建一个函数用来实现绑定其接收者到一个指定的对象是非常常见的，因此ES5标准库直接支持这种模式，函数对象的bind方法需要一个接收者对象，并产生一个以该接收者对象的方法调用的方式调用原来的函数的封装函数。
+
+方法三
+
+```
+var source = ["867", "-", "5309"];
+
+source.forEach(buffer.add.bind(buffer)); 
+
+
+buffer.add.bind(buffer) 创建了一个新函数而不是修改了bufffer.add函数 该函数将接收者绑定到了buffer对象，而原有函数的接收者保持不变
+
+buffer.add === buffer.add.bind(buffer);  // false;
+```
+
+## 使用bind实现函数柯里化
+函数对象的bind方法除了具有降方法绑定到接收者的用途外，它还有更多功能。
+
+```
+function simpleURL(protocol, domain, path) {
+	return protocol + "://" + domain + "/" + path;
+}
+
+var urls = paths.map(function(path) {
+	return simpleURL("http", siteDomain, path);
+});
+
+
+```
+传给simpleURL的前两个参数是固定的， 只有第三个参数在变化，我们可以通过调用simpleURL函数的bind方法来自动构造该匿名函数
+```
+var urls = path.map(simpleURL.bind(null, "http", siteDomain));
+```
+对simpleURL.bind的调用产生了一个委托到simpleURL的新函数，bind的第一个参数提供了接收者的值， 由于simpleURL.bind不需要引用this，所以可以使用任何值。使用null和undefined是习惯用法。 simpleURL.bind的其余参数和提供给你新函数的所有参数共同组成了传递给simpleURL的参数。
+
+> 将函数与其参数的一个子集绑定的技术称为函数柯里化。
+
+
+## 不要信赖函数对象的toString方法
+
+JavaScript有一个非凡的特性， 即将其源代码重现为字符串的能力
+```
+(function(x) { 
+	return x + 1 
+}).toString();
+
+// "function (x) {\n return x + 1; \n}"
+```
+
+ECMAScript标准对于函数对象的toString方法的返回结果并没有任何要求。这意味着不同的JavaScript引擎将产生不同的结果，甚至产生的字符串跟函数并不相关。
+
+```
+(function(x) { 
+	return x + 1 
+}).bind(16).toString();
+
+// "function (x) {\n [native code] \n}"
+```
+由于bind函数通常是由其他语言实现的通常c++，宿主提供一个编译后的函数，在此环境下通常没有源代码可展示。
+
+还有一点就是 toString方法生成的源代码并不展示闭包中保存的和内部变量引用相关的值
+```
+(function(x) {
+	return function(y) {
+		return x + y;
+	}	
+})(42).toString();
+
+// "function(y) {\n return x + y; \n }"
+```
+
+> 总而言之，应该避免使用函数对象的toString方法
+
+## 避免使用非标准的栈检查属性
+
+* arguments.callee 指向使用该arguments对象被调用的函数
+* arguments.caller 指向调用该arugments对象的函数（该arguments对象调用函数的函数）
+
+出于安全考虑大多环境移除了arguments.caller,因此它是不可靠的
+
+许多JavaScript环境提供了一个相似的函数对象属性---非标准但是普遍适用的caller属性。 它指向函数最近的调用者
+```
+function revealCaller() {
+	return revealCaller.caller;
+}
+
+function start() {
+	return revealCaller();
+}
+
+start() === start;  // true
+```
+> ES5的严格模式禁止使用arguments.caller 和arguments.callee ，因为它们不具备良好的可移植性， 非标准的函数对象caller属性应该避免使用，因为在包含全部栈信息方面，它是不可靠的。
