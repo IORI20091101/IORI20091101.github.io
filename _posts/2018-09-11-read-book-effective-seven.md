@@ -69,3 +69,56 @@ if(typeof Object.getPrototypeOf === 'undefined') {
 
 可以使用ES5中的Object.create函数创建一个具有自定义原型链的新对象。对于不支持的ES5环境下下面有一种不依赖于__proto__可移植的实现。
 
+
+## 使用构造函数与new操作符无关
+```
+function User(name, passwordHash) {
+	this.name = name;
+	this.passwordHash = passwordHash;
+}
+如果使用new操作符调用构造函数会是实例化一个对象，不使用new函数的接收者将是全局对象。
+
+
+var u = User("hello", "pass");
+
+u; // undefined
+this.name // "hello"
+this.passwordHash // "pass"
+
+如果User定为ES5的严格代码，那么它的接收者默认为undefined
+
+function User(name, passwordHash) {
+	'use strict';
+	this.name = name;
+	this.passwordHash = passwordHash;
+}
+var u = User("hello", "pass");
+
+// error this is undefined
+
+```
+
+所以无论是否用new都可以使用构造函数，为了保证代码的健壮性最好是提供一个不管怎样都会工作的代码。
+```
+function User(name, pass) {
+	if(!(this instanceof User)) {
+		return new User(name, pass);
+	}
+
+	this.name = name;
+	this.pass = pass;
+}
+
+var x = User("hello", "pas1");
+
+var y = new User("hel", "pas2");
+
+x instanceof User // true
+
+y instanceof User // true
+
+
+
+```
+这种方式不管怎样调用构造函数都会返回一个继承了User.prototype的实例对象。	
+
