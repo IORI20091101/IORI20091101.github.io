@@ -121,4 +121,109 @@ y instanceof User // true
 
 ```
 这种方式不管怎样调用构造函数都会返回一个继承了User.prototype的实例对象。	
+这种模式的缺点是有一次额外的函数调用，ES5有一种更奇异的调用方式
+```
+function User(name, pass) {
+	var self = this instanceof User
+		? this
+		: Obejct.create(User.prototype);
+
+	self.name = name;
+	self.pass = pass;
+	return self;
+}
+
+```
+这种方式只有在ES5中才可以使用，对于不支持的环境，我们可以制造一个兼容性的版本
+```
+// 这里只实现了单参数版本的Object.create
+if(typeof Object.creat === 'undefined') {
+	Object.create = function(prototype) {
+		function C() {}
+		C.prototype = prototype;
+		return new C();
+	}
+}
+
+
+```
+
+## 在原型中存储方法
+* 将方法存储到实例对象中将创建该函数的多个副本，因为每个实例对象都有一份副本
+* 将方法存储于原型中优于存储在实例对象中
+
+## 使用闭包存储私有变量
+闭包将数据存储到封闭的变量中而不提供对这些变量的直接访问，获取闭包内容结构的唯一方式是该函数显示的提供获取它的途径。
+> 对象和闭包剧哟相反的策略，对象的属性会被自动暴露出去，然而闭包中的变量会被自动隐藏起来。
+
+我们可以利用这一特性在对象中存储真正的私有数据。不是将数据作为对象属性来存储而是在构造函数中以变量的方式来存储它，并将对象的方法转为引用这些变量的闭包
+
+```
+function User(name, passwordHash) {
+	this.toString = function() {
+		return "[User " + name +"]";
+	}
+	this.checkPassword = function(password) {
+		return hash(password) === passwordHash;
+	}
+}
+```
+
+这里name和passwordHash并不是以this的属性存储的，读取不到this.name 和this.passwordHash， User不包含任何实例属性。
+该模式有一个缺点为了让构造函数的变量 在使用它们的方法的作用域中，这些方法必须置于实例对象中。 因此违背了上一条<code>在原型中存储方法</code>
+但是为了那些看中保障信息隐藏的情形来说，这点额外代价是值得的
+
+
+## 在子类的构造函数中调用父类的构造函数
+如果正确构建父子级关系的对象
+```
+function Actor(scene, x, y) {
+	this.scene = scene;
+	this.x = x;
+	this.y = y;
+	scene.register(this);
+}
+
+Actor.prototype.moveTo = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.scene.draw();
+}
+
+Actor.prototype.exit = function() {
+	this.scene.unregister(this);
+	this.scene.draw();
+}
+
+
+```
+如果我们要创建一个Actor的一个子类， 名字为SpaceShip怎么办
+```
+function SpaceShip(scene, x, y) {
+	Actor.call(this, scene, x, y);  
+	// 这里SpaceShip的实例对象作为方法的接收者，会将Actor的实例属性加到SpaceShip的实例上，从而继承了Actor的实例属性
+
+	this.points = {};
+}
+
+Actor.prototype.moveTo = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.scene.draw();
+}
+
+Actor.prototype.exit = function() {
+	this.scene.unregister(this);
+	this.scene.draw();
+}
+
+如何继承Actor的prototype中的方法呢，我们可以使用之前提到过的ES5下的 
+Object.create(非ES5需要自己实现Object.create)
+
+SpaceShip.prototype = Object.create(Actor.prototype);
+
+这样就很好的实现了继承
+
+
+```
 
