@@ -145,3 +145,31 @@ describe('闭包应用',function(){
   })
 })
 ```
+
+## 创建一个原型为null的对象用作字典
+
+防止原型污染的最简单的方式之一就是一开始就不使用原型。但是ES5发布之前并没有一个标准的方式创建一个空原型的新对象。你可能会这样做
+该例子是否能创建一个原型为null的对象。不能的话要怎么做
+```
+function C() { }
+
+C.prototype = null;
+
+var o = new C();
+
+Object.getPrototypeOf(o) === null; // false
+Object.getPrototypeOf(o) === Object.prototype // true
+
+// ES5之后应该这样做
+var x = Object.create(null);
+
+Object.getPrototypeOf(o) === null; // true
+
+在不支持Object.create的JavaScript环境中特殊对象__proto__提供了对对象内部原型链的读写访问
+
+var x = { __proto__: null };
+
+x instanceof Object;  // false;
+
+```
+第二种貌似更方便，但是有了Object.create函数后，Object.create是更值得推荐的方式。

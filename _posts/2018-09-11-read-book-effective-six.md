@@ -2,7 +2,7 @@
 layout:     post
 title:      Effective JavaScript (六)
 subtitle:   使用函数
-date:       2018-09-14
+date:       2018-09-11
 author:     "toshiba"
 header-img: "images/bg/batman/bat8.jpg"
 comments: true

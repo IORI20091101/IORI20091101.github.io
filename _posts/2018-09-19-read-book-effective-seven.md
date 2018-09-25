@@ -227,3 +227,27 @@ SpaceShip.prototype = Object.create(Actor.prototype);
 
 ```
 
+## 避免使用轻率的猴子补丁
+
+由于对象共享原型，因此每一个对象都可以增加、删除、或修改原型的属性，这个有争议的实现通常被称为猴子补丁（monkey-patching）
+
+猴子补丁的吸引力在于它的强大。数组缺少一个有用的方法吗？
+
+```
+Array.prototype.split = function(i) {
+	return [this.slice(0, i), this.slice(i)];
+}
+
+//Error Everry array instance has a split method
+```
+当多个库以不兼容的方式给同一个原型打猴子补丁时，问题便出现了，另外的库可能使用同一个方法给Array.prototype打猴子补丁，这样会有冲突。
+一种替代的方法是增加一个<code>addArrayMethods</code>方法,用户可以选择调用或者忽略
+```
+function addArrayMethods() {
+	Array.prototype.split = function(i) {
+		return [this.slice(0,i), this.slice(i)];
+	}
+}
+
+```
+尽管猴子补丁很危险但是有一种特别可靠而且有价值的使用场景 polyfill. ES5定义一些新的Array方法（forEach, map和filter）,如果一些浏览器版本可能不支持这些版本我们可以通过猴子补丁来实现。由于这些行为是标准化的，所以不会造成库与库之间的不兼容风险。
