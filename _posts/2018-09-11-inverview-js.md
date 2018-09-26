@@ -18,7 +18,7 @@ categories:
 
 
 
-## 使用立即调用函数IIFE创建局部作用域
+### 使用立即调用函数IIFE创建局部作用域
 ```javascript
 
 function wrapElements(a) {
@@ -106,7 +106,7 @@ source.forEach(buffer.add);  // error: entries is undefined
 ```
 
 
-什么时候函数柯里化？柯里化的作用
+什么是函数柯里化？柯里化的作用
 
 * 延迟计算
 * 参数复用， 当在多次调用同一个函数，并且传递的参数绝大多数相同，那么该函数可能是一个很好的柯里化候选
@@ -146,7 +146,7 @@ describe('闭包应用',function(){
 })
 ```
 
-## 创建一个原型为null的对象用作字典
+### 创建一个原型为null的对象用作字典
 
 防止原型污染的最简单的方式之一就是一开始就不使用原型。但是ES5发布之前并没有一个标准的方式创建一个空原型的新对象。你可能会这样做
 该例子是否能创建一个原型为null的对象。不能的话要怎么做
@@ -173,3 +173,24 @@ x instanceof Object;  // false;
 
 ```
 第二种貌似更方便，但是有了Object.create函数后，Object.create是更值得推荐的方式。
+
+
+
+### 看下面代码mean的输出值时多少？
+```
+var scores = [98, 74, 85, 77, 93, 100, 89];
+
+var total = 0;
+
+for(score in scores) {
+	total += score;
+}
+
+var mean = total / socres.length;
+
+
+mean; // ?   
+
+
+```
+
