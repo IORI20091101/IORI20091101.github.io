@@ -748,5 +748,100 @@ function takeWhile(a, pred) {
 * 在需要提前终止循环的情况下， 仍然推荐使用传统的循环。另外，some和every方法也可用于提前退出
 
 
-## 在类数组对象上服用通用的数组方法
-<code>Array.prototype</code>中的标准方法被设计成其他对象可复用的方法，即使这些对象并没有继承Array,一个很好的例子 函数的arguments对象，它并没有继承Array.prototype
+## 在类数组对象上复用通用的数组方法
+<code>Array.prototype</code>中的标准方法被设计成其他对象可复用的方法，即使这些对象并没有继承Array,一个很好的例子 函数的arguments对象，它并没有继承Array.prototype，因此我们不能简单的调用arguments.forEach方法来遍历每一个参数。取而代之我们提取forEach方法对象的引用并使用其call方法
+```
+// 同样也可先转化为一个数组 var args = [].slice.call(arguments);
+
+function highlight() {
+	[].forEach.call(arguments, function(widget) {
+		widget.setBackground("yellow");
+	})
+}
+
+```
+
+如何使一个对象“看起来像数组”，数组对象的基本契约总共有两个简单规则
+* 具有一个范围在0-2^32-1的整型length属性。
+* length属性大于该对象的最大索引。索引的范围是0-2^32-2的整数，它的字符串表示就是该对象的一个key
+
+例子
+
+```
+var arrayLike = {0: "a", 1: "b", 2: "c", length: 3}
+var result = Array.prototype.map.call(arrayLike, function(s) {
+	return s.toUpperCase();
+});
+
+// ["A", "B", "C"]
+```
+
+字符串也表现为不可变的数组，因为它们是可索引的， 并且其长度也可以通过length属性获取。因此，Array.prototype中的方法操作字符串不回修改原始数组。
+
+```
+var result = Array.prototype.map.call("abc", function(s) {
+	return s.toUpperCase();	
+});
+
+```
+
+对于使用Array.prototype中的方法，在增加或删除索引属性的时候它们都会强制的更新length属性。所有的Array.prototype方法在类数组中可以通用。
+
+只有一个Array方法不是通用的那就是数组连接方法concat。该方法可以由任意的类数组调用但是它会检查其参数的[[Class]]属性，如果是一个真实的数组才会连接，如果不是例子如下
+```
+function nameColum() {
+	return ["Names"].concat(arguments);
+}
+
+namesColumn("Alice","Bob", "Chris");
+
+
+// ["Names", {.0: "Alice", 1: "Bob", 2: "Chris" }]
+
+这种时候我们可以使用数组转换的方法
+function nameColum() {
+	return ["Names"].concat([].slice.call(arguments));
+}
+
+namesColumn("Alice","Bob", "Chris");
+
+// ["Names", "Alice","Bob", "Chris"]
+
+```
+
+## 数组字面量优于数组构造函数
+
+```
+var a = [1, 2, 3, 4, 5];
+
+也可以使用数组构造函数来替代
+
+var a = new Array(1, 2, 3, 4, 5);
+
+
+有这样几个问题
+首先要保证没有人重新包装过Array变量
+function f(Array) {
+	return new Array(1, 2, 3, 4, 5);
+}
+
+f(String);  //  new String(1)
+
+其次要确保没人修改过全局Array变量
+
+Array = String;
+new Array(1, 2, 3, 4, 5); // new String(1)
+
+
+
+还有一个问题 
+
+["hello"] 和 new Array("hello") 行为虽然一致
+
+但是
+
+[17] 和 new Array(17) 行为完全不同了
+
+```
+
+* 使用数组字面量替代数组构造函数
