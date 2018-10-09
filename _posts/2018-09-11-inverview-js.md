@@ -16,6 +16,111 @@ categories:
 ---
 
 
+### 变量提升
+
+```
+a = 2;
+
+var a;
+
+console.log(a);  // 结果
+
+```
+即使是具名的函数表达式，名称标识符在赋值之前也无法在所在的作用域中使用
+```
+
+
+
+foo(); // TypeError
+bar(); // ReferenceErrtr
+
+var foo = function bar() {
+	//...
+}
+
+```
+函数优先提升, 重复的var会被忽略掉，但是后面的函数声明还是会覆盖前面
+
+```
+foo();
+
+var foo;
+
+function foo() {
+	console.log(1);
+}
+
+foo = function() {
+	console.log(2);
+}
+// 输出结果是 1
+
+
+
+foo();
+
+var foo;
+
+function foo() {
+	console.log(1);
+}
+
+foo = function() {
+	console.log(2);
+}
+
+function foo() {
+	console.log(3);
+}
+
+// 输出结果 3
+```
+
+### 关于this
+```
+function foo(num) {
+	console.log("foo:" + num);
+
+	this.count++;
+}
+
+foo.count = 0;
+
+var i;
+
+for(i = 0; i < 10; i++) {
+	if(i > 5) {
+		foo(i);
+	}
+}
+
+console.log(foo.count);
+
+```
+
+### 动态作用域
+
+JavaScript 只有词法作用域，没有动态作用域
+```
+function foo() {
+	console.log(a);
+}
+
+function bar() {
+	var a = 3;
+	foo();
+}
+
+var a = 2;
+
+bar();
+
+
+// 输出结果是 2
+
+
+
+```
 
 
 ### 使用立即调用函数IIFE创建局部作用域
