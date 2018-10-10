@@ -45,7 +45,7 @@ f(); // undefined
 
 ```	
 
-例如一个Web服务器可以接受一个可选的饿主机名称
+例如一个Web服务器可以接受一个可选的主机名称
 ```
 var s1 = new Server(80, "example.com");
 

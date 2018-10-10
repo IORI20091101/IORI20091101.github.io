@@ -17,7 +17,7 @@ categories:
 
 ## 理解变量提升
 
-try...catch 语句将补货的异常绑定到一个变量，该变量的作用域只是catch语句块。
+try...catch 语句将捕获的异常绑定到一个变量，该变量的作用域只是catch语句块。
 ```javascript
 
   function test() {
