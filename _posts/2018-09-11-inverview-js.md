@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      JAVASCRIPT面试题 
-subtitle:   一些好的javascript面试题总结
+title:      JavaScript面试题 
+subtitle:   一些好的JavaScript面试题总结
 date:       2018-09-11
 author:     "toshiba"
 header-img: "images/bg/batman/bat8.jpg"
@@ -9,7 +9,7 @@ comments: true
 
 tags :
     - 面试
-    - JAVASCRIPT
+    - JavaScript
 
 categories:
     - 面试
@@ -97,6 +97,23 @@ for(i = 0; i < 10; i++) {
 console.log(foo.count);
 
 ```
+
+还有一个更好的例子
+
+```
+function foo() {
+	var a = 2; 
+	this.bar();
+}
+
+function bar() {
+	console.log(this.a);
+}
+
+foo();
+
+```
+
 
 ### 动态作用域
 
