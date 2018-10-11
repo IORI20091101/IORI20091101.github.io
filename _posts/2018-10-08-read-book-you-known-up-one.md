@@ -586,3 +586,283 @@ o.foo(); // 3
 * 完全采用this风格，在必要时使用bind，避免使用self = this 和 箭头函数。
 
 
+
+## 对象
+
+在对象中，属性名永远都是字符串。使用非String作为属性名它首先会被转成一个字符串。
+
+```
+var myObject = {};
+
+myObject[true] = "foo";
+myObject[3] = "bar";
+myObject[myObject] = "baz";
+
+
+myObject["true"] = "foo";
+myObject["3"] = "bar";
+myObject["[object OBject]"] = "baz";
+
+
+
+```
+
+### 对象复制
+
+```
+浅复制
+var newObj = Object.assign({}, myObject);
+
+深复制
+对于JSON安全的对象来说有一种巧妙的复制方法
+
+var newObj = JSON.parse(JSON.stringify(someObj));
+
+```
+
+### 属性描述符
+```
+var myObject = {
+  a: 2
+}
+
+Object.getOwnPropertyDescriptor(myObject, "a");
+
+// {value: 2, writable: true, enumerable: true, configurable: true}
+
+如果configurable: false, 则不可以再配置，也不可以被删除
+
+```
+
+### 对象常量
+结合writable: false 和configurable: false就可以创建一个真正的常量属性(不可以重新定义，修改，删除)
+```
+var myObject = {};
+
+Object.defineProterty(myObject, "FAVORITE_NUMBER", {
+  value: 42,
+  writable: false,
+  configurable: false 
+});
+
+```
+
+### 禁止扩展
+
+如果你想禁止一个对象添加新属性并且保留已有属性，可以使用Object.preventExtensions(...)
+```
+var myObject = {
+  a: 2
+}
+
+Object.preventExtensions(myObject);
+
+myObject.b = 3;
+
+myObject.b; // undefined
+
+```
+在非严格模式下，创建属性b会静默失败，在严格模式下，将会抛出TyperError错误。
+
+
+### 密封
+Object.seal(...)会创建一个"密封"对象，这个方法实际会在一个现有对象上调用Object.preventExtensions并把所有现有属性标记为configurable: false.
+所有密封后不能添加新属性，也不能重新配置和删除任何现有属性(虽然可以修改属性的值)
+
+### 冻结
+<code>Object.freeze(...)</code>，会创建一个冻结对象，这个方法是在现有对象调用了<code>Object.seal</code>并把所有数据访问属性标记为 writable: false, 这样就无法修改它们的值
+
+
+### Getter和Setter
+
+```
+var myObject = {
+  get a() {
+    return 2;
+  }
+}
+
+Object.defineProperty(myObject, "b", {
+  get: function() {
+    return this.a * 2;
+  },
+  enumerable: true  
+
+});
+
+```
+
+通常get和set是成对出现的，只定义一个的话通常会产生意料之外的行为。
+
+```
+
+var myObject = {
+  get a() {
+    return this._a_;
+  }
+
+  set a(val) {
+    return this._a_ = val * 2;
+  }
+}
+
+
+myObject.a = 2;
+
+myObject.a; // 4
+
+
+```
+
+### 存在性
+
+前面说过 如果本身对象中有值为undefiend的属性obj.a, 去获取该值得到的结果跟去获取一个不存在的属性结果是一样的，比如obj.b， 那么如果判断一个属性在对象中是否存在呢
+
+```
+
+var myObject = {
+  a: 2
+}
+
+(a in myObject); // true
+(b in myObject); // false
+
+myObject.hasOwnProperty("a"); // true
+myObject.hasOwnProperty("b"); // false
+
+
+```
+
+in操作符会检查属性是否存在对象及其[[prototype]]原型中，相比之下hasOwnProperty只会检查属性是否存在myObject对象中。
+
+要注意的是in操作符检查的是容器内是否有某个值，实际上检查的是某个属性名是否存在。
+
+```
+4 in [2, 4, 6]; // false
+这个数组包含的属性名其实是0 ，1，2
+
+```
+
+是否可通过for...in操作符来枚举可以通过定义属性是设定
+```
+var myObject = {};
+
+Object.defineProperty(myObject, "a", {
+  enumerable: true, value: 2  
+});
+
+Object.defineProperty(myObject, "b", {
+  enumerable: false, value: 3
+});
+
+
+myObject.b; //3
+{"b" in myObject}; //true
+myObject.hasOwnProperty("b"); //true
+
+
+for(var k in myObject) {
+  console.log(k, myObject[k]);
+}
+
+// "a" 2
+
+还可以通过另一种方式来区分属性是否可枚举
+
+propertyIsEnumerable 会检查属性是否存在于对象中(而不是在原型链中)并且满足enumerable: true
+Object.keys会返回一个数组，包含所有可枚举属性
+Object.getOwnPropertyNames 返回一个数组包含所有属性无论是否可枚举
+
+myObject.propertyIsEnumerable("a"); // true
+
+myObject.propertyIsEnumerable("b"); // false
+
+Object.keys(myObject); // ["a"]
+
+Object.getOwnPropertyNames(myObject); // ["a", "b"]
+
+
+```
+
+Object.keys 和Object.getOwnPropertyNames 都不回查找原型链，只会查找对象直接包含的属性
+
+
+
+
+### 遍历
+我们通常会通过<code>for...in</code>来遍历一个对象，但是这样便利对象属性时的顺序是不确定的，在不同的JavaScript引擎中可能不一样，因此在不同的环境中需要保持一致性时，一定不要相信任何观察到顺序，它们是不可靠的
+那么如何直接遍历值而不是数组下标呢
+```
+
+var myArray = [1, 3, 5];
+
+for(var v of myArray) {
+  console.log(v);
+}
+
+```
+因为数组有内置的@iterator, 因此for...of可以直接应用到数组上。
+
+
+我们可以使用内置的@@iterator来手动遍历数组， ES6中我们使用Symbol.iterator来获取对象的@@iterator内部属性
+
+```
+var myArray = [1, 3, 5];
+
+var it = myArray[Symbol.iterator]();
+
+it.next();  // {value: 1, done: false}
+
+it.next();  // {value: 3, done: false}
+
+it.next();  // {value: 5, done: false}
+
+it.next();  // {value: undefined, done: undefined}
+
+```
+和数组不同普通的对象没有内置的@@iterator,所以无法自动完成for...of遍历，之所以这样做有许多非常复杂的原因， 简单来说，这样做是为了避免影响未来的对象类型.
+
+当然我们可以给任何想遍历的对象定义@@iterator
+```
+
+var myObject = {
+  a: 2,
+  b: 3
+};
+
+Object.defineProperty(myObject, Symbol.iterator, {
+  enumerable: false,
+  writable: false,
+  configurable: true,
+  value: function() {
+    var o = this;
+    var idx = 0;
+    var ks = Object.keys(o);
+
+    return {
+      next: function() {
+        return {
+          value: o[ks[idx++]];
+          done: (idx > ks.length)
+        }
+      }
+    }
+  }  
+});
+
+这样手动遍历
+
+var it = myObject[Symbol.iterator]();
+it.next(); // {value:2, done: false}
+it.next(); // {value:3, done: false}
+it.next(); // {value: undefined, done: true}
+
+
+for(var v of myObject) {
+  console.log(v);
+}
+
+```
+
+
+
