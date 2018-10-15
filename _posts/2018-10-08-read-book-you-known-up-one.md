@@ -865,4 +865,283 @@ for(var v of myObject) {
 ```
 
 
+## 原型风格继承
 
+```
+
+function Foo(name) {
+  this.name = name;
+}
+
+Foo.prototype.myName = function() {
+  return this.name;
+}
+
+function Bar(name, label) {
+  Foo.call(this, name);
+
+  this.label = label;
+}
+
+Bar.prototype = Object.create(Foo.prototype);
+// 这里还可以用这种写法，ES6 的 Object.setPrototypeOf  下面的写法更好一点， 当时上面的写法更容易理解
+Object.setPrototypeOf(Bar.prototype, Foo.prototype);
+
+
+Bar.prototype.myLabel = function() {
+  return this.label;
+}
+
+var a = new Bar("a", "obj a");
+
+a.myName(); // "a"
+
+a.myLabel(); // "obj a"
+
+
+该方法比较有用，Foo.prototype是否出现在a的[[prototype]]链中
+Foo.prototype.isPrototypeOf(a);
+
+```
+
+## 委托
+基于委托实现与上面相同功能的代码
+```
+
+Foo = {
+  init: function(who) {
+    this.me = who;
+  },
+  identify: function() {
+    return "I am " + this.name;
+  }
+}
+
+Bar = Object.create(Foo);
+
+Bar.speak = function() {
+  alert("Hello, " + this.identify() + " . ");
+}
+
+
+var b1 = Object.create(Bar);
+b1.init("b1");
+
+var b2 = Object.create(Bar);
+b2.init("b2");
+
+b1.speak();
+b2.speak();
+```
+
+通过比较发现， 对象关联风格的代码更加简洁，因为这种风格的代码只关注一件事， 对象之间的关联关系。
+
+## 更简洁的设计
+一个关于登陆验证器的设计
+```
+
+function Controller() {
+  this.errors= [];
+}
+
+Controller.prototype.showDialog = function(title, msg) {
+  // 显示给用户的消息
+}
+
+Controller.prototype.success = function(msg) {
+  this.showDialog("success", msg);
+}
+
+Controller.prototype.failure = function(err) {
+  this.errors.push(err);
+
+  this.showDialog("Error", err);
+}
+
+
+function LoginController() {
+  Controller.call(this);
+}
+
+LoginController.prototype = Object.create(Controller.prototype);
+
+LoginController.prototype.getUser = function() {
+  return document.getElementById("login_username").value;
+}
+
+LoginController.prototype.getPassword = function() {
+  return document.getElementById("login_password").value;
+}
+
+
+LoginController.prototype.validateEntry = function(user, pw) {
+  user = user || this.getUser();
+  pw = pw || this.getPassword();
+
+  if(!(user && pw)) {
+    return this.failure("Please enter a username & password");
+  }
+  else if(pw.length < 5) {
+    return this.failure("Password must be 5+ character!");
+  }
+
+  return true;
+}
+
+LonginController.prototype.failure = function() {
+  Controller.prototype.failure.call(this, "Login invalid: " + err);
+}
+
+
+
+
+function AuthController(login) {
+  Controller.call(this);
+
+  this.login = login;
+}
+
+AuthController.prototype = Object.create(Controller.prototype);
+
+AuthController.prototype.server = function(url, data) {
+  return $.ajax({
+    url: url,
+    data: data
+  });
+}
+
+AuthController.prototype.checkAuth = function() {
+  var user = this.login.getUser();
+  var pw = this.login.getPassword();
+
+  if(this.login.validateEntry(user, pw)) {
+    this.server("/check-auth", {
+      user: user,
+      pw: pw
+    })
+    .then(this.success.bind(this));
+    .fail(this.failure.bind(this));
+  }
+}
+
+
+AuthController.prototype.success = function() {
+  Controller.prototype.success.call(this, "Authenticated;");
+}
+
+AuthController.prototype.failure = function(err) {
+  Controller.prototype.failure.call(this, "Auth failed: " + err);
+}
+
+
+var auth = new AuthController(new LoginController());
+
+auth.checkAuth();
+
+```
+反类，我们可以使用对象关联风格的行为委托来实现更简单的设计
+```
+
+var LoginController = {
+  errors: [],
+  getUser: function() {
+    return document.getElementById("login_username").value;
+  },
+
+  getPassword: function() {
+    return document.getElementById("login_password").value;
+  },
+  validateEntry: function(user, pw) {
+    user = user || this.getUser();
+    pw = pw || this.getPassword();
+
+    if(!(user && pw)) {
+      return this.failure("Please enter a username & password");
+    }
+    else if(pw.length < 5) {
+      return this.failure("Password must be 5+ character!");
+    }
+
+    return true;
+  },
+  showDialog: function() {
+    // 给用户显示的消息
+  },
+  failure: function() {
+    this.errors.push(err);
+    this.showDialog("Error", "Login invalid " + err);
+  },
+  success: function(msg) {
+    this.showDialog("success", msg);
+  }
+
+}
+
+
+
+var AuthController = Object.create(LoginController);
+
+AuthController.errors = [];
+
+AuthController.checkAuth = function() {
+  var user = this.getUser();
+  var pw = this.getPassword();
+
+  if(this.validateEntry(user, pw)) {
+    this.server("/check-auth", {
+      user: user,
+      pw: pw  
+    })
+    .then(this.accepted.bind(this))
+    .fail(this.rejected.bind(this));
+  }
+}
+
+AuthController.server = function(url, data) {
+  return $.ajax({
+    url: url,
+    data: data  
+  })
+}
+
+AuthController.accepted = function() {
+  this.showDialog("Success", "Authenticated!");
+}
+
+AuthController.rejected = function(err) {
+  this.failure("Auth Failed: " + err);
+}
+
+
+AuthController.checkAuth();
+```
+这种模式我们只需要两个实体LoginController 和 AuthController
+总结： 我们用一种极其简单的设计实现了同样的功能， 这既是对象关联风格代码和行为委托设计模式的力量
+
+## 反词法
+ES6简洁与法有一个非常小但重要的缺点
+```
+
+var Foo = {
+  bar() {/**/},
+  baz: function baz() {/**/}  
+}
+
+去掉语法糖
+
+var Foo = {
+  bar: function() {/**/}
+  baz: function baz() {/**/}
+}
+
+```
+由于函数对象本身没有标识符， 所以bar()的缩写形式实际上会变成一个匿名函数表达式并赋值给bar属性。相比之下 具名函数表达式会额外的给.baz属性附加一个词法名称标识符baz。
+
+匿名函数没有name标识符会导致
+* 调用栈更难追踪
+* 自我引用（递归， 事件绑定和解除绑定）更难
+* 代码稍微难理解
+
+这里只有第二个缺点无法避免，因此使用简洁语法一定要小心这一点。 如果你需要自我引用的话，那最好使用传统的具名函数表达式来定义对应的函数，不要使用简洁语法。
+
+> 再说一次，我们认为JavaScript种的对象关联比类风格代码更为简洁(而且功能相同)
