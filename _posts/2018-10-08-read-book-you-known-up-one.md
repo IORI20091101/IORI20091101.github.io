@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      你不知道的JavaScript(一)
+title:      你不知道的JavaScript上卷
 subtitle:   你不知道的JavaScript上卷-基础篇
 date:       2018-10-08
 author:     "toshiba"
