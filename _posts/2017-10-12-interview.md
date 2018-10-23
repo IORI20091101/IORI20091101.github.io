@@ -17,6 +17,8 @@ categories:
 
 ## [LeetCode](https://leetcode.com/)
 
+## [codeWars](http://www.codewars.com/kata/54b42f9314d9229fd6000d9c/train/javascript)
+
 > LeetCode 是一个非常棒的 OJ（Online Judge）平台，收集了许多公司的面试题目。相对其他 OJ 平台而言，有着下面的几个优点：
 > * 题目全部来自业内大公司的真实面试
 > * 不用处理输入输出，精力全放在解决具体问题上
