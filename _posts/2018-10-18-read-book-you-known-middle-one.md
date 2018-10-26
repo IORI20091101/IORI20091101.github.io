@@ -232,3 +232,139 @@ if(!Object.is) {
 }
 
 ```
+
+
+## JSON字符串化
+对于大多数简单值来说JSON字符串化和toString效果基本相同，只不过序列化的结构总是字符串
+所有安全的JSON值都呈现为有效的JSON格式的值
+```
+JSON.stringify(42);  // "42"
+JSON.stringify("42") // ""42""
+JSON.stringify(null) // "null"
+JSON.stringify(true) // "true"
+
+
+```
+相对而言不安全的JSON值包括 undefined, function , symbol和包含循环引用的对象都不符合JSON的标准结构，其他支持JSON的语言无法处理它们。
+
+JSON.toStringify(...)在处理对象中遇到undefined,function,Symbol是会自动将其忽略，在数组中则返回null，以保证单于位置不变
+```
+JSON.stringify(undefined)     			// undefined
+JSON.stringify(function() {}) 		    // undefined
+JSON.stringify(
+	[1, undefined, function() {}, 4] 	// "[1, null, null, 4]"
+)
+JSON.stringify(
+	{a: 2, b: function() {}}         	// "{"a": 2}"
+) 
+JSON.stringify(undefined) // undefined
+
+```
+
+如果对象定义了toJSON方法，JSON字符串化会首先调用该方法然后用它的返回值来进行序列化。
+
+```
+var o = {};
+var a = {
+	b: 42,
+	c: o,
+	d: function() {}
+}
+
+o.e = a;
+
+//循环引用会报错
+// JSON.stringify(a);
+
+//自定义的JSON序列化
+a.toJSON = function() {
+	return {b: this.b};
+}
+
+JSON.stringify(a); // "{b: 42}"
+
+```
+
+## JSON.stringify
+几个不为人知的知识点,该方法可以传入一个replacer，它可以是数组或者函数，用来制定对象序列化过程中那些应该被处理，哪些应该被排除，如果replacer是一个数组，那么它必须是一个字符串数组，其中高喊序列化要处理的对象的属性名称。除此之外的其他属性被忽略。如果replacer是一个函数，它会对对象本身调用一次然后对对象中的每个属性各调用一次，每次传递两个参数key和value，如果要忽略某个key就返回undefined，否则返回指定值
+```
+var a = {
+	b: 42,
+	c: "42",
+	d: [1,2,3]
+}
+
+JSON.stringify(a, ["b", "c"]); // "{"b": 42, "c": "42"}"
+
+JSON.stringify(a, function(k, v) {
+	if(k !== "c") return v;	
+});
+
+// "{"b": 42, "d": [1,2,3]}"
+
+
+```
+JSON.stringify还有一个可选参数space用来指定输出的缩进格式。
+
+
+```
+var a = {
+	b: 42,
+	c: "42",
+	d: [1,2,3]
+}
+
+JSON.stringify(a, null, 3);
+
+JSON.stringify(a, null, '---------');
+
+
+```
+## toNumber
+true转换为1，false转换为0，undefined转换为NaN，null转为0
+
+```
+Number("");  // 0
+Number([]);  // 0
+Number(["abc"]);  // NaN
+
+```
+
+## 奇特的～运算符
+字位运算只适用于32位整数，运算符将会强制操作数使用32位格式。 ToInt32首先执行ToNumber 然后执行ToInt32，虽然严格来说并非强制类型转换，但是字位运算符和一些特殊数字一起使用时会产生类似强制类型转换的效果，返回另外一个数字
+例如<code>|</code>的空操作,会将后面转为数字
+```
+0 | -0;        // 0
+0 | NaN;       // 0
+0 | Infinity;  //0
+0 | -Infinity; //0
+
+```
+
+
+简单来说～ 可以理解为<code>-(x+1)</code>， 
+```
+～42; // -43
+
+~-1; // 0
+
+var a = "Hello world";
+
+~a.indexOf("lo");  // -4
+
+~a.indexOf("ol"); // 0
+
+if(!~a.indexOf("ol")) {
+	// 无匹配
+}
+
+```
+
+## ~~字位截取
+有些开发人员使用<code>~~</code>来借去数字值的消暑部分，以为这和Math.floor的效果一样，实际上并非如此
+~~它首先只适用于32位数字，更重要的是它对负数的处理和Math.floor不同。
+```
+Math.floor(-49.6); // -50  
+~~-49.6;      // -49 该方法会舍弃
+
+```
