@@ -368,3 +368,77 @@ Math.floor(-49.6); // -50
 ~~-49.6;      // -49 该方法会舍弃
 
 ```
+
+## 显示解析数字字符串
+
+parseInt是解析，允许字符串中出现非数字字符，解析从左到右遇到非数字字符就停止。而转换Number不允许出现非数字字符，否则会失败并返回NaN
+```
+var a = "42";
+var b = "42px";
+
+Number(a); // 42
+parseInt(a); // 42
+
+Number(b); // NaN
+parseInt(b) // 42
+
+```
+parseInt和parseFloat是针对字符串值，所以传递其他类型的值是没有用的，他们会被强制类型转换成字符串。
+
+ES5之前的一个坑就是如果没有指定第二个参数来给定转换基数，则会以第一个参数的第一个字符来自行决定。如果第一个字符是 x 或者 X 则转换为十六进制， 如果是0则转换为八进制。
+
+如下代码如果值为08:09 ,转换后的值为0:0 因为 8 和 9 都不是有效的八进制数。
+
+```
+
+var hour = parseInt(selectHour.value);
+var minute = parseInt(selectMinute.value);
+
+```
+将第二个参数设置为10即可避免这个问题
+```
+var hour = parseInt(selectHour.value, 10);
+var minute = parseInt(selectMinute.value, 10);
+
+```
+
+幸运的是从ES5开始<code>parseInt(...)</code>默认转换为十进制， 除非另外指定。如果你的代码在ES5之前的环境运行，请记得将第二个值设置为10.
+
+有这样一个坑
+```
+parseInt(1/0, 19); // 18
+
+```
+这里parseInt接收字符串参数, 所以 Infinity 被转换为 "Infinity"; 19也不是一个正规的基数，所以这里其实是在转换 parseInt("Infinity", 19);
+
+按照十六进制表示规则 a => 10, b => 11, c => 12, ... i => 18 ... z => 35; 基数是19所有小于19的字母都是有效数字。
+
+此外还有一些看起来奇怪但是解释的通的例子
+```
+// 这个例子 小数点后六位之前转为 0
+parseInt(0.000008); // 0    
+//但是小数点后七位就转为 8e-7 再转字符串"8e-7" 8是有效数字
+parseInt(0.0000008); // 8
+
+
+// "fa"都是有效数字 f = 15 a = 10;  15 * 16 + 10 = 250
+parseInt(false, 16); // 250
+
+//parseInt.toString()
+//"function parseInt() { [native code] }"
+//"f"解析位16进制的15
+parseInt(parseInt, 16); // 15
+
+//16进制的10 就是16
+parseInt("0x10"); // 16
+// 3不是有效的二进制， 只解析 10, 2进制的10  就是十进制的2
+parseInt("103", 2) // 2
+
+
+```
+
+
+
+
+
+
