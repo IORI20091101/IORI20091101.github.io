@@ -353,3 +353,20 @@ null >>> 0 // 0
 
 
 ```
+
+### 隐式转换一个题目
+```
+如果想输出success英国如何定义a
+if(a == 2 && a == 3)  {
+	console.log("success")
+}
+
+
+var i = 2;
+Number.prototype.valueOf = function() {
+	return i++;
+}
+
+var a = new Number( 42 );
+
+```

@@ -438,7 +438,202 @@ parseInt("103", 2) // 2
 ```
 
 
+## 隐式转换
+<code>null</code>和<code>undefined</code> 之间<code>==</code>比较
+
+* 如果x为null， y是undefined 结果为true
+* 如果x为undefined， y是null 结果为true
+
+```
+var a = null;
+var b;
+
+a == b;    // true
+a == null; // true
+b == null; // true
+
+a == false; // false
+b == false; // false
+a == "";    // false
+b == "";    // false
+a == 0;     // false
+b == 0;     // false
+
+
+var a = doSomething();
+
+if(a == null) {
+	//...
+}
+条件判断 a == null 仅在 doSomething() 返回 null 和 undefined时才成立，除此之外其他值不成立包括0, false 和""这样的假植
+
+```
+
+对象和非对象之间的比较
+
+* 如果Type(x)是字符串或者数字， Type(y)是对象， 则返回 x == ToPrimitive(y)的结果
+* 如果Type(x)是对象， Type(y)是字符串或者数字， 则返回 ToPrimitive(x) == y的结果
+
+```
+var a = 42;
+var b = [42];
+
+a == b; // true
 
 
 
+var a = "abc";
+var b = Object(a);  // 和 new String(a) 一样
 
+a == b;  // true
+
+```
+但是有一些值不这样， 原因是==算法中其他优先级更高的规则
+```
+
+var a = null;
+var b = Object(a); // 和Object()一样
+
+a == b;  // false
+
+
+var c = undefined;
+var d = Object(c); // 和Object一样
+c == d; // false
+
+
+var e = NaN;
+var f = Object(e); // 和new Number(e)一样
+
+e == f; // false
+
+```
+因为没有对应的封装对象所以null和undefined不能够被封装， <code>Object(null)</code>, <code>Object(undefined)</code>，都返回一个常规对象。NaN能被封装为数字封装对象，但是拆封之后NaN == NaN返回false， 因为NaN不等于NaN。
+
+
+比较少见的情况
+2 == 3 不会有这种情况， new Number会调用valueOf
+```
+Number.prototype.valueOf = function(){
+	return 3;
+}
+
+new Numebr(2) == 3; // true
+
+```
+
+假值相等比较
+
+```
+
+"0" == null;      // false
+"0" == undefined; // false
+"0" == false;     // true
+"0" == NaN;       // false
+"0" == 0;        // true
+"0" == "";       // false
+
+
+
+false == null;      // false
+false == undefined; // false
+false == NaN;       // false
+false == 0;        // true
+false == "";       // true
+false == [];       // true
+false == {};       // false
+
+
+
+"" == null;      // false
+"" == undefined; // false
+"" == NaN;       // false
+"" == 0;        // true
+"" == [];       // true
+"" == {};       // false
+
+
+0 == null;      // false
+0 == undefined; // false
+0 == NaN;       // false
+0 == [];       // true
+0 == {};       // false
+
+
+这个最好
+
+[] == ![]  // true
+
+2 == [2] // true
+"" == [null] // true
+
+0 == "\n"   // true
+
+```
+
+抽象关系的比较
+
+双方先调用toPrimitive，如果结果出现非字符串，就根据toNumber规则将双方强制转换为数字进行比较
+```
+var a = [42];
+var b = "43";
+
+a < b; // true
+b < a; // false
+
+如果双方都是字符串，则按照字母顺序比较
+
+var a = ["42"];
+var b = ["043"];
+
+a < b;  // false
+a和b不转为数字，因为你toPrimitive返回的字符串这里比较的是"42" 和 "043"两个字符串，比较的是"4" 和"0" 
+
+
+var a = [4, 2];
+var b = [0, 4, 3];
+
+a < b; // false  比较 "4, 2" 和 "0, 4, 3"的首字母
+
+var a = { b: 42 };
+var b = { b: 43 };
+
+a < b;  // false 转为"[object Object]" 和"[object Object]"所以按照字母顺序比较并不成立
+
+
+```
+下面的例子比较奇怪
+```
+var a = { b: 42 };
+var b = { b: 43 };
+
+a < b; // false
+
+a == b; // false
+
+a > b; // false
+
+a <= b; // true
+a >= b; // true
+
+
+```
+根据规范 a <=b 被处理成 !(a > b)
+
+
+## JavaScript表达式
+表达式的副作用
+```
+var a = 42;
+var b = a++;
+
+a; // 43
+
+b; // 42
+
+
+```
+
+标签表达式 break; continue;
+
+* [运算符优先级](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
