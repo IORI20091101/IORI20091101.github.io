@@ -77,8 +77,9 @@ xcrun simctl openurl booted taobao://h5.m.taobao.com/guang/index.html
 open -a "Simulator.app" --args -CurrentDeviceUDID "FCE2CFE8-64C3-4DBE-906B-B9BF4180DE49"
 
 ```
+前提是安装了xcode， 本地需要一个sdk与测试网站进行交互方便获取app和执行本地shell命令
+根据[此文章](http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/), 后期开发一个测试环境用的本地调试网站。
 
-http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/
 
 
 
@@ -123,6 +124,9 @@ $  sudo npm install spy-debugger -g
 ```
 $ spy-debugger -p 8888
 ```
+
+## TBS Studio
+[TBS Studio](https://x5.tencent.com/guide/debug.html)
 
 ## 微信 WebView 调试
 [https://x5.tencent.com/tbs/guide/debug/season1.html](https://x5.tencent.com/tbs/guide/debug/season1.html)
