@@ -370,3 +370,11 @@ Number.prototype.valueOf = function() {
 var a = new Number( 42 );
 
 ```
+
+### babel的polyfill和runtime的区别
+
+
+### Promise为什么需要一个catch done方法是干什么用的
+如果捕获promise的异常
+
+### webpack  tree shaking用来做什么的

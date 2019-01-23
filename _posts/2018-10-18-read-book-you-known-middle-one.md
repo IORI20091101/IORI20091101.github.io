@@ -14,7 +14,6 @@ categories:
     - 读书总结
 ---
 
-本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。
 
 ## 字符串
 ```
