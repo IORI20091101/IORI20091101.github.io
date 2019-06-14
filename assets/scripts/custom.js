@@ -133,7 +133,7 @@ $(function() {
             searchGoogle(val);
         })
 
-        $.getJSON("https://darknights.b0.upaiyun.com/assets/search.json", function(res) {
+        $.getJSON("https://cdn.darknights.cn/assets/search.json", function(res) {
             window.searchData = res.data;
             $('input[name="q"]').autoComplete({
                 minChars: 1,

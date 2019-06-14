@@ -56,13 +56,13 @@ charles抓包请查看[这篇教程](https://www.jianshu.com/p/fdd7c681929c)
 需要几步配置
 
 * 首先打开电脑的safari
-![](https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Safari设置.png)
+![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari设置.png)
 
 * 然后打开iPhone进行设置
-![](https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/iPhone设置.png)
+![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/iPhone设置.png)
 
 * 最后通过电脑的safari打开进行调试
-![](https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/开启调试.png)
+![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/开启调试.png)
 
 
 ## 调试iPhone的webview
@@ -101,14 +101,14 @@ $ weinre --boundHost 10.10.2.144 --httpPort 8090
 
 * 使用chrome访问
 [http://10.10.2.144:8090](http://10.10.2.144:8090), 然后将一段 JS 脚本 <script src="http://10.10.2.144:8090/target/target-script-min.js#anonymous"></script> 插入到需要调试的页面中，插入代码后手机访问调试页面。
-![](https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/weinre.png)
+![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/weinre.png)
 
 到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入
 Tools --> Rewrite 选中Enable Rewrite
 这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 </body> 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。
-![](https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Charles_Rewrite.jpg)
+![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite.jpg)
 
-![](https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg)
+![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg)
 
 
 ## spy-debugger
