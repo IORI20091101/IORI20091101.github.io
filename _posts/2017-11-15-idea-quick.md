@@ -26,7 +26,7 @@ categories:
 
 ### 定位跳转
 *  `Command + B`： 快速打开光标处的类或方法
-*  `Ctrl + Alt + B`： 跳转到方法实现处
+*  `Command + Alt + B`： 跳转到方法实现处
 *  `Command + Alt + Left/Right`： 返回至上次浏览的位置
 *  `Command + Shift + Backspace`： 跳转到上次编辑的地方
 *  `F2/Shift+F2`： 高亮错误或警告快速定位(跳转至报错的位置)
@@ -43,7 +43,7 @@ categories:
 *  `Shift + Shift`： 全局查找
 
 ### 代码操作
-*  `Command + W`： 全局查找
+*  `Command + W`： 选中单词逐步扩大范围
 *  `Command + R`： 在本文件替换文本
 *  `Ctrl + Shift + R`： 在本文件替换文本
 *  `Command + X`： 删除行
