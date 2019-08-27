@@ -16,5 +16,17 @@ Host darknights.me
     IdentityFile ~/.ssh/id_rsa
     IdentitiesOnly yes
 
+Host sdongzhi.com
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host donduffy.com
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
 
 
