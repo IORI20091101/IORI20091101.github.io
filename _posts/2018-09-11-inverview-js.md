@@ -370,6 +370,33 @@ Number.prototype.valueOf = function() {
 var a = new Number( 42 );
 
 ```
+### ["1","12","121"].map(parseInt)
+这是一个很有意思的题目乍一看认为可能会输出[1,12,123] 其实不然输入结果为:
+```
+ [1,NaN, 1]
+
+ ```
+ 为什么会这样呢，我们知道parseInt方法可以将数字转为10进制的数值，parseInt(string, radix);其中第二个参数是基数
+ An integer between 2 and 36 that represents the radix (the base in mathematical numeral systems) of the string. Be careful — this does not default to 10.
+
+而Array的map方法可以接受三个参数
+ ```
+var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+    // Return element for new_array
+}[, thisArg])
+
+这里不写参数默认将index作为基数传给了parseInt所以输出结果时并不是按照我们所想的 
+
+["1","12","121"].map(val => parseInt(val)); 来输出的因为你发现这样写结果反而没有问题
+
+真实结果是这样
+["1","12","121"].map((val,index,array) => parseInt(val, index));
+
+```
+
+
+
+
 
 ### babel的polyfill和runtime的区别
 
