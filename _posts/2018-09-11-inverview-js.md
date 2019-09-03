@@ -389,7 +389,7 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 
 ["1","12","121"].map(val => parseInt(val)); 来输出的因为你发现这样写结果反而没有问题
 
-真实结果是这样
+真实结果是这样:
 ["1","12","121"].map((val,index,array) => parseInt(val, index));
 
 ```
