@@ -15,6 +15,8 @@ categories:
     - 面试
 ---
 
+### 在浏览器输入 URL 回车之后发生了什么
+[在浏览器输入 URL 回车之后发生了什么](https://4ark.me/post/b6c7c0a2.html#%E5%89%8D%E8%A8%80)
 
 ### 变量提升
 
@@ -389,10 +391,12 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 
 ["1","12","121"].map(val => parseInt(val)); 来输出的因为你发现这样写结果反而没有问题
 
-真实结果是这样:
+真实结果是这样
 ["1","12","121"].map((val,index,array) => parseInt(val, index));
 
 ```
+
+
 
 
 
