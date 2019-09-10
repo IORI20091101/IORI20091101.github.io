@@ -242,4 +242,104 @@ class Solution {
 
 
 ### 4.N叉树的前序遍历
-[N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/):
+例如，给定一个 3叉树 :
+![](https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png)
+返回其前序遍历: [1,3,5,6,2,4]。
+说明: 递归法很简单，你可以使用迭代法完成此题吗?
+
+#### 答案一
+```javascript
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+/**
+ * @param {Node} root
+ * @return {number[]}
+ */
+var preorder = function(root) {
+    if(!root) return [];
+    var res = [];
+    recusion(root);
+    return res;
+    
+    function recusion(root) {
+        if(!root) return;
+        res.push(root.val);
+        for(var i = 0; i < root.children.length; i++) {
+            recusion(root.children[i]);
+        }
+    }
+};
+```
+
+#### 答案二
+```java
+class Solution {
+    public List<Integer> preorder(Node root) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(root == null) return res;
+        res.add(root.val);
+        for(Node cur: root.children) {
+            res.addAll(preorder(cur));
+        }
+        return res;
+    }
+}
+```
+
+#### 答案三
+迭代
+```java
+class Solution {
+    public List<Integer> preorder(Node root) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(root == null) return res;
+    
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()) {
+            Node cur = stack.pop();
+            res.add(cur.val);
+
+            List<Node> nodeList = cur.children;
+            for(int i = nodeList.size() - 1; i >= 0; i--) {
+                stack.push(nodeList.get(i));
+            }
+        }
+
+        return res;
+    }
+}
+```
+
+
+
+### 5.Nim 游戏
+[Nim 游戏](https://leetcode-cn.com/problems/nim-game/submissions/):
+你和你的朋友，两个人一起玩 Nim 游戏：桌子上有一堆石头，每次你们轮流拿掉 1 - 3 块石头。 拿掉最后一块石头的人就是获胜者。你作为先手。
+你们是聪明人，每一步都是最优解。 编写一个函数，来判断你是否可以在给定石头数量的情况下赢得游戏。
+```
+示例:
+
+输入: 4
+输出: false 
+解释: 如果堆中有 4 块石头，那么你永远不会赢得比赛；
+     因为无论你拿走 1 块、2 块 还是 3 块石头，最后一块石头总是会被你的朋友拿走。
+
+```
+
+#### 答案一
+分析:随机拿1-3块石头，这里的4是一个临界点，依次以，5，6，7，8举例计算，发现每次能被4整除时一定会返回false,其他返回true
+```javascript
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var canWinNim = function(n) {
+    return n % 4 ? true: false;  
+};
+```
