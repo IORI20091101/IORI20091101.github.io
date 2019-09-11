@@ -343,3 +343,124 @@ var canWinNim = function(n) {
     return n % 4 ? true: false;  
 };
 ```
+
+### 6.山脉数组的峰顶索引
+[山脉数组的峰顶索引](https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/):
+我们把符合下列属性的数组 A 称作山脉：
+* A.length >= 3
+* 存在 0 < i < A.length - 1 使得A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
+
+给定一个确定为山脉的数组，返回任何满足 A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1] 的 i 的值。
+
+提示：
+* 3 <= A.length <= 10000
+* 0 <= A[i] <= 10^6
+* A 是如上定义的山脉
+
+```
+示例 1：
+
+输入：[0,1,0]
+输出：1
+示例 2：
+
+输入：[0,2,1,0]
+输出：1
+ 
+
+
+```
+
+#### 答案一
+分析：通过读题其实是返回数组中最大值的索引
+```javascript
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var peakIndexInMountainArray = function(A) {
+    return A.findIndex(val => val == Math.max(...A));
+};
+```
+
+#### 答案二
+后台的解题方法更多可以参考一下
+```java
+// 打桩法，也叫单向扫描，代码如下：时间复杂度为O(n)，效率略低，但是此方法具有普适性，也就是说这个方法可适用于在一般数组中找最大值。
+class Solution {
+    public int peakIndexInMountainArray(int[] a) {
+        if(A == null || A,length < 3>) {
+            return 0;
+        }
+
+        int max = Integer.MIN_VALUE;
+        int ans = 0;
+        for(int i = 0; i < A.length; i++) {
+            if(A[i] > max) {
+                max = A[i];
+                ans = i;
+            }
+        }
+        return ans;
+    }
+}
+
+// 双指针，也叫双向扫描，左右两边同时向中间扫描，以找出最大值，这个算法其实是在打桩法之上的一个效率优化，
+// 时间复杂度为O(n/2)--->O(n)，效率较低，但比打桩法效率高，同时也具有普适性。
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+        if(A == null || A,length < 3>) {
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int ans = 0;
+
+        int left = 0;
+        int right = A.length - 1;
+
+        while(left < right) {
+            if(left <= right && A[left] > max) {
+                max = A[left];
+                ans = left;
+            }
+            if(left <= right && A[right] > max) {
+                max = A[right];
+                ans = right;
+            }
+            left++;
+            right--;
+        }
+
+        return ans;
+    }
+}
+
+// 分治法，二分查找，是适用于此题的最佳解法，时间复杂度为O(logn)，优点是效率高，缺点是不具有普适性。因为此题数组特殊，所以可用这种方法提高查找效率。
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+         if (A == null || A.length < 3)  {
+            return 0;
+        }
+        
+        int ans = 0;
+    
+        int left = 0;
+        int right = A.length;
+
+        while(left < right) {
+            int center = (left + right) / 2;
+            if(A[center] > A[center - 1] && A[center] > A[center + 1]) {
+                ans = center;
+                break;
+            } else if(A[center] < A[center - 1]) {
+                right = center;
+            } else {
+                left = center;
+            }
+        }
+        return ans;
+
+    }
+}
+
+```
