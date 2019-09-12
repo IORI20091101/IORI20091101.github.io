@@ -188,7 +188,7 @@ function Alert(parent, message, opts) {
 进一步简化
 
 
-unction Alert(parent, message, opts) {
+function Alert(parent, message, opts) {
 	opts = extend({
 		width: 320,
 		height: 240
