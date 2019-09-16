@@ -4,7 +4,7 @@ title:      "LeetCode,LintCode,Hihocoder刷题指南"
 subtitle:   "通过题目训练来提升自己的编程能力"
 date:       2017-10-12
 author:     "toshiba"
-header-img: "images/bg/batman/bat32.jpg"
+header-img: "images/bg/batman/bat3.jpg"
 tags:
     - interview
     - JavaScript

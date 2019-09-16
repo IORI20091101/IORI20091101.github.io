@@ -4,7 +4,7 @@ title:      娱乐
 subtitle:   just fun
 date:       2017-10-29
 author:     "toshiba"
-header-img: "images/bg/batman/bat30.jpg"
+header-img: "images/bg/batman/bat3.jpg"
 
 comments: true
 
