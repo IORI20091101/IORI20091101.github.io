@@ -299,7 +299,7 @@ guard.or = function(other) {
 
 	var self = this;
 	result.test = function(x) {
-		return self.test(x) || other.text(x);
+		return self.test(x) || other.test(x);
 	};
 
 	var description = this + " or " + other;

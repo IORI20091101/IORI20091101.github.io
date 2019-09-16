@@ -555,3 +555,121 @@ class Solution {
     }
 }
 ```
+
+
+### 8.最近的请求次数(代码比题目易懂)
+[最近的请求次数](https://leetcode-cn.com/problems/number-of-recent-calls/):
+写一个 <code>RecentCounter</code> 类来计算最近的请求。
+它只有一个方法：<code>ping(int t)</code>，其中 t 代表以毫秒为单位的某个时间。
+返回从 <code>3000</code> 毫秒前到现在的 <code>ping</code> 数。
+任何处于 <code>[t - 3000, t]</code> 时间范围之内的 <code>ping</code> 都将会被计算在内，包括当前（指 t 时刻）的 <code>ping</code>。
+保证每次对 <code>ping</code> 的调用都使用比之前更大的 t 值。
+
+提示：
+* 每个测试用例最多调用 10000 次 ping。
+* 每个测试用例会使用严格递增的 t 值来调用 ping。
+* 每次调用 ping 都有 1 <= t <= 10^9。
+
+```
+示例：
+
+输入：inputs = ["RecentCounter","ping","ping","ping","ping"], inputs = [[],[1],[100],[3001],[3002]]
+输出：[null,1,2,3,3]
+
+```
+ 
+#### 答案一
+分析：说实话这道题目不容易理解，配上示例也完全不知道在说啥，先看一下题解进行一下分析，题目其实是这样的
+示例解读：分别在1,100,3001,3002ms发出了请求（ping）
+
+1ms时计算1ms以及1ms之前3000ms的请求数为‘1’(1ms时的ping)
+
+100ms时计算100ms以及100ms之前3000s的请求数为‘2’（1ms时的ping和100ms时的ping）
+
+3001ms时计算3001ms以及3001ms之前3000s的请求数为‘3’(1ms时的ping、100ms时的ping和3001ms时的ping)
+
+3002ms时计算3002ms以及3002ms之前3000s的请求数为‘3’(100ms时的ping、3001ms时的ping和3002ms时的ping)
+
+```javascript
+var RecentCounter = function() {
+    this.result = [];
+};
+
+/** 
+ * @param {number} t
+ * @return {number}
+ */
+RecentCounter.prototype.ping = function(t) {
+    this.result.push(t);
+    while(this.result[0] < (t - 3000)) {
+        this.result.shift();
+    }
+    return this.result.length;
+};
+
+/** 
+ * Your RecentCounter object will be instantiated and called as such:
+ * var obj = new RecentCounter()
+ * var param_1 = obj.ping(t)
+ */
+```
+
+#### 答案二
+官方题解：我们只会考虑最近 3000 毫秒到现在的 ping 数，因此我们可以使用队列存储这些 ping 的记录。当收到一个时间 t 的 ping 时，我们将它加入队列，并且将所有在时间 t - 3000 之前的 ping 移出队列。
+```java
+class RecentCounter {
+    Queue<Integer> q;
+
+    public RecentCounter() {
+        q = new LinkedList();
+    }
+
+    public int ping(int t) {
+        q.add(t);
+        while(q.peek() < t - 3000) {
+            q.poll();
+        }
+        return q.size();
+    }
+}
+```
+
+
+### 9.数字的补数
+[数字的补数](https://leetcode-cn.com/problems/number-complement/):
+给定一个正整数，输出它的补数。补数是对该数的二进制表示取反。
+
+注意:
+* 给定的整数保证在32位带符号整数的范围内。
+* 你可以假定二进制数不包含前导零位。
+
+```
+示例 1:
+
+输入: 5
+输出: 2
+解释: 5的二进制表示为101（没有前导零位），其补数为010。所以你需要输出2。
+示例 2:
+
+输入: 1
+输出: 0
+解释: 1的二进制表示为1（没有前导零位），其补数为0。所以你需要输出0。
+
+```
+
+#### 答案一
+```javascript
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var findComplement = function(num) {
+  let b = num.toString(2);
+  let res = '';
+  for(let i = 0; i < b.length; i++) {
+      res += (Number(b.charAt(i))^1 + '');
+  }
+
+  return parseInt(res, 2);
+};
+```
