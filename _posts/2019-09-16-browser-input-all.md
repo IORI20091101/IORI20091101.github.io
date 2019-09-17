@@ -118,12 +118,16 @@ TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 其中需要注意的点：
 * 浏览器只能发送 GET、POST 方法，而打开网页使用的是 GET 方法
 
+
+
+#### 传输层: TCP传输报文
 传输层会发起一条到达服务器的 TCP 连接，为了方便传输，会对数据进行分割（以报文段为单位），并标记编号，方便服务器接受时能够准确地还原报文信息。
 
 在建立连接前，会先进行 TCP 三次握手。[通俗解释TCP协议三次握手](https://github.com/jawil/blog/issues/14)、[计算机网络](https://hit-alibaba.github.io/interview/basic/network/HTTP.html)
 
+> [SYN 泛洪攻击](https://blog.csdn.net/cpcpcp123/article/details/52739407)
 
-#### 传输层: TCP传输报文
+
 
 # 文章参考
 * [在浏览器输入 URL 回车之后发生了什么](https://4ark.me/post/b6c7c0a2.html)
