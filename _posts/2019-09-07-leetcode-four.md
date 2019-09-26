@@ -32,7 +32,7 @@ categories:
 ```
 
 
-#### 答案一：
+#### 答案一
 
 ```javascript
 /**
@@ -44,7 +44,7 @@ var reverseWords = function(s) {
 };
 
 ```
-#### 答案二:
+#### 答案二
 
 稍微有点取巧的做法，reverse函数也可以用双指针实现。
 
@@ -64,4 +64,113 @@ class Solution
         return sb.substring(0,sb.length()-1);
     }
 }
+```
+
+### 2.反转字符串
+[反转字符串](https://leetcode-cn.com/problems/reverse-string/):
+编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
+
+不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
+
+你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。
+
+```
+示例 1：
+
+输入：["h","e","l","l","o"]
+输出：["o","l","l","e","h"]
+示例 2：
+
+输入：["H","a","n","n","a","h"]
+输出：["h","a","n","n","a","H"]
+
+```
+
+#### 答案一
+reverse
+
+```javascript
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    return s.reverse();
+};
+```
+
+#### 答案二
+其实本题并不是想考reverse, 感觉应该是想考reverse的实现
+```javascript
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    var len = s.length;
+    for(var i = 0, center = Math.floor(len / 2); i < center; i++) {
+        let edx = len - i - 1;
+        let temp = s[edx];
+        s[edx] = s[i];
+        s[i] = temp;
+    }
+    return s;
+};
+```
+
+### 3.数组拆分 I
+[数组拆分 I](https://leetcode-cn.com/problems/array-partition-i/):
+给定长度为 2n 的数组, 你的任务是将这些数分成 n 对, 例如 (a1, b1), (a2, b2), ..., (an, bn) ，使得从1 到 n 的 min(ai, bi) 总和最大。
+
+提示:
+* n 是正整数,范围在 [1, 10000].
+* 数组中的元素范围在 [-10000, 10000].
+
+```
+
+示例 1:
+
+输入: [1,4,3,2]
+
+输出: 4
+解释: n 等于 2, 最大总和为 4 = min(1, 2) + min(3, 4).
+```
+
+#### 答案一
+首先排序 ,然后将index为奇数的进行求和.
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var arrayPairSum = function(nums) {
+    let sortNums = nums.sort((a, b) => a - b);
+    let sum = 0;
+    sortNums.forEach(function(val, key) {
+      if(key % 2 === 0)  {
+          sum += val;
+      }
+    });
+    
+    return sum;
+    
+};
+```
+
+### 4.键盘行
+[键盘行](https://leetcode-cn.com/problems/keyboard-row/):
+
+给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。
+![](https://cdn.darknights.cn/assets/images/in-post/leetcode/keyboard.png)
+注意：
+
+* 你可以重复使用键盘上同一字符。
+* 你可以假设输入的字符串将只包含字母。
+
+
+```
+示例：
+
+输入: ["Hello", "Alaska", "Dad", "Peace"]
+输出: ["Alaska", "Dad"]
 ```
