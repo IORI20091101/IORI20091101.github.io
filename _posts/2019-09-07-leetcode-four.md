@@ -174,3 +174,68 @@ var arrayPairSum = function(nums) {
 输入: ["Hello", "Alaska", "Dad", "Peace"]
 输出: ["Alaska", "Dad"]
 ```
+
+#### 答案一
+分析: 定好map对应关系 两层遍历就可以,可以先取到首字母的指然后判断是否跟首字母相等
+
+```javascript
+
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+    let alObj = {
+        q: 0,w: 0,e: 0,r: 0, t: 0,y: 0,u: 0,i: 0,q: 0,o: 0,p: 0,
+        a: 1,s: 1,d: 1,f: 1,g: 1,h: 1,j: 1,k: 1,l: 1,
+        z: 2,x: 2,c: 2,v: 2,b: 2,n: 2,m: 2
+    };
+    
+    let lWords = words.map(val => val.toLowerCase());
+    let leng = lWords.length;
+    
+    let result = [];
+    
+    lWords.forEach((str, key) => {
+        let flag = true;    
+        let first =  alObj[str.charAt(0)];
+        for(let i = 0; i < str.length; i++) {
+            let current = alObj[str.charAt(i)];
+            if(first !== current) {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            result.push(words[key]);
+        }
+    });
+    
+    return result;
+    
+};
+```
+
+#### 答案二
+正则表达式匹配
+```javascript
+var findWords = function(words) {
+    let reg1 = new RegExp("[qwertyuiop]", "i");
+    let reg2 = new RegExp("[asdfghjkl]", "i");
+    let reg3 = new RegExp("[zxcvbnm]", "i");
+    let result = [];
+    words.forEach(word => {
+        let flag1 = reg1.test(word);
+        let flag2 = reg2.test(word);
+        let flag3 = reg3.test(word);
+        
+        if((flag1 && !flag2 && !flag3)||(!flag1 && !flag2 && flag3)||(!flag1 && flag2 && !flag3)){
+            result.push(word);
+        }
+    })
+
+    return result;
+    
+}
+
+```
