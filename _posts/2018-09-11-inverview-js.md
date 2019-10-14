@@ -397,6 +397,10 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 ```
 
 
+### HTTP请求307什么时候会发生
+
+HTTP Strict Transport Security <code>HSTS</code>, 当在浏览器输入一个域名baidu.com, nginx启用了HSTS,重定向了 https://baidu.com,这时浏览器控制台会看到307
+
 
 
 
