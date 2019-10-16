@@ -389,7 +389,7 @@ var peakIndexInMountainArray = function(A) {
 // 打桩法，也叫单向扫描，代码如下：时间复杂度为O(n)，效率略低，但是此方法具有普适性，也就是说这个方法可适用于在一般数组中找最大值。
 class Solution {
     public int peakIndexInMountainArray(int[] a) {
-        if(A == null || A,length < 3>) {
+        if(A == null || A,length < 3) {
             return 0;
         }
 
@@ -409,7 +409,7 @@ class Solution {
 // 时间复杂度为O(n/2)--->O(n)，效率较低，但比打桩法效率高，同时也具有普适性。
 class Solution {
     public int peakIndexInMountainArray(int[] A) {
-        if(A == null || A,length < 3>) {
+        if(A == null || A,length < 3) {
             return 0;
         }
         int max = Integer.MIN_VALUE;

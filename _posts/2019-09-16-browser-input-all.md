@@ -196,5 +196,5 @@ TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 # 文章参考
 * [在浏览器输入 URL 回车之后发生了什么](https://4ark.me/post/b6c7c0a2.html)
 * [DNS查找域名的过程](http://www.cnblogs.com/xsilence/)
-
+* [从输入 URL 到页面加载完成的过程中都发生了什么事情？](http://fex.baidu.com/blog/2014/05/what-happen/)
 
