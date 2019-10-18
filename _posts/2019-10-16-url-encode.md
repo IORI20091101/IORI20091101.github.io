@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      浏览器URL编码
-subtitle:   浏览器URL编码相关知识
+title:      URL编码
+subtitle:   URL编码相关知识
 date:       2019-10-16
 author:     "toshiba"
 header-img: "images/bg/batman/bat8.jpg"

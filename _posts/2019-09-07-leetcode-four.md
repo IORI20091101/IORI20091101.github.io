@@ -441,7 +441,111 @@ class Solution {
 
 ```
 
+### 7.N叉树的最大深度
+[ N叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/):
+最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。
 
+例如,给定一个<code>3叉树</code> :
+![](https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png)
+
+我们应返回最大深度,3.
+
+说明:
+
+* 树的深度不会超过 1000。
+* 树的节点总不会超过 5000。
+
+#### 答案一
+因为java和JavaScript的解法一样这里我就算做一种.
+```javascript
+
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+/**
+ * @param {Node} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+    if(!root) {
+        return 0;
+    }
+    if(root.children && root.children.length > 0) {
+        let max = 0;
+        for(let i = 0, len = root.children.length; i< len; i++) {
+            max = Math.max(maxDepth(root.children[i]), max)
+        }
+        return max + 1;
+    } else {
+        return 1;
+    }
+};
+
+```
+
+```java
+class Solution {
+    public int maxDeepth(Node node) {
+        if(root == null) return 0;
+        int max = 0;
+        for(int i = 0; i < root.children.size(); i++) {
+            max = Math.max(maxDeepth(root.children.get(i)), max);
+        }
+        return max + 1;
+    }
+}
+```
+
+### 8. 超过经理收入的员工
+[超过经理收入的员工](https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/): 
+Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。
+
+给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。
+```
++----+-------+--------+-----------+
+| Id | Name  | Salary | ManagerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | NULL      |
+| 4  | Max   | 90000  | NULL      |
++----+-------+--------+-----------+
+
+
++----------+
+| Employee |
++----------+
+| Joe      |
++----------+
+```
+
+#### 答案一
+```mysql
+
+SELECT 
+    a.Name AS Employee
+FROM Employee AS a,
+     Employee AS b
+WHERE 
+    a.ManagerId = b.Id
+    AND a.Salary > b.Salary
+
+```
+
+```mysql
+SELECT 
+    a.Name AS Employee
+FROM 
+    Employee AS a 
+JOIN 
+    Employee AS b
+ON a.ManagerId = b.Id
+    AND a.Salary > b.Salary
+```
 
 
 
@@ -467,8 +571,8 @@ class Solution {
  ```
 
  
- #### 答案一
- ```java
+#### 答案一
+```java
  class Solution {
      public TreeNode sortedArrayToBST(int[] nums) {
          return sortedArrayToBST(nums, 0, nums.length);
@@ -487,7 +591,7 @@ class Solution {
         return root;
      }
  }
- ```
+```
 
  
  
