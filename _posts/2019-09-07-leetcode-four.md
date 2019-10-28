@@ -548,6 +548,103 @@ ON a.ManagerId = b.Id
 ```
 
 
+### 9.最小差值 I
+[最小差值 I](https://leetcode-cn.com/problems/smallest-range-i/)
+给定一个整数数组 A，对于每个整数 A[i]，我们可以选择任意 x 满足 -K <= x <= K，并将 x 加到 A[i] 中。
+
+在此过程之后，我们得到一些数组 B。
+
+返回 B 的最大值和 B 的最小值之间可能存在的最小差值。
+
+提示：
+
+* 1 <= A.length <= 10000
+* 0 <= A[i] <= 10000
+* 0 <= K <= 10000
+
+```
+示例 1：
+
+输入：A = [1], K = 0
+输出：0
+解释：B = [1]
+
+示例 2：
+
+输入：A = [0,10], K = 2
+输出：6
+解释：B = [2,8]
+
+示例 3：
+
+输入：A = [1,3,6], K = 3
+输出：0
+解释：B = [3,3,3] 或 B = [4,4,4]
+
+```
+
+#### 答案一
+分析: 这道题目乍一看不容易理解, 其实是这样的我随机从-K到K之间取值保证数组A的最大和最小值的差值最小,也就是说取得最大的最小值和最小的最大值.
+那么首先要进行排序从小到大进行排序,然后取出数组A的最小值和最大值,便利K进行求和,再找出其中差值的最小值.
+```javascript
+
+/**
+ * @param {number[]} A
+ * @param {number} K
+ * @return {number}
+ */
+var smallestRangeI = function(A, K) {    
+    // 从小到大排序
+    A = A.sort((a, b) => (a - b));
+    let len = A.length;
+    
+    let Af = A[0];
+    let Al = A[len - 1];
+    
+    let M = [];
+    for(let i = -K; i <= K; i++) {
+        M.push([
+            Af + i,
+            Al + i
+        ]);
+        
+    }
+    let klen = K - (-K) + 1;
+    let delNum = M[0][1] - M[klen-1][0];
+    return delNum <= 0 ? 0 : delNum;
+
+};
+```
+后来看了题解发现本题解的还是不够清晰,这里copy一下题解分析来得到答案二
+
+#### 答案二
+
+假设 A 是原始数组，B 是修改后的数组，我们需要最小化 max(B) - min(B)，也就是分别最小化 max(B) 和最大化 min(B)。
+
+max(B) 最小可能为 max(A) - K，因为 max(A) 不可能再变得更小。同样，min(B) 最大可能为 min(A) + K。所以结果 max(B) - min(B) 至少为 ans = (max(A) - K) - (min(A) + K)。
+
+我们可以用一下修改方式获得结果（如果 ans >= 0）：
+
+* 如果 A[i]≤min(A)+K，那么 B[i]=min(A)+K
+* 如果 A[i]≥max(A)−K，那么 B[i]=max(A)−K
+* 否则 B[i]=A[i]。
+如果 ans < 0，最终结果会有 ans = 0，同样利用上面的修改方式。
+
+```java
+class Solution {
+    public int smallestRangeI(int[] A, int K) {
+        let min = A[0], max = A[0];
+        for(int x : A) {
+            min = Math.min(min, x);
+            max = Math.max(max, x);
+        }
+        return Math.max(0, max - min - 2*K);
+    }
+}
+```
+
+
+
 
 ### 10.将有序数组转换为二叉搜索树<code>未完成</code>
 [将有序数组转换为二叉搜索树](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/):
