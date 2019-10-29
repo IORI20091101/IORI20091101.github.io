@@ -89,7 +89,33 @@ friends: [
     }, {
       title: "秋水逸冰",
       href: "https://teddysun.com/"
-    }
+    },
+    {
+      title: "AlloyTeam",
+      href: "http://www.alloyteam.com"
+    },
+    {
+      title: "百度EFE",
+      href: "https://efe.baidu.com"
+    },
+    {
+      title: "百度EUX",
+      href: "http://eux.baidu.com/"
+    },
+
+    {
+      title: "淘宝前端团队",
+      href: "https://fed.taobao.org"
+    },
+    {
+      title: "腾讯ISUX",
+      href: "https://isux.tencent.com/"
+    },
+    {
+      title: "凹凸实验室",
+      href: "https://aotu.io/"
+    },
+    
 
 
 ]
