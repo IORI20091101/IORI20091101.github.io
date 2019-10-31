@@ -65,7 +65,7 @@ categories:
 
 * 递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）
 * 迭代方式，就是本地DNS服务器到根域名服务器查询的方式。
-* 什么是 DNS 劫持
+* [什么是 DNS 劫持](https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran)
 * 前端 dns-prefetch 优化
 
 
@@ -107,7 +107,7 @@ TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 #### 网络层: IP协议查询Mac地址
 将数据段打包，并加入源及目标的IP地址，并且负责寻找传输路线。
 判断目标地址是否与当前地址处于同一网络中，是的话直接根据 Mac 地址发送，否则使用路由表查找下一跳地址，以及使用 [ARP 协议](https://zhuanlan.zhihu.com/p/28771785)查询它的 Mac 地址。
-> 注意：在 OSI 参考模型中 ARP 协议位于链路层，但在 TCP/IP 中，它位于网络层。
+> 注意：在 OSI 参考模型中 [ARP](https://zhuanlan.zhihu.com/p/28771785) 协议位于链路层，但在 TCP/IP 中，它位于网络层。
 
 #### 链路层: 以太网协议
 
@@ -170,6 +170,7 @@ TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 
 
 # 文章参考
+* [ARP](https://zhuanlan.zhihu.com/p/28771785)
 * [什么是DNS劫持与DNS污染](https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran)
 * [深入理解Http请求、DNS劫持与解析](https://juejin.im/post/59ba146c6fb9a00a4636d8b6)
 * [HTTP基础与DNS分析](https://blog.csdn.net/it_rod/article/details/79939651)
