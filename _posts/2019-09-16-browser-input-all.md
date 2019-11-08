@@ -66,7 +66,7 @@ categories:
 * 递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）
 * 迭代方式，就是本地DNS服务器到根域名服务器查询的方式。
 * [什么是 DNS 劫持](https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran)
-* 前端 dns-prefetch 优化
+* [前端 dns-prefetch 优化](https://zhuanlan.zhihu.com/p/50043595)
 
 
 递归查询：
@@ -170,6 +170,7 @@ TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 
 
 # 文章参考
+* [从浏览器输入url按回车后发生了什么](https://hellogithub2014.github.io/2017/09/24/how-do-network-connect/)
 * [浏览器探究&前端优化指南](https://zhuanlan.zhihu.com/p/50043595)
 * [ARP](https://zhuanlan.zhihu.com/p/28771785)
 * [什么是DNS劫持与DNS污染](https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran)

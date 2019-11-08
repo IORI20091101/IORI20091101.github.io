@@ -120,7 +120,7 @@ var intersection = function(nums1, nums2) {
  ```
 
 
- ### 2.独一无二的出现次数
+### 2.独一无二的出现次数
  [独一无二的出现次数](https://leetcode-cn.com/problems/unique-number-of-occurrences/): 
  给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。
 
@@ -194,3 +194,106 @@ class Solution {
     }
 }
 ```
+
+### 2.转置矩阵
+[转置矩阵](https://leetcode-cn.com/problems/transpose-matrix/submissions/): 
+给定一个矩阵 A， 返回 A 的转置矩阵。
+
+矩阵的转置是指将矩阵的主对角线翻转，交换矩阵的行索引与列索引。
+
+提示：
+
+* 1 <= A.length <= 1000
+* 1 <= A[0].length <= 1000
+
+```
+示例 1：
+
+输入：[[1,2,3],[4,5,6],[7,8,9]]
+输出：[[1,4,7],[2,5,8],[3,6,9]]
+示例 2：
+
+输入：[[1,2,3],[4,5,6]]
+输出：[[1,4],[2,5],[3,6]]
+
+```
+#### 答案一
+```javascript
+
+/**
+ * @param {number[][]} A
+ * @return {number[][]}
+ */
+var transpose = function(A) {
+    let len = A[0].length;
+    let alen = A.length;
+    let result = [];
+    
+    for(let i = 0; i < len; i++) {
+        let tmpl = [];
+        A.forEach((val, idex) => {
+            tmpl.push(val[i]);
+        });
+        result.push(tmpl);
+    }
+    
+   return result;
+    
+};
+
+```
+
+
+
+### 3.重复 N 次的元素
+[重复 N 次的元素](https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/submissions/):
+在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。
+
+返回重复了 N 次的那个元素。
+
+```
+示例 1：
+
+输入：[1,2,3,3]
+输出：3
+示例 2：
+
+输入：[2,1,2,5,3,2]
+输出：2
+示例 3：
+
+输入：[5,1,5,2,5,3,5,4]
+输出：5
+
+```
+
+提示：
+
+* 4 <= A.length <= 10000
+* 0 <= A[i] < 10000
+* A.length 为偶数
+
+#### 答案一
+```javascript
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var repeatedNTimes = function(A) {
+    A.sort((a, b) => a-b);
+    let len = A.length;
+    let result = 0;
+    for(let i = 0; i < len; i++) {
+        if(i > 0) {
+            let cur = A[i]
+            let prev = A[i - 1];
+            if(cur - prev === 0) {
+                result = cur;
+                break;
+            }
+        }
+    }
+    return result;
+};
+```
+
