@@ -195,7 +195,7 @@ class Solution {
 }
 ```
 
-### 2.转置矩阵
+### 3.转置矩阵
 [转置矩阵](https://leetcode-cn.com/problems/transpose-matrix/submissions/): 
 给定一个矩阵 A， 返回 A 的转置矩阵。
 
@@ -245,7 +245,7 @@ var transpose = function(A) {
 
 
 
-### 3.重复 N 次的元素
+### 4.重复 N 次的元素
 [重复 N 次的元素](https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/submissions/):
 在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。
 
@@ -297,3 +297,107 @@ var repeatedNTimes = function(A) {
 };
 ```
 
+
+### 5.按奇偶排序数组 II
+[按奇偶排序数组 II](https://leetcode-cn.com/problems/sort-array-by-parity-ii/):
+给定一个非负整数数组 A， A 中一半整数是奇数，一半整数是偶数。
+
+对数组进行排序，以便当 A[i] 为奇数时，i 也是奇数；当 A[i] 为偶数时， i 也是偶数。
+
+你可以返回任何满足上述条件的数组作为答案。
+
+提示：
+
+* 2 <= A.length <= 20000
+* A.length % 2 == 0
+* 0 <= A[i] <= 1000
+
+```
+示例：
+
+输入：[4,2,5,7]
+输出：[4,5,2,7]
+解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。
+```
+
+#### 答案一
+```javascript
+
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortArrayByParityII = function(A) {
+    let len = A.length;
+    let oArr = A.filter(val => (val % 2 !== 0));
+    let eArr = A.filter(val => (val % 2 === 0));
+    
+    let result = [];
+    for(let i = 0; i < len; i++) {
+        if(i % 2 === 0) {
+            result.push(eArr.shift());
+        } else {
+            result.push(oArr.shift());
+        }
+    }
+    
+    return result;
+    
+    
+};
+```
+
+#### 答案二
+java容易理解的解法
+```java
+class Solution {
+    public static int[] sortArrayByParityII(int[] arr) {
+        int len = arr.length;
+        if(arr.length < 2) {
+            return arr;
+        }
+        int odd = 1;
+        int even = 0;
+
+        while(odd < len && even < len) {
+            while(odd < len && arr[odd] % 2 != 0){
+                odd += 2;
+            }
+
+            while(even < len && arr[even] % 2 == 0){
+                even += 2;
+            }
+
+            if(odd < len && even < len) {
+                swap(arr, odd, even);
+            }
+        }
+    }
+
+    private static void swap(int[] arr, int odd, int even) {
+        int tmp = arr[odd];
+        arr[odd] = arr[even];
+        arr[even] = tmp;
+    }
+}
+```
+
+#### 答案三
+js双指针
+```javascript
+
+var sortArrayByParityII = function(A) { 
+    let len = A.length,
+        i = 0,
+        j = 1;
+
+    for(; i < len; i += 2) {
+        if(A[i] % 2 === 0) continue;
+        while(A[j] % 2 === 1);j += 2;
+
+        [A[i], A[j]] = [A[j], A[i]];
+    }
+    return A;
+}
+
+```
