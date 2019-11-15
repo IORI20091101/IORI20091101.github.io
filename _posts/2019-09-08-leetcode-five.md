@@ -82,7 +82,7 @@ var intersection = function(nums1, nums2) {
     let hash2 = new Set()
 
     for(let i = 0; i < nums.length; i++) {
-        if(has2.has(nums2[i])) {
+        if(has1.has(nums2[i])) {
             hash2.add(nums2[i])
         }
     }
@@ -400,4 +400,279 @@ var sortArrayByParityII = function(A) {
     return A;
 }
 
+```
+
+### 6.单值二叉树
+[单值二叉树](https://leetcode-cn.com/problems/univalued-binary-tree/):
+如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。
+
+只有给定的树是单值二叉树时，才返回 true；否则返回 false。
+
+
+提示：
+
+* 给定树的节点数范围是 [1, 100]。
+* 每个节点的值都是整数，范围为 [0, 99] 。
+
+
+```
+示例 1：
+
+输入：[1,1,1,1,1,null,1]
+输出：true
+示例 2：
+
+输入：[2,2,2,5,2]
+输出：false
+
+```
+#### 答案一
+
+更优雅
+```java
+
+class Solution {
+    public boolean isUnivalTree(TreeNode root) {
+        if(root == null) return true;
+        return helper(root, root.val);
+    }
+
+    private boolean helper(TreeNode root, int val) {
+        if(root == null) return true;
+        if(val != root.val) return false;
+        return helper(root.left, val) && helper(root.right, val);
+    }
+}
+
+```
+
+```java
+class Solution {
+    boolean flag = true;
+    public boolean isUnivalTree(TreeNode root) {
+        if(root == null) {
+            return false;
+        }
+        IsUnivalTree(root, root.val);
+        return flag;
+    }
+
+    public void IsUnivalTree(TreeNode root, int val) {
+        if(root == null) return;
+        if(root.val == val) {
+            IsunivalTree(root.left, val);
+            IsunivalTree(root.right, val);
+        } else {
+            flag = false;
+        }
+    }
+}
+
+```
+
+
+```javascript
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isUnivalTree = function(root) {
+    if(root == null) return true;
+    return helper(root, root.val);
+};
+
+var helper = function(root, val) {
+    if(root == null) return true;
+    if(root.val !== val) return false;
+    return helper(root.left, val) && helper(root.right, val);
+}
+```
+
+
+### 7.找出给定方程的正整数解~~~
+[找出给定方程的正整数解](https://leetcode-cn.com/problems/find-positive-integer-solution-for-a-given-equation/):
+给出一个函数  f(x, y) 和一个目标结果 z，请你计算方程 f(x,y) == z 所有可能的正整数 数对 x 和 y。
+
+给定函数是严格单调的，也就是说：
+
+f(x, y) < f(x + 1, y)
+
+
+f(x, y) < f(x, y + 1)
+函数接口定义如下：
+
+```
+interface CustomFunction {
+public:
+  // Returns positive integer f(x, y) for any given positive integer x and y.
+  int f(int x, int y);
+};
+```
+如果你想自定义测试，你可以输入整数 function_id 和一个目标结果 z 作为输入，其中 function_id 表示一个隐藏函数列表中的一个函数编号，题目只会告诉你列表中的 2 个函数。  
+
+你可以将满足条件的 结果数对 按任意顺序返回。
+
+
+提示：
+
+* 1 <= function_id <= 9
+* 1 <= z <= 100
+* 题目保证 f(x, y) == z 的解处于 1 <= x, y <= 1000 的范围内。
+* 在 1 <= x, y <= 1000 的前提下，题目保证 f(x, y) 是一个 32 位有符号整数。
+
+
+```
+
+示例 1：
+
+输入：function_id = 1, z = 5
+输出：[[1,4],[2,3],[3,2],[4,1]]
+解释：function_id = 1 表示 f(x, y) = x + y
+示例 2：
+
+输入：function_id = 2, z = 5
+输出：[[1,5],[5,1]]
+解释：function_id = 2 表示 f(x, y) = x * y
+
+```
+
+#### 答案一
+分析:题目没有看懂,但是可以读懂代码
+
+双层循环
+```javascript
+/**
+ * // This is the CustomFunction's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * function CustomFunction() {
+ *
+ *     @param {integer, integer} x, y
+ *     @return {integer}
+ *     this.f = function(x, y) {
+ *         ...
+ *     };
+ *
+ * };
+ */
+/**
+ * @param {CustomFunction} customfunction
+ * @param {integer} z
+ * @return {integer[][]}
+ */
+
+var findSolution = function(customfunction, z) {
+    let res = [];
+    for(let x = 1; x <= 1000; x++) {
+        for(let y = 1; y <= 1000; y++) {
+            if(customfunction.f(x, y) > z) {
+                break;
+            }
+            else if(customfunction.f(x, y) === z) {
+                let ans = [x, y];
+                res.push(ans);
+            }
+        }   
+    }
+    return res;
+}
+
+```
+
+双指针
+```javascript
+/**
+ * // This is the CustomFunction's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * function CustomFunction() {
+ *
+ *     @param {integer, integer} x, y
+ *     @return {integer}
+ *     this.f = function(x, y) {
+ *         ...
+ *     };
+ *
+ * };
+ */
+/**
+ * @param {CustomFunction} customfunction
+ * @param {integer} z
+ * @return {integer[][]}
+ */
+
+var findSolution = function(customfunction, z) {
+    let res = [];
+    let x = 1;
+    let y = 1000;
+    while(x > 0 && x <= 1000 && y > 0 && y <= 1000) {
+        if(customfunction.f(x, y) === z) {
+            let ans = [x ,y];
+            res.push(ans);
+            x++;
+        } else if(customfunction.f(x, y) > z) {
+            y--;
+        } else {
+            x++;
+        }
+    }
+    return res;
+}
+
+```
+
+### 8.Excel表列序号
+[Excel表列序号](https://leetcode-cn.com/problems/excel-sheet-column-number/submissions/):
+
+给定一个Excel表格中的列名称，返回其相应的列序号。
+```
+例如，
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+    ...
+示例 1:
+
+输入: "A"
+输出: 1
+示例 2:
+
+输入: "AB"
+输出: 28
+示例 3:
+
+输入: "ZY"
+输出: 701
+```
+
+#### 答案一
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var titleToNumber = function(s) {
+    let arr = s.split("");
+    let len = arr.length;
+    let i = 1;
+    let sum = 0;
+    while(i <= len) {
+        let num = arr.pop();
+        let cur = num.charCodeAt() - 64;
+        sum += cur * Math.pow(26, i - 1);
+        i++;
+    }
+    return sum;
+
+};
 ```
