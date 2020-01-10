@@ -402,6 +402,13 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 HTTP Strict Transport Security <code>HSTS</code>, 当在浏览器输入一个域名baidu.com, nginx启用了HSTS,重定向了 https://baidu.com,这时浏览器控制台会看到307
 
 
+### 如何判断是否是NaN
+```
+isNaN('test'); 结果是什么
+
+x !== x // 不等于自身的才是isNaN
+```
+
 
 
 ### 什么是DNS劫持和DNS污染
