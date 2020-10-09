@@ -2,12 +2,12 @@ language: ruby
 rvm:
 - 2.7.0
 addons:
-  ssh_known_hosts: darknights.me
+  ssh_known_hosts: sdongzhi.com
 before_install:
 - openssl aes-256-cbc -K $encrypted_8e6aadf5448b_key -iv $encrypted_8e6aadf5448b_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-- echo -e "Host darknights.me\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
 - bundle install
 - bundle exec jekyll build
@@ -20,7 +20,7 @@ after_success:
 - git commit -m "Travis CI Auto Builder"
 - git push --force https://$JEKYLL_GITHUB_TOKEN@github.com/IORI20091101/darknights.me.git
   master
-- ssh root@darknights.me "docker restart darknights"
+- ssh root@sdongzhi.com "docker restart darknights"
 branches:
   only:
   - master
