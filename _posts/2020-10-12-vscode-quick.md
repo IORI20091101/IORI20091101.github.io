@@ -22,7 +22,7 @@ categories:
 
 #### 设置中文
 首先我们可能需要为<code>VSCode</code>设置语言，这个并不是必要操作但是可以为英语不好的同学提供一个过渡选择
-* `Command + Shift + P` 
+* `Command + Shift + P` or `F1`
 * `搜索框中输入 configure display language 然后安装其他语言选择简体中文`
 * `重启VSCode`
 
@@ -86,8 +86,6 @@ categories:
 
 你都可以把代码行按照字母序进行重新排序。不过这个命令比较小众，VS Code 并没有给这个命令指定快捷键，你可以调出命令面板，然后搜索 “按升序排列行” 或者 “按降序排列行” 命令执行。
 
-* `Command + u` 移动光标到上次的位置
-
 ### 合并代码行
 
 * `Ctrl + j` 将选中的代码行合并
@@ -109,8 +107,8 @@ categories:
 
 ### 添加代码注释
 
-* `Option + Shift + A` 对整个文档进行格式化
-* `Command + /` 对选中代码进行格式化
+* `Option + Shift + A` 对选中内容进行注释
+* `Command + /` 对选中内容进行注释
 
 ### 代码补全
 
@@ -119,7 +117,7 @@ categories:
 
 ### 快速修复
 
-* `Ctrl + .` 对于拼错的css或者js进行修复
+* `Command + .` 对于拼错的css或者js进行修复
 
 ### 重构
 
@@ -164,16 +162,59 @@ categories:
 * `Shift + F12` 打开函数引用预览
 
 
-### 其他操作
-*  `Command + E`： 显示最近操作过的文件
+### 代码片段
+
+*  `Command + Shift + P`：  配置用户代码片段 configure user snippets 
+
+```javascript
+"Print to console": {
+    "prefix": "log",
+    "body": [
+        "console.log(${1:i});",
+        "$2"
+    ],
+"description": "Log output to console"
+}
+```
 
 
 
+### 折叠代码
+
+* `Command + Option + [` 光标所在位置代码片段折叠一层
+* `Command + Option + ]` 光标所在位置代码片段展开一层
+* `Command + K   Command + [` 将一直到最外层所有折叠
+* `Command + K   Command + ]` 将一直到最外层所有展开
+* `Command + K   Command + 0` 代码全部合并
+* `Command + K   Command + j` 代码全部展开
+
+
+### 单文件搜索
+
+* `Command + F` 在文件内搜索
+* `Enter 或者 Shift + Enter` 在搜索内容中跳转
+* `Command + G` 首先我们将光标移动到我们想要搜索的单词处，然后不断按下快捷键就可以从上往下查找搜索内容并移动光标
+* `Command + Shift + G` 从下往上查找搜索内容并移动光标
+* `Command + Option + F` 在文件内替换
+
+### 多文件搜索
+
+* `Command + Shift + F` 在文件夹内搜索跟替换
+
+### 工作区
+
+* 首先打开一个文件夹 然后 打开命令面板 F1 或者 `Command + Shift + P` 输入 将文件夹添加到工作去（add folder to workspace）
+* 再一次打开命令面板 输入 “将工作区另存为” （save workspace as） 这样下次可以一次打开一个工作区
+* `Ctrl + W` 可以切换工作区
+* `Ctrl + R` 显示最近打开的文件夹列表
+* `Ctrl + R ` 选中后 `Command + Enter` 可以在新窗口打开
+
+### 显示终端
+* Ctrl + ` 可以打开或者隐藏终端
+* 新建一个文件在其中输入内容`ls -al` 打开命令面板在其中输入 "在活动终端中运行活动文件" 这个脚本会在继承终端中运行
 
 
 
-Alt+Insert：可以生成构造器/Getter/Setter等(建议使用lombok插件及@Data注解) 未验证
-Alt+ Up/Down(上下箭头)：在方法间快速移动定位
 
 
 
