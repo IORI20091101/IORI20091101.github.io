@@ -18,6 +18,10 @@ categories:
 
 ### 高频操作
 
+#### 自定义快捷键
+
+- `Command + Shift + P 输入 打开键盘快捷方式` 或者 `Command k + Command r` 打开快捷键 pdf 链接
+
 #### 光标移动
 
 - `Opts + 左右箭头` 光标在单词间跳转
@@ -122,12 +126,6 @@ categories:
 - `Command + P` 跳出一个最近打开文件的列表，同时在列表的顶部还有一个搜索框
 - `Cmd + Enter` （Windows 上是 Ctrl + Enter）组合键。这个文件在一个新的编辑器窗口中打开了。
 
-
-
-
-
-
-
 ### 常规操作
 
 #### 命令行的使用
@@ -161,10 +159,6 @@ categories:
 
 - `Command + Backspace` 删除该行左边
 - `Command + Delete` 删除该行右边
-
-#### 自定义快捷键
-
-- `Command + Shift + P 输入 打开键盘快捷方式` 或者 `Command k + Command r` 打开快捷键 pdf 链接
 
 #### 撤销光标移动
 
