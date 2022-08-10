@@ -5,9 +5,9 @@ on:
     branches:
       - "main"
 env:
-  SDR_SSH_KEY: ${{ env.SSH_PRIVATE_KEY_ID_RSA }}
-  SDR_SSH_HOST_USER: ${{ env.SDR_SSH_HOST_USER }}
-  SDR_SSH_HOST: ${{ env.DEV_SERVER_IP }}
+  SDR_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY_ID_RSA }}
+  SDR_SSH_HOST_USER: ${{ secrets.SDR_SSH_HOST_USER }}
+  SDR_SSH_HOST: ${{ secrets.DEV_SERVER_IP }}
 
 jobs:
   pages:
