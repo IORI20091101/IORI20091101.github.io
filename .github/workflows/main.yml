@@ -33,7 +33,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
       - name: Create RSA
-        run: echo -e "${{ secrets.PUBLIC_KEY }}" >> ~/.ssh/id_rsa
+        run: touch ~/.ssh/id_rsa && echo -e "${{ secrets.PUBLIC_KEY }}" >> ~/.ssh/id_rsa
       - name: Copy RSA
         run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - name: "Execute docker ps via remote host"
