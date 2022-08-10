@@ -1,0 +1,40 @@
+sudo: false
+language: node_js
+node_js:
+  - 14 # use nodejs v14 LTS
+# cache: npm
+cache:
+  directories:
+    - node_modules
+branches:
+  only:
+    - main # build master branch only
+
+before_install:
+  - npm install -g hexo-cli
+  - openssl aes-256-cbc -K $encrypted_key -iv $encrypted_iv
+    -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+install:
+  - npm install
+  # - npm install hexo-deployer-git --save
+
+script:
+  - hexo clean
+  - hexo generate # generate static files
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: main
+  local-dir: public
+  target_branch: gh-pages
+
+after_deploy:
+  - git clone -b gh-pages --single-branch https://github.com/IORI20091101/IORI20091101.github.io.git
+  - ssh root@sdongzhi.com "docker restart hexo_blog_web_1"

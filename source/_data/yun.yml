@@ -1,0 +1,201 @@
+mode: auto
+
+avatar:
+  url: /images/avatar.jpeg
+  status:
+    enable: true
+    emoji: 🌑
+    message: Looking for dawn.
+
+favicon: https://cdn.darknights.cn/assets/images/favicon.ico
+
+head:
+  css:
+    custom: /styles/custom.css
+
+# UI
+banner:
+  title: 唐吉诃德的小站
+
+reward:
+  enable: false
+  comment: 我很可爱，请给我钱
+
+comment:
+  candidates:
+    - disqus
+      # - waline
+      # - giscus
+  tips:
+    - 若您想及时得到回复提醒，建议跳转 GitHub Issues 评论。
+
+github_issues:
+  enable: false
+
+github_discussions:
+  enable: false
+
+disqus:
+  enable: true
+  shortname: IORI
+  apikey: ouoGQCaamOKdJgyZU5DKcpFnRIg3SNzvk0nwygPtlcTRJuE68c8igvrZGW4wAJoN
+
+# https://github.com/laymonage/giscus
+giscus:
+  enable: false
+  repo: YunYouJun/yunyoujun.github.io
+  repo-id:
+  category-id:
+  mapping: pathname
+  reactions-enabled: 1
+  emit-metadata: 0
+  theme: light
+
+footer:
+  since: 2017
+
+  beian:
+    enable: false
+    icp: 苏ICP备17038157号
+  support:
+    enable: false
+    title: 又拍云
+    link: https://www.upyun.com
+    logo: https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/logo/upyun-logo.png
+    prefix: 本网站由
+    suffix: 提供 CDN 加速
+  powered:
+    enable: false
+
+engine_search:
+  enable: false
+
+# https://github.com/oncletom/hexo-algolia
+algolia_search:
+  enable: true
+  src: /js/search/algolia-search.js
+  hits:
+    per_page: 8 # the number of search results per page
+
+# ZH3RNMJ8TX
+# If you want to use it, you need config algolia appID in _config.yml!!!
+# https://github.com/oncletom/hexo-algolia
+
+# ...
+
+google_analytics:
+  enable: true
+  id: UA-107257239-1
+
+google_adsense:
+  enable: true
+  client: ca-pub-2245427233262012
+
+post_edit:
+  enable: true
+  url: https://github.com/YunYouJun/yunyoujun.github.io/tree/hexo/source/
+
+albums:
+  enable: true
+
+girls:
+  enable: true
+
+tags:
+  动画: crimson
+  漫画: orange
+  Parcel: "#21374b"
+  学习: saddlebrown
+  MAD: crimson
+  教程: royalblue
+  笔记: dimgray
+  分享: "#0078e7"
+  随笔: mediumpurple
+  Blender: "#d04d2d"
+  Linux: "#2577b1"
+  中传: "#ccb44b"
+  部落: "#DD306A"
+  科幻: midnightblue
+  Vue: "#4fc08d"
+  Hexo: "#0E834D"
+  CSS: "#5298d1"
+  Node.js: "#026E00"
+  Git: "#F14E32"
+  React: "#61dafb"
+  Python: "#3776ab"
+  PHP: "#8892BF"
+  VS Code: "#0066B8"
+
+categories:
+  云游的小视频: "#FB7299"
+
+pages:
+  # - name: 我的小伙伴们
+  #   url: /links/
+  #   icon: icon-genderless-line
+  #   color: dodgerblue
+  # - name: 喜欢的女孩子
+  #   url: /girls/
+  #   icon: icon-women-line
+  #   color: hotpink
+
+menu:
+  custom:
+    title: 留言板
+    path: /about/#comment
+    icon: icon-clipboard-line
+
+cursor:
+  enable: true
+
+baidu_push: true
+
+google_tagmanager:
+  enable: true
+  id: GTM-M9KWR9L
+
+say:
+  api: https://el-bot-api.vercel.app/api/words/young
+  hitokoto:
+    enable: false
+
+social:
+  - name: RSS
+    # set rss in your root config
+    # https://github.com/hexojs/hexo-generator-feed
+    link: /atom.xml # config.feed.path
+    icon: icon-rss-line
+    color: orange
+  - name: GitHub
+    link: https://github.com/IORI20091101
+    icon: icon-github-line
+    color: "#6e5494"
+  - name: Twitter
+    link: https://twitter.com/iori20091101
+    icon: icon-twitter-line
+    color: "#1da1f2"
+  # - name: Telegram
+  #   link: https://t.me/YunYouJun
+  #   icon: icon-telegram-line
+  #   color: "#0088CC"
+  - name: Telegram Channel
+    link: https://t.me/donduffy
+    # icon: icon-telegram-fill
+    icon: icon-telegram-line
+    color: "#0088CC"
+  - name: E-Mail
+    link: mailto:sdzzlyjy@gmail.com
+    icon: icon-mail-line
+    color: "#8E71C1"
+  - name: Travelling
+    link: https://travellings.link
+    icon: icon-train-line
+    color: black
+
+wordcloud:
+  enable: true
+
+wordcount:
+  enable: true
+  count: true
+  time: true

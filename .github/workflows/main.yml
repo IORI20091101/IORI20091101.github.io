@@ -1,0 +1,40 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  pages:
+    name: deploy GH pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Decrypt Token
+        run: openssl aes-256-cbc -K ${{ ENV.KEY }} -iv ${{ ENV.IV }} -in id_rsa.enc -out ~/.ssh/id_rsa -d
+      - name: Change priority
+        run: chmod 600 ~/.ssh/id_rsa
+      - name: Write Rsa
+        run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
