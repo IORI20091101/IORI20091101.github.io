@@ -32,10 +32,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-  build:
-    name: deploy to vps
-    runs-on: ubuntu-latest
-    steps:
       - name: Create Folder
         run: mkdir ~/.ssh && touch ~/.ssh/id_rsa
       - name: Change mod
