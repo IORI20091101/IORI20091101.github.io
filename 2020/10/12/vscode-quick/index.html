@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/desk-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="toshiba">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="高频操作自定义快捷键 Command + Shift + P 输入 打开键盘快捷方式 或者 Command k + Command r 打开快捷键 pdf 链接  光标移动 Opts + 左右箭头 光标在单词间跳转 Command + 左右箭头 光标在行首行末之际跳转 Command + 上下箭头 光标在文件开始和末尾之际跳转 Command + Shift + \ 光标在文件开始和末尾之际跳转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode使用指南">
+<meta property="og:url" content="http://example.com/2020/10/12/vscode-quick/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="高频操作自定义快捷键 Command + Shift + P 输入 打开键盘快捷方式 或者 Command k + Command r 打开快捷键 pdf 链接  光标移动 Opts + 左右箭头 光标在单词间跳转 Command + 左右箭头 光标在行首行末之际跳转 Command + 上下箭头 光标在文件开始和末尾之际跳转 Command + Shift + \ 光标在文件开始和末尾之际跳转">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-12T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-10T02:39:39.383Z">
+<meta property="article:author" content="toshiba">
+<meta property="article:tag" content="生产工具">
+<meta property="article:tag" content="IDE">
+<meta property="article:tag" content="VSCode">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>VSCode使用指南 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>喬伊·波伊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg/bg.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="熟悉VSCode各种设置快捷键以及插件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        toshiba
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-10-12 00:00" pubdate>
+          2020年10月12日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">熟悉VSCode各种设置快捷键以及插件</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="高频操作"><a href="#高频操作" class="headerlink" title="高频操作"></a>高频操作</h3><h4 id="自定义快捷键"><a href="#自定义快捷键" class="headerlink" title="自定义快捷键"></a>自定义快捷键</h4><ul>
+<li><code>Command + Shift + P 输入 打开键盘快捷方式</code> 或者 <code>Command k + Command r</code> 打开快捷键 pdf 链接</li>
+</ul>
+<h4 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h4><ul>
+<li><code>Opts + 左右箭头</code> 光标在单词间跳转</li>
+<li><code>Command + 左右箭头</code> 光标在行首行末之际跳转</li>
+<li><code>Command + 上下箭头</code> 光标在文件开始和末尾之际跳转</li>
+<li><code>Command + Shift + \</code> 光标在文件开始和末尾之际跳转</li>
+</ul>
+<h4 id="文本选择"><a href="#文本选择" class="headerlink" title="文本选择"></a>文本选择</h4><p>你单击鼠标左键就可以把光标移动到相应的位置。而双击鼠标左键，则会将当前光标下的单词选中。连续三次按下鼠标左键，则会选中当前这一行代码。最后是连续四次按下鼠标左键，则会选中整个文档</p>
+<ul>
+<li><code>Opts + Shift + 左右箭头</code> 选中单词</li>
+<li><code>Command + Shift + P 输入选择括号所有内容</code> 将光标所在打括号的内容选中</li>
+<li><code>在编辑器的最左边拖动行号的位置选中拖动可以选中多行</code></li>
+</ul>
+<h4 id="代码行编辑"><a href="#代码行编辑" class="headerlink" title="代码行编辑"></a>代码行编辑</h4><ul>
+<li><code>Command + Shift + K</code> 删除一行代码或多行</li>
+<li><code>Command + X</code> 剪切代码</li>
+<li><code>Command + Enter</code> 无论在一行的什么位置会在下面新建一行不会将一行分成两端</li>
+<li><code>Command + Shift + Enter</code> 无论在一行的什么位置会在上面新建一行不会将一行分成两端</li>
+<li><code>Option + up/down</code> 移动行</li>
+<li><code>Option + Shift + up/down</code> 复制所在行到上面或者下面</li>
+</ul>
+<h4 id="合并代码行"><a href="#合并代码行" class="headerlink" title="合并代码行"></a>合并代码行</h4><ul>
+<li><code>Ctrl + j</code> 将选中的代码行合并</li>
+</ul>
+<h4 id="调整字符大小写"><a href="#调整字符大小写" class="headerlink" title="调整字符大小写"></a>调整字符大小写</h4><ul>
+<li><code>你可以选中一串字符，然后在命令面板里运行“转换为大写”或 “转换为小写”, 来变换字符的大小写。</code></li>
+</ul>
+<h4 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h4><ul>
+<li><code>Option + Shift + F</code> 对整个文档进行格式化</li>
+<li><code>Command + K Command + F</code> 对选中代码进行格式化</li>
+</ul>
+<h4 id="添加代码注释"><a href="#添加代码注释" class="headerlink" title="添加代码注释"></a>添加代码注释</h4><ul>
+<li><code>Option + Shift + A</code> 对选中内容进行注释</li>
+<li><code>Command + /</code> 对选中内容进行注释</li>
+</ul>
+<h4 id="代码补全"><a href="#代码补全" class="headerlink" title="代码补全"></a>代码补全</h4><ul>
+<li><code>Ctrl + 空格</code> 调出建议列表或者 tab 键调出</li>
+<li><code>Command + Shift + 空格</code> 调出建议参数预览</li>
+</ul>
+<h4 id="快速修复"><a href="#快速修复" class="headerlink" title="快速修复"></a>快速修复</h4><ul>
+<li><code>Command + .</code> 对于拼错的 css 或者 js 进行修复</li>
+</ul>
+<h4 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h4><ul>
+<li><p><code>F2</code> 修改一个函数或者变量的名字时候，我们只需把光标放到函数或者变量名上，然后按下 F2，这样这个函数或者变量出现的地方就都会被修改。</p>
+</li>
+<li><p>另一个常用的重构的操作就是把一段长代码抽取出来转成一个单独的函数。在 VS Code 中，我们只需选中那段代码，点击黄色的灯泡图标，然后选择对应的重构操作即可。</p>
+</li>
+</ul>
+<h4 id="多行操作多光标"><a href="#多行操作多光标" class="headerlink" title="多行操作多光标"></a>多行操作多光标</h4><ul>
+<li><p><code>Option + 鼠标点击</code> 对于点中的地方会有一个光标，对于点击到的位置可以操作</p>
+</li>
+<li><p><code>Command + Option + up/down</code> 可以移动时可以产生光标，可以再通过 <code>Command + 左右方向键</code> 可以移动到每一行末尾</p>
+</li>
+<li><p><code>Command + D</code> ，第一次按下时，它会选中光标附近的单词；第二次按下时，它会找到这个单词第二次出现的位置，创建一个新的光标，并且选中它。这样只需要按下三次，你就选中了所有的“5”。这个时候你再按下 “右方向键”，输入“px”，即可完成任务。</p>
+</li>
+<li><p><code>Option + Shift + i</code> 首先你选择多行代码，然后按下 “Option + Shift + i” （Windows 上是 Alt + Shift + i），这样操作的结果是：每一行的最后都会创建一个新的光标。</p>
+</li>
+<li><p>VS Code 中还有一个更加便捷的鼠标创建多光标的方式。当然，这首先要求你的鼠标拥有中键。你只需按下鼠标中键，然后对着一段文档拖出一个框，在这个框中的代码就都被选中了，而且每一行被选中的代码，都拥有一个独立的光标。</p>
+</li>
+</ul>
+<h4 id="折叠代码"><a href="#折叠代码" class="headerlink" title="折叠代码"></a>折叠代码</h4><ul>
+<li><code>Command + Option + [</code> 光标所在位置代码片段折叠一层</li>
+<li><code>Command + Option + ]</code> 光标所在位置代码片段展开一层</li>
+<li><code>Command + K Command + [</code> 将一直到最外层所有折叠</li>
+<li><code>Command + K Command + ]</code> 将一直到最外层所有展开</li>
+<li><code>Command + K Command + 0</code> 代码全部合并</li>
+<li><code>Command + K Command + j</code> 代码全部展开</li>
+</ul>
+<h4 id="单文件搜索"><a href="#单文件搜索" class="headerlink" title="单文件搜索"></a>单文件搜索</h4><ul>
+<li><code>Command + F</code> 在文件内搜索</li>
+<li><code>Enter 或者 Shift + Enter</code> 在搜索内容中跳转</li>
+<li><code>Command + G</code> 首先我们将光标移动到我们想要搜索的单词处，然后不断按下快捷键就可以从上往下查找搜索内容并移动光标</li>
+<li><code>Command + Shift + G</code> 从下往上查找搜索内容并移动光标</li>
+<li><code>Command + Option + F</code> 在文件内替换</li>
+</ul>
+<h4 id="多文件搜索"><a href="#多文件搜索" class="headerlink" title="多文件搜索"></a>多文件搜索</h4><ul>
+<li><code>Command + Shift + F</code> 在文件夹内搜索跟替换</li>
+</ul>
+<h4 id="行跳转"><a href="#行跳转" class="headerlink" title="行跳转"></a>行跳转</h4><ul>
+<li><code>Ctrl + G</code> 输入 10:3 跳到第 10 行第三列</li>
+</ul>
+<h4 id="符号跳转"><a href="#符号跳转" class="headerlink" title="符号跳转"></a>符号跳转</h4><ul>
+<li><code>Command + Shift + O</code> 可以看到当前文件的所有符号，如方法名</li>
+</ul>
+<h4 id="文件跳转"><a href="#文件跳转" class="headerlink" title="文件跳转"></a>文件跳转</h4><ul>
+<li><code>Ctrl + tab</code> 罗列现在已经打开到文件列表</li>
+<li><code>Command + P</code> 跳出一个最近打开文件的列表，同时在列表的顶部还有一个搜索框</li>
+<li><code>Cmd + Enter</code> （Windows 上是 Ctrl + Enter）组合键。这个文件在一个新的编辑器窗口中打开了。</li>
+</ul>
+<h3 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h3><h4 id="命令行的使用"><a href="#命令行的使用" class="headerlink" title="命令行的使用"></a>命令行的使用</h4><p>我们可以通过命令行直接启动<code>VSCode</code>，windows 用户可以通过添加安装目录到系统环境变量 PATH 中,如果是 mac 用户</p>
+<ul>
+<li><code>Command + Shift + P</code></li>
+<li><code>搜索框中输入 Shell 命令：在 PATH 中安装 “Code” 命令</code></li>
+<li><code>重启VSCode</code></li>
+</ul>
+<p>然后就可以在终端中通过 code 命令直接打开<code>VSCode</code>了，<br>常用的命令行使用命令</p>
+<ul>
+<li><code>code -r .</code> 打开当前目录 -r 代表窗口复用</li>
+<li><code>code -r -g package.json:10:15</code> 打开当前目录 -g 跳转到某个文件</li>
+<li><code>code -r -d a.txt b.txt</code> 打开当前目录 -d 比较两个文件差异</li>
+</ul>
+<p>还有一个比较好的就是接受管道数据</p>
+<ul>
+<li><code>ls | code -</code> 改命令可以将目录下的所有文件名展示到<code>VSCode</code>中</li>
+</ul>
+<h4 id="设置中文"><a href="#设置中文" class="headerlink" title="设置中文"></a>设置中文</h4><p>首先我们可能需要为<code>VSCode</code>设置语言，这个并不是必要操作但是可以为英语不好的同学提供一个过渡选择</p>
+<ul>
+<li><code>Command + Shift + P</code> or <code>F1</code></li>
+<li><code>搜索框中输入 configure display language 然后安装其他语言选择简体中文</code></li>
+<li><code>重启VSCode</code></li>
+</ul>
+<h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><ul>
+<li><code>Command + Backspace</code> 删除该行左边</li>
+<li><code>Command + Delete</code> 删除该行右边</li>
+</ul>
+<h4 id="撤销光标移动"><a href="#撤销光标移动" class="headerlink" title="撤销光标移动"></a>撤销光标移动</h4><ul>
+<li><code>Command + u</code> 移动光标到上次的位置</li>
+</ul>
+<h4 id="行排序"><a href="#行排序" class="headerlink" title="行排序"></a>行排序</h4><p>你都可以把代码行按照字母序进行重新排序。不过这个命令比较小众，VS Code 并没有给这个命令指定快捷键，你可以调出命令面板，然后搜索 “按升序排列行” 或者 “按降序排列行” 命令执行。</p>
+<h4 id="调整字符的位置"><a href="#调整字符的位置" class="headerlink" title="调整字符的位置"></a>调整字符的位置</h4><ul>
+<li><code>Ctrl + t</code> 交互字符位置</li>
+</ul>
+<h4 id="定义与实现之间的跳转"><a href="#定义与实现之间的跳转" class="headerlink" title="定义与实现之间的跳转"></a>定义与实现之间的跳转</h4><ul>
+<li><code>F12 or Command + F12</code> 按下 F12，就可以跳转到函数的定义处。</li>
+</ul>
+<h4 id="跳到引用的地方"><a href="#跳到引用的地方" class="headerlink" title="跳到引用的地方"></a>跳到引用的地方</h4><ul>
+<li><code>Shift + F12</code> 打开函数引用预览</li>
+</ul>
+<h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><ul>
+<li><code>Command + Shift + P</code>： 配置用户代码片段 configure user snippets</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-string">&quot;Print to console&quot;</span>: &#123;<br>    <span class="hljs-string">&quot;prefix&quot;</span>: <span class="hljs-string">&quot;log&quot;</span>,<br>    <span class="hljs-string">&quot;body&quot;</span>: [<br>        <span class="hljs-string">&quot;console.log($&#123;1:i&#125;);&quot;</span>,<br>        <span class="hljs-string">&quot;$2&quot;</span><br>    ],<br><span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Log output to console&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h4><ul>
+<li>首先打开一个文件夹 然后 打开命令面板 F1 或者 <code>Command + Shift + P</code> 输入 将文件夹添加到工作去（add folder to workspace）</li>
+<li>再一次打开命令面板 输入 “将工作区另存为” （save workspace as） 这样下次可以一次打开一个工作区</li>
+<li><code>Ctrl + W</code> 可以切换工作区</li>
+<li><code>Ctrl + R</code> 显示最近打开的文件夹列表</li>
+<li><code>Ctrl + R </code> 选中后 <code>Command + Enter</code> 可以在新窗口打开</li>
+</ul>
+<h4 id="显示终端"><a href="#显示终端" class="headerlink" title="显示终端"></a>显示终端</h4><ul>
+<li>Ctrl + &#96; 可以打开或者隐藏终端</li>
+<li>新建一个文件在其中输入内容<code>ls -al</code> 打开命令面板在其中输入 “在活动终端中运行活动文件” 这个脚本会在继承终端中运行</li>
+</ul>
+<h4 id="拆分编辑器"><a href="#拆分编辑器" class="headerlink" title="拆分编辑器"></a>拆分编辑器</h4><ul>
+<li><p><code>命令面板中搜索 拆分编辑器</code> 可以将编辑器拆分多个</p>
+</li>
+<li><p><code>Cmd + 1、Cmd + 2 和 Cmd + 3</code> 在三个编辑器中跳转</p>
+</li>
+<li><p><code>Cmd + Option + 0</code> 可以在纵向拆分跟横向拆分之间切换</p>
+</li>
+<li><p><code>Cmd + Option + up/down</code> 可以在窗口之间切换</p>
+</li>
+<li><p><code>命令面板中搜索 2 x 2 网格编辑器布局</code> 可以将编辑器拆分 2 x 2</p>
+</li>
+<li><p><code>Cmd + B</code> 打开或者关闭整个视图；</p>
+</li>
+<li><p><code>Cmd + J</code> 来打开或者关闭面板； 跟 Ctrl + &#96; 作用一样</p>
+</li>
+</ul>
+<h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><ul>
+<li><code>Cmd + +/-</code> 缩放整个工作区；</li>
+</ul>
+<h4 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h4><ul>
+<li><code>命令面板中搜索 打开侧边预览</code> 可以一边编辑 markdown 文档一边预览</li>
+</ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html">IntelliJ IDEA For Mac 快捷键</a></li>
+</ul>
+<h4 id="IntelliJ-IDEA-For-Mac-快捷键"><a href="#IntelliJ-IDEA-For-Mac-快捷键" class="headerlink" title="IntelliJ IDEA For Mac 快捷键"></a>IntelliJ IDEA For Mac 快捷键</h4><ul>
+<li>根据官方 pdf 翻译：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf">https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf</a></li>
+<li>在 IntelliJ IDEA 中有两个 Mac 版本的快捷键，一个叫做：Mac OS X，一个叫做：Mac OS X 10.5+</li>
+<li>目前都是用：Mac OS X 10.5+</li>
+<li>有两套的原因：<a target="_blank" rel="noopener" href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed">https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed</a><blockquote>
+<p>建议将 Mac 系统中与 IntelliJ IDEA 冲突的快捷键取消或更改，不建议改 IntelliJ IDEA 的默认快捷键。</p>
+</blockquote>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/" class="category-chain-item">生产工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/">#生产工具</a>
+      
+        <a href="/tags/IDE/">#IDE</a>
+      
+        <a href="/tags/VSCode/">#VSCode</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>VSCode使用指南</div>
+      <div>http://example.com/2020/10/12/vscode-quick/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>toshiba</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年10月12日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/01/22/gatsby/" title="Gatsby入门test">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Gatsby入门test</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/21/miniprogram-pit/" title="小程序开发填坑">
+                        <span class="hidden-mobile">小程序开发填坑</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2020/10/12/vscode-quick/';
+          this.page.identifier = '/2020/10/12/vscode-quick/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'IORI' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

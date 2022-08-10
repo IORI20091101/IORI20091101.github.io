@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/desk-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="toshiba">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="GatsbyGatsby是React的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。 环境准备首先，以Mac为例 首先安装 brew 12345678910111213# 安装Homebrew&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Ho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gatsby入门test">
+<meta property="og:url" content="http://example.com/2021/01/22/gatsby/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="GatsbyGatsby是React的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。 环境准备首先，以Mac为例 首先安装 brew 12345678910111213# 安装Homebrew&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Ho">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png">
+<meta property="og:image" content="https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png">
+<meta property="article:published_time" content="2021-01-22T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-10T02:39:39.383Z">
+<meta property="article:author" content="toshiba">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="Gatsby">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png">
+  
+  
+  
+  <title>Gatsby入门test - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>喬伊·波伊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg/bg.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Gatsby入门以及简单的博客搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        toshiba
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-01-22 00:00" pubdate>
+          2021年1月22日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          167 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Gatsby入门以及简单的博客搭建</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Gatsby"><a href="#Gatsby" class="headerlink" title="Gatsby"></a>Gatsby</h1><p><a target="_blank" rel="noopener" href="https://www.gatsbyjs.com/">Gatsby</a>是React的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。</p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>首先，以Mac为例 首先安装 <a target="_blank" rel="noopener" href="https://brew.sh/"><code>brew</code></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装Homebrew</span><br>/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span><br><br>brew -v<br><br><span class="hljs-comment"># 安装命令行工具</span><br>xcode-select --install<br><br><span class="hljs-comment"># 安装Nodejs</span><br>brew install node<br><br><span class="hljs-comment"># 安装git</span><br>brew install git<br></code></pre></td></tr></table></figure>
+
+<p>安装**<code>gatsby-cli</code>**</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g gatsby-cli<br><br><span class="hljs-comment"># 安装成功可以看到可用命令</span><br>gatsby --<span class="hljs-built_in">help</span><br><br><span class="hljs-comment"># 我们可以快速生成一个站点</span><br><br>gatsby new [SITE_DIRECTORY_NAME] [URL_OF_STARTER_GITHUB_REPO]<br><br>gatsby new hello-world https://github.com/gatsbyjs/gatsby-starter-hello-world<br><br><span class="hljs-built_in">cd</span> hello-world<br><br>gatsby develop<br><br><span class="hljs-comment"># 访问 http://localhost:8000/ 就可以看到</span><br></code></pre></td></tr></table></figure>
+
+<p>目录如下</p>
+<p><img src="/%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png" srcset="/img/loading.gif" lazyload alt="%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png"></p>
+<p><code>src/pages/index.js</code> 即是首页地址，按照约定 <code>src/pages</code> 下面所有的文件都是一个页面</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Home</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">color:</span> `<span class="hljs-attr">purple</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello Gatsby!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>What a world.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://source.unsplash.com/random/400x200&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们新加一个页面 <code>src/pages/about.js</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">color:</span> `<span class="hljs-attr">teal</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About Gatsby<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Such wow. Very React.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样我们就有了两个页面分别是通过访问 <a target="_blank" rel="noopener" href="http://localhost:8000/">http://localhost:8000</a> 和 <a target="_blank" rel="noopener" href="https://localhost:8000/about">https://localhost:8000/about</a> 访问。 到这里就可以愉快的添加页面了。</p>
+<h3 id="使用组件"><a href="#使用组件" class="headerlink" title="使用组件"></a>使用组件</h3><p>在上面的页面中假设我们页面有公共的<code>header</code> 或 <code>footer</code>，我们不需要在每个页面中定义，这时候就需要用到组件，同样的Gatsby约定 <code>src/components</code> 文件夹下的都是放的组件，我们新建一个<code>src/components/header.js</code>的组件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Header</span>(<span class="hljs-params">props</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;props.headerText&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在about页面中使用</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Header</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/header&quot;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">color:</span> `<span class="hljs-attr">teal</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Header</span> <span class="hljs-attr">headerText</span>=<span class="hljs-string">&quot;About Gatsby&quot;</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Such wow. Very React.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>到了这里页面已经大概出来了，我也通过 <code>[surge.sh](https://surge.sh/)</code> 部署了一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install --global surge<br><br><span class="hljs-comment"># Then create a (free) account with them</span><br>surge login<br><span class="hljs-comment"># 提示输入邮箱密码</span><br><br>gatsby build<br><br><span class="hljs-built_in">ls</span> public<br><br>surge public/<br></code></pre></td></tr></table></figure>
+
+<p>通过访问</p>
+<p><a target="_blank" rel="noopener" href="https://arrogant-station.surge.sh/">https://arrogant-station.surge.sh/</a></p>
+<p><a target="_blank" rel="noopener" href="https://arrogant-station.surge.sh/about/">https://arrogant-station.surge.sh/about/</a></p>
+<p> 就可以看到刚刚的效果</p>
+<h3 id="自定义样式表"><a href="#自定义样式表" class="headerlink" title="自定义样式表"></a>自定义样式表</h3><p>当我们想自定义样式时，我们可以在src下的styles下建立global.css，如下：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">├── package.json<br>├── src<br>│   └── pages<br>│       └── <span class="hljs-keyword">index</span>.js<br>│   └── styles<br>│       └── <span class="hljs-keyword">global</span>.css<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">/ * <span class="hljs-attribute">src</span>/styles/global<span class="hljs-selector-class">.css</span> */<br><span class="hljs-selector-tag">html</span> &#123;<br>  <span class="hljs-attribute">background-color</span>: lavenderblush;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果想让该文件生效，需要在项目根目录下新建一个 <code>gatsby-browser.js</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./src/styles/global.css&quot;</span><br><br><span class="hljs-comment">// or:</span><br><span class="hljs-comment">// require(&#x27;./src/styles/global.css&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="创建组件级作用域的样式"><a href="#创建组件级作用域的样式" class="headerlink" title="创建组件级作用域的样式"></a>创建组件级作用域的样式</h3><p>我们创建一个 <code>Container</code> 组件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jsx">├── package.<span class="hljs-property">json</span><br>├── src<br>│   └── components<br>│       └── container.<span class="hljs-property">js</span><br>│       └── container.<span class="hljs-property">module</span>.<span class="hljs-property">css</span><br><br></code></pre></td></tr></table></figure>
+
+<p>我们以  <code>.module.css</code> 作为后缀即可创建一个组件级别作用域样式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> containerStyles <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./container.module.css&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Container</span>(<span class="hljs-params">&#123; children &#125;</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#123;containerStyles.container&#125;</span>&gt;</span>&#123;children&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span> &#123;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">3rem</span> auto;<br>  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>新建一个页面用来使用这个组件 <code>src/pages/about-css-modules.js</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Container</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/container&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Container</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About Css Modules<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>CSS Module are cool<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用插件和布局组件"><a href="#使用插件和布局组件" class="headerlink" title="使用插件和布局组件"></a>使用插件和布局组件</h3><p>Gatsby 有着丰富的组件库 <code>[Plugin Library](https://www.gatsbyjs.com/plugins)</code> ,我们使用组件的一个初衷就是让构建站点或博客变得简单。我们将通过使用 <code>[gatsby-plugin-typography](https://www.gatsbyjs.com/plugins/gatsby-plugin-typography/)</code> 来了解如何使用插件</p>
+<blockquote>
+<p><code>[Typography.js](https://kyleamathews.github.io/typography.js/)</code> is a JavaScript library which generates global base styles for your site’s typography. The library has a corresponding Gatsby plugin to streamline using it in a Gatsby site.</p>
+</blockquote>
+<p>首先我们安装这个插件以及相关依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install gatsby-plugin-typography react-typography typography typography-theme-fairy-gates<br></code></pre></td></tr></table></figure>
+
+<p>修改 <code>gatsby-config.js</code> 如下 ，关于该文件的详细配置在**<code>[这里](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/)</code> 。**</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-attr">plugins</span>: [<br>    &#123;<br>      <span class="hljs-attr">resolve</span>: <span class="hljs-string">`gatsby-plugin-typography`</span>,<br>      <span class="hljs-attr">options</span>: &#123;<br>        <span class="hljs-attr">pathToConfigModule</span>: <span class="hljs-string">`src/utils/typography`</span>,<br>      &#125;,<br>    &#125;,<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Typography.js 需要一个配置文件放到 <code>src/utils/typography.js</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Typography</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;typography&quot;</span><br><span class="hljs-keyword">import</span> fairyGateTheme <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;typography-theme-fairy-gates&quot;</span><br><br><span class="hljs-keyword">const</span> typography = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Typography</span>(fairyGateTheme)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> &#123; scale, rhythm, options &#125; = typography<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> typography<br></code></pre></td></tr></table></figure>
+
+<p>这样就可以愉快的使用选中的主题来作为网站的基本样式了。接下来自定义<code>Layout</code> 组件，<code>src/components/layout.js</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/components/layout.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Layout</span>(<span class="hljs-params">&#123; children &#125;</span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">margin:</span> `<span class="hljs-attr">3rem</span> <span class="hljs-attr">auto</span>`, <span class="hljs-attr">maxWidth:</span> <span class="hljs-attr">650</span>, <span class="hljs-attr">padding:</span> `<span class="hljs-attr">0</span> <span class="hljs-attr">1rem</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">      &#123;children&#125;</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br><br><span class="hljs-comment">//改进版本</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Link</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;gatsby&quot;</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">ListLink</span> = props =&gt; (<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">display:</span> `<span class="hljs-attr">inline-block</span>`, <span class="hljs-attr">marginRight:</span> `<span class="hljs-attr">1rem</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&#123;props.to&#125;</span>&gt;</span>&#123;props.children&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Layout</span>(<span class="hljs-params">&#123; children &#125;</span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">margin:</span> `<span class="hljs-attr">3rem</span> <span class="hljs-attr">auto</span>`, <span class="hljs-attr">maxWidth:</span> <span class="hljs-attr">650</span>, <span class="hljs-attr">padding:</span> `<span class="hljs-attr">0</span> <span class="hljs-attr">1rem</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">marginBottom:</span> `<span class="hljs-attr">1.5rem</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">textShadow:</span> `<span class="hljs-attr">none</span>`, <span class="hljs-attr">backgroundImage:</span> `<span class="hljs-attr">none</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">display:</span> `<span class="hljs-attr">inline</span>` &#125;&#125;&gt;</span>MySweetSite<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">listStyle:</span> `<span class="hljs-attr">none</span>`, <span class="hljs-attr">cssFloat:</span> `<span class="hljs-attr">right</span>` &#125;&#125;&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">ListLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">ListLink</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">ListLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/about/&quot;</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">ListLink</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">ListLink</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/contact/&quot;</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">ListLink</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span><br><span class="language-xml">      &#123;children&#125;</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/pages/index.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Layout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/layout&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Home</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hi! I&#x27;m building a fake Gatsby site as part of a tutorial!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">        What do I like to do? Lots of course but definitely enjoy building</span><br><span class="language-xml">        websites.</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://source.unsplash.com/random/400x200&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>到了这里我们已经有了一个大概的博客模型，效果可以在这里看到 <a target="_blank" rel="noopener" href="https://wretched-weight.surge.sh/">https://wretched-weight.surge.sh</a></p>
+<p>不过在这个过程中碰到一个<code>css</code> 被  强制转成 <code>cssFloat</code> 的问题issue地址在这里 <a target="_blank" rel="noopener" href="https://github.com/stylelint/stylelint/issues/4490">https://github.com/stylelint/stylelint/issues/4490</a></p>
+<h3 id="使用数据Graphql"><a href="#使用数据Graphql" class="headerlink" title="使用数据Graphql"></a>使用数据Graphql</h3><p>我们新建一个项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gatsby new gatsby-lesson-two https://github.com/gatsbyjs/gatsby-starter-hello-world<br></code></pre></td></tr></table></figure>
+
+<p>然后安装插件以及新的主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install gatsby-plugin-typography typography react-typography typography-theme-kirkham gatsby-plugin-emotion @emotion/react<br></code></pre></td></tr></table></figure>
+
+<p>大部分代码跟之前类似，直接上代码，我会在最后把代码地址贴上来</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/components/layout.js</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> &#123; css &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@emotion/react&quot;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Link</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;gatsby&quot;</span><br><br><span class="hljs-keyword">import</span> &#123; rhythm &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../utils/typography&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Layout</span>(<span class="hljs-params">&#123; children &#125;</span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">css</span>=<span class="hljs-string">&#123;css</span>`</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">margin:</span> <span class="hljs-attr">0</span> <span class="hljs-attr">auto</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">max-width:</span> <span class="hljs-attr">700px</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">padding:</span> $&#123;<span class="hljs-attr">rhythm</span>(<span class="hljs-attr">2</span>)&#125;;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">padding-top:</span> $&#123;<span class="hljs-attr">rhythm</span>(<span class="hljs-attr">1.5</span>)&#125;;</span></span><br><span class="hljs-tag"><span class="language-xml">      `&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">    &gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&#123;</span>`/`&#125;&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span></span></span><br><span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">css</span>=<span class="hljs-string">&#123;css</span>`</span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">margin-bottom:</span> $&#123;<span class="hljs-attr">rhythm</span>(<span class="hljs-attr">2</span>)&#125;;</span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">display:</span> <span class="hljs-attr">inline-block</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">font-style:</span> <span class="hljs-attr">normal</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">          `&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">        &gt;</span></span><br><span class="language-xml">          Pandas Eating Lots</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">to</span>=<span class="hljs-string">&#123;</span>`/<span class="hljs-attr">about</span>/`&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">css</span>=<span class="hljs-string">&#123;css</span>`</span></span><br><span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">float:</span> <span class="hljs-attr">right</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">        `&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">      &gt;</span></span><br><span class="language-xml">        About</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">      &#123;children&#125;</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/pages/index.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Layout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/layout&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Home</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Amazing Pandas Eating Things<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">img</span></span></span><br><span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://2.bp.blogspot.com/-BMP2l6Hwvp4/TiAxeGx4CTI/AAAAAAAAD_M/XlC_mY3SoEw/s1600/panda-group-eating-bamboo.jpg&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Group of pandas eating bamboo&quot;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// about.js</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> &#123; graphql &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;gatsby&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Layout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/layout&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params">&#123; data &#125;</span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About &#123;data.site.siteMetadata.title&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">        We&#x27;re the only site running on your computer dedicated to showing the</span><br><span class="language-xml">        best photos and videos of pandas eating lots of food.</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span><br>  )<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> query = graphql<span class="hljs-string">`</span><br><span class="hljs-string">  query &#123;</span><br><span class="hljs-string">    site &#123;</span><br><span class="hljs-string">      siteMetadata &#123;</span><br><span class="hljs-string">        title</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;</span><br><span class="hljs-string">`</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/utils/typography.js</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Typography</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;typography&quot;</span><br><span class="hljs-keyword">import</span> kirkhamTheme <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;typography-theme-kirkham&quot;</span><br><br><span class="hljs-keyword">const</span> typography = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Typography</span>(kirkhamTheme)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> typography<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> rhythm = typography.<span class="hljs-property">rhythm</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// gatsby-config.js</span><br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>	<span class="hljs-attr">siteMetadata</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-string">`Title from siteMetadata`</span>,<br>  &#125;,<br>  <span class="hljs-attr">plugins</span>: [<br>    <span class="hljs-string">`gatsby-plugin-emotion`</span>,<br>    &#123;<br>      <span class="hljs-attr">resolve</span>: <span class="hljs-string">`gatsby-plugin-typography`</span>,<br>      <span class="hljs-attr">options</span>: &#123;<br>        <span class="hljs-attr">pathToConfigModule</span>: <span class="hljs-string">`src/utils/typography`</span>,<br>      &#125;,<br>    &#125;,<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最终结果如下  <a target="_blank" rel="noopener" href="https://clumsy-texture.surge.sh/">https://clumsy-texture.surge.sh/</a></p>
+<p><img src="https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png" srcset="/img/loading.gif" lazyload alt="https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png"></p>
+<p>在 <code>about</code> 页面中我们通过 graphql 来查询到了 siteMetadata中的数据并进行了渲染，接下来我们将继续学习使用 <code>StaticQuery</code> ，它允许我们在非页面组件中（比如 <code>layout.js</code>）来查询数据,我们修改layout.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/components/layout.js</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> &#123; css &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@emotion/react&quot;</span><br><span class="hljs-keyword">import</span> &#123; useStaticQuery, <span class="hljs-title class_">Link</span>, graphql &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;gatsby&quot;</span><br><br><span class="hljs-keyword">import</span> &#123; rhythm &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../utils/typography&quot;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Layout</span>(<span class="hljs-params">&#123; children &#125;</span>) &#123;<br>  <span class="hljs-keyword">const</span> data = <span class="hljs-title function_">useStaticQuery</span>(<br>    graphql<span class="hljs-string">`</span><br><span class="hljs-string">      query &#123;</span><br><span class="hljs-string">        site &#123;</span><br><span class="hljs-string">          siteMetadata &#123;</span><br><span class="hljs-string">            title</span><br><span class="hljs-string">          &#125;</span><br><span class="hljs-string">        &#125;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    `</span><br>  )<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span></span></span><br><span class="hljs-tag"><span class="language-xml">      <span class="hljs-attr">css</span>=<span class="hljs-string">&#123;css</span>`</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">margin:</span> <span class="hljs-attr">0</span> <span class="hljs-attr">auto</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">max-width:</span> <span class="hljs-attr">700px</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">padding:</span> $&#123;<span class="hljs-attr">rhythm</span>(<span class="hljs-attr">2</span>)&#125;;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">padding-top:</span> $&#123;<span class="hljs-attr">rhythm</span>(<span class="hljs-attr">1.5</span>)&#125;;</span></span><br><span class="hljs-tag"><span class="language-xml">      `&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">    &gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&#123;</span>`/`&#125;&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span></span></span><br><span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">css</span>=<span class="hljs-string">&#123;css</span>`</span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">margin-bottom:</span> $&#123;<span class="hljs-attr">rhythm</span>(<span class="hljs-attr">2</span>)&#125;;</span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">display:</span> <span class="hljs-attr">inline-block</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">            <span class="hljs-attr">font-style:</span> <span class="hljs-attr">normal</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">          `&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">        &gt;</span></span><br><span class="language-xml">          &#123;data.site.siteMetadata.title&#125;</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">to</span>=<span class="hljs-string">&#123;</span>`/<span class="hljs-attr">about</span>/`&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">css</span>=<span class="hljs-string">&#123;css</span>`</span></span><br><span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">float:</span> <span class="hljs-attr">right</span>;</span></span><br><span class="hljs-tag"><span class="language-xml">        `&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">      &gt;</span></span><br><span class="language-xml">        About</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span><br><span class="language-xml">      &#123;children&#125;</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>到目前为止已经可以通过graphql来获取数据无论是页面还是组件中都可以愉快的工作了。</p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>安装 <a target="_blank" rel="noopener" href="https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/">gatsby-source-filesystem</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install gatsby-source-filesystem<br></code></pre></td></tr></table></figure>
+
+<p>然后在<code>gatsby-config.js</code>中增加一段新的配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">module.exports = &#123;<br>  siteMetadata: &#123;<br>    title: `Pandas Eating Lots`,<br>  &#125;,<br>  plugins: [<br>    &#123;<br>      resolve: `gatsby-source-filesystem`,<br>      options: &#123;<br>        name: `src`,<br>        path: `<span class="hljs-variable">$&#123;__dirname&#125;</span>/src/`,<br>      &#125;,<br>    &#125;,<br>    `gatsby-plugin-emotion`,<br>    &#123;<br>      resolve: `gatsby-plugin-typography`,<br>      options: &#123;<br>        pathToConfigModule: `src/utils/typography`,<br>      &#125;,<br>    &#125;,<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们可以在调试请求的页面中 <a target="_blank" rel="noopener" href="http://localhost:8000/___graphql">http://localhost:8000/___graphql</a> 看到结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">query MyQuery &#123;<br>  allFile(<span class="hljs-built_in">sort</span>: &#123;fields: sourceInstanceName, order: ASC&#125;) &#123;<br>    edges &#123;<br>      node &#123;<br>        <span class="hljs-built_in">id</span><br>        base<br>        accessTime<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;allFile&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;edges&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;4adb1b72-3a75-57ee-87d7-a61196fe33a9&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;base&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;typography.js&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;accessTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2021-01-21T09:40:46.525Z&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2ac5932a-8346-5197-9dd4-cd96775203f8&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;base&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;about.js&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;accessTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2021-01-21T09:40:46.525Z&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;e4f28a9d-ce43-59ea-9e93-607960b0f563&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;base&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;index.js&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;accessTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2021-01-21T09:40:46.526Z&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ecdff8d0-0225-5f40-966d-84b66a4c3a56&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;base&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;layout.js&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;accessTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2021-01-21T09:40:46.527Z&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;extensions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>接下来我们新建一个页面</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// /src/pages/my-files.js</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> &#123; graphql &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;gatsby&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Layout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/layout&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">MyFiles</span>(<span class="hljs-params">&#123; data &#125;</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello world<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span><br>  )<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> query = graphql<span class="hljs-string">`</span><br><span class="hljs-string">  query &#123;</span><br><span class="hljs-string">    allFile &#123;</span><br><span class="hljs-string">      edges &#123;</span><br><span class="hljs-string">        node &#123;</span><br><span class="hljs-string">          relativePath</span><br><span class="hljs-string">          prettySize</span><br><span class="hljs-string">          extension</span><br><span class="hljs-string">          birthTime(fromNow: true)</span><br><span class="hljs-string">        &#125;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;</span><br><span class="hljs-string">`</span><br></code></pre></td></tr></table></figure>
+
+<p>通过访问 <a target="_blank" rel="noopener" href="http://localhost:8000/my-files">http://localhost:8000/my-files</a> 即可看到我们请求到的数据详情</p>
+<h3 id="转换插件"><a href="#转换插件" class="headerlink" title="转换插件"></a>转换插件</h3><p>通常来说我们的博客数据都存储在一个Markdown文件中 <code>src/pages/sweet-pandas-eating-sweets.md</code></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: &quot;Sweet Pandas Eating Sweets&quot;<br><span class="hljs-section">date: &quot;2017-08-10&quot;</span><br><span class="hljs-section">---</span><br><br>Pandas are really sweet.<br><br>Here&#x27;s a video of a panda eating sweets.<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;560&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;315&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://www.youtube.com/embed/4n0xNbfJLR8&quot;</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">allowfullscreen</span>&gt;</span></span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>我们如果我们想让该文件正常显示需要将其转换成我们需要的样子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install gatsby-transformer-remark<br></code></pre></td></tr></table></figure>
+
+<p>gatsby-config.js中增加一个新的配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">module.exports = &#123;<br>  siteMetadata: &#123;<br>    title: `Pandas Eating Lots`,<br>  &#125;,<br>  plugins: [<br>    &#123;<br>      resolve: `gatsby-source-filesystem`,<br>      options: &#123;<br>        name: `src`,<br>        path: `<span class="hljs-variable">$&#123;__dirname&#125;</span>/src/`,<br>      &#125;,<br>    &#125;,<br>    `gatsby-transformer-remark`,<br>    `gatsby-plugin-emotion`,<br>    &#123;<br>      resolve: `gatsby-plugin-typography`,<br>      options: &#123;<br>        pathToConfigModule: `src/utils/typography`,<br>      &#125;,<br>    &#125;,<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样我们查询接口的位置会显示两个新的选项 <code>allMarkdownRemark</code> 和 <code>markdownRemark</code> 通过查询我们可以看到结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs graphql">query MyQuery &#123;<br>  allMarkdownRemark &#123;<br>    edges &#123;<br>      node &#123;<br>        id<br>        frontmatter &#123;<br>          date<br>          title<br>        &#125;<br>        excerpt<br>        html<br>        timeToRead<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;allMarkdownRemark&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;edges&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;7cbc5c7a-e49e-5c45-a47e-3dd49a55d64f&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;frontmatter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>              <span class="hljs-attr">&quot;date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2017-08-10&quot;</span><span class="hljs-punctuation">,</span><br>              <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Sweet Pandas Eating Sweets&quot;</span><br>            <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;excerpt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Pandas are really sweet. Here&#x27;s a video of a panda eating sweets.&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;html&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;p&gt;Pandas are really sweet.&lt;/p&gt;\n&lt;p&gt;Here&#x27;s a video of a panda eating sweets.&lt;/p&gt;\n&lt;iframe width=\&quot;560\&quot; height=\&quot;315\&quot; src=\&quot;https://www.youtube.com/embed/4n0xNbfJLR8\&quot; frameborder=\&quot;0\&quot; allowfullscreen&gt;&lt;/iframe&gt;&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;timeToRead&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;extensions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>现在我们利用动态数据来渲染首页 <code>src/pages/index.js</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs json">import React from <span class="hljs-string">&quot;react&quot;</span><br>import <span class="hljs-punctuation">&#123;</span> graphql <span class="hljs-punctuation">&#125;</span> from <span class="hljs-string">&quot;gatsby&quot;</span><br>import <span class="hljs-punctuation">&#123;</span> css <span class="hljs-punctuation">&#125;</span> from <span class="hljs-string">&quot;@emotion/react&quot;</span><br>import <span class="hljs-punctuation">&#123;</span> rhythm <span class="hljs-punctuation">&#125;</span> from <span class="hljs-string">&quot;../utils/typography&quot;</span><br>import Layout from <span class="hljs-string">&quot;../components/layout&quot;</span><br><br>export default function Home(<span class="hljs-punctuation">&#123;</span> data <span class="hljs-punctuation">&#125;</span>) <span class="hljs-punctuation">&#123;</span><br>  console.log(data)<br>  return (<br>    &lt;Layout&gt;<br>      &lt;div&gt;<br>        &lt;h1<br>          css=<span class="hljs-punctuation">&#123;</span>css`<br>            display<span class="hljs-punctuation">:</span> inline-block;<br>            border-bottom<span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>px solid;<br>          `<span class="hljs-punctuation">&#125;</span><br>        &gt;<br>          Amazing Pandas Eating Things<br>        &lt;/h1&gt;<br>        &lt;h4&gt;<span class="hljs-punctuation">&#123;</span>data.allMarkdownRemark.totalCount<span class="hljs-punctuation">&#125;</span> Posts&lt;/h4&gt;<br>        <span class="hljs-punctuation">&#123;</span>data.allMarkdownRemark.edges.map((<span class="hljs-punctuation">&#123;</span> node <span class="hljs-punctuation">&#125;</span>) =&gt; (<br>          &lt;div key=<span class="hljs-punctuation">&#123;</span>node.id<span class="hljs-punctuation">&#125;</span>&gt;<br>            &lt;h3<br>              css=<span class="hljs-punctuation">&#123;</span>css`<br>                margin-bottom<span class="hljs-punctuation">:</span> $<span class="hljs-punctuation">&#123;</span>rhythm(<span class="hljs-number">1</span> / <span class="hljs-number">4</span>)<span class="hljs-punctuation">&#125;</span>;<br>              `<span class="hljs-punctuation">&#125;</span><br>            &gt;<br>              <span class="hljs-punctuation">&#123;</span>node.frontmatter.title<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#123;</span><span class="hljs-string">&quot; &quot;</span><span class="hljs-punctuation">&#125;</span><br>              &lt;span<br>                css=<span class="hljs-punctuation">&#123;</span>css`<br>                  color<span class="hljs-punctuation">:</span> #bbb;<br>                `<span class="hljs-punctuation">&#125;</span><br>              &gt;<br>                — <span class="hljs-punctuation">&#123;</span>node.frontmatter.date<span class="hljs-punctuation">&#125;</span><br>              &lt;/span&gt;<br>            &lt;/h3&gt;<br>            &lt;p&gt;<span class="hljs-punctuation">&#123;</span>node.excerpt<span class="hljs-punctuation">&#125;</span>&lt;/p&gt;<br>          &lt;/div&gt;<br>        ))<span class="hljs-punctuation">&#125;</span><br>      &lt;/div&gt;<br>    &lt;/Layout&gt;<br>  )<br><span class="hljs-punctuation">&#125;</span><br><br>export const query = graphql`<br>  query <span class="hljs-punctuation">&#123;</span><br>    allMarkdownRemark(sort<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> fields<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>frontmatter___date<span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span> order<span class="hljs-punctuation">:</span> DESC <span class="hljs-punctuation">&#125;</span>) <span class="hljs-punctuation">&#123;</span><br>      totalCount<br>      edges <span class="hljs-punctuation">&#123;</span><br>        node <span class="hljs-punctuation">&#123;</span><br>          id<br>          frontmatter <span class="hljs-punctuation">&#123;</span><br>            title<br>            date(formatString<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;DD MMMM, YYYY&quot;</span>)<br>          <span class="hljs-punctuation">&#125;</span><br>          excerpt<br>        <span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br>`<br></code></pre></td></tr></table></figure>
+
+<p>现在的顺序是最新的在底下我们可以通过调整参数来改变文章排列顺序将<code>allMarkdownRemark</code> 改成<code>allMarkdownRemark(sort: &#123; fields: [frontmatter___date], order: DESC &#125;)</code></p>
+<p>文章列表已经就绪，接下来显示文章详情，我们来自动创建页面以及其路径，通常如果使用了<code>CMS</code> 比如<code>notion</code>  , <code>Contentful</code> , <code>Netlify CMS</code> ,会自动提供页面路径或者 <code>slug</code> , 但如果我们使用markdown 文件来生成页面需要使用这两个 <code>API</code> ：<code>onCreateNode</code> 和 <code>createPages</code> ,我们需要在<code>gatsby-node.js</code>这个文件中使用</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><br><span class="hljs-keyword">const</span> &#123; createFilePath &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">`gatsby-source-filesystem`</span>)<br><span class="hljs-built_in">exports</span>.<span class="hljs-property">onCreateNode</span> = <span class="hljs-function">(<span class="hljs-params">&#123; node, getNode, actions &#125;</span>) =&gt;</span> &#123;<br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	if (node.internal.type === `MarkdownRemark`) &#123;</span><br><span class="hljs-comment">    const fileNode = getNode(node.parent)</span><br><span class="hljs-comment">    console.log(`\n`, fileNode.relativePath)</span><br><span class="hljs-comment">  &#125;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">	if (node.internal.type === `MarkdownRemark`) &#123;</span><br><span class="hljs-comment">		console.log(createFilePath(&#123; node, getNode, basePath: `pages` &#125;))</span><br><span class="hljs-comment">  &#125;</span><br><span class="hljs-comment">	*/</span><br><br>  <span class="hljs-keyword">const</span> &#123; createNodeField &#125; = actions<br>  <span class="hljs-keyword">if</span> (node.<span class="hljs-property">internal</span>.<span class="hljs-property">type</span> === <span class="hljs-string">`MarkdownRemark`</span>) &#123;<br>    <span class="hljs-keyword">const</span> slug = <span class="hljs-title function_">createFilePath</span>(&#123; node, getNode, <span class="hljs-attr">basePath</span>: <span class="hljs-string">`pages`</span> &#125;)<br>    <span class="hljs-title function_">createNodeField</span>(&#123;<br>      node,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">`slug`</span>,<br>      <span class="hljs-attr">value</span>: slug,<br>    &#125;)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在有了一个新的字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs graphql">&#123;<br>  allMarkdownRemark &#123;<br>    edges &#123;<br>      node &#123;<br>        fields &#123;<br>          slug<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;allMarkdownRemark&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;edges&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;fields&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>              <span class="hljs-attr">&quot;slug&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/pandas-and-bananas/&quot;</span><br>            <span class="hljs-punctuation">&#125;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;fields&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>              <span class="hljs-attr">&quot;slug&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/sweet-pandas-eating-sweets/&quot;</span><br>            <span class="hljs-punctuation">&#125;</span><br>          <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;extensions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样我们就可以根据这个字段来找到对应的文章路径了。</p>
+<p>仅仅是这样并不够，因为页面还不存在我们需要将页面生成出来，<code>src/pages/xxx.js</code> 下的文件会自动生成页面，但是其他的需要我们调用 <code>createPages</code>来生成</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> &#123; createFilePath &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">`gatsby-source-filesystem`</span>)<br><br><span class="hljs-built_in">exports</span>.<span class="hljs-property">onCreateNode</span> = <span class="hljs-function">(<span class="hljs-params">&#123; node, getNode, actions &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> &#123; createNodeField &#125; = actions<br>  <span class="hljs-keyword">if</span> (node.<span class="hljs-property">internal</span>.<span class="hljs-property">type</span> === <span class="hljs-string">`MarkdownRemark`</span>) &#123;<br>    <span class="hljs-keyword">const</span> slug = <span class="hljs-title function_">createFilePath</span>(&#123; node, getNode, <span class="hljs-attr">basePath</span>: <span class="hljs-string">`pages`</span> &#125;)<br>    <span class="hljs-title function_">createNodeField</span>(&#123;<br>      node,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">`slug`</span>,<br>      <span class="hljs-attr">value</span>: slug,<br>    &#125;)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 这一段的是意思是先走接口将所有的数据拉过来</span><br><span class="hljs-comment">// 将所有的markdown的文件生成对应的页面</span><br><span class="hljs-built_in">exports</span>.<span class="hljs-property">createPages</span> = <span class="hljs-keyword">async</span> (&#123; graphql, actions &#125;) =&gt; &#123;<br>  <span class="hljs-comment">// **Note:** The graphql function call returns a Promise</span><br>  <span class="hljs-comment">// see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info</span><br>  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">graphql</span>(<span class="hljs-string">`</span><br><span class="hljs-string">    query &#123;</span><br><span class="hljs-string">      allMarkdownRemark &#123;</span><br><span class="hljs-string">        edges &#123;</span><br><span class="hljs-string">          node &#123;</span><br><span class="hljs-string">            fields &#123;</span><br><span class="hljs-string">              slug</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">          &#125;</span><br><span class="hljs-string">        &#125;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  `</span>)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(result, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>要生成页面还需要一个额外的操作，我们需要建立一个模版文件 <code>src/templates/blog-post.js</code> 根据这个文件模版以及数据来生成对应的页面</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Layout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/layout&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">BlogPost</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello blog post<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接下来继续更新 <code>gatsby-node.js</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">`path`</span>)<br><span class="hljs-keyword">const</span> &#123; createFilePath &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">`gatsby-source-filesystem`</span>)<br><br><span class="hljs-built_in">exports</span>.<span class="hljs-property">onCreateNode</span> = <span class="hljs-function">(<span class="hljs-params">&#123; node, getNode, actions &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> &#123; createNodeField &#125; = actions<br>  <span class="hljs-keyword">if</span> (node.<span class="hljs-property">internal</span>.<span class="hljs-property">type</span> === <span class="hljs-string">`MarkdownRemark`</span>) &#123;<br>    <span class="hljs-keyword">const</span> slug = <span class="hljs-title function_">createFilePath</span>(&#123; node, getNode, <span class="hljs-attr">basePath</span>: <span class="hljs-string">`pages`</span> &#125;)<br>    <span class="hljs-title function_">createNodeField</span>(&#123;<br>      node,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">`slug`</span>,<br>      <span class="hljs-attr">value</span>: slug,<br>    &#125;)<br>  &#125;<br>&#125;<br><br><span class="hljs-built_in">exports</span>.<span class="hljs-property">createPages</span> = <span class="hljs-keyword">async</span> (&#123; graphql, actions &#125;) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> &#123; createPage &#125; = actions<br>  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">graphql</span>(<span class="hljs-string">`</span><br><span class="hljs-string">    query &#123;</span><br><span class="hljs-string">      allMarkdownRemark &#123;</span><br><span class="hljs-string">        edges &#123;</span><br><span class="hljs-string">          node &#123;</span><br><span class="hljs-string">            fields &#123;</span><br><span class="hljs-string">              slug</span><br><span class="hljs-string">            &#125;</span><br><span class="hljs-string">          &#125;</span><br><span class="hljs-string">        &#125;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  `</span>)<br><br>  result.<span class="hljs-property">data</span>.<span class="hljs-property">allMarkdownRemark</span>.<span class="hljs-property">edges</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">&#123; node &#125;</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">createPage</span>(&#123;<br>      <span class="hljs-attr">path</span>: node.<span class="hljs-property">fields</span>.<span class="hljs-property">slug</span>,<br>      <span class="hljs-attr">component</span>: path.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">`./src/templates/blog-post.js`</span>),<br>      <span class="hljs-attr">context</span>: &#123;<br>        <span class="hljs-comment">// Data passed to context is available</span><br>        <span class="hljs-comment">// in page queries as GraphQL variables.</span><br>        <span class="hljs-attr">slug</span>: node.<span class="hljs-property">fields</span>.<span class="hljs-property">slug</span>,<br>      &#125;,<br>    &#125;)<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>随便访问一个不存在的链接 <a target="_blank" rel="noopener" href="http://localhost:8000/sdf">http://localhost:8000/sdf</a> 即可看到能够访问的文章列表，点进去即可看到模版文件的内容，接下来我们更新模版数据让他显示该显示的数据即可</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-comment">// src/templates/blog-post.js</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span><br><span class="hljs-keyword">import</span> &#123; graphql &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;gatsby&quot;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Layout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../components/layout&quot;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">BlogPost</span>(<span class="hljs-params">&#123; data &#125;</span>) &#123;<br>  <span class="hljs-keyword">const</span> post = data.<span class="hljs-property">markdownRemark</span><br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;post.frontmatter.title&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">dangerouslySetInnerHTML</span>=<span class="hljs-string">&#123;&#123;</span> <span class="hljs-attr">__html:</span> <span class="hljs-attr">post.html</span> &#125;&#125; /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span><br>  )<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> query = graphql<span class="hljs-string">`</span><br><span class="hljs-string">  query($slug: String!) &#123;</span><br><span class="hljs-string">    markdownRemark(fields: &#123; slug: &#123; eq: $slug &#125; &#125;) &#123;</span><br><span class="hljs-string">      html</span><br><span class="hljs-string">      frontmatter &#123;</span><br><span class="hljs-string">        title</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;</span><br><span class="hljs-string">`</span><br></code></pre></td></tr></table></figure>
+
+<p>最后一步更新首页中链接</p>
+<p><a target="_blank" rel="noopener" href="https://special-shape.surge.sh/">https://special-shape.surge.sh/</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Gatsby/" class="category-chain-item">Gatsby</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/blog/">#blog</a>
+      
+        <a href="/tags/Gatsby/">#Gatsby</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Gatsby入门test</div>
+      <div>http://example.com/2021/01/22/gatsby/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>toshiba</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年1月22日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/10/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/12/vscode-quick/" title="VSCode使用指南">
+                        <span class="hidden-mobile">VSCode使用指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2021/01/22/gatsby/';
+          this.page.identifier = '/2021/01/22/gatsby/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'IORI' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

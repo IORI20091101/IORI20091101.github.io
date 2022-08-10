@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/desk-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="toshiba">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="最近连续开发了几个小程序，总是有一些需要重复解决的问题，因此在此记录一下 自定义头部组件我们开发小程序的时候通常是用的统一的头部，一般是白底黑字或者简单定义一下背景色和文字颜色，比如这样在 page&#x2F;example.json 中定义 12345678&amp;#123;  &quot;usingComponents&quot;: &amp;#123;&amp;#125;,  &quot;navigationBarBack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序开发填坑">
+<meta property="og:url" content="http://example.com/2020/05/21/miniprogram-pit/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近连续开发了几个小程序，总是有一些需要重复解决的问题，因此在此记录一下 自定义头部组件我们开发小程序的时候通常是用的统一的头部，一般是白底黑字或者简单定义一下背景色和文字颜色，比如这样在 page&#x2F;example.json 中定义 12345678&amp;#123;  &quot;usingComponents&quot;: &amp;#123;&amp;#125;,  &quot;navigationBarBack">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/miniprogram/code.png">
+<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/miniprogram/example1.png">
+<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/miniprogram/navigator.png">
+<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/miniprogram/bar.png">
+<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/miniprogram/error.png">
+<meta property="article:published_time" content="2020-05-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-10T02:39:39.383Z">
+<meta property="article:author" content="toshiba">
+<meta property="article:tag" content="小程序">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.darknights.cn/assets/images/in-post/miniprogram/code.png">
+  
+  
+  
+  <title>小程序开发填坑 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>喬伊·波伊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg/bg.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="整理最近小程序开发遇到的一些问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        toshiba
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-05-21 00:00" pubdate>
+          2020年5月21日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">整理最近小程序开发遇到的一些问题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>最近连续开发了几个小程序，总是有一些需要重复解决的问题，因此在此记录一下</p>
+<h3 id="自定义头部组件"><a href="#自定义头部组件" class="headerlink" title="自定义头部组件"></a>自定义头部组件</h3><p>我们开发小程序的时候通常是用的统一的头部，一般是白底黑字或者简单定义一下背景色和文字颜色，比如这样<br>在 <code>page/example.json</code> 中定义</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;navigationBarBackgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#557dde&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;navigationBarTitleText&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;二维码收款&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;navigationBarTextStyle&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;white&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;backgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#557dde&quot;</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>同时在<code>page/example.wxss</code> 中定义背景色</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">page &#123;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#557dde</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>结果如下<br><img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/code.png" srcset="/img/loading.gif" lazyload></p>
+<p>同时定义了顶部状态栏的颜色和背景栏的颜色，通常也能够满足需求了。</p>
+<p>但是仅仅这样是不够的比如我想像这样<br><img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/example1.png" srcset="/img/loading.gif" lazyload><br>头部图片可以做滑动效果而且展开到整个头部。这时候就需要自定义组件出马了,比如在首页 index.json 中要引入自定义组建</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;enablePullDownRefresh&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;onReachBottomDistance&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">50</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;navigationStyle&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;custom&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;nav-bar&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/component/navbar/navbar&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>其中最关键的点就是要计算状态栏的各种高度，首先头部导航包括两部分工具栏和 title 栏<br><img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/navigator.png" srcset="/img/loading.gif" lazyload><br>其中上部分是工具栏通过小程序提供的<code>wx.getSystemInfoSync()</code>方法能够拿到系统的一些信息</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">  SDKVersion:</span> <span class="hljs-string">&quot;2.11.3&quot;</span>,<br><span class="hljs-symbol">  batteryLevel:</span> <span class="hljs-number">100</span>,<br><span class="hljs-symbol">  benchmarkLevel:</span> <span class="hljs-number">1</span>,<br><span class="hljs-symbol">  brand:</span> <span class="hljs-string">&quot;devtools&quot;</span>,<br><span class="hljs-symbol">  deviceOrientation:</span> <span class="hljs-string">&quot;portrait&quot;</span>,<br><span class="hljs-symbol">  devicePixelRatio:</span> <span class="hljs-number">2</span>,<br><span class="hljs-symbol">  fontSizeSetting:</span> <span class="hljs-number">16</span>,<br><span class="hljs-symbol">  language:</span> <span class="hljs-string">&quot;zh_CN&quot;</span>,<br><span class="hljs-symbol">  model:</span> <span class="hljs-string">&quot;iPhone 6/7/8&quot;</span>,<br><span class="hljs-symbol">  pixelRatio:</span> <span class="hljs-number">2</span>,<br><span class="hljs-symbol">  platform:</span> <span class="hljs-string">&quot;devtools&quot;</span>,<br><span class="hljs-symbol">  safeArea:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">    bottom:</span> <span class="hljs-number">667</span>,<br><span class="hljs-symbol">    height:</span> <span class="hljs-number">647</span>,<br><span class="hljs-symbol">    left:</span> <span class="hljs-number">0</span>,<br><span class="hljs-symbol">    right:</span> <span class="hljs-number">375</span>,<br><span class="hljs-symbol">    top:</span> <span class="hljs-number">20</span>,<br><span class="hljs-symbol">    width:</span> <span class="hljs-number">375</span><br>  <span class="hljs-punctuation">&#125;</span>,<br><span class="hljs-symbol">  screenHeight:</span> <span class="hljs-number">667</span>,<br><span class="hljs-symbol">  screenWidth:</span> <span class="hljs-number">375</span>,<br><span class="hljs-symbol">  statusBarHeight:</span> <span class="hljs-number">20</span>,<br><span class="hljs-symbol">  system:</span> <span class="hljs-string">&quot;iOS 10.0.1&quot;</span>,<br><span class="hljs-symbol">  version:</span> <span class="hljs-string">&quot;7.0.4&quot;</span>,<br><span class="hljs-symbol">  windowHeight:</span> <span class="hljs-number">603</span>,<br><span class="hljs-symbol">  windowWidth:</span> <span class="hljs-number">375</span>,<br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>一般情况下 <code>screenHeight - windowHeight</code> 所得到的就是顶部工具栏+title 栏的高度， 但是在自定义了头部组件后即设置了<code>"navigationStyle": "custom"</code>，这两个值是相等的,还有一个比较重要的字段 statusBarHeight 通常这个就是代表工具栏的高度而且这个值是值得信赖的。 有个点需要注意就是单位一定要设置为<code>px</code>。</p>
+<blockquote>
+<p>注：由于胶囊按钮是原生组件，为表现一致，其单位在各种手机中都为 px，所以我们自定义导航栏的单位都必需是 px（切记不能用 rpx），才能完美适配。</p>
+</blockquote>
+<p>解决了工具栏部分，主要需要搞定的就是 title 栏的高度了，主要是为了适配胶囊的位置。<br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/design/#%E5%9B%BE%E6%A0%87">官方文档</a>，有一张图片<br><img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/bar.png" srcset="/img/loading.gif" lazyload><br>这里安卓跟 ios 的表现是不一样的,胶囊距离工具栏的高度是不一样的，差了 6 个 pt，更闹心的是开发工具跟真机的表现也是不一样的， 不过好在一点就是胶囊的宽和高是一样的都是<code>87</code>*<code>32</code>，我们所做的一切努力都是想让胶囊的上下间距跟跟不自定义组件的显示效果是一样的</p>
+<blockquote>
+<p>真机和开发者工具模拟器上的胶囊按钮不一样</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs css"># iOS<br>	<span class="hljs-attribute">top</span> <span class="hljs-number">4px</span><br>	<span class="hljs-attribute">right</span> <span class="hljs-number">7px</span><br>	<span class="hljs-attribute">width</span> <span class="hljs-number">87px</span><br>	<span class="hljs-attribute">height</span> <span class="hljs-number">32px</span><br><br># Android<br>	<span class="hljs-attribute">top</span> <span class="hljs-number">8px</span><br>	<span class="hljs-attribute">right</span> <span class="hljs-number">10px</span><br>	<span class="hljs-attribute">width</span> <span class="hljs-number">95px</span><br>	<span class="hljs-attribute">height</span> <span class="hljs-number">32px</span><br><br># 开发者工具模拟器（iOS）<br>	<span class="hljs-attribute">top</span> <span class="hljs-number">6px</span><br>	<span class="hljs-attribute">right</span> <span class="hljs-number">10px</span><br>	<span class="hljs-attribute">width</span> <span class="hljs-number">87px</span><br>	<span class="hljs-attribute">height</span> <span class="hljs-number">32px</span><br><br># 开发者工具模拟器（Android）<br>	<span class="hljs-attribute">top</span> <span class="hljs-number">8px</span><br>	<span class="hljs-attribute">right</span> <span class="hljs-number">10px</span><br>	<span class="hljs-attribute">width</span> <span class="hljs-number">87px</span><br>	<span class="hljs-attribute">height</span> <span class="hljs-number">32px</span><br><br>可以看出，iOS胶囊按钮与状态栏之间距离为：<span class="hljs-number">4px</span>， Android为<span class="hljs-number">8px</span>，是不是所有手机都是这种情况呢？<br>答案是:苹果手机确实都是<span class="hljs-number">4px</span>,安卓大部分都是<span class="hljs-number">7</span>和<span class="hljs-number">8</span> 也会有其他的情况<br>(可以自己打印getSystemInfo验证)如何快速便捷算出这个高度,请接着往下看<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="粗暴计算方法一"><a href="#粗暴计算方法一" class="headerlink" title="粗暴计算方法一"></a>粗暴计算方法一</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/article/doc/000aa842274d58cb15f74f81f56013">自定义导航栏所有机型的适配方案</a>,简单粗暴根据上面规律来计算胶囊的位置</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/Q79g6kmo7w5J">代码片段</a></p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs xquery">/**<br>   * 获取胶囊按钮位置<br>   */<br>  getMenuPosition () &#123;<br>    <span class="hljs-keyword">let</span> top = <span class="hljs-number">4</span><br>    <span class="hljs-keyword">let</span> right = <span class="hljs-number">7</span><br>    <span class="hljs-keyword">let</span> width = <span class="hljs-number">87</span><br>    <span class="hljs-keyword">let</span> height = <span class="hljs-number">32</span><br>    <span class="hljs-keyword">if</span> (systemInfo.platform === <span class="hljs-string">&#x27;devtools&#x27;</span> &amp;&amp; systemInfo.system.indexOf(<span class="hljs-string">&#x27;Android&#x27;</span>) === -<span class="hljs-number">1</span>) &#123;<br>      top = <span class="hljs-number">6</span><br>      right = <span class="hljs-number">10</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (systemInfo.platform === <span class="hljs-string">&#x27;devtools&#x27;</span> &amp;&amp; systemInfo.system.indexOf(<span class="hljs-string">&#x27;Android&#x27;</span>) != -<span class="hljs-number">1</span>) &#123;<br>      top = <span class="hljs-number">8</span><br>      right = <span class="hljs-number">10</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (systemInfo.system.indexOf(<span class="hljs-string">&#x27;Android&#x27;</span>) != -<span class="hljs-number">1</span>) &#123;<br>      top = <span class="hljs-number">8</span><br>      right = <span class="hljs-number">10</span><br>      width = <span class="hljs-number">95</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123;<br>      top: systemInfo.statusBarHeight + top,<br>      left: systemInfo.windowWidth - width - right,<br>      width: width,<br>      height: height<br>    &#125;<br>  &#125;<br><br>/**<br>   * 获取工具栏样式<br>   */<br>  getStatusBarStyle () &#123;<br>    <span class="hljs-keyword">let</span> statusBarPosition = &#123;<br>      top: <span class="hljs-number">0</span>,<br>      left: <span class="hljs-number">0</span>,<br>      width: systemInfo.windowWidth,<br>      height: systemInfo.statusBarHeight<br>    &#125;<br>    <span class="hljs-keyword">return</span> this.formatStyle(statusBarPosition)<br>  &#125;,<br><br>   /**<br>   * 获取导航栏样式<br>   */<br>  getNavigationBarStyle () &#123;<br>    <span class="hljs-keyword">let</span> menuPosition = this.getMenuPosition()<br>    <span class="hljs-keyword">let</span> navigationBarPosition = &#123;<br>      top: systemInfo.statusBarHeight,<br>      left: <span class="hljs-number">0</span>,<br>      width: systemInfo.windowWidth,<br>      height: (menuPosition.top - systemInfo.statusBarHeight) * <span class="hljs-number">2</span> + menuPosition.height<br>    &#125;<br>    <span class="hljs-keyword">return</span> this.formatStyle(navigationBarPosition)<br>  &#125;,<br>  /**<br>   * 获取导航样式<br>   */<br>  getNavigationStyle () &#123;<br>    <span class="hljs-keyword">let</span> menuPosition = this.getMenuPosition()<br>    <span class="hljs-keyword">let</span> padding = systemInfo.windowWidth - menuPosition.left - menuPosition.width<br>    <span class="hljs-keyword">let</span> navigationPosition = &#123;<br>      top: menuPosition.top,<br>      left: padding,<br>      width: systemInfo.windowWidth - padding * <span class="hljs-number">3</span> - menuPosition.width,<br>      height: menuPosition.height<br>    &#125;<br>    <span class="hljs-keyword">return</span> this.formatStyle(navigationPosition)<br>  &#125;,<br>  /**<br>   * 获取胶囊按钮样式<br>   */<br>  getMenuStyle() &#123;<br>    <span class="hljs-keyword">return</span> this.formatStyle(this.getMenuPosition())<br>  &#125;,<br>  /**<br>   * 格式化Style<br>   */<br>  formatStyle <span class="hljs-built_in">(position</span>) &#123;<br>    <span class="hljs-keyword">let</span> styles = []<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span><span class="hljs-built_in"> key</span> <span class="hljs-keyword">in</span><span class="hljs-built_in"> position</span>) &#123;<br>      styles.push(`$<span class="hljs-built_in">&#123;key</span>&#125;: $<span class="hljs-built_in">&#123;position</span><span class="hljs-built_in">[key</span>]&#125;px;`)<br>    &#125;<br>    <span class="hljs-keyword">return</span> styles.join(<span class="hljs-string">&#x27; &#x27;</span>)<br>  &#125;<br><br><br>wxml 文件如下<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-comment">&lt;!-- status-bar --&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;status-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;</span></span></span><span class="language-xquery">&#123;&#123; statusBarStyle &#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#125;&quot;</span>/&gt;</span></span><br><span class="language-xml">  <span class="hljs-comment">&lt;!-- navigation-bar --&gt;</span></span><br><span class="language-xml">  </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navigation-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;&#123;&#123; navigationBarStyle &#125;&#125;&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-comment">&lt;!-- title --&gt;</span></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navigation&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;&#123;&#123; navigationStyle &#125;&#125;&quot;</span>&gt;</span></span><br><span class="language-xml">      这是最佳可操作区域</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-comment">&lt;!-- menu --&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;</span></span></span><span class="language-xquery">&#123;&#123; menuStyle &#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#125;&quot;</span>/&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
+<p>总结一下这种计算只是区分了最常规的几种显示方案，包括开发工具的安卓，开发工具的 IOS， 真机的安卓，真机的 IOS,只是囊括了最通用的显示方案，但是如果真机范围足够广的话应该会有问题，需要对出现问题的机型逐一兼容。</p>
+<h4 id="拼多多-官方不稳的方案二"><a href="#拼多多-官方不稳的方案二" class="headerlink" title="拼多多+官方不稳的方案二"></a>拼多多+官方不稳的方案二</h4><p>其实官方提供了一个方法来获取胶囊的位置<br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/menu/wx.getMenuButtonBoundingClientRect.html">wx.getMenuButtonBoundingClientRect</a><br>,但是这个方法可能获取不到或者根本不准确<br>问题列表如下：<br><img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/error.png" srcset="/img/loading.gif" lazyload><br>到目前为止还是没有完美解决这个问题，所以该方法还是要慎重使用。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs processing"><br><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">const</span> systemInfo = wx.<span class="hljs-property">getSystemInfoSync</span>();<br>  <span class="hljs-built_in">rect</span> = wx.<span class="hljs-property">getMenuButtonBoundingClientRect</span> ? wx.<span class="hljs-property">getMenuButtonBoundingClientRect</span>() : <span class="hljs-literal">null</span>;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">rect</span> === <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&#x27;getMenuButtonBoundingClientRect error&#x27;</span>;<br>  &#125;<br>  <span class="hljs-comment">//取值为0的情况</span><br>  <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">rect</span>.<span class="hljs-property">width</span>) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-string">&#x27;getMenuButtonBoundingClientRect error&#x27;</span>;<br>  &#125;<br>&#125; <span class="hljs-title function_">catch</span> (error) &#123;<br>  let gap = <span class="hljs-string">&#x27;&#x27;</span>; <span class="hljs-comment">//胶囊按钮上下间距 使导航内容居中</span><br>  let <span class="hljs-built_in">width</span> = <span class="hljs-number">96</span>; <span class="hljs-comment">//胶囊的宽度，android大部分96或者95，ios为88或者87</span><br>  <span class="hljs-keyword">if</span> (systemInfo.<span class="hljs-property">platform</span> === <span class="hljs-string">&#x27;android&#x27;</span>) &#123;<br>    gap = <span class="hljs-number">8</span>;<br>    <span class="hljs-built_in">width</span> = <span class="hljs-number">96</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (systemInfo.<span class="hljs-property">platform</span> === <span class="hljs-string">&#x27;devtools&#x27;</span>) &#123;<br>    <span class="hljs-keyword">if</span> (ios) &#123;<br>      gap = <span class="hljs-number">6</span>; <span class="hljs-comment">//开发工具中ios手机 5.5</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      gap = <span class="hljs-number">8</span>; <span class="hljs-comment">//开发工具中android和其他手机 7.5</span><br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    gap = <span class="hljs-number">4</span>;<br>    <span class="hljs-built_in">width</span> = <span class="hljs-number">88</span>;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (!systemInfo.<span class="hljs-property">statusBarHeight</span>) &#123;<br>    <span class="hljs-comment">//开启wifi的情况下修复statusBarHeight值获取不到</span><br>    systemInfo.<span class="hljs-property">statusBarHeight</span> = systemInfo.<span class="hljs-property">screenHeight</span> - systemInfo.<span class="hljs-property">windowHeight</span> - <span class="hljs-number">20</span>;<br>  &#125;<br>  <span class="hljs-built_in">rect</span> = &#123;<br>    <span class="hljs-comment">//获取不到胶囊信息就自定义重置一个</span><br>    bottom: systemInfo.<span class="hljs-property">statusBarHeight</span> + gap + <span class="hljs-number">32</span>,<br>    <span class="hljs-built_in">height</span>: <span class="hljs-number">32</span>,<br>    left: systemInfo.<span class="hljs-property">windowWidth</span> - <span class="hljs-built_in">width</span> - <span class="hljs-number">10</span>,<br>    right: systemInfo.<span class="hljs-property">windowWidth</span> - <span class="hljs-number">10</span>,<br>    top: systemInfo.<span class="hljs-property">statusBarHeight</span> + gap,<br>    <span class="hljs-built_in">width</span>: <span class="hljs-built_in">width</span><br>  &#125;;<br>  console.<span class="hljs-property">log</span>(<span class="hljs-string">&#x27;error&#x27;</span>, error);<br>  console.<span class="hljs-property">log</span>(<span class="hljs-string">&#x27;rect&#x27;</span>, <span class="hljs-built_in">rect</span>);<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+<p>通过兼容官方的<code>wx.getMenuButtonBoundingClientRect</code>方法，再加上方法一中的设定默认值的方案基本就能满足所有场景了。</p>
+<h3 id="swiper-高度问题"><a href="#swiper-高度问题" class="headerlink" title="swiper 高度问题"></a>swiper 高度问题</h3><p>我们开发时还有这样一个问题比如我们需要使用<code>swiper</code>组件，但是问题就是， swiper 中的内容高度是 100%的，这样如果在 swiper 中同时有上滑加载更多<br>就会有内容显示不全的问题，为了解决这个问题我用的方法一是动态调整 swiper 内容的高度，代码如下</p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">swiper</span>  <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:100%; height: &#123;\&#123;swiperHeight px;&#125;\&#125;&quot;</span> &gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">types</span>&#125;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">&quot;*this&quot;</span> <span class="hljs-attr">wx:for-item</span>=<span class="hljs-string">&quot;currentType&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">swiper-item</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;start_view&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;start-view&quot;</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">couponType</span> ===  currentType&#125;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tips-con&quot;</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-comment">&#123;&#123;!emptyLoading &amp;&amp; !hasPosition &amp;&amp;  couponType === &#x27;nearby&#x27;&#125;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tips-item&quot;</span>&gt;</span>若小程序定位已开启<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tips-item&quot;</span>&gt;</span>请进入系统“设置”-“隐私”-“定位服务”中打开开关<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tips-item&quot;</span>&gt;</span>允许使用定位系统<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn open-setting-btn&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;openSetting&quot;</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-comment">&#123;&#123;!hasPosition &amp;&amp;  couponType === &#x27;nearby&#x27;&#125;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><br><span class="language-xml">            开启定位</span><br><span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;end_view&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;start-view&quot;</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">couponType</span> ===currentType &#125;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">swiper-item</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">swiper</span>&gt;</span></span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
+
+<p>其中<code>swiperHeight</code>是动态参数， 我们在请求拿到数据后，通过 <code>setData(&#123; list,&#125;) </code>之后，获取 <code>start_view</code> 和 <code>end_view</code> 之间内容的高度来重新计算高度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">autoHeight</span>(<span class="hljs-params"></span>) &#123;<br>    wx.<span class="hljs-title function_">createSelectorQuery</span>()<br><br>      .<span class="hljs-title function_">select</span>(<span class="hljs-string">&quot;#end_view&quot;</span>)<br>      .<span class="hljs-title function_">boundingClientRect</span>()<br><br>      .<span class="hljs-title function_">select</span>(<span class="hljs-string">&quot;#start_view&quot;</span>)<br>      .<span class="hljs-title function_">boundingClientRect</span>()<br>      .<span class="hljs-title function_">exec</span>(<span class="hljs-function">(<span class="hljs-params">rect</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">let</span> _space = rect[<span class="hljs-number">0</span>].<span class="hljs-property">top</span> - rect[<span class="hljs-number">1</span>].<span class="hljs-property">top</span>;<br><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>          <span class="hljs-attr">swiperHeight</span>: _space,<br>        &#125;);<br>      &#125;);<br>  &#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>方法一我们只是用了<code>swiper</code>组件，另一种实现方式是同时使用 <code>swiper</code> 和 <code>scroll</code>，<br>计算可视内容高度然后将 scroll 设置成固定高度，向上拖动自动追加新内容，只需要计算一次</p>
+<h3 id="统一请求拦截"><a href="#统一请求拦截" class="headerlink" title="统一请求拦截"></a>统一请求拦截</h3><p>小程序发送请求我们会使用<code>wx.request</code>，如果需要设置统一的<code>Content-Type</code>或者在<code>headers</code>带上<code>token</code>， 就需要将请求封装</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5d2748486fb9a07ed2249914">小程序之自定义头部导航栏</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5d557e2e5188255af1619716">微信小程序自定义导航栏组件(完美适配所有手机),可自定义实现任何你想要的功能</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/article/doc/000aa842274d58cb15f74f81f56013">自定义导航栏所有机型的适配方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/article/doc/00048e5ed784b037b959757385b413">小程序顶部自定义导航组件实现原理及坑分享</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5ca0c4fc51882567ba6a6422#heading-3">小程序自定义导航栏适配（完美版）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5b496d5d5188251a90187635#heading-8">【微信小程序】性能优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5e56762fe51d45271a03a2e6">小程序订阅消息用户拒绝&#x2F;关闭后，如何引导用户再次开启？并获得用户的操作状态？</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="category-chain-item">小程序</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">#小程序</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>小程序开发填坑</div>
+      <div>http://example.com/2020/05/21/miniprogram-pit/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>toshiba</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年5月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/12/vscode-quick/" title="VSCode使用指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">VSCode使用指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/24/babel-config/" title="Babel最简单配置">
+                        <span class="hidden-mobile">Babel最简单配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2020/05/21/miniprogram-pit/';
+          this.page.identifier = '/2020/05/21/miniprogram-pit/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'IORI' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

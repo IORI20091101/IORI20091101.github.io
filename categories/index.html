@@ -1,0 +1,1438 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/desk-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="toshiba">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="分类">
+<meta property="og:url" content="http://example.com/categories/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="toshiba">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>分类 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>喬伊·波伊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg/bg2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="分类"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="读书总结"
+        id="heading-a2ff9ecac6050eafcb3e9ed25dbbf8a0" role="tab" data-toggle="collapse" href="#collapse-a2ff9ecac6050eafcb3e9ed25dbbf8a0"
+        aria-expanded="false"
+      >
+        读书总结
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>13</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-a2ff9ecac6050eafcb3e9ed25dbbf8a0"
+           role="tabpanel" aria-labelledby="heading-a2ff9ecac6050eafcb3e9ed25dbbf8a0">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2018/10/18/read-book-you-known-middle-one/" title="你不知道的JavaScript中卷(一)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">你不知道的JavaScript中卷(一)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/10/08/read-book-you-known-up-one/" title="你不知道的JavaScript上卷"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">你不知道的JavaScript上卷</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/28/read-book-effective-nine/" title="Effective JavaScript (九)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (九)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/28/read-book-effective-ten/" title="Effective JavaScript (十)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (十)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/25/read-book-effective-eight/" title="Effective JavaScript (八)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (八)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/19/read-book-effective-seven/" title="Effective JavaScript (七)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (七)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/11/read-book-effective-five/" title="Effective JavaScript (五)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (五)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/11/read-book-effective-six/" title="Effective JavaScript (六)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (六)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/06/27/read-book-effective-four/" title="Effective JavaScript (四)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (四)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/06/22/read-book-effective-three/" title="Effective JavaScript (三)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Effective JavaScript (三)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="js基础知识"
+        id="heading-aa52ee1b564975b876b6fb23c925bf00" role="tab" data-toggle="collapse" href="#collapse-aa52ee1b564975b876b6fb23c925bf00"
+        aria-expanded="false"
+      >
+        js基础知识
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>6</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-aa52ee1b564975b876b6fb23c925bf00"
+           role="tabpanel" aria-labelledby="heading-aa52ee1b564975b876b6fb23c925bf00">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2019/11/12/js-array/" title="JavaScript内置对象之数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript内置对象之数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/17/js-base-currying/" title="函数柯里化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">函数柯里化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/20/js-generator/" title="Generator函数的含义和用法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Generator函数的含义和用法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/16/lodash-one/" title="Lodash.js源码阅读分析（一）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Lodash.js源码阅读分析（一）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/01/bin-operate/" title="javascript的位操作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">javascript的位操作</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/01/js-base-number/" title="javascript的的最大安全数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">javascript的的最大安全数</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="生产工具"
+        id="heading-09b03024b2f79eddfedf88b19f40f6dd" role="tab" data-toggle="collapse" href="#collapse-09b03024b2f79eddfedf88b19f40f6dd"
+        aria-expanded="false"
+      >
+        生产工具
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-09b03024b2f79eddfedf88b19f40f6dd"
+           role="tabpanel" aria-labelledby="heading-09b03024b2f79eddfedf88b19f40f6dd">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2020/10/12/vscode-quick/" title="VSCode使用指南"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">VSCode使用指南</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/03/15/vim-config/" title="vim快捷键和配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vim快捷键和配置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/15/idea-quick/" title="IDEA快捷键"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">IDEA快捷键</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/15/quick-key/" title="Visual Studio快捷键"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Visual Studio快捷键</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/11/15/sublime-quick/" title="SublimeText快捷键"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SublimeText快捷键</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="LeetCode"
+        id="heading-071fda8ffed879b16c3308d2133bac46" role="tab" data-toggle="collapse" href="#collapse-071fda8ffed879b16c3308d2133bac46"
+        aria-expanded="false"
+      >
+        LeetCode
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/LeetCode/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-071fda8ffed879b16c3308d2133bac46"
+           role="tabpanel" aria-labelledby="heading-071fda8ffed879b16c3308d2133bac46">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2019/09/08/leetcode-five/" title="LeetCode刷题总结(简单版五)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LeetCode刷题总结(简单版五)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/07/leetcode-four/" title="LeetCode刷题总结(简单版四)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LeetCode刷题总结(简单版四)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/05/leetcode-three/" title="LeetCode刷题总结(简单版三)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LeetCode刷题总结(简单版三)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/04/leetcode-two/" title="LeetCode刷题总结(简单版二)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LeetCode刷题总结(简单版二)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2019/09/03/leetcode-one/" title="LeetCode刷题总结(简单版一)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LeetCode刷题总结(简单版一)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="面试"
+        id="heading-1573c74e227f14ded2daa71bb049ecda" role="tab" data-toggle="collapse" href="#collapse-1573c74e227f14ded2daa71bb049ecda"
+        aria-expanded="false"
+      >
+        面试
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-1573c74e227f14ded2daa71bb049ecda"
+           role="tabpanel" aria-labelledby="heading-1573c74e227f14ded2daa71bb049ecda">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2019/09/16/browser-input-all/" title="在浏览器输入 URL 回车之后发生了什么"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">在浏览器输入 URL 回车之后发生了什么</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/11/inverview-css/" title="CSS面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/11/inverview-html/" title="HTML面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">HTML面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/09/11/inverview-js/" title="JavaScript面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript面试题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术文章"
+        id="heading-fa68088fdc641de7bb462464d8f2fb33" role="tab" data-toggle="collapse" href="#collapse-fa68088fdc641de7bb462464d8f2fb33"
+        aria-expanded="false"
+      >
+        技术文章
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fa68088fdc641de7bb462464d8f2fb33"
+           role="tabpanel" aria-labelledby="heading-fa68088fdc641de7bb462464d8f2fb33">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2017/10/31/admin-theme/" title="常用的后台管理主题模板"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">常用的后台管理主题模板</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/09/05/blog-static-nginx/" title="使用travis-ci集成项目,自动部署博客站点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">使用travis-ci集成项目,自动部署博客站点</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/09/05/jekyll-site/" title="搭建jekyll 博客流程记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">搭建jekyll 博客流程记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="前端工程化"
+        id="heading-93941ce1385f4ff3812a61a48670664a" role="tab" data-toggle="collapse" href="#collapse-93941ce1385f4ff3812a61a48670664a"
+        aria-expanded="false"
+      >
+        前端工程化
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-93941ce1385f4ff3812a61a48670664a"
+           role="tabpanel" aria-labelledby="heading-93941ce1385f4ff3812a61a48670664a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2020/04/24/babel-config/" title="Babel最简单配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Babel最简单配置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/04/23/eslint-prettier/" title="使用Eslint&amp;Prettier来统一代码风格"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">使用Eslint&amp;Prettier来统一代码风格</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/03/31/frontend-engineering/" title="前端工程化思考"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">前端工程化思考</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="版本控制"
+        id="heading-e9a2d9e35ee722d91e11441855a12ab0" role="tab" data-toggle="collapse" href="#collapse-e9a2d9e35ee722d91e11441855a12ab0"
+        aria-expanded="false"
+      >
+        版本控制
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e9a2d9e35ee722d91e11441855a12ab0"
+           role="tabpanel" aria-labelledby="heading-e9a2d9e35ee722d91e11441855a12ab0">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2017/10/22/git-senior/" title="git的使用教程(三)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git的使用教程(三)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/10/21/git-medium/" title="git的使用教程(二)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git的使用教程(二)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2017/10/12/base/" title="git的使用教程(一)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git的使用教程(一)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚手架"
+        id="heading-8a884ff2e5b7c0e04f9fd4295581a196" role="tab" data-toggle="collapse" href="#collapse-8a884ff2e5b7c0e04f9fd4295581a196"
+        aria-expanded="false"
+      >
+        脚手架
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-8a884ff2e5b7c0e04f9fd4295581a196"
+           role="tabpanel" aria-labelledby="heading-8a884ff2e5b7c0e04f9fd4295581a196">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2018/10/21/scaffold-front-www/" title="搭建门户网站技术选型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">搭建门户网站技术选型</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机基础"
+        id="heading-5a596b42154341fee9d0bdf28baa6524" role="tab" data-toggle="collapse" href="#collapse-5a596b42154341fee9d0bdf28baa6524"
+        aria-expanded="false"
+      >
+        计算机基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-5a596b42154341fee9d0bdf28baa6524"
+           role="tabpanel" aria-labelledby="heading-5a596b42154341fee9d0bdf28baa6524">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2017/10/31/bin-calculate/" title="原码, 反码, 补码 详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">原码, 反码, 补码 详解</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="调试"
+        id="heading-b7c0bfff1b6f1cc255716a1cb8b68011" role="tab" data-toggle="collapse" href="#collapse-b7c0bfff1b6f1cc255716a1cb8b68011"
+        aria-expanded="false"
+      >
+        调试
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E8%B0%83%E8%AF%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-b7c0bfff1b6f1cc255716a1cb8b68011"
+           role="tabpanel" aria-labelledby="heading-b7c0bfff1b6f1cc255716a1cb8b68011">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2018/10/20/debug-webview/" title="安卓和IOS前端页面调试"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">安卓和IOS前端页面调试</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="娱乐"
+        id="heading-9acf9c6f117a4c2d02de30294ec29da9" role="tab" data-toggle="collapse" href="#collapse-9acf9c6f117a4c2d02de30294ec29da9"
+        aria-expanded="false"
+      >
+        娱乐
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E5%A8%B1%E4%B9%90/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-9acf9c6f117a4c2d02de30294ec29da9"
+           role="tabpanel" aria-labelledby="heading-9acf9c6f117a4c2d02de30294ec29da9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2017/10/29/entertainment/" title="娱乐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">娱乐</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Gatsby"
+        id="heading-fd8faf737018c09388c908d090bd0940" role="tab" data-toggle="collapse" href="#collapse-fd8faf737018c09388c908d090bd0940"
+        aria-expanded="false"
+      >
+        Gatsby
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/Gatsby/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fd8faf737018c09388c908d090bd0940"
+           role="tabpanel" aria-labelledby="heading-fd8faf737018c09388c908d090bd0940">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/01/22/gatsby/" title="Gatsby入门test"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Gatsby入门test</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工作面试"
+        id="heading-69cf1b3d39f14a98e3f34f34ef13c710" role="tab" data-toggle="collapse" href="#collapse-69cf1b3d39f14a98e3f34f34ef13c710"
+        aria-expanded="false"
+      >
+        工作面试
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-69cf1b3d39f14a98e3f34f34ef13c710"
+           role="tabpanel" aria-labelledby="heading-69cf1b3d39f14a98e3f34f34ef13c710">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2017/10/12/interview/" title="LeetCode,LintCode,Hihocoder刷题指南"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">LeetCode,LintCode,Hihocoder刷题指南</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="小程序"
+        id="heading-0ed5103f88f9b3417c8cba24b8cc268d" role="tab" data-toggle="collapse" href="#collapse-0ed5103f88f9b3417c8cba24b8cc268d"
+        aria-expanded="false"
+      >
+        小程序
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-0ed5103f88f9b3417c8cba24b8cc268d"
+           role="tabpanel" aria-labelledby="heading-0ed5103f88f9b3417c8cba24b8cc268d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2020/05/21/miniprogram-pit/" title="小程序开发填坑"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">小程序开发填坑</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="随笔"
+        id="heading-8936f53b23e9dfe2965d9e2ec23a4779" role="tab" data-toggle="collapse" href="#collapse-8936f53b23e9dfe2965d9e2ec23a4779"
+        aria-expanded="false"
+      >
+        随笔
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E9%9A%8F%E7%AC%94/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-8936f53b23e9dfe2965d9e2ec23a4779"
+           role="tabpanel" aria-labelledby="heading-8936f53b23e9dfe2965d9e2ec23a4779">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2020/01/01/onte-one/" title="新年随笔"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">新年随笔</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="reactjs"
+        id="heading-3c797270102480cb4d1207d1e1d07a33" role="tab" data-toggle="collapse" href="#collapse-3c797270102480cb4d1207d1e1d07a33"
+        aria-expanded="false"
+      >
+        reactjs
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/reactjs/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-3c797270102480cb4d1207d1e1d07a33"
+           role="tabpanel" aria-labelledby="heading-3c797270102480cb4d1207d1e1d07a33">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2018/06/19/react-lesson-one/" title="React初步学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">React初步学习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="React"
+        id="heading-50ce2da63bea6a618e7578fa50690040" role="tab" data-toggle="collapse" href="#collapse-50ce2da63bea6a618e7578fa50690040"
+        aria-expanded="false"
+      >
+        React
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/React/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-50ce2da63bea6a618e7578fa50690040"
+           role="tabpanel" aria-labelledby="heading-50ce2da63bea6a618e7578fa50690040">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2020/01/02/react-read-one/" title="重读React系列(一)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">重读React系列(一)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础"
+        id="heading-0796ba76b4b553687e5ffaeb78512ccb" role="tab" data-toggle="collapse" href="#collapse-0796ba76b4b553687e5ffaeb78512ccb"
+        aria-expanded="false"
+      >
+        基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-0796ba76b4b553687e5ffaeb78512ccb"
+           role="tabpanel" aria-labelledby="heading-0796ba76b4b553687e5ffaeb78512ccb">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2019/10/16/url-encode/" title="URL编码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">URL编码</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
