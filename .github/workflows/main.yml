@@ -13,6 +13,7 @@ jobs:
   pages:
     name: deploy GH pages
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
