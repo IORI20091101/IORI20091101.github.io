@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - "main"
-env:
-  SDR_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY_ID_RSA }}
-  SDR_SSH_HOST_USER: ${{ secrets.SDR_SSH_HOST_USER }}
-  SDR_SSH_HOST: ${{ secrets.DEV_SERVER_IP }}
-
 jobs:
   pages:
     name: deploy GH pages
@@ -37,8 +32,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-      - name: "Setup SSH and docker remote host"
-        uses: nightstory/setup-docker-remote@v1
-
+      - name: Create RSA
+        uses: echo -e "${{ secrets.PUBLIC_KEY }}" >> ~/.ssh/id_rsa
+      - name: Copy RSA
+        uses: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - name: "Execute docker ps via remote host"
-        run: docker ps
+        run: ssh root@sdongzhi.com "docker restart darknights_www_web_1"
