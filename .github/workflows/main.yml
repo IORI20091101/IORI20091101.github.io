@@ -37,7 +37,7 @@ jobs:
       - name: Change mod
         run: chmod 600 ~/.ssh/id_rsa
       - name: Create RSA
-        run: echo -e "${{ secrets.PUBLIC_KEY }}" >> ~/.ssh/id_rsa
+        run: echo -e "${{ secrets.PRIVATE_KEY }}" >> ~/.ssh/id_rsa
       - name: Copy RSA
         run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - name: "Execute docker ps via remote host"
