@@ -16,12 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - name: Decrypt Token
-        run: openssl aes-256-cbc -K ${{ ENV.KEY }} -iv ${{ ENV.IV }} -in id_rsa.enc -out ~/.ssh/id_rsa -d
-      - name: Change priority
-        run: chmod 600 ~/.ssh/id_rsa
-      - name: Write Rsa
-        run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+      # - name: Decrypt Token
+      #   run: openssl aes-256-cbc -K ${{ ENV.KEY }} -iv ${{ ENV.IV }} -in id_rsa.enc -out ~/.ssh/id_rsa -d
+      # - name: Change priority
+      #   run: chmod 600 ~/.ssh/id_rsa
+      # - name: Write Rsa
+      #   run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - name: Cache NPM dependencies
         uses: actions/cache@v3
         with:
