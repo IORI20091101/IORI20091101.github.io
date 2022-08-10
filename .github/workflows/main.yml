@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - "main"
-
+env:
+  SDR_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY_ID_RSA }}
+  SDR_SSH_HOST_USER: ${{ secrets.SDR_SSH_HOST_USER }}
+  SDR_SSH_HOST: ${{ secrets.DEV_SERVER_IP }}
 jobs:
   pages:
     name: deploy GH pages
@@ -16,12 +19,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - name: Decrypt Token
-        run: openssl aes-256-cbc -K ${{ secrets.KEY }} -iv ${{ secrets.IV }} -in id_rsa.enc -out ~/.ssh/id_rsa -d
-      - name: Change priority
-        run: chmod 600 ~/.ssh/id_rsa
-      - name: Write Rsa
-        run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - name: Cache NPM dependencies
         uses: actions/cache@v3
         with:
@@ -38,3 +35,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+      - name: "Setup SSH and docker remote host"
+        uses: nightstory/setup-docker-remote@v1
+
+      - name: "Execute docker ps via remote host"
+        run: docker ps
