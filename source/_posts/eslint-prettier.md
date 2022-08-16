@@ -22,8 +22,8 @@ categories:
 - [Airbnb](https://github.com/airbnb)
 - [Standardjs](https://standardjs.com/)
 
-![](https://cdn.darknights.cn/assets/images/in-post/eslint/airbnb.png)
-![](https://cdn.darknights.cn/assets/images/in-post/eslint/standard.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/eslint/airbnb.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/eslint/standard.png)
 
 这个两种规范都可以，但是这里推荐使用第一种。在选择了一种规范后如何来遵守呢。这里就要使用我们的神器<code>Eslint</code>,Eslint 是一个 JS Linter 工具
 

@@ -32,7 +32,7 @@ categories:
 ```
 示例 1：
 
-输入： 
+输入：
 上边界left = 1, 下边界right = 22
 输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
 ```
@@ -84,8 +84,8 @@ var selfDividingNumbers = function (left, right) {
 和值: 2
 你应该返回如下子树:
 
-      2     
-     / \   
+      2
+     / \
     1   3
 在上述示例中，如果要找的值是 5，但因为没有节点值为 5，我们应该返回 NULL。
 ```
@@ -109,7 +109,7 @@ var searchBST = function(root, val) {
     if(root === null) {
         return null;
     }
-    
+
     if(root.val > val) {
         return searchBST(root.left, val);
     } else if(root.val === val) {
@@ -145,9 +145,9 @@ class Solution {
 //按照逻辑递归
 class Solution {
     public TreeNode searchBST(TreeNode root, int val) {
-        if(root == null) 
+        if(root == null)
             return null;
-        
+
         if(root.val == val) {
             return root;
         } else if(val < root.val) {
@@ -163,7 +163,7 @@ class Solution {
 [N叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/):给定一个 N 叉树，返回其节点值的后序遍历。
 
 例如，给定一个 3叉树 :
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/narytree.png)
 返回其后序遍历: [5,6,3,2,4,1].
 
 说明: 递归法很简单，你可以使用迭代法完成此题吗?
@@ -243,7 +243,7 @@ class Solution {
 
 ### 4.N叉树的前序遍历
 例如，给定一个 3叉树 :
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/narytree.png)
 返回其前序遍历: [1,3,5,6,2,4]。
 说明: 递归法很简单，你可以使用迭代法完成此题吗?
 
@@ -265,7 +265,7 @@ var preorder = function(root) {
     var res = [];
     recusion(root);
     return res;
-    
+
     function recusion(root) {
         if(!root) return;
         res.push(root.val);
@@ -298,7 +298,7 @@ class Solution {
     public List<Integer> preorder(Node root) {
         List<Integer> res = new ArrayList<Integer>();
         if(root == null) return res;
-    
+
         Stack<Node> stack = new Stack<>();
         stack.push(root);
         while(!stack.isEmpty()) {
@@ -326,7 +326,7 @@ class Solution {
 示例:
 
 输入: 4
-输出: false 
+输出: false
 解释: 如果堆中有 4 块石头，那么你永远不会赢得比赛；
      因为无论你拿走 1 块、2 块 还是 3 块石头，最后一块石头总是会被你的朋友拿走。
 
@@ -340,7 +340,7 @@ class Solution {
  * @return {boolean}
  */
 var canWinNim = function(n) {
-    return n % 4 ? true: false;  
+    return n % 4 ? true: false;
 };
 ```
 
@@ -441,9 +441,9 @@ class Solution {
          if (A == null || A.length < 3)  {
             return 0;
         }
-        
+
         int ans = 0;
-    
+
         int left = 0;
         int right = A.length;
 
@@ -500,7 +500,7 @@ class Solution {
  * @param {number} N
  * @return {boolean}
  */
-var divisorGame = function(N) {    
+var divisorGame = function(N) {
     let x = finx(N);
     let oN = N;
     let count = 0;
@@ -513,7 +513,7 @@ var divisorGame = function(N) {
         return true;
     }
     return false;
-    
+
     function finx(num){
         let x = false;
         for(let i = 1; i < num; i++) {
@@ -524,7 +524,7 @@ var divisorGame = function(N) {
         }
         return x;
     }
-        
+
 };
 ```
 
@@ -595,7 +595,7 @@ var RecentCounter = function() {
     this.result = [];
 };
 
-/** 
+/**
  * @param {number} t
  * @return {number}
  */
@@ -607,7 +607,7 @@ RecentCounter.prototype.ping = function(t) {
     return this.result.length;
 };
 
-/** 
+/**
  * Your RecentCounter object will be instantiated and called as such:
  * var obj = new RecentCounter()
  * var param_1 = obj.ping(t)
@@ -700,9 +700,9 @@ var findComplement = function(num) {
  * @return {number[]}
  */
 var sortArrayByParity = function(A) {
-  
+
   return A.filter(val => val % 2 == 0).concat(A.filter(val => val % 2 !== 0))
-    
+
 };
 ```
 

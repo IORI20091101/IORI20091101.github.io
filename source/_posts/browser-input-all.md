@@ -59,7 +59,7 @@ categories:
 
 #### 根域名服务器查询
 在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：
-![](https://cdn.darknights.cn/assets/images/in-post/browser-input/search.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/search.png)
 
 需要注意的点
 
@@ -82,7 +82,7 @@ categories:
 ### TCP连接
 TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 
-![](https://cdn.darknights.cn/assets/images/in-post/browser-input/tcp.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/tcp.png)
 
 
 #### 应用层:发送HTTP请求
@@ -160,9 +160,9 @@ TCP/IP 分四层,在发送数据时,每层都要对数据进行封装
 
 ### 渲染页面
 
-![](https://cdn.darknights.cn/assets/images/in-post/browser-input/core.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/core.png)
 
-![](https://cdn.darknights.cn/assets/images/in-post/browser-input/process.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/process.png)
 
 
 

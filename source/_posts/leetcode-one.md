@@ -53,11 +53,11 @@ var numJewelsInStones = function(J, S) {
             if(j === S.charAt(k)) {
                 sum++;
             }
-        }   
+        }
     }
-    
+
     return sum;
-    
+
 };
 ```
 
@@ -76,9 +76,9 @@ var numJewelsInStones = function(J, S) {
     for(var i = 0; i < jLen; i++) {
         news = news.replace(new RegExp(J.charAt(i), 'g'), "");
     }
-    
+
     return sLen - news.length;
-    
+
 };
 
 ```
@@ -113,7 +113,7 @@ var defangIPaddr = function(address) {
 [删除链表中的节点](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/):
 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/237_example.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/237_example.png)
 ```
 示例1
 输入: head = [4,5,1,9], node = 5
@@ -235,17 +235,17 @@ where num > 1;
 
 #### 答案一
 ```mysql
-SELECT name, population, area 
-FROM world 
+SELECT name, population, area
+FROM world
 WHERE area > 3000000
 UNION
-SELECT name, population, area 
-FROM world 
+SELECT name, population, area
+FROM world
 WHERE population > 25000000
 
 
-SELECT name, population, area 
-FROM world 
+SELECT name, population, area
+FROM world
 WHERE area > 3000000 OR population > 25000000
 ```
 
@@ -261,7 +261,7 @@ WHERE area > 3000000 OR population > 25000000
 示例2:
 输入：root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
 输出：23
-``` 
+```
 提示
 * 树中的结点数量最多为 10000 个。
 * 最终的答案保证小于 2^31。
@@ -314,7 +314,7 @@ class Solution {
 
                 if(L < node.val)
                     stack.push(node.left);
-                
+
                 if(node.val < R)
                     stack.push(node.right);
             }
@@ -328,8 +328,8 @@ class Solution {
 
 #### 答案二
 <code>JavaScript</code>画图解题
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/tree.jpeg)
-假设L= 7，R=15 
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/tree.jpeg)
+假设L= 7，R=15
 * 如果node.val >= 7 && node.val <= 15 则直接求和
 * 如果node.val > 7,则node.right的值都大于7，右侧没有搜索必要，去查找left的值
 * 如果node.val < 15,则node.left的值都小于15，左侧没有搜索必要，去查找right的值
@@ -350,7 +350,7 @@ class Solution {
  */
 var rangeSumBST = function(root, L, R) {
     var sum = 0;
-        
+
     const dealBinTree = node => {
         if(node !== null) {
             if(L < node.val) {
@@ -362,13 +362,13 @@ var rangeSumBST = function(root, L, R) {
             if(R > node.val) {
                     dealBinTree(node.right);
             }
-            
+
         }
-    
+
     }
-    
+
     dealBinTree(root);
-    
+
     return sum;
 };
 ```
@@ -403,11 +403,11 @@ var toLowerCase = function(str) {
     for(var i = 0, len = str.length; i < len; i++) {
         var c = str.charCodeAt(i);
         if(c >= 65 && c <= 90) {
-           s += String.fromCharCode(c+32); 
+           s += String.fromCharCode(c+32);
         }  else {
-           s += str.charAt(i);    
+           s += str.charAt(i);
         }
-        
+
     }
     return s;
 };
@@ -428,7 +428,7 @@ var toLowerCase = function(str) {
 例如:
 输入: words = ["gin", "zen", "gig", "msg"]
 输出: 2
-解释: 
+解释:
 各单词翻译如下:
 "gin" -> "--...-."
 "zen" -> "--...-."
@@ -451,24 +451,24 @@ var toLowerCase = function(str) {
  */
 var uniqueMorseRepresentations = function(words) {
     var map = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
-    
+
     var obj = {};
 
     for(var i = 0, len = words.length; i < len; i++) {
-        
+
         let m = '';
         for(var j = 0, jen = words[i].length; j < jen; j++) {
              m += map[words[i].charCodeAt(j) - 97];
         }
-        
+
         if(obj.hasOwnProperty(m)) {
             obj[m] = obj[m] + 1;
         } else {
             obj[m] = 1;
         }
-        
+
     }
-    
+
 
     return Object.keys(obj).length;
 };
@@ -503,19 +503,19 @@ class Solution {
 ```
 示例 1:
 
-输入: 
-	Tree 1                     Tree 2                  
-          1                         2                             
-         / \                       / \                            
-        3   2                     1   3                        
-       /                           \   \                      
-      5                             4   7                  
-输出: 
+输入:
+	Tree 1                     Tree 2
+          1                         2
+         / \                       / \
+        3   2                     1   3
+       /                           \   \
+      5                             4   7
+输出:
 合并后的树:
 	     3
 	    / \
 	   4   5
-	  / \   \ 
+	  / \   \
 	 5   4   7
 注意: 合并必须从两个树的根节点开始。
 ```
@@ -561,11 +561,11 @@ var mergeTrees = function(t1, t2) {
     if(t2 === null) {
         return t1;
     }
-    
+
     t1.val = t1.val + t2.val;
     t1.left = mergeTrees(t1.left, t2.left);
     t1.right = mergeTrees(t1.right, t2.right);
-    
+
     return t1;
 };
 ```
@@ -612,7 +612,7 @@ var flipAndInvertImage = function(A) {
                im += Number(re[j]) === 0 ? '1' : '0';
         }
         A[i] = im.split('').reverse();
-        
+
     }
     return A;
 };
@@ -647,7 +647,7 @@ var flipAndInvertImage = function(A) {
             let temp = A[i][left];
             A[i][left] = A[i][right] ^ 1;
             A[i][right] = temp ^ 1;
-            
+
             left++;
             right--;
         }

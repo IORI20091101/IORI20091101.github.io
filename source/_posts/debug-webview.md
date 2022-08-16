@@ -22,17 +22,17 @@ categories:
 
 在本文将总结一部分调试技巧
 
-| 方法分类        | 难度   |  调试目标  | 调试效果 | 优先级 |
-| --------   | -----:  | :----:  | :----:  | :----:  |
-| Chrome自带模拟器   | 简单 |   所有     |  模拟效果，基本能调试 UI 及标准 JS 所有问题 |  极高 |   
-| chrome://inspect  |  简单  |   安卓的自带浏览器+webview   | 真机调试效果显著 |  高   |
-| spy-debugger  |  一般  |   所有页面不管是否是webview   | 效果可以 |  高  |
-| safari开发模式  |  简单  |   手机safari的所有页面   | 真机调试效果显著 |  高   |
-| xcode的iPhone模拟器  |  较难  |  webview和手机浏览器   | 调试效果显著 |  中等   |
-| weinre  |  一般  |   所有页面不管是否是webview   | 需要注入代码效果一般 |  低   |
-| 微信开发者工具  |  一般  |   模拟手机   |  | 低  |
-| TBS Studio  |  一般  |   模拟手机   |  |  未测试  |
-| Browsersync  |  一般  |   模拟手机   |  |  未测试   |
+| 方法分类            | 难度 |         调试目标          |                  调试效果                  | 优先级 |
+| ------------------- | ---: | :-----------------------: | :----------------------------------------: | :----: |
+| Chrome自带模拟器    | 简单 |           所有            | 模拟效果，基本能调试 UI 及标准 JS 所有问题 |  极高  |
+| chrome://inspect    | 简单 | 安卓的自带浏览器+webview  |              真机调试效果显著              |   高   |
+| spy-debugger        | 一般 | 所有页面不管是否是webview |                  效果可以                  |   高   |
+| safari开发模式      | 简单 |   手机safari的所有页面    |              真机调试效果显著              |   高   |
+| xcode的iPhone模拟器 | 较难 |    webview和手机浏览器    |                调试效果显著                |  中等  |
+| weinre              | 一般 | 所有页面不管是否是webview |            需要注入代码效果一般            |   低   |
+| 微信开发者工具      | 一般 |         模拟手机          |                                            |   低   |
+| TBS Studio          | 一般 |         模拟手机          |                                            | 未测试 |
+| Browsersync         | 一般 |         模拟手机          |                                            | 未测试 |
 
 
 
@@ -56,13 +56,13 @@ charles抓包请查看[这篇教程](https://www.jianshu.com/p/fdd7c681929c)
 需要几步配置
 
 * 首先打开电脑的safari
-![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari设置.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Safari设置.png)
 
 * 然后打开iPhone进行设置
-![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/iPhone设置.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/iPhone设置.png)
 
 * 最后通过电脑的safari打开进行调试
-![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/开启调试.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/开启调试.png)
 
 
 ## 调试iPhone的webview
@@ -96,19 +96,19 @@ $ sudo npm -g install weinre
 
 * 启动Weinre监听服务
 ```
-$ weinre --boundHost 10.10.2.144 --httpPort 8090 
+$ weinre --boundHost 10.10.2.144 --httpPort 8090
 ```
 
 * 使用chrome访问
 [http://10.10.2.144:8090](http://10.10.2.144:8090), 然后将一段 JS 脚本 <script src="http://10.10.2.144:8090/target/target-script-min.js#anonymous"></script> 插入到需要调试的页面中，插入代码后手机访问调试页面。
-![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/weinre.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/weinre.png)
 
 到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入
 Tools --> Rewrite 选中Enable Rewrite
 这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 </body> 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。
-![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Charles_Rewrite.jpg)
 
-![](https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Charles_Rewrite_Rule.jpg)
 
 
 ## spy-debugger

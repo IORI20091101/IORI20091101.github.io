@@ -49,9 +49,9 @@ var reverseWords = function(s) {
 稍微有点取巧的做法，reverse函数也可以用双指针实现。
 
 ```java
-class Solution 
+class Solution
 {
-    public String reverseWords(String s) 
+    public String reverseWords(String s)
     {
         String[] sp=s.split(" ");
         StringBuilder sb=new StringBuilder();
@@ -151,9 +151,9 @@ var arrayPairSum = function(nums) {
           sum += val;
       }
     });
-    
+
     return sum;
-    
+
 };
 ```
 
@@ -161,7 +161,7 @@ var arrayPairSum = function(nums) {
 [键盘行](https://leetcode-cn.com/problems/keyboard-row/):
 
 给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/keyboard.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/keyboard.png)
 注意：
 
 * 你可以重复使用键盘上同一字符。
@@ -190,14 +190,14 @@ var findWords = function(words) {
         a: 1,s: 1,d: 1,f: 1,g: 1,h: 1,j: 1,k: 1,l: 1,
         z: 2,x: 2,c: 2,v: 2,b: 2,n: 2,m: 2
     };
-    
+
     let lWords = words.map(val => val.toLowerCase());
     let leng = lWords.length;
-    
+
     let result = [];
-    
+
     lWords.forEach((str, key) => {
-        let flag = true;    
+        let flag = true;
         let first =  alObj[str.charAt(0)];
         for(let i = 0; i < str.length; i++) {
             let current = alObj[str.charAt(i)];
@@ -210,9 +210,9 @@ var findWords = function(words) {
             result.push(words[key]);
         }
     });
-    
+
     return result;
-    
+
 };
 ```
 
@@ -228,14 +228,14 @@ var findWords = function(words) {
         let flag1 = reg1.test(word);
         let flag2 = reg2.test(word);
         let flag3 = reg3.test(word);
-        
+
         if((flag1 && !flag2 && !flag3)||(!flag1 && !flag2 && flag3)||(!flag1 && flag2 && !flag3)){
             result.push(word);
         }
     })
 
     return result;
-    
+
 }
 
 ```
@@ -363,9 +363,9 @@ class Solution {
 删除 操作的定义是：选出一组要删掉的列，删去 A 中对应列中的所有字符，形式上，第 n 列为 [A[0][n], A[1][n], ..., A[A.length-1][n]]）。
 
 比如，有 A = ["abcdef", "uvwxyz"]，
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/944_1.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/944_1.png)
 要删掉的列为 {0, 2, 3}，删除后 A 为["bef", "vyz"]， A 的列分别为["b","v"], ["e","y"], ["f","z"]。
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/944_2.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/944_2.png)
 你需要选出一组要删掉的列 D，对 A 执行删除操作，使 A 中剩余的每一列都是 非降序 排列的，然后请你返回 D.length 的最小可能值。
 
 提示：
@@ -406,9 +406,9 @@ var minDeletionSize = function(A) {
     let len = A.length;
     let leng = A[0].length;
     let result = 0;
-    
+
     for(let j = 0; j < leng; j++) {
-        for(let i = 0; i < len - 1; i++) { 
+        for(let i = 0; i < len - 1; i++) {
             let prev = A[i].charCodeAt(j);
             let next = A[i+1].charCodeAt(j);
             if(prev > next) {
@@ -446,7 +446,7 @@ class Solution {
 最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。
 
 例如,给定一个<code>3叉树</code> :
-![](https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/narytree.png)
 
 我们应返回最大深度,3.
 
@@ -501,7 +501,7 @@ class Solution {
 ```
 
 ### 8. 超过经理收入的员工
-[超过经理收入的员工](https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/): 
+[超过经理收入的员工](https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/):
 Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。
 
 给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。
@@ -526,22 +526,22 @@ Employee 表包含所有员工，他们的经理也属于员工。每个员工�
 #### 答案一
 ```mysql
 
-SELECT 
+SELECT
     a.Name AS Employee
 FROM Employee AS a,
      Employee AS b
-WHERE 
+WHERE
     a.ManagerId = b.Id
     AND a.Salary > b.Salary
 
 ```
 
 ```mysql
-SELECT 
+SELECT
     a.Name AS Employee
-FROM 
-    Employee AS a 
-JOIN 
+FROM
+    Employee AS a
+JOIN
     Employee AS b
 ON a.ManagerId = b.Id
     AND a.Salary > b.Salary
@@ -593,21 +593,21 @@ ON a.ManagerId = b.Id
  * @param {number} K
  * @return {number}
  */
-var smallestRangeI = function(A, K) {    
+var smallestRangeI = function(A, K) {
     // 从小到大排序
     A = A.sort((a, b) => (a - b));
     let len = A.length;
-    
+
     let Af = A[0];
     let Al = A[len - 1];
-    
+
     let M = [];
     for(let i = -K; i <= K; i++) {
         M.push([
             Af + i,
             Al + i
         ]);
-        
+
     }
     let klen = K - (-K) + 1;
     let delNum = M[0][1] - M[klen-1][0];
@@ -667,7 +667,7 @@ class Solution {
 
  ```
 
- 
+
 #### 答案一
 ```java
  class Solution {
@@ -690,5 +690,4 @@ class Solution {
  }
 ```
 
- 
- 
+

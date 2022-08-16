@@ -40,12 +40,12 @@ page {
 ```
 
 结果如下
-![](https://cdn.darknights.cn/assets/images/in-post/miniprogram/code.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/miniprogram/code.png)
 
 同时定义了顶部状态栏的颜色和背景栏的颜色，通常也能够满足需求了。
 
 但是仅仅这样是不够的比如我想像这样
-![](https://cdn.darknights.cn/assets/images/in-post/miniprogram/example1.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/miniprogram/example1.png)
 头部图片可以做滑动效果而且展开到整个头部。这时候就需要自定义组件出马了,比如在首页 index.json 中要引入自定义组建
 
 ```
@@ -61,7 +61,7 @@ page {
 ```
 
 其中最关键的点就是要计算状态栏的各种高度，首先头部导航包括两部分工具栏和 title 栏
-![](https://cdn.darknights.cn/assets/images/in-post/miniprogram/navigator.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/miniprogram/navigator.png)
 其中上部分是工具栏通过小程序提供的<code>wx.getSystemInfoSync()</code>方法能够拿到系统的一些信息
 
 ```
@@ -102,7 +102,7 @@ page {
 
 解决了工具栏部分，主要需要搞定的就是 title 栏的高度了，主要是为了适配胶囊的位置。
 [官方文档](https://developers.weixin.qq.com/miniprogram/design/#%E5%9B%BE%E6%A0%87)，有一张图片
-![](https://cdn.darknights.cn/assets/images/in-post/miniprogram/bar.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/miniprogram/bar.png)
 这里安卓跟 ios 的表现是不一样的,胶囊距离工具栏的高度是不一样的，差了 6 个 pt，更闹心的是开发工具跟真机的表现也是不一样的， 不过好在一点就是胶囊的宽和高是一样的都是<code>87</code>\*<code>32</code>，我们所做的一切努力都是想让胶囊的上下间距跟跟不自定义组件的显示效果是一样的
 
 > 真机和开发者工具模拟器上的胶囊按钮不一样
@@ -258,7 +258,7 @@ wxml 文件如下
 [wx.getMenuButtonBoundingClientRect](https://developers.weixin.qq.com/miniprogram/dev/api/ui/menu/wx.getMenuButtonBoundingClientRect.html)
 ,但是这个方法可能获取不到或者根本不准确
 问题列表如下：
-![](https://cdn.darknights.cn/assets/images/in-post/miniprogram/error.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/miniprogram/error.png)
 到目前为止还是没有完美解决这个问题，所以该方法还是要慎重使用。
 
 ```
