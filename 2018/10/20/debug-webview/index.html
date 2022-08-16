@@ -25,19 +25,19 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="场景我们通常会有这样的开发场景， 开发了一些前端页面，可能在手机浏览器打开，也可能在客户端的webview打开，对应不同的场景我们可能需要不通的手段来进行调试。对于简单的页面我们一般可以通过chrome的开发工具来调试或者通过safari来直接对手机打开的页面直接进行调试。 但是对于复杂webview我们可能需要一些特殊手段来进行debug. 在本文将总结一部分调试技巧    方法分类 难度 调试">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari%E8%AE%BE%E7%BD%AE.png">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/iPhone%E8%AE%BE%E7%BD%AE.png">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/%E5%BC%80%E5%90%AF%E8%B0%83%E8%AF%95.png">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/weinre.png">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite.jpg">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Safari%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/iPhone%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/%E5%BC%80%E5%90%AF%E8%B0%83%E8%AF%95.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/weinre.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Charles_Rewrite.jpg">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Charles_Rewrite_Rule.jpg">
 <meta property="article:published_time" content="2018-10-20T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-16T03:32:19.107Z">
+<meta property="article:modified_time" content="2022-08-16T08:12:02.302Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="调试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari%E8%AE%BE%E7%BD%AE.png">
+<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Safari%E8%AE%BE%E7%BD%AE.png">
   
   
   
@@ -386,11 +386,11 @@
 </ul>
 <h2 id="safari调试iPhone页面"><a href="#safari调试iPhone页面" class="headerlink" title="safari调试iPhone页面"></a>safari调试iPhone页面</h2><p>这种方式适合手机上面的浏览器页面<br>需要几步配置</p>
 <ul>
-<li><p>首先打开电脑的safari<br><img src="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>首先打开电脑的safari<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Safari%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>然后打开iPhone进行设置<br><img src="https://cdn.darknights.cn/assets/images/in-post/debug-webview/iPhone%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>然后打开iPhone进行设置<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/iPhone%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>最后通过电脑的safari打开进行调试<br><img src="https://cdn.darknights.cn/assets/images/in-post/debug-webview/%E5%BC%80%E5%90%AF%E8%B0%83%E8%AF%95.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>最后通过电脑的safari打开进行调试<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/%E5%BC%80%E5%90%AF%E8%B0%83%E8%AF%95.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
 <h2 id="调试iPhone的webview"><a href="#调试iPhone的webview" class="headerlink" title="调试iPhone的webview"></a>调试iPhone的webview</h2><p>iPhone的webview可行的方法就是下载xcode，然后跟客户端开发借来一个xxx.app然后用模拟器打开，这样调试页面的时候可以调试各种情况下的页面，包括safari和应用内的页面。<br>这是目前唯一靠谱的调试方案。 还有一些 <a target="_blank" rel="noopener" href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a> 和 <a target="_blank" rel="noopener" href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter">remotedebug-ios-webkit-adapter</a> 类似方案， 这些方案只能够调试手机的safari 对于app中的webview就无能为力了，而且经过本人实践效果并不理想，如果只是为了调试safari那还不如直接usb连接方便快捷，而且安装过程会有很多坑，因此不推荐使用。</p>
@@ -404,13 +404,13 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">$ sudo npm -g <span class="hljs-keyword">install</span> weinre<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>启动Weinre监听服务</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">$ weinre</span> <span class="hljs-literal">--</span><span class="hljs-comment">boundHost 10</span><span class="hljs-string">.</span><span class="hljs-comment">10</span><span class="hljs-string">.</span><span class="hljs-comment">2</span><span class="hljs-string">.</span><span class="hljs-comment">144</span> <span class="hljs-literal">--</span><span class="hljs-comment">httpPort 8090</span> <br></code></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">$ weinre</span> <span class="hljs-literal">--</span><span class="hljs-comment">boundHost 10</span><span class="hljs-string">.</span><span class="hljs-comment">10</span><span class="hljs-string">.</span><span class="hljs-comment">2</span><span class="hljs-string">.</span><span class="hljs-comment">144</span> <span class="hljs-literal">--</span><span class="hljs-comment">httpPort 8090</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p>使用chrome访问<br><a target="_blank" rel="noopener" href="http://10.10.2.144:8090/">http://10.10.2.144:8090</a>, 然后将一段 JS 脚本 <script src="http://10.10.2.144:8090/target/target-script-min.js#anonymous"></script> 插入到需要调试的页面中，插入代码后手机访问调试页面。<br><img src="https://cdn.darknights.cn/assets/images/in-post/debug-webview/weinre.png" srcset="/img/loading.gif" lazyload></p>
+<li><p>使用chrome访问<br><a target="_blank" rel="noopener" href="http://10.10.2.144:8090/">http://10.10.2.144:8090</a>, 然后将一段 JS 脚本 <script src="http://10.10.2.144:8090/target/target-script-min.js#anonymous"></script> 插入到需要调试的页面中，插入代码后手机访问调试页面。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/weinre.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
-<p>到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入<br>Tools –&gt; Rewrite 选中Enable Rewrite<br>这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 </body> 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。<br><img src="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite.jpg" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入<br>Tools –&gt; Rewrite 选中Enable Rewrite<br>这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 </body> 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Charles_Rewrite.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/debug-webview/Charles_Rewrite_Rule.jpg" srcset="/img/loading.gif" lazyload></p>
 <h2 id="spy-debugger"><a href="#spy-debugger" class="headerlink" title="spy-debugger"></a>spy-debugger</h2><p><a target="_blank" rel="noopener" href="https://github.com/wuchangming/spy-debugger">spy-debugger</a>跟微信开发这工具都在weinre的基础上简化了给页面添加js的步骤，它还对HTTPS的支持</p>
 <p>安装spy-debugger<br>spy-debugger内部集成了<a target="_blank" rel="noopener" href="http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html">weinre</a>、<a target="_blank" rel="noopener" href="https://github.com/wuchangming/node-mitmproxy">node-mitmproxy</a>、<a target="_blank" rel="noopener" href="https://github.com/alibaba/anyproxy">AnyProxy</a></p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">$  sudo <span class="hljs-built_in">npm</span> install spy-<span class="hljs-keyword">debugger</span> -g<br></code></pre></td></tr></table></figure>

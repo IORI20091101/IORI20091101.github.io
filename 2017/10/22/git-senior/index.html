@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="git的高级使用教程记录一些git的高级用法 修改tag代码在项目中我们会有这样的要求，发布了一个tag v1.0现在这个tag有bug需要修复应该如何操作呢tag其实是一个快照是不能修改代码的但是可以基于tag新建一个分支来修改，这样修改完毕基于新的分支再打tag即可得到修复后的tag 123456$ git fetch origin v1.0$ git checkout -b branch_n">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.darknights.cn/assets/images/in-post/git-senior/rebase.svg">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/rebase.svg">
 <meta property="article:published_time" content="2017-10-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-16T03:32:19.111Z">
+<meta property="article:modified_time" content="2022-08-16T08:12:02.302Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.darknights.cn/assets/images/in-post/git-senior/rebase.svg">
+<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/rebase.svg">
   
   
   
@@ -307,7 +307,7 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">$ git <span class="hljs-keyword">log</span><br><br><span class="hljs-keyword">commit</span> eeeab2ca5f30d70667d6d12ab71f19dd7b958d1c (HEAD -&gt; master)<br>Author: xxx &lt;xxx@xxx.com&gt;<br><span class="hljs-type">Date</span>:   Mon Nov <span class="hljs-number">6</span> <span class="hljs-number">15</span>:<span class="hljs-number">30</span>:<span class="hljs-number">43</span> <span class="hljs-number">2017</span> +<span class="hljs-number">0800</span><br><br>    fix(测试): 测试提交<br><br>    测试提交<br><br>    Signed-<span class="hljs-keyword">off</span>-<span class="hljs-keyword">by</span>: xxx &lt;xxx@xxx.com&gt;<br><br><br>$ git <span class="hljs-keyword">commit</span> <span class="hljs-comment">--amend</span><br><br># 该命令修改后再使用git <span class="hljs-keyword">log</span>得到如下<br><br><span class="hljs-keyword">commit</span> eeeab2ca5f30d70667d6d12ab71f19dd7b958d1c (HEAD -&gt; master)<br>Author: xxx &lt;xxx@xxx.com&gt;<br><span class="hljs-type">Date</span>:   Mon Nov <span class="hljs-number">6</span> <span class="hljs-number">15</span>:<span class="hljs-number">30</span>:<span class="hljs-number">43</span> <span class="hljs-number">2017</span> +<span class="hljs-number">0800</span><br><br>    fix(测试): 测试提交sss<br><br>    测试提交sss<br><br>    Signed-<span class="hljs-keyword">off</span>-<span class="hljs-keyword">by</span>: xxx &lt;xxx@xxx.com&gt;<br><br><br></code></pre></td></tr></table></figure>
 
 
-<h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><p>变基（rebase, 事实上这个名字十分诡异, 所以在大多数时候直接用英文术语）是将分支移到一个新的基提交的过程。事实上重写了你的项目历史,过程一般如下所示<br><img src="https://cdn.darknights.cn/assets/images/in-post/git-senior/rebase.svg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><p>变基（rebase, 事实上这个名字十分诡异, 所以在大多数时候直接用英文术语）是将分支移到一个新的基提交的过程。事实上重写了你的项目历史,过程一般如下所示<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/rebase.svg" srcset="/img/loading.gif" lazyload></p>
 <p>用法：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">git rebase <span class="hljs-tag">&lt;<span class="hljs-name">base</span>&gt;</span><br><br># 将当前分支 rebase 到 <span class="hljs-tag">&lt;<span class="hljs-name">base</span>&gt;</span>，这里可以是任何类型的提交引用（ID、分支名、标签，或是 HEAD 的相对引用）<br></code></pre></td></tr></table></figure>
 
