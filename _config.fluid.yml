@@ -460,7 +460,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /images/bg/bg1.png
+  banner_img: /images/bg/bg_home.jpg
   # https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/wallhaven-j3glxy_2560x1080%20%281%29.png
   #https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/606210.jpg
   #https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/1099923.jpg
