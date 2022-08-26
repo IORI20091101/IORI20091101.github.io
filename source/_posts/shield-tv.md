@@ -124,3 +124,4 @@ adb shell settings put global captive_portal_detection_enabled 0
 [^1]: [悟空百科](https://didiboy0702.gitbook.io/wukongdaily/wan-ke-yun-ji-qiao/google-tv-xiu-gai-ntp-fu-wu-qi-di-zhi)
 [^2]: [关于 ANDROID 5.0-7.1.2 网络图标上的感叹号及其解决办法](https://zhuanlan.zhihu.com/p/111004889)
 [^3]: [Android 7.1.2 无法禁用检测](https://github.com/Noisyfox/NoExclamation/issues/2)
+[^4]: [消除Android8.1原生系统无线网感叹号](https://www.jianshu.com/p/23e85be8522a)
