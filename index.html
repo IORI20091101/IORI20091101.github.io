@@ -299,18 +299,24 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/08/25/nginx-sni/" target="_self">
+          <img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/nginx.png" srcset="/img/loading.gif" lazyload alt="Nginx共用443端口">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/08/25/hello-world/" target="_self">
-          Hello World
+        <a href="/2022/08/25/nginx-sni/" target="_self">
+          Nginx共用443端口
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/25/hello-world/" target="_self">
+      <a class="index-excerpt " href="/2022/08/25/nginx-sni/" target="_self">
         <div>
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+          Nginx共享443端口最近把自己的博客重新捣鼓了一下换成了现在这个主题，但是只放一个博客又有点浪费所以又搭建了一个 Trojan，那么问题来了，博客与Trojan都需要占用443端口,如何才能满足条件呢？以我博客的域名为例;              sdongzhi.com             同一个域名如果将主域名走Trojan,remote_addr走博客对应的端口,这样可以满足非正常
         </div>
       </a>
 
@@ -318,12 +324,42 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-25 07:15" pubdate>
+            <time datetime="2022-08-25 15:23" pubdate>
               2022-08-25
             </time>
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Nginx/" class="category-chain-item">Nginx</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Nginx/">#Nginx</a>
+            
+              <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+            
+          </div>
         
       </div>
     </article>
