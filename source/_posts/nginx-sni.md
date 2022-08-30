@@ -120,7 +120,7 @@ server {
 
 }
 ```
-这样网站的{% label primary @sdongzhi.com %} 走进这里， {% label primary @cloud.sdongzhi.com %}会进{% label primary @Trojan %}通过 {% label primary @Trojan %}来分发，{% label primary @remote_addr %}我搭建了一个网盘服务来做伪装
+这样网站的{% label primary @sdongzhi.com %} 走进这里， {% label primary @cloud.sdongzhi.com %}会进{% label primary @Trojan %}通过 {% label primary @Trojan %}来分发，{% label primary @remote_addr %}我搭建了一个网盘服务来做伪装，这样就基本满足需求了。由于本人对{% label primary @Nginx %}不够熟悉配置的时候遇到一些问题，这里仅记录一下需要的配置，想深入了解的同学请看参考文章[^1]或阅读Nginx源码。
 
 
 

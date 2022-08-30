@@ -4,8 +4,7 @@ title: VSCode使用指南
 subtitle: 熟悉VSCode各种设置快捷键以及插件
 date: 2020-10-12
 author: "toshiba"
-header-img: "images/bg/batman/bat1.jpg"
-
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/vscode.png
 comments: true
 
 tags:

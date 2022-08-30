@@ -4,7 +4,7 @@ title:      Gatsby入门test
 subtitle:   Gatsby入门以及简单的博客搭建
 date:       2021-01-22
 author:     "toshiba"
-header-img: "images/bg/batman/bat8.jpg"
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/gatsby.png
 comments: true
 
 tags :
