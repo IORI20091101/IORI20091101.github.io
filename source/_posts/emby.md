@@ -50,4 +50,5 @@ WebDAV的服务最好在内网，所以我选择放到了我的{% label primary 
 
 [^1]: [VPS搭建EMBY & 挂载Google Drive 搭建自己的媒体中心](https://www.unvone.com/71884.html)
 [^2]: [Docker部署EMBY](https://mrchou.com/internet/how-to-set-emby-by-docker.html)
+[^3]: [再来谈谈Emby+Google Drive的私人影视库搭建](https://mrchou.com/internet/lets-talk-about-private-media-library-build-by-emby-and-google-drive.html)
 
