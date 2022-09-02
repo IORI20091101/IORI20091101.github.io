@@ -13,7 +13,7 @@ tags :
 categories:
     - Gatsby
 
-sticky: 10
+sticky: 0
 ---
 
 # Gatsby
