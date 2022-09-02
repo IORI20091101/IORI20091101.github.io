@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/emby.png">
 <meta property="article:published_time" content="2022-08-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-01T12:09:04.785Z">
+<meta property="article:modified_time" content="2022-09-02T03:37:45.610Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="EMBY">
 <meta property="article:tag" content="rclone">
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          3.8k 字
         
       </span>
     
@@ -253,7 +253,7 @@
         
         
         
-          31 分钟
+          32 分钟
         
       </span>
     
@@ -300,7 +300,7 @@
 <h2 id="不限型号的小主机或者软路由最好能刷的系统"><a href="#不限型号的小主机或者软路由最好能刷的系统" class="headerlink" title="不限型号的小主机或者软路由最好能刷的系统"></a>不限型号的小主机或者软路由最好能刷<span class="label label-primary">OpenWrt</span>的系统</h2><p>WebDAV的服务最好在内网，所以我选择放到了我的<span class="label label-primary">N1</span>上了，这里要说一下<span class="label label-primary">N1</span>其实如果带宽不超过500M，没有太复杂的需求，使用<span class="label label-primary">N1</span>绝对是一个好的选择，3瓦的功率加上实用的功能，物有所值。</p>
 <h2 id="支持播放协议的视频播放软件"><a href="#支持播放协议的视频播放软件" class="headerlink" title="支持播放协议的视频播放软件"></a>支持播放<span class="label label-primary">WebDAV</span>协议的视频播放软件</h2><p>这个用的我朋友推荐的<span class="label label-primary">nplayer</span>,花了30元买的无广告版本，内网播放贼流畅，它还支持<span class="label label-primary">Google Drive</span>的共享网盘播放，除了播放没有海报墙速度还是很可观的，当然<span class="label label-primary">Google Drive</span>是需要科学上网环境的。</p>
 <p>因为<span class="label label-primary">OpenWrt</span>内置了<span class="label label-primary">WebDAV</span>的服务，所以打开<a target="_blank" rel="noopener" href="https://www.aliyundrive.com/drive">阿里云盘</a>网页版在控制台中找到<span class="label label-primary">Local Storage</span>&gt; <span class="label label-primary">token</span>&gt; <span class="label label-primary">refresh_token</span>,粘贴到<span class="label label-primary">WebDAV</span>的服务中即可，就不过多介绍了。</p>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>阿里云盘搭建服务播放起来其实很流畅，我也用了一段时间，直到有一天我帮一个朋友买了一个<code>EMBY</code>的非公益服，有海报墙界面比较好看，瞬间对这个感兴趣起来，后续又看了一些教程我就打算自己来搭建一下<code>EMBY</code>服务，不过<code>EMBY</code>其实是有公益服的大部分而且大部分都是公益服，需要去考试跟签到才能获取帐号跟观看</p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>阿里云盘搭建服务播放起来其实很流畅，我也用了一段时间，直到有一天我帮一个朋友买了一个<code>EMBY</code>的非公益服，有海报墙界面比较好看，瞬间对这个感兴趣起来，后续又看了一些教程我就打算自己来搭建一下<code>EMBY</code>服务，不过<code>EMBY</code>其实是有公益服的而且大部分都是公益服，需要去考试跟签到才能获取帐号跟观看</p>
 <blockquote>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://embywiki.911997.xyz/">1.Terminus终点站</a></li>
@@ -320,7 +320,7 @@
 </ul>
 </blockquote>
 <p>到了这里其实已经可以愉快的观影了，但是我对于搭建这种服务还是比较感兴趣的，所以还是选择继续折腾。想搭建<code>EMBY</code>服务最重要一点就是资源，不可能自己去从头整理下载，所以这里我选择去购买<code>Google资源盘</code>，当然如果愿意去下载整理可以去花钱开一个无限容量的网盘自己整理。</p>
-<h2 id="一台VPS"><a href="#一台VPS" class="headerlink" title="一台VPS"></a>一台VPS</h2><p>这里需要的机器需要一定的配置<code>8 GB Memory / 4 AMD vCPUs / 160 GB Disk / SFO3 </code>，我试过4G内存在扫描媒体库的时候经常会死机，所以配置需要稍微高一点，这里我推荐两种机器</p>
+<h2 id="一台VPS"><a href="#一台VPS" class="headerlink" title="一台VPS"></a>一台VPS</h2><p>这里需要的机器需要一定的配置，我目前的机器是DigitalOcean的<code>8 GB Memory / 4 AMD vCPUs / 160 GB Disk / SFO3 </code>，我试过4G内存在扫描媒体库的时候经常会死机，所以配置需要稍微高一点，这里我推荐两种机器</p>
 <blockquote>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://cloud.digitalocean.com/">DigitalOcean</a> 他家的机器入口流量是不计费的，我们扫描媒体库的时候主要是入口流量，如果出入口流量都计费的话，很容易就流量用光了</li>
@@ -334,17 +334,18 @@
 <li><a target="_blank" rel="noopener" href="https://newredirect.org/">Z小店导航</a></li>
 </ul>
 </blockquote>
-<h1 id="EMBY服务搭建"><a href="#EMBY服务搭建" class="headerlink" title="EMBY服务搭建"></a>EMBY服务搭建</h1><h2 id="安装rclone挂在工具"><a href="#安装rclone挂在工具" class="headerlink" title="安装rclone挂在工具"></a>安装rclone挂在工具</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl https://rclone.org/install.sh | sudo bash<br></code></pre></td></tr></table></figure>
+<h1 id="EMBY服务搭建"><a href="#EMBY服务搭建" class="headerlink" title="EMBY服务搭建"></a>EMBY服务搭建</h1><h2 id="安装rclone挂载工具"><a href="#安装rclone挂载工具" class="headerlink" title="安装rclone挂载工具"></a>安装rclone挂载工具</h2><p><code>rclone</code>可以通过<code>GoogleApi</code>来读取网盘文件，实现将<code>Google资源盘</code>挂载到本地，挂载成功后就可以使用<code>EMBY</code>服务来读取播放了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl https://rclone.org/install.sh | sudo bash<br></code></pre></td></tr></table></figure>
 
 <h2 id="配置rclone"><a href="#配置rclone" class="headerlink" title="配置rclone"></a>配置rclone</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">rclone config<br></code></pre></td></tr></table></figure>
-<p>这里所有的配置都可以参考<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[VPS搭建EMBY & 挂载Google Drive 搭建自己的媒体中心](https://www.unvone.com/71884.html)">[1]</span></a></sup>,只是有几个细节需要注意,教程里面有<code>client_id</code>跟<code>client_secret</code>这两个字端，</p>
+<p>这里所有的配置都可以参考<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[VPS搭建EMBY & 挂载Google Drive 搭建自己的媒体中心](https://www.unvone.com/71884.html)">[1]</span></a></sup>,只是有几个细节需要注意,教程里面有<code>client_id</code>跟<code>client_secret</code>这两个字端，需要设置不能留空</p>
 <ul>
 <li>启用<a target="_blank" rel="noopener" href="https://console.cloud.google.com/apis/api/drive.googleapis.com/metrics?project=starlit-water-356105">Google Drive API</a></li>
 <li>创建<code>OAuth 2.0客户端</code>,选择桌面应用，并且将<code>client_id</code>跟<code>client_secret</code>保存下来</li>
 <li>需要将应用发布</li>
 </ul>
-<p>如果<code>client_id</code>跟<code>client_secret</code>不设置，播放视频的时候可能会出现<code>不兼容的流</code>，应用如果不发布应用rlcone认证的token也会很快过期，这里需要注意一下</p>
-<h2 id="CentOS系统"><a href="#CentOS系统" class="headerlink" title="CentOS系统"></a>CentOS系统</h2><p>如果是CentOS系统需要安装<code>fuse</code></p>
+<p>如果默认留空每日读取数据是有限制的，播放视频的时候还可能会出现<code>不兼容的流</code>，应用如果不发布应用rlcone认证的token也会很快过期，这里需要注意一下</p>
+<h2 id="CentOS系统"><a href="#CentOS系统" class="headerlink" title="CentOS系统"></a>CentOS系统</h2><p>如果是CentOS系统需要安装<code>fuse</code>，否则无法挂载</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install fuse -y<br><br></code></pre></td></tr></table></figure>
 <h2 id="挂载单盘"><a href="#挂载单盘" class="headerlink" title="挂载单盘"></a>挂载单盘</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">/usr/bin/rclone mount emby: /home/gdrive \<br> --umask 0000 \<br> --default-permissions \<br> --allow-non-empty \<br> --allow-other \<br> --buffer-size 32M \<br> --dir-cache-time 12h \<br> --vfs-read-chunk-size 64M \<br> --vfs-read-chunk-size-limit 1G &amp;<br></code></pre></td></tr></table></figure>
 <p>设置<code>systemctl</code>服务</p>
@@ -367,7 +368,7 @@
 
 <h2 id="卸载EMBY"><a href="#卸载EMBY" class="headerlink" title="卸载EMBY"></a>卸载EMBY</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">apt <span class="hljs-built_in">remove</span> emby-server<br></code></pre></td></tr></table></figure>
 
-<p>安装完成就可以愉快的观影了，成品如下：<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png" srcset="/img/loading.gif" lazyload><br>enjoy~</p>
+<p>如果rclone挂载资源盘，EMBY安装都没有问题，就可以愉快的观影了，效果如下：<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png" srcset="/img/loading.gif" lazyload><br>enjoy~</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.unvone.com/71884.html">VPS搭建EMBY &amp; 挂载Google Drive 搭建自己的媒体中心</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://mrchou.com/topic/buy-a-netcup-server-for-emby.html">NetCUP：自建EMBY最具性价比服务器购买指南</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://mrchou.com/internet/lets-talk-about-private-media-library-build-by-emby-and-google-drive.html">再来谈谈Emby+Google Drive的私人影视库搭建</a>
