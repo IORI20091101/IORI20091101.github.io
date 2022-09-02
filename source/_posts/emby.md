@@ -33,7 +33,7 @@ WebDAV的服务最好在内网，所以我选择放到了我的{% label primary 
 
 # 前期准备
 
-阿里云盘搭建服务播放起来其实很流畅，我也用了一段时间，直到有一天我帮一个朋友买了一个`EMBY`的非公益服，有海报墙界面比较好看，瞬间对这个感兴趣起来，后续又看了一些教程我就打算自己来搭建一下`EMBY`服务，不过`EMBY`其实是有公益服的大部分而且大部分都是公益服，需要去考试跟签到才能获取帐号跟观看
+阿里云盘搭建服务播放起来其实很流畅，我也用了一段时间，直到有一天我帮一个朋友买了一个`EMBY`的非公益服，有海报墙界面比较好看，瞬间对这个感兴趣起来，后续又看了一些教程我就打算自己来搭建一下`EMBY`服务，不过`EMBY`其实是有公益服的而且大部分都是公益服，需要去考试跟签到才能获取帐号跟观看
 >* [1.Terminus终点站](https://embywiki.911997.xyz/)
 >* [2.普拉斯影业](https://t.me/Plus_Movie_Best)
 >* [3.卷毛鼠](https://t.me/Curly_Mouse), 这家用户颇有微词
@@ -50,7 +50,7 @@ WebDAV的服务最好在内网，所以我选择放到了我的{% label primary 
 到了这里其实已经可以愉快的观影了，但是我对于搭建这种服务还是比较感兴趣的，所以还是选择继续折腾。想搭建`EMBY`服务最重要一点就是资源，不可能自己去从头整理下载，所以这里我选择去购买`Google资源盘`，当然如果愿意去下载整理可以去花钱开一个无限容量的网盘自己整理。
 
 ## 一台VPS
-这里需要的机器需要一定的配置`8 GB Memory / 4 AMD vCPUs / 160 GB Disk / SFO3 `，我试过4G内存在扫描媒体库的时候经常会死机，所以配置需要稍微高一点，这里我推荐两种机器
+这里需要的机器需要一定的配置，我目前的机器是DigitalOcean的`8 GB Memory / 4 AMD vCPUs / 160 GB Disk / SFO3 `，我试过4G内存在扫描媒体库的时候经常会死机，所以配置需要稍微高一点，这里我推荐两种机器
 >* [DigitalOcean](https://cloud.digitalocean.com/) 他家的机器入口流量是不计费的，我们扫描媒体库的时候主要是入口流量，如果出入口流量都计费的话，很容易就流量用光了
 >* [NetCUP](https://www.netcup.eu/vserver/#root-server-details),他家的配置也比较高价格比较合适，只是注册比较特殊特殊，可以参考[NetCup创建企业账号并申请免税教程](https://www.qishe.org/3238.html)来注册使用
 
@@ -64,7 +64,8 @@ WebDAV的服务最好在内网，所以我选择放到了我的{% label primary 
 # EMBY服务搭建
 
 
-## 安装rclone挂在工具
+## 安装rclone挂载工具
+`rclone`可以通过`GoogleApi`来读取网盘文件，实现将`Google资源盘`挂载到本地，挂载成功后就可以使用`EMBY`服务来读取播放了
 ```shell
 curl https://rclone.org/install.sh | sudo bash
 ```
@@ -73,16 +74,18 @@ curl https://rclone.org/install.sh | sudo bash
 ```shell
 rclone config
 ```
-这里所有的配置都可以参考[^1],只是有几个细节需要注意,教程里面有`client_id`跟`client_secret`这两个字端，
+这里所有的配置都可以参考[^1],只是有几个细节需要注意,教程里面有`client_id`跟`client_secret`这两个字端，需要设置不能留空
 
 * 启用[Google Drive API](https://console.cloud.google.com/apis/api/drive.googleapis.com/metrics?project=starlit-water-356105)
 * 创建`OAuth 2.0客户端`,选择桌面应用，并且将`client_id`跟`client_secret`保存下来
 * 需要将应用发布
 
-如果`client_id`跟`client_secret`不设置，播放视频的时候可能会出现`不兼容的流`，应用如果不发布应用rlcone认证的token也会很快过期，这里需要注意一下
+如果默认留空每日读取数据是有限制的，播放视频的时候还可能会出现`不兼容的流`，应用如果不发布应用rlcone认证的token也会很快过期，这里需要注意一下
+
+
 
 ## CentOS系统
-如果是CentOS系统需要安装`fuse`
+如果是CentOS系统需要安装`fuse`，否则无法挂载
 ```shell
 yum install fuse -y
 
@@ -193,7 +196,7 @@ dpkg -i emby-server-deb_4.7.6.0_amd64.deb
 apt remove emby-server
 ```
 
-安装完成就可以愉快的观影了，成品如下：
+如果rclone挂载资源盘，EMBY安装都没有问题，就可以愉快的观影了，效果如下：
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png)
 enjoy~
 
