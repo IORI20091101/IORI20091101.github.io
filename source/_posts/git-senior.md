@@ -4,13 +4,14 @@ title:      "git的使用教程(三)"
 subtitle:   "git的高级教程以及正规开发中的工作流程"
 date:       2017-10-22
 author:     "toshiba"
-header-img: "images/bg/batman/bat3.jpg"
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp
 tags:
     - 工具
     - git
 
 categories:
     - 版本控制
+    - git
 
 comments: true
 ---

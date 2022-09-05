@@ -4,13 +4,14 @@ title:      "git的使用教程(二)"
 subtitle:   "git的中级教程(其他常用操作)"
 date:       2017-10-21
 author:     "toshiba"
-header-img: "images/bg/batman/bat3.jpg"
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp
 tags:
     - 工具
     - git
 
 categories:
     - 版本控制
+    - git
 
 comments: true
 ---
@@ -51,11 +52,14 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 
 ### 生产SSH Key
 
-```
-$ ssh-keygen -t rsa -C "youremail@example.com"
+```shell
+ssh-keygen -t rsa -C "youremail@example.com"
 
 //生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下
 
+```
+```shell
+ssh-keygen -t ed25519
 ```
 
 ### 添加远程仓库

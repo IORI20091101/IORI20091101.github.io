@@ -4,13 +4,14 @@ title:      "git的使用教程(一)"
 subtitle:   "git的初级教程(简明指南)"
 date:       2017-10-12
 author:     "toshiba"
-header-img: "images/bg/batman/bat3.jpg"
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp
 tags:
     - 工具
     - git
 
 categories:
     - 版本控制
+    - git
 
 comments: true
 ---
