@@ -235,6 +235,215 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/09/08/vps-prepare/" target="_self">
+          <img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/vps.png" srcset="/img/loading.gif" lazyload alt="新购VPS的一些初始化设置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/08/vps-prepare/" target="_self">
+          新购VPS的一些初始化设置
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/09/08/vps-prepare/" target="_self">
+        <div>
+          最近买了一些VPS做测试,会用到一些常用设置，在这里记录一下 开启密钥登陆本地制作密钥对1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  或者 1ssh-keygen -t ed25519  将本地公钥导入远程VPS的 &#x2F;root&#x2F;.ssh&#x2F;authorized_keys,第一次可能要输入密码 1ssh-copy-id root@ex
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-08 15:53" pubdate>
+              2022-09-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/VPS/" class="category-chain-item">VPS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/VPS/">#VPS</a>
+            
+              <a href="/tags/ubuntu/">#ubuntu</a>
+            
+              <a href="/tags/%E7%B3%BB%E7%BB%9F/">#系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/09/08/trojan-go/" target="_self">
+          <img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/trojan.jpeg" srcset="/img/loading.gif" lazyload alt="Trojan一键安装脚本">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/08/trojan-go/" target="_self">
+          Trojan一键安装脚本
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/09/08/trojan-go/" target="_self">
+        <div>
+          准备工作一台 vps海外VPS,这里推荐搬瓦工的CN2 GIA线路，或者有针对大陆网络优化的线路。 一个域名并做好解析  freenom 免费域名 Namesilo gandi.net GoDaddy   选一个顺眼又便宜的即可 域名证书使用acme.sh脚本来生成免费证书， 安装 nginx1apt install nginx  安装 acme：1curl https:&#x2F;&#x2F;get.acme.sh
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-08 00:00" pubdate>
+              2022-09-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C/" class="category-chain-item">网络</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Trojan/">#Trojan</a>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C/">#网络</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/09/07/acme-sh/" target="_self">
+          <img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/acme.png" srcset="/img/loading.gif" lazyload alt="申请HTTPS证书">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/07/acme-sh/" target="_self">
+          申请HTTPS证书
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/09/07/acme-sh/" target="_self">
+        <div>
+          申请证书方式最近博客的 HTTPS 证书到期了，捣鼓一下证书的问题。因为用的免费证书品牌 Let’s Encrypt，所以有两种申请方式。 acme.shacme.sh 是一个知名的用于申请 Let’s Encrypt 证书的开源项目，也是属于脚本类型，有比较详细的文档，支持自动化更新和自动化部署。唯一缺点，如果有更新后自动部署至多个节点的需求的话，acme.sh 无法满足。如果你有一定的命令行使
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-07 00:00" pubdate>
+              2022-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/https/" class="category-chain-item">https</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">#web</a>
+            
+              <a href="/tags/https/">#https</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2022/08/25/nginx-sni/" target="_self">
           <img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/nginx.png" srcset="/img/loading.gif" lazyload alt="Nginx共用443端口">
         </a>
@@ -320,7 +529,7 @@
       
       <a class="index-excerpt " href="/2022/08/22/emby/" target="_self">
         <div>
-          阿里云盘搭建影视服务阿里云盘账号随意一个账号即可，我用的时候错过了之前获取大容量的时机，去万能的淘宝花二三十走的邀请一人送800G的活动，这样可以有8000G的空间。 不限型号的小主机或者软路由最好能刷OpenWrt的系统WebDAV的服务最好在内网，所以我选择放到了我的N1上了，这里要说一下N1其实如果带宽不超过500M，没有太复杂的需求，使用N1绝对是一个好的选择，3瓦的功率加上实用的功能，物
+          阿里云盘搭建影视服务阿里云盘账号随意一个账号即可，我用的时候错过了之前获取大容量的时机，去万能的淘宝花二三十走的邀请一人送 800G 的活动，这样可以有 8000G 的空间。 不限型号的小主机或者软路由最好能刷OpenWrt的系统WebDAV 的服务最好在内网，所以我选择放到了我的N1上了，这里要说一下N1其实如果带宽不超过 500M，没有太复杂的需求，使用N1绝对是一个好的选择，3 瓦的功率加上
         </div>
       </a>
 
@@ -398,7 +607,7 @@
       
       <a class="index-excerpt " href="/2022/08/22/shield-tv/" target="_self">
         <div>
-          Shield TV最早接触这个是看好多up主的推荐，作为传说中最强的电视盒子，也的确不让人失望，安卓系统既能兼顾爱优腾，又能使用Netflix或者Disney+等等资源丰富的流媒体，可谓看片神器一点都不夸张。 使用Shield TV本身就是一个安卓盒子，所以用起来没什么特别的，只有一开始激活的时候需要科学上网环境。 这里我建议购买的时候让商家直接激活，这样会免去后续许多麻烦。我购买的是未激活版本的
+          Shield TV最早接触这个是看好多 up 主的推荐，作为传说中最强的电视盒子，也的确不让人失望，安卓系统既能兼顾爱优腾，又能使用Netflix或者Disney+等等资源丰富的流媒体，可谓看片神器一点都不夸张。 使用Shield TV本身就是一个安卓盒子，所以用起来没什么特别的，只有一开始激活的时候需要科学上网环境。 这里我建议购买的时候让商家直接激活，这样会免去后续许多麻烦。我购买的是未激活版
         </div>
       </a>
 
@@ -447,6 +656,77 @@
               <a href="/tags/Shield-TV/">#Shield TV</a>
             
               <a href="/tags/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">#电视盒子</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/08/20/ios-tips/" target="_self">
+          <img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/apple.png" srcset="/img/loading.gif" lazyload alt="删除手机多余的根证书">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/08/20/ios-tips/" target="_self">
+          删除手机多余的根证书
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/08/20/ios-tips/" target="_self">
+        <div>
+          前言相信 iphone 用户会碰到这样一种情况，就是安装了各种抓包工具，比如  Charles Surge Mitmproxy  之类的工具，需要安装证书，才能抓到 https 的请求包，多次尝试之后呢我们就积累了一堆的 设置—&gt;通用—&gt; 描述文件 本来这样也没有问题随时在这里可以移除，我们设置—&gt;通用—&gt; 关于本机—&gt;证书信任设置 会显示受信任证书列表，我们可以自由
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-20 00:00" pubdate>
+              2022-08-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ios/" class="category-chain-item">ios</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
+            
+              <a href="/tags/ios/">#ios</a>
+            
+              <a href="/tags/%E6%89%8B%E6%9C%BA/">#手机</a>
             
           </div>
         
@@ -654,260 +934,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">#小程序</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/24/babel-config/" target="_self">
-          Babel最简单配置
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2020/04/24/babel-config/" target="_self">
-        <div>
-          本文需要重新整理 Babel关于 Babel 相信大家都不陌生，自从 ES2015 提供了一些新的语法让众多前端爱好者们爱不释手，但是现在的浏览器对于大部分的语法并不支持，那么如何才能在自己的项目中用上自己喜欢的语法呢？这里少不了这个工具Babel。 它是一个转换器，作用就是将新的语法转换成能被大部分浏览器识别的代码。换言之，只要安装了 Babel 你就可以在你的项目中随心所欲的使用最新的语法。下
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-24 00:00" pubdate>
-              2020-04-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Babel/">#Babel</a>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">#前端工程化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/23/eslint-prettier/" target="_self">
-          使用Eslint&amp;Prettier来统一代码风格
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2020/04/23/eslint-prettier/" target="_self">
-        <div>
-          代码风格当我们进行开发的时候，每个人写的代码风格不统一是很让人不爽的一件事情，那么如何来解决这个问题呢，首先我们需要选定一种规范；这里常用的规范有这两种  Airbnb Standardjs   这个两种规范都可以，但是这里推荐使用第一种。在选择了一种规范后如何来遵守呢。这里就要使用我们的神器Eslint,Eslint 是一个 JS Linter 工具  它的灵感来源于 PHP Linter，将源
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-23 00:00" pubdate>
-              2020-04-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">#前端工程化</a>
-            
-              <a href="/tags/eslint/">#eslint</a>
-            
-              <a href="/tags/prettier/">#prettier</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/31/frontend-engineering/" target="_self">
-          前端工程化思考
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2020/03/31/frontend-engineering/" target="_self">
-        <div>
-          前端工程化思考前端集成解决方案 前端工程化出现的最终目的还是为了提升开发效率和运行性能。从早期的选择类库与框架到gulp&#x2F;grunt等构建构建工具的使用都是围绕着这个最终目的来进行的。 引用fouber的话，前端工程化大致分这几个阶段  第一阶段：库&#x2F;框架的选型 第二阶段：简单的构建化 第三阶段：JS&#x2F;CSS模块化 第四阶段：组件化开发和“智能”静态资源管理  选择jQuery
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-31 00:00" pubdate>
-              2020-03-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">#javascript</a>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">#前端工程化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/01/02/react-read-one/" target="_self">
-          重读React系列(一)
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2020/01/02/react-read-one/" target="_self">
-        <div>
-          最近做东西的时候发现一些React的新的特性其实可以用到现有的项目中,所以打算重读一些React的文档,读的时候发现其实很多之前不理解的东西在文档中已经有答案了,所以我认为有必要重新细读一下文档,将一些点总结下来.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-01-02 00:00" pubdate>
-              2020-01-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/React/" class="category-chain-item">React</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/javascript/">#javascript</a>
-            
-              <a href="/tags/React/">#React</a>
             
           </div>
         

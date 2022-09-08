@@ -18,16 +18,16 @@
   <meta name="author" content="toshiba">
   <meta name="keywords" content="">
   
-    <meta name="description" content="git的中级使用教程记录一些使用率中等的git命令 设置用户名和邮箱123$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot;  配置别名使用git status 太长了怎么破 123456$ git config --g">
+    <meta name="description" content="git 的中级使用教程记录一些使用率中等的 git 命令 设置用户名和邮箱123$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot;  配置别名使用 git status 太长了怎么破 123456$ git config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git的使用教程(二)">
 <meta property="og:url" content="http://example.com/2017/10/21/git-medium/index.html">
 <meta property="og:site_name" content="喬伊·波伊的博客">
-<meta property="og:description" content="git的中级使用教程记录一些使用率中等的git命令 设置用户名和邮箱123$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot;  配置别名使用git status 太长了怎么破 123456$ git config --g">
+<meta property="og:description" content="git 的中级使用教程记录一些使用率中等的 git 命令 设置用户名和邮箱123$ git config --global user.name &quot;Your Name&quot;$ git config --global user.email &quot;email@example.com&quot;  配置别名使用 git status 太长了怎么破 123456$ git config">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp">
 <meta property="article:published_time" content="2017-10-21T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-07T13:09:55.769Z">
+<meta property="article:modified_time" content="2022-09-08T10:10:31.872Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="git">
@@ -295,23 +295,25 @@
             
               <div class="markdown-body">
                 
-                <h2 id="git的中级使用教程"><a href="#git的中级使用教程" class="headerlink" title="git的中级使用教程"></a>git的中级使用教程</h2><p>记录一些使用率中等的git命令</p>
+                <h2 id="git-的中级使用教程"><a href="#git-的中级使用教程" class="headerlink" title="git 的中级使用教程"></a>git 的中级使用教程</h2><p>记录一些使用率中等的 git 命令</p>
 <h3 id="设置用户名和邮箱"><a href="#设置用户名和邮箱" class="headerlink" title="设置用户名和邮箱"></a>设置用户名和邮箱</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">$ git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;Your Name&quot;</span><br>$ git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;email@example.com&quot;</span><br><br></code></pre></td></tr></table></figure>
 
-<h3 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h3><p>使用git status 太长了怎么破</p>
+<h3 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h3><p>使用 git status 太长了怎么破</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs verilog">$ git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> <span class="hljs-keyword">alias</span><span class="hljs-variable">.st</span> status<br>$ git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> <span class="hljs-keyword">alias</span><span class="hljs-variable">.co</span> checkout<br>$ git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> <span class="hljs-keyword">alias</span><span class="hljs-variable">.ci</span> commit<br>$ git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> <span class="hljs-keyword">alias</span><span class="hljs-variable">.br</span> branch<br>$ git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> <span class="hljs-keyword">alias</span><span class="hljs-variable">.unstage</span> &#x27;reset HEAD&#x27;<br>$ git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> <span class="hljs-keyword">alias</span><span class="hljs-variable">.last</span> &#x27;log -<span class="hljs-number">1</span>&#x27;  <span class="hljs-comment">//显示最后一次提交信息</span><br></code></pre></td></tr></table></figure>
 
 <p>还有这种操作</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">$ git config --global alias.lg <span class="hljs-string">&quot;log --color --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27; --abbrev-commit&quot;</span><br></code></pre></td></tr></table></figure>
+
 <p>结果如下<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/0.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="生产SSH-Key"><a href="#生产SSH-Key" class="headerlink" title="生产SSH Key"></a>生产SSH Key</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;<br><br>//生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下<br><br></code></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t ed25519<br></code></pre></td></tr></table></figure>
+<h3 id="生产-SSH-Key"><a href="#生产-SSH-Key" class="headerlink" title="生产 SSH Key"></a>生产 SSH Key</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span><br><br>//生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t ed25519<br></code></pre></td></tr></table></figure>
 
 <h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><p>本地文件夹添加远程仓库并且推送上去,基础文章已经写过这里再次复习一遍</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>git remote add origin git<span class="hljs-variable">@github</span>.<span class="hljs-symbol">com:</span>michaelliao/learngit.git<br><br><span class="hljs-variable">$ </span>git push -u origin master<br><br></code></pre></td></tr></table></figure>
 
-<h3 id="分支管理策略-no-ff"><a href="#分支管理策略-no-ff" class="headerlink" title="分支管理策略--no-ff"></a>分支管理策略<code>--no-ff</code></h3><p>通常，合并分支时，如果可能，Git会用<code>Fast forward模式</code>，但这种模式下，删除分支后，会丢掉分支信息。</p>
-<p>如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。</p>
+<h3 id="分支管理策略-no-ff"><a href="#分支管理策略-no-ff" class="headerlink" title="分支管理策略--no-ff"></a>分支管理策略<code>--no-ff</code></h3><p>通常，合并分支时，如果可能，Git 会用<code>Fast forward 模式</code>，但这种模式下，删除分支后，会丢掉分支信息。</p>
+<p>如果要强制禁用<code>Fast forward</code>模式，Git 就会在 merge 时生成一个新的 commit，这样，从分支历史上就可以看出分支信息。</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">$ git <span class="hljs-built_in">merge</span> <span class="hljs-comment">--no-ff -m &quot;merge with no-ff&quot; dev</span><br>Merge made <span class="hljs-keyword">by</span> <span class="hljs-keyword">the</span> <span class="hljs-string">&#x27;recursive&#x27;</span> strategy.<br> readme.txt |    <span class="hljs-number">1</span> +<br> <span class="hljs-number">1</span> <span class="hljs-built_in">file</span> changed, <span class="hljs-number">1</span> insertion(+)<br><br><span class="hljs-comment"> //其他操作一样只是合并的时候可以带上 禁用ff模式并且加上注释。</span><br></code></pre></td></tr></table></figure>
 
 <p>合并后的结果如下</p>
@@ -319,79 +321,65 @@
 
 <h3 id="保存工作现场"><a href="#保存工作现场" class="headerlink" title="保存工作现场"></a>保存工作现场</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">$ git stash<br>Saved working directory <span class="hljs-keyword">and</span> <span class="hljs-keyword">index</span> state WIP <span class="hljs-keyword">on</span> dev: <span class="hljs-number">6224937</span> <span class="hljs-keyword">add</span> merge<br>HEAD <span class="hljs-keyword">is</span> now at <span class="hljs-number">6224937</span> <span class="hljs-keyword">add</span> merge<br><br>$ git stash list  <span class="hljs-comment">//显示stash列表</span><br><br>$ git stash pop   <span class="hljs-comment">//相当于 git stash apply + git stash drop   恢复最近的一条</span><br><br><br>$ git stash apply stash@<span class="hljs-comment">&#123;0&#125;</span> <span class="hljs-comment">//指定要恢复的stash</span><br><br></code></pre></td></tr></table></figure>
 
-
 <h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">$ git push origin :<span class="hljs-keyword">master</span> <span class="hljs-title">等同于下面的命令推送一个空分支对应远程分支</span><br><span class="hljs-title"></span><br><span class="hljs-title">$</span> git push origin --delete <span class="hljs-keyword">master</span><br><span class="hljs-title"></span><br></code></pre></td></tr></table></figure>
 
-<h3 id="丢弃暂存区文件"><a href="#丢弃暂存区文件" class="headerlink" title="丢弃暂存区文件"></a>丢弃暂存区文件</h3><p>如果一个文件已经add到暂存区，还没有commit，此时如果不想要这个文件了，有两种方法</p>
+<h3 id="丢弃暂存区文件"><a href="#丢弃暂存区文件" class="headerlink" title="丢弃暂存区文件"></a>丢弃暂存区文件</h3><p>如果一个文件已经 add 到暂存区，还没有 commit，此时如果不想要这个文件了，有两种方法</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> git reset HEAD   用版本库内容清空暂存区<br><br><span class="hljs-variable">$</span> git <span class="hljs-built_in">rm</span> <span class="hljs-literal">--cache</span> 删除缓存区内容<br></code></pre></td></tr></table></figure>
 
-<h3 id="允许空提交"><a href="#允许空提交" class="headerlink" title="允许空提交"></a>允许空提交</h3><p>即没有任何更改进行commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署</p>
+<h3 id="允许空提交"><a href="#允许空提交" class="headerlink" title="允许空提交"></a>允许空提交</h3><p>即没有任何更改进行 commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署</p>
 <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">$ <span class="hljs-string">git</span> <span class="hljs-string">commit</span> <span class="hljs-built_in">--allow-empty</span> -<span class="hljs-string">m</span> <span class="hljs-string">&quot;empty&quot;</span><br></code></pre></td></tr></table></figure>
 
-
-<h3 id="文件夹大小写问题"><a href="#文件夹大小写问题" class="headerlink" title="文件夹大小写问题"></a>文件夹大小写问题</h3><p>git 提交文件夹默认是不区分大小写的也就是说max&#x2F;file 和Max&#x2F;file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是java起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题</p>
+<h3 id="文件夹大小写问题"><a href="#文件夹大小写问题" class="headerlink" title="文件夹大小写问题"></a>文件夹大小写问题</h3><p>git 提交文件夹默认是不区分大小写的也就是说 max&#x2F;file 和 Max&#x2F;file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是 java 起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino">$ git config core.ignorecase <span class="hljs-literal">false</span>  <span class="hljs-comment">//默认是true</span><br><br></code></pre></td></tr></table></figure>
 
-
-
-<h3 id="git-reset的后悔药"><a href="#git-reset的后悔药" class="headerlink" title="git reset的后悔药"></a>git reset的后悔药</h3><p>当使用  <code>git reset --hard xxx</code> 回退到之前的版本,我又想回到最新的版本如何操作呢</p>
+<h3 id="git-reset-的后悔药"><a href="#git-reset-的后悔药" class="headerlink" title="git reset 的后悔药"></a>git reset 的后悔药</h3><p>当使用 <code>git reset --hard xxx</code> 回退到之前的版本,我又想回到最新的版本如何操作呢</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">$ git <span class="hljs-built_in">ref</span>log<br><br>git <span class="hljs-built_in">ref</span>log --relative-date  <span class="hljs-comment">//用相对的日期显示引用日志。(如 2 周前）。</span><br><br><br><br>ea34578 <span class="hljs-symbol">HEAD@</span>&#123;<span class="hljs-number">0</span>&#125;: reset: moving to HEAD^<br><span class="hljs-number">3628164</span> <span class="hljs-symbol">HEAD@</span>&#123;<span class="hljs-number">1</span>&#125;: commit: append GPL<br>ea34578 <span class="hljs-symbol">HEAD@</span>&#123;<span class="hljs-number">2</span>&#125;: commit: add distributed<br>cb926e7 <span class="hljs-symbol">HEAD@</span>&#123;<span class="hljs-number">3</span>&#125;: commit (initial): wrote a readme file<br><br></code></pre></td></tr></table></figure>
+
 <p>这样之后又可以使用 reset –hard xxx 乘坐时光机返回了。</p>
-<h3 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h3><p>该命令将未跟踪的文件从工作目录中删除，同git status 然后手动删除一样。该命令无法撤销慎重使用。</p>
+<h3 id="git-clean"><a href="#git-clean" class="headerlink" title="git clean"></a>git clean</h3><p>该命令将未跟踪的文件从工作目录中删除，同 git status 然后手动删除一样。该命令无法撤销慎重使用。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">$ git clean -n  <span class="hljs-regexp">//</span>进行预演告诉你哪些文件会被删除并不是真的删除<br><br>$ git clean -f  <span class="hljs-regexp">//</span>删除所有未跟踪文件 &lt;code&gt;-f&lt;/code&gt;是必须的<br><br>$ git clean -f &lt;path&gt; <span class="hljs-regexp">//</span>移除未跟踪的文件，但限制在某个路径下。<br><br>$ git clean -df <span class="hljs-regexp">//</span>移除未跟踪的文件，以及目录。<br><br>$ git clean -xf <span class="hljs-regexp">//</span>移除当前目录下未跟踪的文件，以及 Git 一般忽略的文件。<br><br></code></pre></td></tr></table></figure>
 
 <h3 id="reset-clean"><a href="#reset-clean" class="headerlink" title="reset+clean"></a>reset+clean</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># 编辑了一些文件</span><br><span class="hljs-comment"># 新增了一些文件</span><br><span class="hljs-comment"># 『糟糕』</span><br><br><span class="hljs-comment"># 将跟踪的文件回滚回去</span><br>git reset <span class="hljs-comment">--hard</span><br><br><span class="hljs-comment"># 移除未跟踪的文件</span><br>git clean -df<br></code></pre></td></tr></table></figure>
-<p>在执行了 reset&#x2F;clean 的流程之后，工作目录和缓存区和最近一次提交看上去一模一样，而 git status会认为这是一个干净的工作目录。你可以重新来过了。</p>
+
+<p>在执行了 reset&#x2F;clean 的流程之后，工作目录和缓存区和最近一次提交看上去一模一样，而 git status 会认为这是一个干净的工作目录。你可以重新来过了。</p>
 <p>注意，不像 git reset 的第二个栗子，新的文件没有被加入到仓库中。因此，它们不会受到 git reset –hard 的影响，需要 git clean 来删除它们。</p>
-<h3 id="reset其他用法"><a href="#reset其他用法" class="headerlink" title="reset其他用法"></a>reset其他用法</h3><p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
+<h3 id="reset-其他用法"><a href="#reset-其他用法" class="headerlink" title="reset 其他用法"></a>reset 其他用法</h3><p>git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用 HEAD 时，表示最新的版本。</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs routeros">$ git status<br><span class="hljs-comment"># On branch master</span><br><span class="hljs-comment"># Changes to be committed:</span><br><span class="hljs-comment">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#       modified:   readme.txt</span><br><span class="hljs-comment">#</span><br><br>$ git reset HEAD readme.txt<br>Unstaged changes after reset:<br>M       readme.txt<br><br><br><br><span class="hljs-comment"># 另一个例子</span><br><br><span class="hljs-comment"># 编辑了hello.py和main.py</span><br><br><span class="hljs-comment"># 缓存了目录下所有文件</span><br>git <span class="hljs-built_in">add</span> .<br><br><span class="hljs-comment"># 意识到hello.py和main.py中的修改</span><br><span class="hljs-comment"># 应该在不同的快照中提交</span><br><br><span class="hljs-comment"># 取消main.py缓存</span><br>git reset main.py<br><br><span class="hljs-comment"># 只提交hello.py</span><br>git commit -m <span class="hljs-string">&quot;Make some changes to hello.py&quot;</span><br><br><span class="hljs-comment"># 在另一份快照中提交main.py</span><br>git <span class="hljs-built_in">add</span> main.py<br>git commit -m <span class="hljs-string">&quot;Edit main.py&quot;</span><br><br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <ul>
-<li>git checkout – xxx 丢弃工作区间的修改 此时没有add</li>
-<li>git reset HEAD xxx 将暂存区的文件撤销放回到工作区间 ，此时已经add</li>
+<li>git checkout – xxx 丢弃工作区间的修改 此时没有 add</li>
+<li>git reset HEAD xxx 将暂存区的文件撤销放回到工作区间 ，此时已经 add</li>
 </ul>
 </blockquote>
-<h3 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h3><p>这里有个checkout的用法比较少用感觉用reset比较多，通常来说git checkout 会有三种用法： 检出文件，检出提交和检出分支，一般我们只关心前两种</p>
+<h3 id="git-checkout"><a href="#git-checkout" class="headerlink" title="git checkout"></a>git checkout</h3><p>这里有个 checkout 的用法比较少用感觉用 reset 比较多，通常来说 git checkout 会有三种用法： 检出文件，检出提交和检出分支，一般我们只关心前两种</p>
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-symbol">$</span> git checkout master <span class="hljs-comment">//切换分支</span><br><br><span class="hljs-symbol">$</span> git checkout &lt;commit&gt; &lt;<span class="hljs-keyword">file</span>&gt;<br><br><span class="hljs-symbol">$</span> git checkout a1e8fb5 hello.py <span class="hljs-comment">//将某个文件切到某次提交的的样子</span><br><br><br><span class="hljs-symbol">$</span> git checout &lt;commit&gt;  <span class="hljs-comment">//将所有文件切换到某次提交的样子</span><br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>配置Git的时候，加上–global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用<br>每个仓库的Git配置文件都放在.git&#x2F;config文件中</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>配置 Git 的时候，加上–global 是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用<br>每个仓库的 Git 配置文件都放在.git&#x2F;config 文件中</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>cat .git/config<br>[core]<br>    repositoryformatversion = <span class="hljs-number">0</span><br>    filemode = <span class="hljs-literal">true</span><br>    bare = <span class="hljs-literal">false</span><br>    logallrefupdates = <span class="hljs-literal">true</span><br>    ignorecase = <span class="hljs-literal">true</span><br>    precomposeunicode = <span class="hljs-literal">true</span><br>[remote <span class="hljs-string">&quot;origin&quot;</span>]<br>    url = git<span class="hljs-variable">@github</span>.<span class="hljs-symbol">com:</span>michaelliao/learngit.git<br>    fetch = +refs/heads/*<span class="hljs-symbol">:refs/remotes/origin/*</span><br>[branch <span class="hljs-string">&quot;master&quot;</span>]<br>    remote = origin<br>    merge = refs/heads/master<br>[<span class="hljs-keyword">alias</span>]<br>    last = log <span class="hljs-number">-1</span><br></code></pre></td></tr></table></figure>
 
-<p>前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中</p>
+<p>前用户的 Git 配置文件放在用户主目录下的一个隐藏文件.gitconfig 中</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vim">$ <span class="hljs-keyword">cd</span> ~<br>$ <span class="hljs-keyword">cat</span> .gitconfig<br>[alias]<br>    <span class="hljs-keyword">co</span> = checkout<br>    ci = commit<br>    <span class="hljs-keyword">br</span> = branch<br>    <span class="hljs-keyword">st</span> = status<br>[user]<br>    name = Your Name<br>    email = your@email.<span class="hljs-keyword">com</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="使用-gitignore"><a href="#使用-gitignore" class="headerlink" title="使用.gitignore"></a>使用.gitignore</h3><p>有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被.gitignore忽略了：<br>如果你确实想添加该文件，可以用-f强制添加到Git：<br>或者你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用git check-ignore命令检查</p>
+<h3 id="使用-gitignore"><a href="#使用-gitignore" class="headerlink" title="使用.gitignore"></a>使用.gitignore</h3><p>有些时候，你想添加一个文件到 Git，但发现添加不了，原因是这个文件被.gitignore 忽略了：<br>如果你确实想添加该文件，可以用-f 强制添加到 Git：<br>或者你发现，可能是.gitignore 写得有问题，需要找出来到底哪个规则写错了，可以用 git check-ignore 命令检查</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs smali">$ git<span class="hljs-built_in"> add </span>-f App.class<br><br>$ git<span class="hljs-built_in"> check-ignore </span>-v App.class<br><span class="hljs-keyword">.gitignore</span>:3:*.class    App.class<br></code></pre></td></tr></table></figure>
 
-
-
-
-
-<h3 id="如何删除一些无用分支"><a href="#如何删除一些无用分支" class="headerlink" title="如何删除一些无用分支"></a>如何删除一些无用分支</h3><p>远程已经删除但是本地还存在。<br>这种操作通常是我新建分支改完bug推送远程合并结束后,远程分支删掉了本地分支也删掉但是branch -a的时候还存在想删除本地远程分支数据库中的分支时使用。</p>
+<h3 id="如何删除一些无用分支"><a href="#如何删除一些无用分支" class="headerlink" title="如何删除一些无用分支"></a>如何删除一些无用分支</h3><p>远程已经删除但是本地还存在。<br>这种操作通常是我新建分支改完 bug 推送远程合并结束后,远程分支删掉了本地分支也删掉但是 branch -a 的时候还存在想删除本地远程分支数据库中的分支时使用。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><br>$ git fetch origin <span class="hljs-attr">--prune</span>  <span class="hljs-comment">//update the local database of remote branches</span><br><br>$ git fetch -<span class="hljs-selector-tag">p</span> origin      <span class="hljs-comment">//这两条命令都在做一个事情,将本地分支库和远程分支库进行同步如果远程删掉了本地就删掉</span><br><br>$ git fetch origin -<span class="hljs-selector-tag">p</span> <span class="hljs-attr">--progress</span>  <span class="hljs-comment">//可以显示过程</span><br><br>$ git remote update <span class="hljs-attr">--prune</span> 也可以生效不过我没试过😓<br><br></code></pre></td></tr></table></figure>
 
 <p>总有最笨的方法</p>
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-symbol">$</span> git branch -d -r origin/branch_name  <span class="hljs-comment">//不嫌麻烦可以一条条删掉😂</span><br></code></pre></td></tr></table></figure>
 
-
-
 <h2 id="本地分支与远程分支对应"><a href="#本地分支与远程分支对应" class="headerlink" title="本地分支与远程分支对应"></a>本地分支与远程分支对应</h2><h3 id="第一种情况"><a href="#第一种情况" class="headerlink" title="第一种情况"></a>第一种情况</h3><p>新建分支直接创建新分支推送到远端即可</p>
-<h3 id="第二种情况"><a href="#第二种情况" class="headerlink" title="第二种情况"></a>第二种情况</h3><p>本地没有分支远端有分支dev</p>
-<p>可以git fetch ,然后直接新建分支<b>跟远端分支名字一样</b> dev就可以建立链接。</p>
-<h3 id="另一种解决方案"><a href="#另一种解决方案" class="headerlink" title="另一种解决方案"></a>另一种解决方案</h3><p>情况二的领域中解决方案<br>要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是用这个命令创建本地dev分支</p>
+<h3 id="第二种情况"><a href="#第二种情况" class="headerlink" title="第二种情况"></a>第二种情况</h3><p>本地没有分支远端有分支 dev</p>
+<p>可以 git fetch ,然后直接新建分支<b>跟远端分支名字一样</b> dev 就可以建立链接。</p>
+<h3 id="另一种解决方案"><a href="#另一种解决方案" class="headerlink" title="另一种解决方案"></a>另一种解决方案</h3><p>情况二的领域中解决方案<br>要在 dev 分支上开发，就必须创建远程 origin 的 dev 分支到本地，于是用这个命令创建本地 dev 分支</p>
 <figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs q">$ git checkout -b <span class="hljs-built_in">dev</span> origin/<span class="hljs-built_in">dev</span><br><br><br>如果此时报错 no tracking information 需要将远程<span class="hljs-built_in">dev</span>和本地<span class="hljs-built_in">dev</span>分支建立链接<br><br>$ git branch --<span class="hljs-built_in">set</span>-upstream <span class="hljs-built_in">dev</span> origin/<span class="hljs-built_in">dev</span><br><br>$ git branch --track  <span class="hljs-built_in">dev</span> origin/<span class="hljs-built_in">dev</span>  <span class="hljs-comment">//该方法同上</span><br><br><span class="hljs-comment">//也可以选择git fetch 将远程相关的内容全拉取下来然后直接切换分支</span><br><br></code></pre></td></tr></table></figure>
-
 
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简明指南</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">git教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">git 教程</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">Git 工作流程</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">Git 使用规范流程</a></li>
 </ul>

@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/desk-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="toshiba">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="申请证书方式最近博客的 HTTPS 证书到期了，捣鼓一下证书的问题。因为用的免费证书品牌 Let’s Encrypt，所以有两种申请方式。 acme.shacme.sh 是一个知名的用于申请 Let’s Encrypt 证书的开源项目，也是属于脚本类型，有比较详细的文档，支持自动化更新和自动化部署。唯一缺点，如果有更新后自动部署至多个节点的需求的话，acme.sh 无法满足。如果你有一定的命令行使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="申请HTTPS证书">
+<meta property="og:url" content="http://example.com/2022/09/07/acme-sh/index.html">
+<meta property="og:site_name" content="喬伊·波伊的博客">
+<meta property="og:description" content="申请证书方式最近博客的 HTTPS 证书到期了，捣鼓一下证书的问题。因为用的免费证书品牌 Let’s Encrypt，所以有两种申请方式。 acme.shacme.sh 是一个知名的用于申请 Let’s Encrypt 证书的开源项目，也是属于脚本类型，有比较详细的文档，支持自动化更新和自动化部署。唯一缺点，如果有更新后自动部署至多个节点的需求的话，acme.sh 无法满足。如果你有一定的命令行使">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/acme.png">
+<meta property="article:published_time" content="2022-09-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-08T10:10:31.872Z">
+<meta property="article:author" content="toshiba">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="https">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/acme.png">
+  
+  
+  
+  <title>申请HTTPS证书 - 喬伊·波伊的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>喬伊·波伊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg/bg.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Babel简单配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        toshiba
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-07 00:00" pubdate>
+          2022年9月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Babel简单配置</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="申请证书方式"><a href="#申请证书方式" class="headerlink" title="申请证书方式"></a>申请证书方式</h2><p>最近博客的 HTTPS 证书到期了，捣鼓一下证书的问题。因为用的免费证书品牌 Let’s Encrypt，所以有两种申请方式。</p>
+<h3 id="acme-sh"><a href="#acme-sh" class="headerlink" title="acme.sh"></a>acme.sh</h3><p>acme.sh 是一个知名的用于申请 Let’s Encrypt 证书的开源项目，也是属于脚本类型，有比较详细的文档，支持自动化更新和自动化部署。唯一缺点，如果有更新后自动部署至多个节点的需求的话，acme.sh 无法满足。如果你有一定的命令行使用经验，acme.sh 使用起来还是非常方便，强烈推荐！关于更新后自动部署至多个节点的需求，建议使用下面介绍的 ohttps。</p>
+<p>该方法通过<a target="_blank" rel="noopener" href="https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E">官方文档</a>可以快速生成证书但是可能有些点需要注意一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 获取脚本</span><br>curl  https://get.acme.sh | sh -s email=my@example.com<br><br><span class="hljs-comment">#该脚本执行了两个操作</span><br><span class="hljs-comment">#一、把 acme.sh 安装到你的 home 目录下: ~/.acme.sh/ 并创建 一个 bash 的 alias, 方便你的使用: alias acme.sh=~/.acme.sh/acme.sh</span><br><br><span class="hljs-comment">#二、自动为你创建 cronjob, 每天 0:00 点自动检测所有的证书, 如果快过期了, 需要更新, 则会自动更新证书.更高级的安装选项请参考: https://github.com/Neilpang/acme.sh/wiki/How-to-install</span><br><br><span class="hljs-comment"># 可以放心的是安装过程不会污染已有的系统任何功能和文件, 所有的修改都限制在安装目录中: ~/.acme.sh/</span><br><br><span class="hljs-comment"># 生成证书</span><br><span class="hljs-comment"># 生成证书也有两种方式  http方式跟手动dns方式</span><br><span class="hljs-comment"># http方式以nginx为例</span><br><span class="hljs-comment">#前提是nginx安装完成输入域名能够正常访问nginx欢迎页面</span><br>acme.sh --issue  -d mydomain.com   --nginx<br><br><span class="hljs-comment"># 复制/安装证书</span><br>acme.sh --install-cert -d yun.sdongzhi.com \<br>--key-file       /etc/nginx/ssl/yun/sdongzhi.com.key  \<br>--fullchain-file /etc/nginx/ssl/yun/fullchain.cer \<br>--reloadcmd     <span class="hljs-string">&quot;service nginx force-reload&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="遇到的问题和注意点"><a href="#遇到的问题和注意点" class="headerlink" title="遇到的问题和注意点"></a>遇到的问题和注意点</h3><ol>
+<li>遇到错误 Can not find conf file for domain 查看 nginx.conf 配置 server*name *: 需要改成 server_name <a href="http://example.com/">example.com</a> 或者 conf.d 下面引入 example.com.conf 的配置 server_name</li>
+<li>ssl_certificate 使用 &#x2F;etc&#x2F;nginx&#x2F;ssl&#x2F;fullchain.cer ，而非 &#x2F;etc&#x2F;nginx&#x2F;ssl&#x2F;<domain>.cer</li>
+</ol>
+<p>3, 注释掉 nginx.conf 中的 includes xxx.conf</p>
+<h3 id="acme-sh-脚本手动-dns-方式"><a href="#acme-sh-脚本手动-dns-方式" class="headerlink" title="acme.sh 脚本手动 dns 方式"></a>acme.sh 脚本手动 dns 方式</h3><p>手动在域名上添加一条 txt 解析记录, 验证域名所有权.这种方式的好处是, 你不需要任何服务器, 不需要任何公网 ip, 只需要 dns 的解析记录即可完成验证. 坏处是，如果不同时配置 Automatic DNS API，使用这种方式 <a target="_blank" rel="noopener" href="http://acme.sh/">acme.sh</a> 将无法自动更新证书，每次都需要手动再次重新解析验证域名所有权。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">acme.sh  --issue  --dns   -d mydomain.com \<br> --yes-I-know-dns-manual-mode-enough-go-ahead-please<br><br>acme.sh  --renew   -d mydomain.com \<br>  --yes-I-know-dns-manual-mode-enough-go-ahead-please<br></code></pre></td></tr></table></figure>
+
+<h3 id="acme-sh-域名解析商的自动集成方式"><a href="#acme-sh-域名解析商的自动集成方式" class="headerlink" title="acme.sh 域名解析商的自动集成方式"></a><a target="_blank" rel="noopener" href="http://acme.sh/">acme.sh</a> 域名解析商的自动集成方式</h3><p>根据文档自动集成 <a target="_blank" rel="noopener" href="https://github.com/acmesh-official/acme.sh/wiki/dnsapi">https://github.com/acmesh-official/acme.sh/wiki/dnsapi</a></p>
+<h2 id="ohttps-com"><a href="#ohttps-com" class="headerlink" title="ohttps.com"></a><a target="_blank" rel="noopener" href="http://ohttps.com/"><strong>ohttps.com</strong></a></h2><p>这种方式更简单，只需要注册登录<a target="_blank" rel="noopener" href="https://ohttps.com/">官方网站</a>安装推荐方式一步步生成即可得到证书。</p>
+<p>可申请 Let’s Encrypt 免费通配符类型证书，还提供了证书吊销、到期前提醒、自动更新、自动部署功能。另外比 acme.sh 增加了一些非常实用的功能，主要包括可自动部署至阿里云、腾讯云、七牛云的负载均衡、内容分发 CDN、SSL 证书列表等，并可自动部署至多个 nginx 容器中。如果你有在证书更新后自动部署至多个不同节点的需求，使用<a target="_blank" rel="noopener" href="http://ohttps.com就对了,在这里强烈推荐大家使用http//ohttps.com%E7%94%B3%E8%AF%B7%E5%92%8C%E7%AE%A1%E7%90%86Let%E2%80%99s">http://ohttps.com就对了，在这里强烈推荐大家使用http://ohttps.com申请和管理Let’s</a> Encrypt 颁发的免费 HTTPS 证书。</p>
+<p>唯一遇到的问题就是添加 CNAME 记录的时候，因为我的域名在 <a target="_blank" rel="noopener" href="https://www.gandi.net/zh-Hans">https://www.gandi.net/zh-Hans</a> 托管添加记录的时候后面要多带一个. 要不然不会生效 比如</p>
+<ul>
+<li>主机名：_acme-challenge.donfuffy.com</li>
+<li>记录类型：CNAME</li>
+<li>记录值： _acme-challenge.xlpm40g7wk05n9gz.ohttps.com 这里需要写成 _acme-challenge.xlpm40g7wk05n9gz.ohttps.com. 后面需要带一个点这个应该是域名托管服务商的问题</li>
+</ul>
+<h3 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs bash">upstream myproject &#123;<br>    server xx.xx.xx.xx:4000;<br>&#125;<br>server &#123;<br>    listen 80;<br>    listen [::]:80;<br>    server_name sdongzhi.com;<br><br>    <span class="hljs-comment"># Redirect all HTTP requests to HTTPS with a 301 Moved Permanently response.</span><br>    <span class="hljs-built_in">return</span> 301 https://$host<span class="hljs-variable">$request_uri</span>;<br>&#125;<br><br>server &#123;<br>    listen 443 ssl http2;<br>    listen [::]:443 ssl http2;<br>    server_name sdongzhi.com;<br>    root         /usr/share/nginx/html;<br>    ssl_certificate <span class="hljs-string">&quot;/etc/nginx/ssl/fullchain.cer&quot;</span>;<br>    ssl_certificate_key <span class="hljs-string">&quot;/etc/nginx/ssl/sdongzhi.com.key&quot;</span>;<br>    ssl_session_cache shared:SSL:1m;<br>    ssl_session_timeout  10m;<br>    <span class="hljs-comment"># access_log /var/log/nginx/darknights.me.log main;</span><br><br>    <span class="hljs-comment"># certs sent to the client in SERVER HELLO are concatenated in ssl_certificate</span><br><br>    <span class="hljs-comment"># intermediate configuration. tweak to your needs.</span><br>    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;<br>    ssl_ciphers <span class="hljs-string">&#x27;ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS&#x27;</span>;<br>    ssl_prefer_server_ciphers on;<br><br>    <span class="hljs-comment"># HSTS (ngx_http_headers_module is required) (15768000 seconds = 6 months)</span><br>    add_header Strict-Transport-Security max-age=15768000;<br><br>    <span class="hljs-comment"># OCSP Stapling ---</span><br>    <span class="hljs-comment"># fetch OCSP records from URL in ssl_certificate and cache them</span><br><br>    <span class="hljs-comment">## verify chain of trust of OCSP response using Root CA and Intermediate certs</span><br><br>    location / &#123;<br><br>        log_not_found on;<br><br>        <span class="hljs-comment">#禁止Scrapy等工具的抓取</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$http_user_agent</span> ~* (Scrapy|Curl|HttpClient)) &#123;<br>            <span class="hljs-built_in">return</span> 403;<br>        &#125;<br>        <span class="hljs-comment">#禁止指定UA及UA为空的访问</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$http_user_agent</span> ~ <span class="hljs-string">&quot;FeedDemon|Indy Library|Alexa Toolbar|AskTbFXTV|AhrefsBot|CrawlDaddy|CoolpadWebkit|Java|Feedly|UniversalFeedParser|ApacheBench|Microsoft URL Control|Swiftbot|ZmEu|oBot|jaunty|Python-urllib|lightDeckReports Bot|YYSpider|DigExt|HttpClient|MJ12bot|heritrix|EasouSpider|Ezooms|^$&quot;</span> ) &#123;<br>            <span class="hljs-built_in">return</span> 403;<br>        &#125;<br>        <span class="hljs-comment">#禁止非GET|HEAD|POST方式的抓取</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$request_method</span> !~ ^(GET|HEAD|POST)$) &#123;<br>            <span class="hljs-built_in">return</span> 403;<br>        &#125;<br><br>        proxy_pass http://myproject;<br>        proxy_read_timeout 300;<br>        proxy_connect_timeout 300;<br>        proxy_redirect off;<br><br>        proxy_set_header X-Forwarded-Proto <span class="hljs-variable">$scheme</span>;<br>        proxy_set_header Host              <span class="hljs-variable">$http_host</span>;<br>        proxy_set_header X-Real-IP         <span class="hljs-variable">$remote_addr</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="dnsapi"><a href="#dnsapi" class="headerlink" title="dnsapi"></a>dnsapi</h3><p>在<code>Trojan一键安装脚本</code>的文章里补充了根据<code>dnsapi</code>来申请证书。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/https/" class="category-chain-item">https</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/web/">#web</a>
+      
+        <a href="/tags/https/">#https</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>申请HTTPS证书</div>
+      <div>http://example.com/2022/09/07/acme-sh/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>toshiba</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月7日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/08/trojan-go/" title="Trojan一键安装脚本">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Trojan一键安装脚本</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/25/nginx-sni/" title="Nginx共用443端口">
+                        <span class="hidden-mobile">Nginx共用443端口</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/09/07/acme-sh/';
+          this.page.identifier = '/2022/09/07/acme-sh/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'IORI' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
