@@ -1,29 +1,27 @@
 ---
-layout:     post
-title:      "git的使用教程(二)"
-subtitle:   "git的中级教程(其他常用操作)"
-date:       2017-10-21
-author:     "toshiba"
+layout: post
+title: "git的使用教程(二)"
+subtitle: "git的中级教程(其他常用操作)"
+date: 2017-10-21
+author: "toshiba"
 index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp
 tags:
-    - 工具
-    - git
+  - 工具
+  - git
 
 categories:
-    - 版本控制
-    - git
+  - 版本控制
+  - git
 
 comments: true
 ---
 
+## git 的中级使用教程
 
-
-
-## git的中级使用教程
-
-记录一些使用率中等的git命令
+记录一些使用率中等的 git 命令
 
 ### 设置用户名和邮箱
+
 ```
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
@@ -31,7 +29,9 @@ $ git config --global user.email "email@example.com"
 ```
 
 ### 配置别名
-使用git status 太长了怎么破
+
+使用 git status 太长了怎么破
+
 ```
 $ git config --global alias.st status
 $ git config --global alias.co checkout
@@ -42,28 +42,31 @@ $ git config --global alias.last 'log -1'  //显示最后一次提交信息
 ```
 
 还有这种操作
+
 ```
 $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
+
 结果如下
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/0.png)
 
+### 生产 SSH Key
 
-
-### 生产SSH Key
-
-```shell
+```bash
 ssh-keygen -t rsa -C "youremail@example.com"
 
 //生产的公钥私钥 会放到服务器的 ~/.ssh/authorized_keys目录下
 
 ```
-```shell
+
+```bash
 ssh-keygen -t ed25519
 ```
 
 ### 添加远程仓库
+
 本地文件夹添加远程仓库并且推送上去,基础文章已经写过这里再次复习一遍
+
 ```
 $ git remote add origin git@github.com:michaelliao/learngit.git
 
@@ -73,9 +76,9 @@ $ git push -u origin master
 
 ### 分支管理策略<code>--no-ff</code>
 
-通常，合并分支时，如果可能，Git会用<code>Fast forward模式</code>，但这种模式下，删除分支后，会丢掉分支信息。
+通常，合并分支时，如果可能，Git 会用<code>Fast forward 模式</code>，但这种模式下，删除分支后，会丢掉分支信息。
 
-如果要强制禁用<code>Fast forward</code>模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+如果要强制禁用<code>Fast forward</code>模式，Git 就会在 merge 时生成一个新的 commit，这样，从分支历史上就可以看出分支信息。
 
 ```
 $ git merge --no-ff -m "merge with no-ff" dev
@@ -87,6 +90,7 @@ Merge made by the 'recursive' strategy.
 ```
 
 合并后的结果如下
+
 ```
 $ git log --graph --pretty=oneline --abbrev-commit
 *   7825a50 merge with no-ff
@@ -98,6 +102,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 ```
 
 ### 保存工作现场
+
 ```
 $ git stash
 Saved working directory and index state WIP on dev: 6224937 add merge
@@ -112,8 +117,8 @@ $ git stash apply stash@{0} //指定要恢复的stash
 
 ```
 
-
 ### 删除远程分支
+
 ```
 $ git push origin :master 等同于下面的命令推送一个空分支对应远程分支
 
@@ -123,7 +128,8 @@ $ git push origin --delete master
 
 ### 丢弃暂存区文件
 
-如果一个文件已经add到暂存区，还没有commit，此时如果不想要这个文件了，有两种方法
+如果一个文件已经 add 到暂存区，还没有 commit，此时如果不想要这个文件了，有两种方法
+
 ```
 $ git reset HEAD   用版本库内容清空暂存区
 
@@ -131,23 +137,25 @@ $ git rm --cache 删除缓存区内容
 ```
 
 ### 允许空提交
-即没有任何更改进行commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署
+
+即没有任何更改进行 commit, 之所以需要这种是我们开发时制定分支推送会部署代码但是有时候没有代码提交只想单独部署这样可以进行推送从而触发部署
+
 ```
 $ git commit --allow-empty -m "empty"
 ```
 
-
 ### 文件夹大小写问题
-git 提交文件夹默认是不区分大小写的也就是说max/file 和Max/file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是java起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题
+
+git 提交文件夹默认是不区分大小写的也就是说 max/file 和 Max/file 对于远端来说是一样的这样就会有本地和远端文件夹不一样的问题。带来的后果就是 java 起名字的时候如果文件夹有大小写有可能不识别会有找不到类的问题
+
 ```
 $ git config core.ignorecase false  //默认是true
 
 ```
 
+### git reset 的后悔药
 
-
-### git reset的后悔药
-当使用  <code>git reset --hard xxx</code> 回退到之前的版本,我又想回到最新的版本如何操作呢
+当使用 <code>git reset --hard xxx</code> 回退到之前的版本,我又想回到最新的版本如何操作呢
 
 ```
 $ git reflog
@@ -162,10 +170,13 @@ ea34578 HEAD@{2}: commit: add distributed
 cb926e7 HEAD@{3}: commit (initial): wrote a readme file
 
 ```
+
 这样之后又可以使用 reset --hard xxx 乘坐时光机返回了。
 
 ### git clean
-该命令将未跟踪的文件从工作目录中删除，同git status 然后手动删除一样。该命令无法撤销慎重使用。
+
+该命令将未跟踪的文件从工作目录中删除，同 git status 然后手动删除一样。该命令无法撤销慎重使用。
+
 ```
 $ git clean -n  //进行预演告诉你哪些文件会被删除并不是真的删除
 
@@ -180,6 +191,7 @@ $ git clean -xf //移除当前目录下未跟踪的文件，以及 Git 一般忽
 ```
 
 ### reset+clean
+
 ```
 # 编辑了一些文件
 # 新增了一些文件
@@ -191,12 +203,15 @@ git reset --hard
 # 移除未跟踪的文件
 git clean -df
 ```
-在执行了 reset/clean 的流程之后，工作目录和缓存区和最近一次提交看上去一模一样，而 git status会认为这是一个干净的工作目录。你可以重新来过了。
+
+在执行了 reset/clean 的流程之后，工作目录和缓存区和最近一次提交看上去一模一样，而 git status 会认为这是一个干净的工作目录。你可以重新来过了。
 
 注意，不像 git reset 的第二个栗子，新的文件没有被加入到仓库中。因此，它们不会受到 git reset --hard 的影响，需要 git clean 来删除它们。
 
-### reset其他用法
-git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。
+### reset 其他用法
+
+git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用 HEAD 时，表示最新的版本。
+
 ```
 $ git status
 # On branch master
@@ -234,11 +249,12 @@ git commit -m "Edit main.py"
 
 ```
 
-> * git checkout -- xxx 丢弃工作区间的修改 此时没有add
-> * git reset HEAD xxx 将暂存区的文件撤销放回到工作区间 ，此时已经add
+> - git checkout -- xxx 丢弃工作区间的修改 此时没有 add
+> - git reset HEAD xxx 将暂存区的文件撤销放回到工作区间 ，此时已经 add
 
 ### git checkout
-这里有个checkout的用法比较少用感觉用reset比较多，通常来说git checkout 会有三种用法： 检出文件，检出提交和检出分支，一般我们只关心前两种
+
+这里有个 checkout 的用法比较少用感觉用 reset 比较多，通常来说 git checkout 会有三种用法： 检出文件，检出提交和检出分支，一般我们只关心前两种
 
 ```
 $ git checkout master //切换分支
@@ -251,14 +267,11 @@ $ git checkout a1e8fb5 hello.py //将某个文件切到某次提交的的样子
 $ git checout <commit>  //将所有文件切换到某次提交的样子
 ```
 
-
-
-
-
-
 ### 配置文件
-配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用
-每个仓库的Git配置文件都放在.git/config文件中
+
+配置 Git 的时候，加上--global 是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用
+每个仓库的 Git 配置文件都放在.git/config 文件中
+
 ```
 $ cat .git/config
 [core]
@@ -278,7 +291,8 @@ $ cat .git/config
     last = log -1
 ```
 
-前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中
+前用户的 Git 配置文件放在用户主目录下的一个隐藏文件.gitconfig 中
+
 ```
 $ cd ~
 $ cat .gitconfig
@@ -293,9 +307,10 @@ $ cat .gitconfig
 ```
 
 ### 使用.gitignore
-有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被.gitignore忽略了：
-如果你确实想添加该文件，可以用-f强制添加到Git：
-或者你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用git check-ignore命令检查
+
+有些时候，你想添加一个文件到 Git，但发现添加不了，原因是这个文件被.gitignore 忽略了：
+如果你确实想添加该文件，可以用-f 强制添加到 Git：
+或者你发现，可能是.gitignore 写得有问题，需要找出来到底哪个规则写错了，可以用 git check-ignore 命令检查
 
 ```
 $ git add -f App.class
@@ -304,13 +319,11 @@ $ git check-ignore -v App.class
 .gitignore:3:*.class    App.class
 ```
 
-
-
-
-
 ### 如何删除一些无用分支
+
 远程已经删除但是本地还存在。
-这种操作通常是我新建分支改完bug推送远程合并结束后,远程分支删掉了本地分支也删掉但是branch -a的时候还存在想删除本地远程分支数据库中的分支时使用。
+这种操作通常是我新建分支改完 bug 推送远程合并结束后,远程分支删掉了本地分支也删掉但是 branch -a 的时候还存在想删除本地远程分支数据库中的分支时使用。
+
 ```
 
 $ git fetch origin --prune  //update the local database of remote branches
@@ -324,11 +337,10 @@ $ git remote update --prune 也可以生效不过我没试过😓
 ```
 
 总有最笨的方法
+
 ```
 $ git branch -d -r origin/branch_name  //不嫌麻烦可以一条条删掉😂
 ```
-
-
 
 ## 本地分支与远程分支对应
 
@@ -338,12 +350,14 @@ $ git branch -d -r origin/branch_name  //不嫌麻烦可以一条条删掉😂
 
 ### 第二种情况
 
-本地没有分支远端有分支dev
+本地没有分支远端有分支 dev
 
-可以git fetch ,然后直接新建分支<b>跟远端分支名字一样</b> dev就可以建立链接。
+可以 git fetch ,然后直接新建分支<b>跟远端分支名字一样</b> dev 就可以建立链接。
+
 ### 另一种解决方案
+
 情况二的领域中解决方案
-要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是用这个命令创建本地dev分支
+要在 dev 分支上开发，就必须创建远程 origin 的 dev 分支到本地，于是用这个命令创建本地 dev 分支
 
 ```
 $ git checkout -b dev origin/dev
@@ -359,10 +373,9 @@ $ git branch --track  dev origin/dev  //该方法同上
 
 ```
 
-
 ### 参考文章
 
-> * [git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
-> * [git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
-> * [Git 工作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
-> * [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
+> - [git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
+> - [git 教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> - [Git 工作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
+> - [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)

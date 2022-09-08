@@ -25,7 +25,7 @@ categories:
 
 首先安装<code>@babel/core</code>，这是 babel 的核心。
 
-```shell
+```bash
 $ npm install @babel/core
 ```
 
