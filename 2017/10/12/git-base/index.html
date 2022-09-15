@@ -18,21 +18,21 @@
   <meta name="author" content="toshiba">
   <meta name="keywords" content="">
   
-    <meta name="description" content="git的初级使用教程记录常用的git命令,方便自己查询 创建新仓库1$  git init  Create a new repository 123456$  git clone git@github.com:sundongzhi&#x2F;chouti-react.git$  cd chouti-react$  touch README.md$  git add README.md$  git commi">
+    <meta name="description" content="git 的初级使用教程记录常用的 git 命令,方便自己查询 创建新仓库1$  git init  Create a new repository 123456$  git clone git@github.com:sundongzhi&#x2F;chouti-react.git$  cd chouti-react$  touch README.md$  git add README.md$  git co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git的使用教程(一)">
 <meta property="og:url" content="http://example.com/2017/10/12/git-base/index.html">
 <meta property="og:site_name" content="喬伊·波伊的博客">
-<meta property="og:description" content="git的初级使用教程记录常用的git命令,方便自己查询 创建新仓库1$  git init  Create a new repository 123456$  git clone git@github.com:sundongzhi&#x2F;chouti-react.git$  cd chouti-react$  touch README.md$  git add README.md$  git commi">
+<meta property="og:description" content="git 的初级使用教程记录常用的 git 命令,方便自己查询 创建新仓库1$  git init  Create a new repository 123456$  git clone git@github.com:sundongzhi&#x2F;chouti-react.git$  cd chouti-react$  touch README.md$  git add README.md$  git co">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/git.webp">
 <meta property="article:published_time" content="2017-10-12T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-09T07:58:23.297Z">
+<meta property="article:modified_time" content="2022-09-15T12:31:27.734Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp">
+<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/git.webp">
   
   
   
@@ -295,22 +295,21 @@
             
               <div class="markdown-body">
                 
-                <h2 id="git的初级使用教程"><a href="#git的初级使用教程" class="headerlink" title="git的初级使用教程"></a>git的初级使用教程</h2><p>记录常用的git命令,方便自己查询</p>
+                <h2 id="git-的初级使用教程"><a href="#git-的初级使用教程" class="headerlink" title="git 的初级使用教程"></a>git 的初级使用教程</h2><p>记录常用的 git 命令,方便自己查询</p>
 <h2 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span> git init<br></code></pre></td></tr></table></figure>
 
 <p>Create a new repository</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git <span class="hljs-built_in">clone</span> git@github.com:sundongzhi/chouti-react.git</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> <span class="hljs-built_in">cd</span> chouti-react</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> <span class="hljs-built_in">touch</span> README.md</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git add README.md</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git commit -m <span class="hljs-string">&quot;add README&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git push -u origin master</span><br></code></pre></td></tr></table></figure>
 
-
 <p>Existing folder</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"> <span class="hljs-built_in">cd</span> existing_folder</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git init</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git remote add origin git@github.com:sundongzhi/chouti-react.git</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git add .</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git commit -m <span class="hljs-string">&quot;Initial commit&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git push -u origin master</span><br></code></pre></td></tr></table></figure>
-
 
 <p>Existing Git repository</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"> <span class="hljs-built_in">cd</span> existing_repo</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git remote rename origin old-origin</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git remote add origin git@github.com:sundongzhi/chouti-react.git</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git push -u origin --all</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"> git push -u origin --tags</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="clone本地仓库"><a href="#clone本地仓库" class="headerlink" title="clone本地仓库"></a>clone本地仓库</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">$  git <span class="hljs-keyword">clone</span> <span class="hljs-title">/path</span>/to/repository<br></code></pre></td></tr></table></figure>
-<h3 id="从远程仓库clone"><a href="#从远程仓库clone" class="headerlink" title="从远程仓库clone"></a>从远程仓库clone</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span> git clone username<span class="hljs-variable">@host</span><span class="hljs-symbol">:/path/to/repository</span><br></code></pre></td></tr></table></figure>
+<h3 id="clone-本地仓库"><a href="#clone-本地仓库" class="headerlink" title="clone 本地仓库"></a>clone 本地仓库</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">$  git <span class="hljs-keyword">clone</span> <span class="hljs-title">/path</span>/to/repository<br></code></pre></td></tr></table></figure>
+
+<h3 id="从远程仓库-clone"><a href="#从远程仓库-clone" class="headerlink" title="从远程仓库 clone"></a>从远程仓库 clone</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span> git clone username<span class="hljs-variable">@host</span><span class="hljs-symbol">:/path/to/repository</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><blockquote>
 <p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。</p>
@@ -318,32 +317,28 @@
 <p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/trees.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="添加和提交"><a href="#添加和提交" class="headerlink" title="添加和提交"></a>添加和提交</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-symbol">$</span>  git add &lt;filename&gt;<br><span class="hljs-symbol">$</span>  git add *<br><span class="hljs-symbol">$</span>  git add .     <span class="hljs-comment">//添加到缓存区</span><br><br><span class="hljs-symbol">$</span>  git commit -m <span class="hljs-string">&quot;代码提交信息&quot;</span>   <span class="hljs-comment">//提交到本地仓库</span><br><br><span class="hljs-symbol">$</span> git commit -a  相当于 git add + git commit<br></code></pre></td></tr></table></figure>
 
-
 <h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">$  git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> master<br></code></pre></td></tr></table></figure>
+
 <p>可以把 master 换成你想要推送的任何分支。</p>
 <p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">$  git remote <span class="hljs-keyword">add </span><span class="hljs-keyword">origin </span>&lt;server&gt;<br></code></pre></td></tr></table></figure>
 
 <h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">$ <span class="hljs-string">git</span> <span class="hljs-string">remote</span> -<span class="hljs-string">v</span> //显示远程仓库信息<br><br>$ <span class="hljs-string">git</span> <span class="hljs-string">remote</span> <span class="hljs-string">rm</span> <span class="hljs-string">origin</span>  //删除远程链接<br><br>$ <span class="hljs-string">git</span> <span class="hljs-string">remote</span> <span class="hljs-built_in">set-url</span> <span class="hljs-string">origin</span> <span class="hljs-string">git</span>@<span class="hljs-string">github</span>.<span class="hljs-string">com:michaelliao/</span><span class="hljs-string">learngit</span>.<span class="hljs-string">git</span>  //更改远程仓库地址,通常用来切换<span class="hljs-string">ssh</span>和<span class="hljs-string">https</span><br><br></code></pre></td></tr></table></figure>
 
-
 <p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
 <h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/branches.png" srcset="/img/loading.gif" lazyload></p>
 <p>创建一个叫做“feature_x”的分支，并切换过去：</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>git branch 查看本地分支<br><br><span class="hljs-variable">$ </span>git branch -a 查看本地和本地fetch到的远程分支都显示出来<br><br><span class="hljs-variable">$ </span>git branch -r 查看本地fetch到的远程分支(只显示本地存储的远程分支)<br><br><span class="hljs-variable">$ </span>git checkout -b feature_x<br><br><br></code></pre></td></tr></table></figure>
 
-
-
 <p>切换回主分支：</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">$  git checkout <span class="hljs-literal">master</span><br></code></pre></td></tr></table></figure>
+
 <p>再把新建的分支删掉：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">$  git branch -d feature_x <span class="hljs-regexp">//</span>删除已经合并的分支<br>$  git branch -D feature_x  <span class="hljs-regexp">//</span>强行删除未合并的分支<br></code></pre></td></tr></table></figure>
 
 <p>重命名分支</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>git branch -m devel develop<br></code></pre></td></tr></table></figure>
-
-
 
 <p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">$  git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> &lt;branch&gt;<br></code></pre></td></tr></table></figure>
@@ -360,10 +355,11 @@
 
 <h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">$  git checkout -- &lt;filename&gt; <span class="hljs-regexp">//</span>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。<br>    <span class="hljs-regexp">//</span>已添加到暂存区的改动以及新文件都不会受到影响。<br></code></pre></td></tr></table></figure>
+
 <p>如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它</p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">$  git fetch <span class="hljs-built_in">origin</span><br>$  git <span class="hljs-built_in">reset</span> --hard <span class="hljs-built_in">origin</span>/master<br></code></pre></td></tr></table></figure>
 
-<h3 id="reset参数"><a href="#reset参数" class="headerlink" title="reset参数"></a>reset参数</h3><p>除了在当前分支上操作，你还可以通过传入这些标记来修改你的缓存区或工作目录：</p>
+<h3 id="reset-参数"><a href="#reset-参数" class="headerlink" title="reset 参数"></a>reset 参数</h3><p>除了在当前分支上操作，你还可以通过传入这些标记来修改你的缓存区或工作目录：</p>
 <ul>
 <li>–soft – 缓存区和工作目录都不会被改变</li>
 <li>–mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响</li>
