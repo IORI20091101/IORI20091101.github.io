@@ -4,7 +4,7 @@ title: Trojan一键安装脚本
 subtitle: 在VPS上安装使用x-ui、Trojan、Trojan-go
 date: 2022-09-08
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/trojan.jpeg
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/trojan.jpeg
 comments: true
 tags:
   - Trojan

@@ -4,7 +4,7 @@ title: 小程序开发填坑
 subtitle: 整理最近小程序开发遇到的一些问题
 date: 2020-05-21
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/wechat.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/wechat.png
 comments: true
 
 tags:

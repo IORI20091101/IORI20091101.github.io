@@ -4,7 +4,7 @@ title: VSCode使用指南
 subtitle: 熟悉VSCode各种设置快捷键以及插件
 date: 2020-10-12
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/vscode.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/vscode.png
 comments: true
 
 tags:
@@ -26,7 +26,6 @@ categories:
 - `Opts + 左右箭头` 光标在单词间跳转
 - `Command + 左右箭头` 光标在行首行末之际跳转
 - `Command + 上下箭头` 光标在文件开始和末尾之际跳转
-
 
 #### 文本选择
 

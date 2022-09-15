@@ -4,7 +4,7 @@ title: Shield TV激活与联网
 subtitle: Shield TV激活与联网
 date: 2022-08-22
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/shield.jpeg
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/shield.jpeg
 comments: true
 tags:
   - Shield TV

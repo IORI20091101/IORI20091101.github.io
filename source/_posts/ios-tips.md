@@ -4,7 +4,7 @@ title: 删除手机多余的根证书
 subtitle: 删除手机多余的根证书
 date: 2022-08-20
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/apple.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/apple.png
 comments: true
 tags:
   - ios

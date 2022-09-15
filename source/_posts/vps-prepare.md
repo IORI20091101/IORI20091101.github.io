@@ -4,7 +4,7 @@ title: 新购VPS的一些初始化设置
 subtitle: 最近买了一些vps，需要一些常规设置，记录一些常用命令
 date: 2022-09-08 15:53:03
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/vps.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/vps.png
 comments: true
 tags:
   - VPS

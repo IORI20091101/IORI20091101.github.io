@@ -1,28 +1,28 @@
 ---
-layout:     post
-title:      Gatsby入门test
-subtitle:   Gatsby入门以及简单的博客搭建
-date:       2021-01-22
-author:     "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/gatsby.png
+layout: post
+title: Gatsby入门test
+subtitle: Gatsby入门以及简单的博客搭建
+date: 2021-01-22
+author: "toshiba"
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/gatsby.png
 comments: true
 
-tags :
-    - blog
-    - Gatsby
+tags:
+  - blog
+  - Gatsby
 categories:
-    - Gatsby
+  - Gatsby
 
 sticky: 0
 ---
 
 # Gatsby
 
-[Gatsby](https://www.gatsbyjs.com/)是React的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。
+[Gatsby](https://www.gatsbyjs.com/)是 React 的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。
 
 ## 环境准备
 
-首先，以Mac为例 首先安装 [`brew`](https://brew.sh/)
+首先，以 Mac 为例 首先安装 [`brew`](https://brew.sh/)
 
 ```bash
 # 安装Homebrew
@@ -68,7 +68,7 @@ gatsby develop
 `src/pages/index.js` 即是首页地址，按照约定 `src/pages` 下面所有的文件都是一个页面
 
 ```jsx
-import React from "react"
+import React from "react";
 
 export default function Home() {
   return (
@@ -77,14 +77,14 @@ export default function Home() {
       <p>What a world.</p>
       <img src="https://source.unsplash.com/random/400x200" alt="" />
     </div>
-  )
+  );
 }
 ```
 
 我们新加一个页面 `src/pages/about.js`
 
 ```jsx
-import React from "react"
+import React from "react";
 
 export default function About() {
   return (
@@ -92,7 +92,7 @@ export default function About() {
       <h1>About Gatsby</h1>
       <p>Such wow. Very React.</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -100,27 +100,27 @@ export default function About() {
 
 ### 使用组件
 
-在上面的页面中假设我们页面有公共的`header` 或 `footer`，我们不需要在每个页面中定义，这时候就需要用到组件，同样的Gatsby约定 `src/components` 文件夹下的都是放的组件，我们新建一个`src/components/header.js`的组件
+在上面的页面中假设我们页面有公共的`header` 或 `footer`，我们不需要在每个页面中定义，这时候就需要用到组件，同样的 Gatsby 约定 `src/components` 文件夹下的都是放的组件，我们新建一个`src/components/header.js`的组件
 
 ```jsx
-import React from "react"
+import React from "react";
 export default function Header(props) {
-  return <h1>{props.headerText}</h1>
+  return <h1>{props.headerText}</h1>;
 }
 ```
 
-在about页面中使用
+在 about 页面中使用
 
 ```jsx
-import React from "react"
-import Header from "../components/header"
+import React from "react";
+import Header from "../components/header";
 export default function About() {
   return (
     <div style={{ color: `teal` }}>
       <Header headerText="About Gatsby" />
       <p>Such wow. Very React.</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -146,11 +146,11 @@ surge public/
 
 [https://arrogant-station.surge.sh/about/](https://arrogant-station.surge.sh/about/)
 
- 就可以看到刚刚的效果
+就可以看到刚刚的效果
 
 ### 自定义样式表
 
-当我们想自定义样式时，我们可以在src下的styles下建立global.css，如下：
+当我们想自定义样式时，我们可以在 src 下的 styles 下建立 global.css，如下：
 
 ```
 ├── package.json
@@ -163,7 +163,7 @@ surge public/
 
 ```css
 / * src/styles/global.css */
-html {
+htm {
   background-color: lavenderblush;
 }
 ```
@@ -171,7 +171,7 @@ html {
 如果想让该文件生效，需要在项目根目录下新建一个 `gatsby-browser.js`
 
 ```jsx
-import "./src/styles/global.css"
+import "./src/styles/global.css";
 
 // or:
 // require('./src/styles/global.css')
@@ -190,14 +190,14 @@ import "./src/styles/global.css"
 
 ```
 
-我们以  `.module.css` 作为后缀即可创建一个组件级别作用域样式
+我们以 `.module.css` 作为后缀即可创建一个组件级别作用域样式
 
 ```jsx
-import React from "react"
-import containerStyles from "./container.module.css"
+import React from "react";
+import containerStyles from "./container.module.css";
 
 export default function Container({ children }) {
-  return <div className={containerStyles.container}>{children}</div>
+  return <div className={containerStyles.container}>{children}</div>;
 }
 ```
 
@@ -211,9 +211,9 @@ export default function Container({ children }) {
 新建一个页面用来使用这个组件 `src/pages/about-css-modules.js`
 
 ```jsx
-import React from "react"
+import React from "react";
 
-import Container from "../components/container"
+import Container from "../components/container";
 
 export default function About() {
   return (
@@ -221,7 +221,7 @@ export default function About() {
       <h1>About Css Modules</h1>
       <p>CSS Module are cool</p>
     </Container>
-  )
+  );
 }
 ```
 
@@ -249,19 +249,19 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
 Typography.js 需要一个配置文件放到 `src/utils/typography.js`
 
 ```jsx
-import Typography from "typography"
-import fairyGateTheme from "typography-theme-fairy-gates"
+import Typography from "typography";
+import fairyGateTheme from "typography-theme-fairy-gates";
 
-const typography = new Typography(fairyGateTheme)
+const typography = new Typography(fairyGateTheme);
 
-export const { scale, rhythm, options } = typography
-export default typography
+export const { scale, rhythm, options } = typography;
+export default typography;
 ```
 
 这样就可以愉快的使用选中的主题来作为网站的基本样式了。接下来自定义`Layout` 组件，`src/components/layout.js`
@@ -309,8 +309,8 @@ export default function Layout({ children }) {
 
 ```jsx
 // src/pages/index.js
-import React from "react"
-import Layout from "../components/layout"
+import React from "react";
+import Layout from "../components/layout";
 
 export default function Home() {
   return (
@@ -322,15 +322,15 @@ export default function Home() {
       </p>
       <img src="https://source.unsplash.com/random/400x200" alt="" />
     </Layout>
-  )
+  );
 }
 ```
 
 到了这里我们已经有了一个大概的博客模型，效果可以在这里看到 [https://wretched-weight.surge.sh](https://wretched-weight.surge.sh/)
 
-不过在这个过程中碰到一个`css` 被  强制转成 `cssFloat` 的问题issue地址在这里 [https://github.com/stylelint/stylelint/issues/4490](https://github.com/stylelint/stylelint/issues/4490)
+不过在这个过程中碰到一个`css` 被 强制转成 `cssFloat` 的问题 issue 地址在这里 [https://github.com/stylelint/stylelint/issues/4490](https://github.com/stylelint/stylelint/issues/4490)
 
-### 使用数据Graphql
+### 使用数据 Graphql
 
 我们新建一个项目
 
@@ -349,11 +349,11 @@ npm install gatsby-plugin-typography typography react-typography typography-them
 ```jsx
 // src/components/layout.js
 
-import React from "react"
-import { css } from "@emotion/react"
-import { Link } from "gatsby"
+import React from "react";
+import { css } from "@emotion/react";
+import { Link } from "gatsby";
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from "../utils/typography";
 
 export default function Layout({ children }) {
   return (
@@ -386,14 +386,14 @@ export default function Layout({ children }) {
       </Link>
       {children}
     </div>
-  )
+  );
 }
 ```
 
 ```jsx
 // src/pages/index.js
-import React from "react"
-import Layout from "../components/layout"
+import React from "react";
+import Layout from "../components/layout";
 
 export default function Home() {
   return (
@@ -406,16 +406,16 @@ export default function Home() {
         />
       </div>
     </Layout>
-  )
+  );
 }
 ```
 
 ```jsx
 // about.js
 
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
 
 export default function About({ data }) {
   return (
@@ -426,7 +426,7 @@ export default function About({ data }) {
         best photos and videos of pandas eating lots of food.
       </p>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -437,26 +437,26 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 ```jsx
 // src/utils/typography.js
 
-import Typography from "typography"
-import kirkhamTheme from "typography-theme-kirkham"
+import Typography from "typography";
+import kirkhamTheme from "typography-theme-kirkham";
 
-const typography = new Typography(kirkhamTheme)
+const typography = new Typography(kirkhamTheme);
 
-export default typography
-export const rhythm = typography.rhythm
+export default typography;
+export const rhythm = typography.rhythm;
 ```
 
 ```jsx
 // gatsby-config.js
 
 module.exports = {
-	siteMetadata: {
+  siteMetadata: {
     title: `Title from siteMetadata`,
   },
   plugins: [
@@ -468,23 +468,23 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
-最终结果如下  [https://clumsy-texture.surge.sh/](https://clumsy-texture.surge.sh/)
+最终结果如下 [https://clumsy-texture.surge.sh/](https://clumsy-texture.surge.sh/)
 
 ![https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png](https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png)
 
-在 `about` 页面中我们通过 graphql 来查询到了 siteMetadata中的数据并进行了渲染，接下来我们将继续学习使用 `StaticQuery` ，它允许我们在非页面组件中（比如 `layout.js`）来查询数据,我们修改layout.js
+在 `about` 页面中我们通过 graphql 来查询到了 siteMetadata 中的数据并进行了渲染，接下来我们将继续学习使用 `StaticQuery` ，它允许我们在非页面组件中（比如 `layout.js`）来查询数据,我们修改 layout.js
 
 ```jsx
 // src/components/layout.js
 
-import React from "react"
-import { css } from "@emotion/react"
-import { useStaticQuery, Link, graphql } from "gatsby"
+import React from "react";
+import { css } from "@emotion/react";
+import { useStaticQuery, Link, graphql } from "gatsby";
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from "../utils/typography";
 export default function Layout({ children }) {
   const data = useStaticQuery(
     graphql`
@@ -496,7 +496,7 @@ export default function Layout({ children }) {
         }
       }
     `
-  )
+  );
   return (
     <div
       css={css`
@@ -527,11 +527,11 @@ export default function Layout({ children }) {
       </Link>
       {children}
     </div>
-  )
+  );
 }
 ```
 
-到目前为止已经可以通过graphql来获取数据无论是页面还是组件中都可以愉快的工作了。
+到目前为止已经可以通过 graphql 来获取数据无论是页面还是组件中都可以愉快的工作了。
 
 ### 插件
 
@@ -567,7 +567,7 @@ module.exports = {
 }
 ```
 
-我们可以在调试请求的页面中 [http://localhost:8000/___graphql](http://localhost:8000/___graphql) 看到结果
+我们可以在调试请求的页面中 [http://localhost:8000/\_\_\_graphql](http://localhost:8000/___graphql) 看到结果
 
 ```bash
 query MyQuery {
@@ -628,17 +628,17 @@ query MyQuery {
 ```jsx
 // /src/pages/my-files.js
 
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
 
 export default function MyFiles({ data }) {
-  console.log(data)
+  console.log(data);
   return (
     <Layout>
       <div>Hello world</div>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -654,14 +654,14 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 通过访问 [http://localhost:8000/my-files](http://localhost:8000/my-files) 即可看到我们请求到的数据详情
 
 ### 转换插件
 
-通常来说我们的博客数据都存储在一个Markdown文件中 `src/pages/sweet-pandas-eating-sweets.md`
+通常来说我们的博客数据都存储在一个 Markdown 文件中 `src/pages/sweet-pandas-eating-sweets.md`
 
 ```markdown
 ---
@@ -682,7 +682,7 @@ Here's a video of a panda eating sweets.
 npm install gatsby-transformer-remark
 ```
 
-gatsby-config.js中增加一个新的配置
+gatsby-config.js 中增加一个新的配置
 
 ```bash
 module.exports = {
@@ -822,13 +822,12 @@ export const query = graphql`
 
 现在的顺序是最新的在底下我们可以通过调整参数来改变文章排列顺序将`allMarkdownRemark` 改成`allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC })`
 
-文章列表已经就绪，接下来显示文章详情，我们来自动创建页面以及其路径，通常如果使用了`CMS` 比如`notion`  , `Contentful` , `Netlify CMS` ,会自动提供页面路径或者 `slug` , 但如果我们使用markdown 文件来生成页面需要使用这两个 `API` ：`onCreateNode` 和 `createPages` ,我们需要在`gatsby-node.js`这个文件中使用
+文章列表已经就绪，接下来显示文章详情，我们来自动创建页面以及其路径，通常如果使用了`CMS` 比如`notion` , `Contentful` , `Netlify CMS` ,会自动提供页面路径或者 `slug` , 但如果我们使用 markdown 文件来生成页面需要使用这两个 `API` ：`onCreateNode` 和 `createPages` ,我们需要在`gatsby-node.js`这个文件中使用
 
 ```jsx
-
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 exports.onCreateNode = ({ node, getNode, actions }) => {
-	/**
+  /**
 	if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent)
     console.log(`\n`, fileNode.relativePath)
@@ -839,16 +838,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 	*/
 
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    const slug = createFilePath({ node, getNode, basePath: `pages` });
     createNodeField({
       node,
       name: `slug`,
       value: slug,
-    })
+    });
   }
-}
+};
 ```
 
 现在有了一个新的字段
@@ -898,19 +897,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 仅仅是这样并不够，因为页面还不存在我们需要将页面生成出来，`src/pages/xxx.js` 下的文件会自动生成页面，但是其他的需要我们调用 `createPages`来生成
 
 ```jsx
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    const slug = createFilePath({ node, getNode, basePath: `pages` });
     createNodeField({
       node,
       name: `slug`,
       value: slug,
-    })
+    });
   }
-}
+};
 
 // 这一段的是意思是先走接口将所有的数据拉过来
 // 将所有的markdown的文件生成对应的页面
@@ -929,46 +928,46 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
-  console.log(JSON.stringify(result, null, 4))
-}
+  `);
+  console.log(JSON.stringify(result, null, 4));
+};
 ```
 
 要生成页面还需要一个额外的操作，我们需要建立一个模版文件 `src/templates/blog-post.js` 根据这个文件模版以及数据来生成对应的页面
 
 ```jsx
-import React from "react"
-import Layout from "../components/layout"
+import React from "react";
+import Layout from "../components/layout";
 
 export default function BlogPost() {
   return (
     <Layout>
       <div>Hello blog post</div>
     </Layout>
-  )
+  );
 }
 ```
 
 接下来继续更新 `gatsby-node.js`
 
 ```jsx
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    const slug = createFilePath({ node, getNode, basePath: `pages` });
     createNodeField({
       node,
       name: `slug`,
       value: slug,
-    })
+    });
   }
-}
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   const result = await graphql(`
     query {
       allMarkdownRemark {
@@ -981,7 +980,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
@@ -992,21 +991,21 @@ exports.createPages = async ({ graphql, actions }) => {
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
       },
-    })
-  })
-}
+    });
+  });
+};
 ```
 
 随便访问一个不存在的链接 [http://localhost:8000/sdf](http://localhost:8000/sdf) 即可看到能够访问的文章列表，点进去即可看到模版文件的内容，接下来我们更新模版数据让他显示该显示的数据即可
 
 ```jsx
 // src/templates/blog-post.js
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
   return (
     <Layout>
       <div>
@@ -1014,11 +1013,11 @@ export default function BlogPost({ data }) {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -1026,7 +1025,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 最后一步更新首页中链接

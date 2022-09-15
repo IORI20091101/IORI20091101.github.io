@@ -4,7 +4,7 @@ title: 申请HTTPS证书
 subtitle: Babel简单配置
 date: 2022-09-07
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/acme.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/acme.png
 comments: true
 
 tags:
@@ -155,4 +155,4 @@ server {
 
 ### dnsapi
 
-在`Trojan一键安装脚本`的文章里补充了根据`dnsapi`来申请证书。
+在{% post_link trojan-go Trojan一键安装脚本 %}的文章里补充了根据`dnsapi`来申请证书。

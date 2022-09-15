@@ -1,26 +1,27 @@
 ---
-layout:     post
-title:      "git的使用教程(一)"
-subtitle:   "git的初级教程(简明指南)"
-date:       2017-10-12
-author:     "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp
+layout: post
+title: "git的使用教程(一)"
+subtitle: "git的初级教程(简明指南)"
+date: 2017-10-12
+author: "toshiba"
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/git.webp
 tags:
-    - 工具
-    - git
+  - 工具
+  - git
 
 categories:
-    - 版本控制
-    - git
+  - 版本控制
+  - git
 
 comments: true
 ---
 
-## git的初级使用教程
+## git 的初级使用教程
 
-记录常用的git命令,方便自己查询
+记录常用的 git 命令,方便自己查询
 
 ## 创建新仓库
+
 ```
 $  git init
 ```
@@ -36,7 +37,6 @@ $  git commit -m "add README"
 $  git push -u origin master
 ```
 
-
 Existing folder
 
 ```
@@ -48,7 +48,6 @@ $  git commit -m "Initial commit"
 $  git push -u origin master
 ```
 
-
 Existing Git repository
 
 ```
@@ -59,22 +58,26 @@ $  git push -u origin --all
 $  git push -u origin --tags
 ```
 
-### clone本地仓库
+### clone 本地仓库
+
 ```
 $  git clone /path/to/repository
 ```
-### 从远程仓库clone
+
+### 从远程仓库 clone
+
 ```
 $  git clone username@host:/path/to/repository
 ```
 
 ### 工作流
+
 > 你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。
 
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/trees.png)
 
-
 ### 添加和提交
+
 ```
 $  git add <filename>
 $  git add *
@@ -85,13 +88,14 @@ $  git commit -m "代码提交信息"   //提交到本地仓库
 $ git commit -a  相当于 git add + git commit
 ```
 
-
 ### 推送改动
+
 你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：
 
 ```
 $  git push origin master
 ```
+
 可以把 master 换成你想要推送的任何分支。
 
 如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：
@@ -101,6 +105,7 @@ $  git remote add origin <server>
 ```
 
 ### 远程仓库
+
 ```
 $ git remote -v //显示远程仓库信息
 
@@ -110,10 +115,10 @@ $ git remote set-url origin git@github.com:michaelliao/learngit.git  //更改远
 
 ```
 
-
 如此你就能够将你的改动推送到所添加的服务器上去了。
 
 ### 分支
+
 分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/branches.png)
 
@@ -131,13 +136,12 @@ $ git checkout -b feature_x
 
 ```
 
-
-
 切换回主分支：
 
 ```
 $  git checkout master
 ```
+
 再把新建的分支删掉：
 
 ```
@@ -146,11 +150,10 @@ $  git branch -D feature_x  //强行删除未合并的分支
 ```
 
 重命名分支
+
 ```
 $ git branch -m devel develop
 ```
-
-
 
 除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：
 
@@ -166,6 +169,7 @@ $  git diff <source_branch> <target_branch>  //如果有冲突解决完冲突可
 ```
 
 ### 标签
+
 以执行如下命令创建一个叫做 1.0.0 的标签：
 
 ```
@@ -198,6 +202,7 @@ $ git tag -s v0.2 -m "signed version 0.2 released" fec145a
 ### log
 
 更多高级用法[参考这里](https://github.com/geeeeeeeeek/git-recipes/wiki/5.3-Git-log-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95)
+
 ```
 $  git log //查看所有日志
 
@@ -228,12 +233,14 @@ $git fetch <remote> <branch>
 ```
 
 ### 替换本地改动
+
 假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：
 
 ```
 $  git checkout -- <filename> //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
     //已添加到暂存区的改动以及新文件都不会受到影响。
 ```
+
 如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它
 
 ```
@@ -241,21 +248,13 @@ $  git fetch origin
 $  git reset --hard origin/master
 ```
 
-### reset参数
+### reset 参数
+
 除了在当前分支上操作，你还可以通过传入这些标记来修改你的缓存区或工作目录：
 
-* --soft – 缓存区和工作目录都不会被改变
-* --mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响
-* --hard – 缓存区和工作目录都同步到你指定的提交
-
-
-
-
-
-
-
-
-
+- --soft – 缓存区和工作目录都不会被改变
+- --mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响
+- --hard – 缓存区和工作目录都同步到你指定的提交
 
 ### 实用小贴士
 
@@ -274,7 +273,6 @@ $  git add -i 							//交互式添加文件到暂存区：
 
 ### 参考文章
 
-> * [git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
-> * [Git 工作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
-> * [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
-
+> - [git - 简明指南](http://rogerdudler.github.io/git-guide/index.zh.html)
+> - [Git 工作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
+> - [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)

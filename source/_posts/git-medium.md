@@ -4,7 +4,7 @@ title: "git的使用教程(二)"
 subtitle: "git的中级教程(其他常用操作)"
 date: 2017-10-21
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/git.webp
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/git.webp
 tags:
   - 工具
   - git

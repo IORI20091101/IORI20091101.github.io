@@ -4,7 +4,7 @@ title: 分别使用EMBY和WEBDAV搭建自己的影视媒体中心
 subtitle: 使用VPS搭建EMBY挂载Google Drive创建属于自己的媒体中心
 date: 2022-08-22
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/emby.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/emby.png
 comments: true
 tags:
   - EMBY
