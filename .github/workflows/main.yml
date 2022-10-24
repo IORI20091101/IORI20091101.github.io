@@ -41,4 +41,4 @@ jobs:
       - name: Copy RSA
         run: echo -e "Host sdongzhi.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - name: "Execute docker ps via remote host"
-        run: ssh root@sdongzhi.com "docker restart joyboy"
+        run: ssh root@sdongzhi.com "docker restart hexoblog"
