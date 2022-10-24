@@ -37,4 +37,4 @@ deploy:
 
 after_deploy:
   - git clone -b gh-pages --single-branch https://github.com/IORI20091101/IORI20091101.github.io.git
-  - ssh root@sdongzhi.com "docker restart hexo_blog_web_1"
+  - ssh root@sdongzhi.com "docker restart hexoblog"
