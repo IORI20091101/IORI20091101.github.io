@@ -1,0 +1,8 @@
+#!name=🏃‍♂️ Run
+#!desc=Let's Run...
+
+[MITM]
+hostname = %APPEND% *.beijing.gov.cn
+
+[Script]
+healthcode = type=http-response,pattern=https?:\/\/xcx\.yqgz\.beijing\.gov\.cn.*,requires-body=1,max-size=-1,debug=1,script-path=/healthcode_run.js
