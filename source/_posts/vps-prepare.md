@@ -16,6 +16,18 @@ categories:
 
 最近买了一些`VPS`做测试,会用到一些常用设置，在这里记录一下
 
+
+# 允许root用户登陆
+```bash
+sudo vim /etc/ssh/sshd_config  
+# PermitRootLogin yes
+
+sudo passwd root
+
+sudo  systemctl  restart  ssh
+
+```
+
 # 开启密钥登陆
 
 #### 本地制作密钥对
