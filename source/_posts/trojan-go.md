@@ -78,6 +78,7 @@ export GANDI_LIVEDNS_KEY="fdmlfsdklmfdkmqsdfk"
 ./acme.sh --issue --dns dns_gandi_livedns -d example.com -d www.example.com
 
 ```
+如果遇到申请证书失败的情况可能是`.bashrc`文件跟`~/.acme.sh/account.conf`中的`GANDI_LIVEDNS_KEY`不匹配造成，需要同步修改。
 
 # 安装 x-ui 面板
 
