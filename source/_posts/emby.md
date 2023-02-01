@@ -234,3 +234,5 @@ enjoy~
 [^3]: [再来谈谈 Emby+Google Drive 的私人影视库搭建](https://mrchou.com/internet/lets-talk-about-private-media-library-build-by-emby-and-google-drive.html)
 [^4]: [Emby 公益服推荐—全网最全集合](https://zhuanlan.zhihu.com/p/441468707)
 [^5]: [GoIndex - 无服务器架构 Google Drive 目录索引程序](https://p3terx.com/archives/goindex-google-drive-directory-index.html)
+[^6]: [重新学习并解锁破解emby4.6.7,4.7.*版本](https://blog.peos.cn/2022/08/12/emby467-emby47.html)
+[^7]: [群晖：EMBY解锁Premiere的方法](https://csyan.cn/2021/08/%E7%BE%A4%E6%99%96%EF%BC%9Aemby%E8%A7%A3%E9%94%81premiere%E7%9A%84%E6%96%B9%E6%B3%95.html)
