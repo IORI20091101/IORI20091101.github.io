@@ -117,6 +117,10 @@ adb bash settings put global captive_portal_detection_enabled 0
 
 体验来说我更倾向于 Apple TV，但是要使用必须家里有软路由不像{% label primary @Shield TV %}只要安装了 clash for Android 就可以了，而且 Apple TV 没有爱优腾，虽然有些淘宝买家可以安装破解版，具体使用就不太清楚了，所以还是感觉{% label primary @Shield TV %}自由一些，这个就智者见智了。
 
+
+## 奈飞解锁的问题
+原生安卓盒子的奈飞检测比较严格，如果机场是DNS解锁的奈飞，即使家里有软路由也有可能检测到代理而无法访问，这是盒子自身的限制，想要完美观影，需要有原声IP或者家宽的节点，我试过`Ytoo`一些节点是可以的，其他的如果不行请尝试安装 `Clash for Android TV`,这样即使是DNS解锁的机场也是可以观看的, 也有人说通过修改软路由第三方规则修改也是可以的，我尝试过没有成功，后面有机会再试一下。
+
 # 参考
 
 [^1]: [悟空百科](https://didiboy0702.gitbook.io/wukongdaily/wan-ke-yun-ji-qiao/google-tv-xiu-gai-ntp-fu-wu-qi-di-zhi)

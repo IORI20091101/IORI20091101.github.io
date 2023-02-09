@@ -223,6 +223,13 @@ dpkg -i emby-server-deb_4.7.6.0_amd64.deb
 apt remove emby-server
 ```
 
+## 使用Docker安装开新版
+
+```bash
+docker run -d -e PUID=1000 -e PGID=1000 -v /home:/home -v /root/emby:/config -p 8096:8096 -p 8920:8920 --name=emby xinjiawei1/emby_unlockd:latest
+```
+我自己购买了`Premiere`版本，如果你喜欢 `Emby`，请购买支持正版 `Emby Premiere`！
+
 如果 rclone 挂载资源盘，EMBY 安装都没有问题，就可以愉快的观影了，效果如下：
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png)
 enjoy~
