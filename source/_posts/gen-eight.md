@@ -76,5 +76,8 @@ docker run -dt --cgroupns host --pid host --network host --restart always --name
 由于本文涉及的链条过于长，一些系统跟服务到安装就没有写详细的教程了，网上都有现成的教程，这里就不赘述了，我这里主要用来记录一下自己折腾的过程。
 
 # 参考
-[^1]: [安装NAS Tools，打造自动化观影、追剧系统，NAS媒体库整理工具，威联通Docker版NAS Tools安装教程~feat.威联通HS 264](https://www.youtube.com/watch?v=kUOelSHhfto&list=LL&index=2)
+
+
+[^1]: [群晖 + Nas-Tools 一个懂事的媒体库](http://www.liuocean.com/2022/09/12/qun-hui-nastools-yi-ge-dong-shi-de-mei-ti-ku/)
+[^2]: [安装NAS Tools，打造自动化观影、追剧系统，NAS媒体库整理工具，威联通Docker版NAS Tools安装教程~feat.威联通HS 264](https://www.youtube.com/watch?v=kUOelSHhfto&list=LL&index=2)
 
