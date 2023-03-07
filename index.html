@@ -600,7 +600,7 @@
       
       <a class="index-excerpt " href="/2022/09/08/vps-prepare/" target="_self">
         <div>
-          最近买了一些VPS做测试,会用到一些常用设置，在这里记录一下 允许root用户登陆1234567sudo vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config  # PermitRootLogin yessudo passwd rootsudo  systemctl  restart  ssh  开启密钥登陆本地制作密钥对1ssh-keygen -t rsa -C &quot;youremail@ex
+          最近买了一些VPS做测试,会用到一些常用设置，在这里记录一下 更换ubuntu软件源Ubuntu配置的默认源并不是国内的服务器，下载更新软件都比较慢。首先备份源列表文件sources.list： 12# 首先备份源列表sudo cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list_backup  打开sources.list文件修改,选择合适的源，替换原文件
         </div>
       </a>
 
