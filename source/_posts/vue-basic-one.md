@@ -108,3 +108,4 @@ npm init vue@latest
 # 参考
 
 [^1]: [Vue.js 官方文档](https://cn.vuejs.org/guide/introduction.html)
+[^1]: [使用 Vue 的多种方式](https://cn.vuejs.org/guide/extras/ways-of-using-vue.html)
