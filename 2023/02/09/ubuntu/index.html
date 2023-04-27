@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/ubuntu.jpeg">
 <meta property="article:published_time" content="2023-02-09T15:53:03.000Z">
-<meta property="article:modified_time" content="2023-03-29T10:56:55.595Z">
+<meta property="article:modified_time" content="2023-04-27T10:02:45.668Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="ubuntu">
 <meta property="article:tag" content="系统">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          287 字
+          574 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          3 分钟
+          5 分钟
         
       </span>
     
@@ -311,6 +311,19 @@
 <h1 id="查看目录大小信息"><a href="#查看目录大小信息" class="headerlink" title="查看目录大小信息"></a>查看目录大小信息</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># du -h --max-depth=1 folder</span><br><span class="hljs-comment"># e.g.</span><br><span class="hljs-built_in">du</span> -h --max-depth=1 ~/Music/<br></code></pre></td></tr></table></figure>
 
 <h1 id="查看磁盘大小信息"><a href="#查看磁盘大小信息" class="headerlink" title="查看磁盘大小信息"></a>查看磁盘大小信息</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># df -hl disk</span><br><span class="hljs-comment"># e.g.</span><br><span class="hljs-built_in">df</span> -hl /dev/sda1<br></code></pre></td></tr></table></figure>
+
+<h1 id="Docker无法停止的问题"><a href="#Docker无法停止的问题" class="headerlink" title="Docker无法停止的问题"></a>Docker无法停止的问题</h1><p>错误信息如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Error response from daemon: cannot stop container<br></code></pre></td></tr></table></figure>
+
+<p>解决方式：</p>
+<p>第一步，Get the container id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker ps<br></code></pre></td></tr></table></figure>
+
+<p>第二步，Get the containerd-shim process id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ps awx | grep containerd-shim | grep &lt;&lt;<span class="hljs-string">container_id&gt;&gt; | awk &#x27;&#123;print $1&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>第三步， kill the process id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">kill</span> -9 &lt;&lt;<span class="hljs-string">process_id&gt;&gt;</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
