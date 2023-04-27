@@ -61,3 +61,27 @@ du -h --max-depth=1 ~/Music/
 # e.g.
 df -hl /dev/sda1
 ```
+
+# Docker无法停止的问题
+错误信息如下
+```bash
+Error response from daemon: cannot stop container
+```
+
+解决方式：
+
+第一步，Get the container id
+```bash
+docker ps
+```
+
+第二步，Get the containerd-shim process id
+```bash
+sudo ps awx | grep containerd-shim | grep <<container_id>> | awk '{print $1}'
+```
+
+第三步， kill the process id
+
+```bash
+sudo kill -9 <<process_id>>
+```
