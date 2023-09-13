@@ -121,9 +121,32 @@ adb bash settings put global captive_portal_detection_enabled 0
 ## 奈飞解锁的问题
 原生安卓盒子的奈飞检测比较严格，如果机场是DNS解锁的奈飞，即使家里有软路由也有可能检测到代理而无法访问，这是盒子自身的限制，想要完美观影，需要有原声IP或者家宽的节点，我试过`Ytoo`一些节点是可以的，其他的如果不行请尝试安装 `Clash for Android TV`,这样即使是DNS解锁的机场也是可以观看的, 也有人说通过修改软路由第三方规则修改也是可以的，我尝试过没有成功，后面有机会再试一下。
 
+补充：通过软路由劫持dns可以解决奈飞解锁的问题
+```bash
+# fix time server, redirect all udp 123 to local timeserver
+iptables -t nat -N TIMER
+iptables -t nat -A TIMER  -d 192.168.1.1 -j RETURN
+iptables -t nat -A TIMER  -p udp  -j REDIRECT --to-ports 123
+iptables -t nat -I PREROUTING -p udp --dport 123 -j TIMER
+
+# netflix dns fix
+iptables -t nat -N NETFLIX
+iptables -t nat -A NETFLIX  -d 192.168.0.1 -j RETURN
+iptables -t nat -A NETFLIX  -p udp  -j REDIRECT --to-ports 192.168.100.1
+iptables -t nat -I PREROUTING -p udp --dport 53 -j NETFLIX
+
+
+iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to-destination 192.168.100.1
+iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT --to-destination 192.168.100.1
+iptables -t nat -A PREROUTING -p udp --dport 853 -j DNAT --to-destination 192.168.100.1
+iptables -t nat -A PREROUTING -p tcp --dport 853 -j DNAT --to-destination 192.168.100.1
+```
+
 # 参考
 
 [^1]: [悟空百科](https://didiboy0702.gitbook.io/wukongdaily/wan-ke-yun-ji-qiao/google-tv-xiu-gai-ntp-fu-wu-qi-di-zhi)
 [^2]: [关于 ANDROID 5.0-7.1.2 网络图标上的感叹号及其解决办法](https://zhuanlan.zhihu.com/p/111004889)
 [^3]: [Android 7.1.2 无法禁用检测](https://github.com/Noisyfox/NoExclamation/issues/2)
 [^4]: [消除 Android8.1 原生系统无线网感叹号](https://www.jianshu.com/p/23e85be8522a)
+[^5]: [Nvidia Shield TV 2017 国行刷美版固件指南](https://github.com/0neday/Nvidia-Shield-TV-2017-Cookbook)
+[^6]: [Netflix Unblocking Fix For Android TV/Fire TV/Chromecast/PS4](https://www.reddit.com/r/NetflixViaVPN/comments/p9doud/netflix_unblocking_fix_for_android_tvfire/)
