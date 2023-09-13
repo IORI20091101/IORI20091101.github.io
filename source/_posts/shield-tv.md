@@ -125,13 +125,13 @@ adb bash settings put global captive_portal_detection_enabled 0
 ```bash
 # fix time server, redirect all udp 123 to local timeserver
 iptables -t nat -N TIMER
-iptables -t nat -A TIMER  -d 192.168.1.1 -j RETURN
+iptables -t nat -A TIMER  -d 192.168.100.1 -j RETURN
 iptables -t nat -A TIMER  -p udp  -j REDIRECT --to-ports 123
 iptables -t nat -I PREROUTING -p udp --dport 123 -j TIMER
 
 # netflix dns fix
 iptables -t nat -N NETFLIX
-iptables -t nat -A NETFLIX  -d 192.168.0.1 -j RETURN
+iptables -t nat -A NETFLIX  -d 192.168.100.1 -j RETURN
 iptables -t nat -A NETFLIX  -p udp  -j REDIRECT --to-ports 192.168.100.1
 iptables -t nat -I PREROUTING -p udp --dport 53 -j NETFLIX
 
