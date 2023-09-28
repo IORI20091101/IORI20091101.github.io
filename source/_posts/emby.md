@@ -122,7 +122,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/rclone mount emby: /home/gdrive \
+ExecStart=/usr/bin/rclone mount update: /home/update \
  --umask 0000 \
  --default-permissions \
  --allow-non-empty \
@@ -233,6 +233,18 @@ docker run -d -e PUID=1000 -e PGID=1000 -v /home:/home -v /root/emby:/config -p 
 如果 rclone 挂载资源盘，EMBY 安装都没有问题，就可以愉快的观影了，效果如下：
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png)
 enjoy~
+
+
+补充：
+## 指定域名或IP走软路由
+如果emby服务器线路质量不太好，可以指定域名与IP挂代理访问观看，可以提升观影质量。
+
+```
+- DOMAIN,xx.imetyou.com,🔰 节点选择
+- DOMAIN,xxpilipili.emby.com,🔰 节点选择
+- DOMAIN,two.mulgore.net,🔰 节点选择
+- IP-CIDR,xxx.xxx.xxx.xxx/8,🔰 节点选择
+```
 
 # 参考
 
