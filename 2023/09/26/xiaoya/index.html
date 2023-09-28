@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/desk-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="toshiba">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言之前买了阿里云盘的6T会员到了2014，又通过邀请获取了8T的空间,陆续存了好多资源，本来岁月静好但是这几个月突然发现空间被陆续收回了，只剩下7T左右只能不断的删除资源烦不胜烦，所以今年的8T会员就没敢续，理性续费。 所以问题来了当我们没有那么多的空间的时候该如何酣畅淋漓的观影呢。之前我写了一篇关于自建Emby服务的文章，但是如果我没有别的资源盘，我又想使用阿里网盘该如何解决呢。 小雅答案就是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建小雅影视服务">
+<meta property="og:url" content="http://example.com/2023/09/26/xiaoya/index.html">
+<meta property="og:site_name" content="喬伊·波伊的博客">
+<meta property="og:description" content="前言之前买了阿里云盘的6T会员到了2014，又通过邀请获取了8T的空间,陆续存了好多资源，本来岁月静好但是这几个月突然发现空间被陆续收回了，只剩下7T左右只能不断的删除资源烦不胜烦，所以今年的8T会员就没敢续，理性续费。 所以问题来了当我们没有那么多的空间的时候该如何酣畅淋漓的观影呢。之前我写了一篇关于自建Emby服务的文章，但是如果我没有别的资源盘，我又想使用阿里网盘该如何解决呢。 小雅答案就是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/xiaoya.png">
+<meta property="article:published_time" content="2023-09-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-28T08:42:17.627Z">
+<meta property="article:author" content="toshiba">
+<meta property="article:tag" content="EMBY">
+<meta property="article:tag" content="xiaoya">
+<meta property="article:tag" content="阿里云盘">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/xiaoya.png">
+  
+  
+  
+  <title>搭建小雅影视服务 - 喬伊·波伊的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>喬伊·波伊</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg/bg.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用VPS或者软路由搭建小雅来观看影视"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        toshiba
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-26 00:00" pubdate>
+          2023年9月26日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用VPS或者软路由搭建小雅来观看影视</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前买了阿里云盘的<code>6T</code>会员到了<code>2014</code>，又通过邀请获取了<code>8T</code>的空间,陆续存了好多资源，本来岁月静好但是这几个月突然发现空间被陆续收回了，只剩下<code>7T</code>左右只能不断的删除资源烦不胜烦，所以今年的<code>8T</code>会员就没敢续，理性续费。 所以问题来了当我们没有那么多的空间的时候该如何酣畅淋漓的观影呢。之前我写了一篇关于自建<code>Emby</code>服务的文章，但是如果我没有别的资源盘，我又想使用阿里网盘该如何解决呢。</p>
+<h2 id="小雅"><a href="#小雅" class="headerlink" title="小雅"></a>小雅</h2><p>答案就是<a target="_blank" rel="noopener" href="http://alist.xiaoya.pro/">小雅</a>的资源盘，这里面资源比较丰富，它的原理就是在你点击观看影片的时候调用阿里云的<code>api</code>将你要观看电影转存到你阿里云盘的指定目录下这样就可以实现满速观看了。（ps：阿里云盘更新接口后分享视频已经开始限速了基本没法看了，所以这里这种方案暂时可以，后续政策再变化就不好说了，再次呼吁大家谨慎续费）</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>要部署小雅的服务<br>1，需要一台<code>VPS</code>，或者软路由，或者使用家用电脑，能支持<code>Docker</code>即可<br>2，需要阿里云盘的账号保证云盘里面有剩余空间，留多点不用频繁清理</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="一键安装"><a href="#一键安装" class="headerlink" title="一键安装"></a>一键安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl http://docker.xiaoya.pro/update_new.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/image%20%281%29.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull xiaoyaliu/alist<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --name xiaoya -v /root/docker/xiaoya:/data -p 5678:80 -d xiaoyaliu/alist:latest<br></code></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>有几个需要配置的文件<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/WX20230928-141053.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="mytoken-txt"><a href="#mytoken-txt" class="headerlink" title="mytoken.txt"></a><code>mytoken.txt</code></h4><p>从<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive.html">这里</a>获取<code>mytoken.txt</code>,以前用这个就可以观影，现在用它来获取电影的分享链接。<br>也可以参考<code>[这里](https://t.me/PlutoPlayer/239324)</code>来获取</p>
+<h4 id="myopentoken-txt"><a href="#myopentoken-txt" class="headerlink" title="myopentoken.txt"></a><code>myopentoken.txt</code></h4><p>从<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive_open.html">阿里云盘Open</a>获取<code>myopentoken.txt</code>, 获取官方授权的<code>opentoken</code></p>
+<h4 id="转存目录的-temp-transfer-folder-id-txt"><a href="#转存目录的-temp-transfer-folder-id-txt" class="headerlink" title="转存目录的 temp_transfer_folder_id.txt"></a>转存目录的 <code>temp_transfer_folder_id.txt</code></h4><p>比如想将文件缓存到自己的阿里云盘路径为<code>https://www.aliyundrive.com/drive/file/resource/640xxxxxxxxxxxxxxxxxxxca8a</code>，这个文件内容则为<code>640xxxxxxxxxxxxxxxxxxxca8a</code></p>
+<p>这些都配置好了启动容器，过一段时间就可以访问 <code>http://xxxxx:5678</code>来观影了。如果挂载<code>webdav</code> 账号密码为</p>
+<p>用户: <code>guest</code></p>
+<p>密码: <code>guest_Api789</code></p>
+<p>路径: <code>/dav</code></p>
+<h4 id="自定义登录密码guestpass-txt"><a href="#自定义登录密码guestpass-txt" class="headerlink" title="自定义登录密码guestpass.txt"></a>自定义登录密码<code>guestpass.txt</code></h4><p>在该文件中输入登录密码</p>
+<h4 id="强制登录guestlogin-txt"><a href="#强制登录guestlogin-txt" class="headerlink" title="强制登录guestlogin.txt"></a>强制登录<code>guestlogin.txt</code></h4><p>通过此文件的存在与否来决定是否开启强制登入 格式：空白文件，不需要强制登入功能，则删除此文件</p>
+<p>如果你的xiaoya放在公网，为了防止别人蹭网，可以设置强制登入，新增 <code>/etc/xiaoya/guestlogin.txt</code> 这个文件，重启即可，文件有没有内容无所谓，如果取消强制登入就删除这个文件。强制登入的账号为 dav，密码使用 <code>/etc/xiaoya/guestpass.txt</code> 里设置的，同时<code>webdav</code>连接使用 <code>dav</code> 这个用户<br>用户: <code>dav</code></p>
+<p>密码: <code>guestpass.txt中定义</code></p>
+<p>路径: <code>/dav</code></p>
+<h4 id="显示自己的阿里云盘内容show-my-ali-txt"><a href="#显示自己的阿里云盘内容show-my-ali-txt" class="headerlink" title="显示自己的阿里云盘内容show_my_ali.txt"></a>显示自己的阿里云盘内容<code>show_my_ali.txt</code></h4><p>通过此文件的存在与否来决定是否加载自己的阿里云盘 格式：空白文件，不需要加载的，则删除此文件</p>
+<h4 id="显示自己的阿里云盘内容docker-address-txt"><a href="#显示自己的阿里云盘内容docker-address-txt" class="headerlink" title="显示自己的阿里云盘内容docker_address.txt"></a>显示自己的阿里云盘内容<code>docker_address.txt</code></h4><p>配合 TVBOX的alist搜索 格式：<a target="_blank" rel="noopener" href="http://xxxxx:5678/">http://xxxxx:5678</a> （最后不要加 &#x2F;)<br>配置地址 <code>http://xxxxx:5678/tvbox/my.json</code></p>
+<h4 id="代理proxy-txt"><a href="#代理proxy-txt" class="headerlink" title="代理proxy.txt"></a>代理<code>proxy.txt</code></h4><p>使用代理，http，https，socks5 协议 格式：<a target="_blank" rel="noopener" href="http://xxxxx:7890/">http://xxxxx:7890</a> 或 socks5:&#x2F;&#x2F;xxxxx:7891 （最后不要加 &#x2F;)</p>
+<h4 id="自定义tvbox配置文件my-json"><a href="#自定义tvbox配置文件my-json" class="headerlink" title="自定义tvbox配置文件my.json"></a>自定义tvbox配置文件<code>my.json</code></h4><p>自定义tvbox配置文件</p>
+<h4 id="挂载自定义直播源tv-txt"><a href="#挂载自定义直播源tv-txt" class="headerlink" title="挂载自定义直播源tv.txt"></a>挂载自定义直播源<code>tv.txt</code></h4><p>挂载自定义直播源到xiaoya 格式：tvbox的直播源格式，如图所示<br>备注：直播源有格式，区域限制等问题，有的可以在网页观看，有的需要用播放器才能看</p>
+<h4 id="pikpak网盘pikpak-txt"><a href="#pikpak网盘pikpak-txt" class="headerlink" title="pikpak网盘pikpak.txt"></a>pikpak网盘<code>pikpak.txt</code></h4><p>⽤来观看pikpak分享<br>格式：”xxxxxxxx” “yyyyyyyy”<br>备注：账号可以是邮箱和⼿机号，⼿机号前⾯要加区号，也就是 “+86xxxx” 这样，注册如果⽤⾕歌快捷⽅式登⼊的话是⽆法使⽤⾕歌邮箱登⼊的（alist不⽀持）</p>
+<h4 id="挂载自己一个或多个-pikpak账号pikpak-list-txt"><a href="#挂载自己一个或多个-pikpak账号pikpak-list-txt" class="headerlink" title="挂载自己一个或多个 pikpak账号pikpak_list.txt"></a>挂载自己一个或多个 pikpak账号<code>pikpak_list.txt</code></h4><p> 格式：挂载名 “账号” “密码” ，用空格分开（pikpak2 “<a href="mailto:&#x61;&#x62;&#99;&#64;&#x68;&#111;&#x74;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x61;&#x62;&#99;&#64;&#x68;&#111;&#x74;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a>“ “123456”），每行一个</p>
+<p>现在就可以愉快的观影了～</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/ad9ko04z/">极空间nas docke 挂载xiaoya&#x2F;alist正确配置</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A8%B1%E4%B9%90/" class="category-chain-item">娱乐</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A8%B1%E4%B9%90/EMBY/" class="category-chain-item">EMBY</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/EMBY/">#EMBY</a>
+      
+        <a href="/tags/xiaoya/">#xiaoya</a>
+      
+        <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/">#阿里云盘</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>搭建小雅影视服务</div>
+      <div>http://example.com/2023/09/26/xiaoya/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>toshiba</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月26日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/09/ubuntu/" title="ubuntu的常用命令">
+                        <span class="hidden-mobile">ubuntu的常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2023/09/26/xiaoya/';
+          this.page.identifier = '/2023/09/26/xiaoya/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'IORI' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
