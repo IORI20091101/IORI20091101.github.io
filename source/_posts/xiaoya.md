@@ -4,8 +4,8 @@ title: 搭建小雅影视服务
 subtitle: 使用VPS或者软路由搭建小雅来观看影视
 date: 2023-09-26
 author: "toshiba"
-# index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/alist.svg
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/xiaoya.png
+# index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/alist.svg
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/xiaoya.png
 comments: true
 tags:
   - EMBY
@@ -120,4 +120,6 @@ docker run --name xiaoya -v /root/docker/xiaoya:/data -p 5678:80 -d xiaoyaliu/al
 # 参考
 
 [^1]: [极空间nas docke 挂载xiaoya/alist正确配置](https://post.smzdm.com/p/ad9ko04z/)
+[^2]: [NAS最新小雅Alist保姆级安装教程](https://post.smzdm.com/p/a0qnlpqw/)
+
 
