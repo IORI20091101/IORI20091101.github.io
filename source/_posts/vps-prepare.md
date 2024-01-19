@@ -12,6 +12,8 @@ tags:
   - 系统
 categories:
   - VPS
+
+sticky: 1
 ---
 
 最近买了一些`VPS`做测试,会用到一些常用设置，在这里记录一下

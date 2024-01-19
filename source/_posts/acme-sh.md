@@ -28,6 +28,8 @@ acme.sh 是一个知名的用于申请 Let’s Encrypt 证书的开源项目，�
 # 获取脚本
 curl  https://get.acme.sh | sh -s email=my@example.com
 
+ln -s /root/.acme.sh/acme.sh /usr/local/bin/acme.sh
+
 #该脚本执行了两个操作
 #一、把 acme.sh 安装到你的 home 目录下: ~/.acme.sh/ 并创建 一个 bash 的 alias, 方便你的使用: alias acme.sh=~/.acme.sh/acme.sh
 

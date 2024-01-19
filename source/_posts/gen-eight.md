@@ -73,7 +73,9 @@ docker run -dt --cgroupns host --pid host --network host --restart always --name
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/gen8/nastools.png)
 实现了添加关注即可自动下载到对应分类，豆瓣点击想看可以自动下载等等功能，网上还有其他一些追影方式，由于实在精力有限就不去探索了，有机会再去尝试。
 
-由于本文涉及的链条过于长，一些系统跟服务到安装就没有写详细的教程了，网上都有现成的教程，这里就不赘述了，我这里主要用来记录一下自己折腾的过程。
+由于本文涉及的链条过于长，下一篇文章我会把`nas-tools`相关配置详细记录一下。
+
+
 
 # 参考
 
