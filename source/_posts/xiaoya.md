@@ -4,8 +4,7 @@ title: 搭建小雅影视服务
 subtitle: 使用VPS或者软路由搭建小雅来观看影视
 date: 2023-09-26
 author: "toshiba"
-# index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/alist.svg
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/xiaoya.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/xiaoya.png
 comments: true
 tags:
   - EMBY

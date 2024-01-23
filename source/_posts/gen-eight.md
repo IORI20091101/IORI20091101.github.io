@@ -4,7 +4,7 @@ title: Gen8服务器相关
 subtitle: Gen8服务器相关折腾流水账
 date: 2023-01-15
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/gen8.jpg
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/gen8.jpg
 comments: true
 
 tags:

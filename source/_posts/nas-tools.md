@@ -4,7 +4,7 @@ title: NASTool安装配置以及相关插件的下载配置
 subtitle: 使用NASTool整合Qbittorrent、Jackett、ChineseSubFinder
 date: 2024-01-18
 author: "toshiba"
-index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index-img/nas-tools.png
+index_img: https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/nas-tools.png
 comments: true
 
 tags:
