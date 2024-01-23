@@ -34,7 +34,7 @@ categories:
 ```bash
 bash -c "$(curl http://docker.xiaoya.pro/update_new.sh)"
 ```
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/image%20%281%29.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/xiaoya/image%20%281%29.png)
 
 ### Docker安装
 ```bash
@@ -47,7 +47,7 @@ docker run --name xiaoya -v /root/docker/xiaoya:/data -p 5678:80 -d xiaoyaliu/al
 
 ### 配置文件
 有几个需要配置的文件
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/WX20230928-141053.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/xiaoya/WX20230928-141053.png)
 
 #### `mytoken.txt`
 从[这里](https://alist.nn.ci/zh/guide/drivers/aliyundrive.html)获取`mytoken.txt`,以前用这个就可以观影，现在用它来获取电影的分享链接。
