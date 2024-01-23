@@ -45,7 +45,7 @@ categories:
 ## {% label primary @群晖 %}
 虚拟机中安装黑群晖的好处是没有兼容性问题，而且可以自由升级不像蜗牛星际安装好了升级可能会有兼容性问题。
 安装用到了这个项目[arpl](https://github.com/fbelavenuto/arpl)，上传到`ESXi`路径下自动启动，主要做好配置即可，主要选一下型号版本
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/gen8/synology.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/gen8/synology.png)
 做好以上配置即可，序列号跟mac地址可以在淘宝购买。
 
 ### 硬盘直通
@@ -68,9 +68,9 @@ docker run -dt --cgroupns host --pid host --network host --restart always --name
 
 ### 观影服务
 
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/gen8/docker.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/gen8/docker.png)
 观影主要安装了`nas-tools`等一堆docker服务目前可以实现
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/gen8/nastools.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/gen8/nastools.png)
 实现了添加关注即可自动下载到对应分类，豆瓣点击想看可以自动下载等等功能，网上还有其他一些追影方式，由于实在精力有限就不去探索了，有机会再去尝试。
 
 由于本文涉及的链条过于长，下一篇文章我会把`nas-tools`相关配置详细记录一下。

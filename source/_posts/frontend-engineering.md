@@ -43,7 +43,7 @@ So, 我们需要脱离这种刀耕火种的原始状态。让我们的开发更�
 前端而言，我们目前接触到的项目一般会分为SPA单页应用和MPA多页应用, 通常对于门户网站我倾向于多页应用，一是可能每个页面之前可能关系不大使用多页面将功能拆分开会容易一点，再就是技术选型比较随意一点，还有一个原因是SEO,虽然可以通过服务端渲染首屏来解决这个问题但这种解决方案跟NodeJS搭配应该会比较舒服（基于Java的服务端渲染我了解不足），如果后台换了呢，我们希望能有一套通用的解决方案而不想跟后台或者前端框架绑定的太过严重。
 
 我们所有的方案都需要满足一些条件可以
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/engine/book.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/engine/book.jpg)
 
 ### 方案一
 

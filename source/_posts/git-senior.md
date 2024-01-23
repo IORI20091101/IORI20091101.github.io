@@ -94,7 +94,7 @@ Date:   Mon Nov 6 15:30:43 2017 +0800
 ### git rebase
 
 变基（rebase, 事实上这个名字十分诡异, 所以在大多数时候直接用英文术语）是将分支移到一个新的基提交的过程。事实上重写了你的项目历史,过程一般如下所示
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/rebase.svg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/git/rebase.svg)
 
 用法：
 

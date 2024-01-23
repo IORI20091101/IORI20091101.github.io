@@ -48,7 +48,7 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 ```
 
 结果如下
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/0.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/git/0.png)
 
 ### 生产 SSH Key
 

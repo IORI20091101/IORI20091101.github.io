@@ -198,7 +198,7 @@ false, 0, -0,"", NaN,null, undefined 外的所有值会转换为false， 其他�
 
 ## 由一张图片引发的思考
 
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/read-book-effective/js-convert.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/read_book_effective/js-convert.jpg)
 
 ## 这几个例子很好的验证了上面的隐式类型转换
 首先我们要知道一些前提

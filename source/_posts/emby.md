@@ -231,7 +231,7 @@ docker run -d -e PUID=1000 -e PGID=1000 -v /home:/home -v /root/emby:/config -p 
 我自己购买了`Premiere`版本，如果你喜欢 `Emby`，请购买支持正版 `Emby Premiere`！
 
 如果 rclone 挂载资源盘，EMBY 安装都没有问题，就可以愉快的观影了，效果如下：
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/emby/emby.png)
 enjoy~
 
 

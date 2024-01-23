@@ -43,7 +43,7 @@ console.log(9223372036854775807 + 1000); //output: 9223372036854776000
 ```
 
 ## 为什么是这个值?
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/js-base/number.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/js_base/number.png)
 
 * 1 位符号位
 * 11 位指数位

@@ -53,7 +53,7 @@ sticky: 2
 
 ## 配置
 `/docker`文件夹下新建`nastools`文件夹启动一个新的容器配置如下
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/nas.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/nas.png)
 
 然后就可以进入启动页面进行配置 `http://192.168.100.xxx:3000`,初次登陆账号是：`admin`, 密码：`password`, 如何不能登录，可以在输出日志看到账号密码。
 
@@ -71,12 +71,12 @@ sticky: 2
 | /docker/nastools/config  | /config |
 | /video | /video |
 
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/media.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/media.png)
 
 ## 目录同步
 
 这里安装如下图片设置需要注意的是同步方式需要为`硬连接`。
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/sync.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/sync.png)
 
 ## 索引器
 索引器可以使用内建索引，这里我使用了[`Jackett`](https://hub.docker.com/r/linuxserver/jackett),配置对应文件夹
@@ -165,9 +165,9 @@ http://192.168.100.141:19035
 ### 手动上传字幕
 如果自动下载字幕失败了，可以通过手动搜索字幕的方式去字幕网站下载，然后上传到媒体库中，这样就可以实现手动下载字幕。
 在`ChineseSubFinder`的库中找到没有字幕的电影点击搜索
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/s1.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/s1.png)
 点击任意一个网址去下载字幕文件
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/s2.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/s2.png)
 最后在库里的对应电影点击上传按钮将下载的字幕文件上传即可。
 
 

@@ -79,7 +79,7 @@ categories:
 }
 ```
 
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/layout/layout.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/layout/layout.png)
 [点击查看 demo](https://codepen.io/IORI20091101/project/editor/DaExon)
 
 # 双飞翼布局
@@ -144,7 +144,7 @@ categories:
 }
 ```
 
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/layout/layout1.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/layout/layout1.png)
 [点击查看 demo](https://codepen.io/IORI20091101/pen/QWrdyjW)
 
 # 参考

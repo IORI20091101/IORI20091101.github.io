@@ -113,7 +113,7 @@ var defangIPaddr = function(address) {
 [删除链表中的节点](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/):
 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/237_example.png)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/leetcode/237_example.png)
 ```
 示例1
 输入: head = [4,5,1,9], node = 5
@@ -328,7 +328,7 @@ class Solution {
 
 #### 答案二
 <code>JavaScript</code>画图解题
-![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/leetcode/tree.jpeg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/leetcode/tree.jpeg)
 假设L= 7，R=15
 * 如果node.val >= 7 && node.val <= 15 则直接求和
 * 如果node.val > 7,则node.right的值都大于7，右侧没有搜索必要，去查找left的值
