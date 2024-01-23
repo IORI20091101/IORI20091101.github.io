@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/xiaoya.png">
 <meta property="article:published_time" content="2023-09-26T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-23T08:31:12.833Z">
+<meta property="article:modified_time" content="2024-01-23T08:36:25.445Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="EMBY">
 <meta property="article:tag" content="xiaoya">
@@ -300,12 +300,12 @@
 <h2 id="小雅"><a href="#小雅" class="headerlink" title="小雅"></a>小雅</h2><p>答案就是<a target="_blank" rel="noopener" href="http://alist.xiaoya.pro/">小雅</a>的资源盘，这里面资源比较丰富，它的原理就是在你点击观看影片的时候调用阿里云的<code>api</code>将你要观看电影转存到你阿里云盘的指定目录下这样就可以实现满速观看了。（ps：阿里云盘更新接口后分享视频已经开始限速了基本没法看了，所以这里这种方案暂时可以，后续政策再变化就不好说了，再次呼吁大家谨慎续费）</p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>要部署小雅的服务<br>1，需要一台<code>VPS</code>，或者软路由，或者使用家用电脑，能支持<code>Docker</code>即可<br>2，需要阿里云盘的账号保证云盘里面有剩余空间，留多点不用频繁清理</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="一键安装"><a href="#一键安装" class="headerlink" title="一键安装"></a>一键安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl http://docker.xiaoya.pro/update_new.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/image%20%281%29.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/xiaoya/image%20%281%29.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull xiaoyaliu/alist<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --name xiaoya -v /root/docker/xiaoya:/data -p 5678:80 -d xiaoyaliu/alist:latest<br></code></pre></td></tr></table></figure>
 
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>有几个需要配置的文件<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/WX20230928-141053.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>有几个需要配置的文件<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/xiaoya/WX20230928-141053.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="mytoken-txt"><a href="#mytoken-txt" class="headerlink" title="mytoken.txt"></a><code>mytoken.txt</code></h4><p>从<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive.html">这里</a>获取<code>mytoken.txt</code>,以前用这个就可以观影，现在用它来获取电影的分享链接。<br>也可以参考<code>[这里](https://t.me/PlutoPlayer/239324)</code>来获取</p>
 <h4 id="myopentoken-txt"><a href="#myopentoken-txt" class="headerlink" title="myopentoken.txt"></a><code>myopentoken.txt</code></h4><p>从<a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/guide/drivers/aliyundrive_open.html">阿里云盘Open</a>获取<code>myopentoken.txt</code>, 获取官方授权的<code>opentoken</code></p>
 <h4 id="转存目录的-temp-transfer-folder-id-txt"><a href="#转存目录的-temp-transfer-folder-id-txt" class="headerlink" title="转存目录的 temp_transfer_folder_id.txt"></a>转存目录的 <code>temp_transfer_folder_id.txt</code></h4><p>比如想将文件缓存到自己的阿里云盘路径为<code>https://www.aliyundrive.com/drive/file/resource/640xxxxxxxxxxxxxxxxxxxca8a</code>，这个文件内容则为<code>640xxxxxxxxxxxxxxxxxxxca8a</code></p>
@@ -324,7 +324,7 @@
 <h4 id="自定义tvbox配置文件my-json"><a href="#自定义tvbox配置文件my-json" class="headerlink" title="自定义tvbox配置文件my.json"></a>自定义tvbox配置文件<code>my.json</code></h4><p>自定义tvbox配置文件</p>
 <h4 id="挂载自定义直播源tv-txt"><a href="#挂载自定义直播源tv-txt" class="headerlink" title="挂载自定义直播源tv.txt"></a>挂载自定义直播源<code>tv.txt</code></h4><p>挂载自定义直播源到xiaoya 格式：tvbox的直播源格式，如图所示<br>备注：直播源有格式，区域限制等问题，有的可以在网页观看，有的需要用播放器才能看</p>
 <h4 id="pikpak网盘pikpak-txt"><a href="#pikpak网盘pikpak-txt" class="headerlink" title="pikpak网盘pikpak.txt"></a>pikpak网盘<code>pikpak.txt</code></h4><p>⽤来观看pikpak分享<br>格式：”xxxxxxxx” “yyyyyyyy”<br>备注：账号可以是邮箱和⼿机号，⼿机号前⾯要加区号，也就是 “+86xxxx” 这样，注册如果⽤⾕歌快捷⽅式登⼊的话是⽆法使⽤⾕歌邮箱登⼊的（alist不⽀持）</p>
-<h4 id="挂载自己一个或多个-pikpak账号pikpak-list-txt"><a href="#挂载自己一个或多个-pikpak账号pikpak-list-txt" class="headerlink" title="挂载自己一个或多个 pikpak账号pikpak_list.txt"></a>挂载自己一个或多个 pikpak账号<code>pikpak_list.txt</code></h4><p> 格式：挂载名 “账号” “密码” ，用空格分开（pikpak2 “<a href="mailto:&#97;&#x62;&#x63;&#x40;&#104;&#x6f;&#116;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#x62;&#x63;&#x40;&#104;&#x6f;&#116;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a>“ “123456”），每行一个</p>
+<h4 id="挂载自己一个或多个-pikpak账号pikpak-list-txt"><a href="#挂载自己一个或多个-pikpak账号pikpak-list-txt" class="headerlink" title="挂载自己一个或多个 pikpak账号pikpak_list.txt"></a>挂载自己一个或多个 pikpak账号<code>pikpak_list.txt</code></h4><p> 格式：挂载名 “账号” “密码” ，用空格分开（pikpak2 “<a href="mailto:&#97;&#x62;&#x63;&#64;&#104;&#111;&#x74;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;">&#97;&#x62;&#x63;&#64;&#104;&#111;&#x74;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a>“ “123456”），每行一个</p>
 <p>现在就可以愉快的观影了～</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/ad9ko04z/">极空间nas docke 挂载xiaoya&#x2F;alist正确配置</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/a0qnlpqw/">NAS最新小雅Alist保姆级安装教程</a>
