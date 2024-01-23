@@ -113,12 +113,33 @@ docker run --name xiaoya -v /root/docker/xiaoya:/data -p 5678:80 -d xiaoyaliu/al
  格式：挂载名 "账号" "密码" ，用空格分开（pikpak2 “abc@hotmail.com" "123456"），每行一个
 
 
+
+> ps: 现在小雅支持自定义阿里云盘分享跟`pikpak`网盘分享，我们可以将一些长期稳的分享挂在到小雅服务上，首先更新最新的小雅镜像，然后定义以下文件到小雅路径
+
+#### 自定义`pikpak`分享,`pikpakshare_list.txt`
+挂载自己一个或多个 pikpak分享 格式：挂载名 分享ID 分享目录 ，用空格分开（赵霸道 VNRT8Wr8BGyw1kt1HkijKR4Qo1 VNQf6ZmWE3pVWGpuFriGqyPzo1），每行一个 备注：挂载名不能有空格
+
+
+
+#### 自定义阿里云分享,`alishare_list.txt`
+文件：alishare_list.txt 用途：挂载自定义分享ID 格式：挂载名 阿里分享ID 文件folder id，用空格分开，每行一个 120T电影资源 ZpevUcDZ2Pn 636c8ba0703acd24cd44b19dd00312ef15b1e8 60T各种资料 s6NBDauc5VZ 63b16e82a50ca34f6c7466293235a06d1af8ea3
+
+
+#### `alist`套娃`alist_list.txt`
+文件：alist_list.txt 用途：挂载一个或多个 Alist 套娃 格式：挂载名 alist版本（v2或v3）网址 目录，用空格分开每行一个 备注：挂载名不能有空格，网址最后不要有斜杠
+
+
+***[示例文件下载](https://yt-card-system.oss-cn-beijing.aliyuncs.com/xiaoya%202.zip)***
+
+
 现在就可以愉快的观影了～
+
 
 
 # 参考
 
 [^1]: [极空间nas docke 挂载xiaoya/alist正确配置](https://post.smzdm.com/p/ad9ko04z/)
 [^2]: [NAS最新小雅Alist保姆级安装教程](https://post.smzdm.com/p/a0qnlpqw/)
+[^3]: [配置文件示范](https://video.otscp.com/%E5%B0%8F%E9%9B%85%E8%B5%84%E6%BA%90/%E5%B0%8F%E9%9B%85%E8%BD%AC%E5%AD%98%E6%96%87%E4%BB%B6%E5%A4%B9/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%A4%BA%E8%8C%83)
 
 
