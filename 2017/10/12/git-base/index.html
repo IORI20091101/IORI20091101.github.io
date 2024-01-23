@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/git.webp">
 <meta property="article:published_time" content="2017-10-12T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-23T08:20:42.265Z">
+<meta property="article:modified_time" content="2024-01-23T08:31:12.829Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="git">
@@ -314,7 +314,7 @@
 <h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><blockquote>
 <p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。</p>
 </blockquote>
-<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/trees.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/git/trees.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="添加和提交"><a href="#添加和提交" class="headerlink" title="添加和提交"></a>添加和提交</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-symbol">$</span>  git add &lt;filename&gt;<br><span class="hljs-symbol">$</span>  git add *<br><span class="hljs-symbol">$</span>  git add .     <span class="hljs-comment">//添加到缓存区</span><br><br><span class="hljs-symbol">$</span>  git commit -m <span class="hljs-string">&quot;代码提交信息&quot;</span>   <span class="hljs-comment">//提交到本地仓库</span><br><br><span class="hljs-symbol">$</span> git commit -a  相当于 git add + git commit<br></code></pre></td></tr></table></figure>
 
 <h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
@@ -327,7 +327,7 @@
 <h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">$ <span class="hljs-string">git</span> <span class="hljs-string">remote</span> -<span class="hljs-string">v</span> //显示远程仓库信息<br><br>$ <span class="hljs-string">git</span> <span class="hljs-string">remote</span> <span class="hljs-string">rm</span> <span class="hljs-string">origin</span>  //删除远程链接<br><br>$ <span class="hljs-string">git</span> <span class="hljs-string">remote</span> <span class="hljs-built_in">set-url</span> <span class="hljs-string">origin</span> <span class="hljs-string">git</span>@<span class="hljs-string">github</span>.<span class="hljs-string">com:michaelliao/</span><span class="hljs-string">learngit</span>.<span class="hljs-string">git</span>  //更改远程仓库地址,通常用来切换<span class="hljs-string">ssh</span>和<span class="hljs-string">https</span><br><br></code></pre></td></tr></table></figure>
 
 <p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/git/branches.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/git/branches.png" srcset="/img/loading.gif" lazyload></p>
 <p>创建一个叫做“feature_x”的分支，并切换过去：</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>git branch 查看本地分支<br><br><span class="hljs-variable">$ </span>git branch -a 查看本地和本地fetch到的远程分支都显示出来<br><br><span class="hljs-variable">$ </span>git branch -r 查看本地fetch到的远程分支(只显示本地存储的远程分支)<br><br><span class="hljs-variable">$ </span>git checkout -b feature_x<br><br><br></code></pre></td></tr></table></figure>
 

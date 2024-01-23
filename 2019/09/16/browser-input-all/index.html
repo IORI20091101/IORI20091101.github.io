@@ -25,18 +25,18 @@
 <meta property="og:site_name" content="喬伊·波伊的博客">
 <meta property="og:description" content="不久前看了一篇文章在浏览器输入 URL 回车之后发生了什么, 感觉讲的实在很好所以在此我也想总结一下,当自己被问到这个问题的时候会如何回答呢? 在浏览器输入 URL 回车之后发生了什么？大致流程如下  1.URL解析 2.DNS查询； 3.建立TCP连接； 4.发送HTTP请求； 5.服务器处理请求； 6.返回响应结果； 7.关闭TCP连接； 8.浏览器解析HTML； 9.浏览器布局渲染；  当我">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/search.png">
-<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/tcp.png">
-<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/core.png">
-<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/process.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/search.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/tcp.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/core.png">
+<meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/process.png">
 <meta property="article:published_time" content="2019-09-16T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-23T08:20:42.265Z">
+<meta property="article:modified_time" content="2024-01-23T08:31:12.829Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="基础">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="HSTS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/search.png">
+<meta name="twitter:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/search.png">
   
   
   
@@ -336,7 +336,7 @@
 <blockquote>
 <p>ISP的DNS服务器还找不到的话，它就会向根服务器发出请求，进行递归查询（DNS服务器先问根域名服务器.com域名服务器的IP地址，然后再问.com域名服务器，依次类推）。</p>
 </blockquote>
-<h4 id="根域名服务器查询"><a href="#根域名服务器查询" class="headerlink" title="根域名服务器查询"></a>根域名服务器查询</h4><p>在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/search.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="根域名服务器查询"><a href="#根域名服务器查询" class="headerlink" title="根域名服务器查询"></a>根域名服务器查询</h4><p>在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/search.png" srcset="/img/loading.gif" lazyload></p>
 <p>需要注意的点</p>
 <ul>
 <li>递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）</li>
@@ -347,7 +347,7 @@
 <p>递归查询：<br>    主机向本地域名服务器的查询一般都是采用递归查询。<br>    如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是返回一个失败的响应，表示无法查询到所需的IP地址</p>
 <p>迭代查询：<br>    本地域名服务器向根域名服务器的查询通常是采用迭代查询。<br>    当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么返回给本地域名服务器所要查询的IP地址，要么返回给本地域名服务器下一步应当查询的域名服务器的IP地址。</p>
 <h3 id="TCP连接"><a href="#TCP连接" class="headerlink" title="TCP连接"></a>TCP连接</h3><p>TCP&#x2F;IP 分四层,在发送数据时,每层都要对数据进行封装</p>
-<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/tcp.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/tcp.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="应用层-发送HTTP请求"><a href="#应用层-发送HTTP请求" class="headerlink" title="应用层:发送HTTP请求"></a>应用层:发送HTTP请求</h4><p>在前面的步骤我们已经得到服务器的 IP 地址，浏览器会开始构造一个 HTTP 报文，其中包括：</p>
 <ul>
 <li>请求报头（Request Header）：请求方法、目标地址、遵循的协议等等</li>
@@ -393,8 +393,8 @@
 <p>如果响应资源进行了压缩（比如 gzip），还需要进行解压。</p>
 <p>然后，对响应资源做缓存。</p>
 <p>接下来，根据响应资源里的 MIME 类型去解析响应内容（比如 HTML、Image各有不同的解析方式）。</p>
-<h3 id="渲染页面"><a href="#渲染页面" class="headerlink" title="渲染页面"></a>渲染页面</h3><p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/core.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/browser-input/process.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="渲染页面"><a href="#渲染页面" class="headerlink" title="渲染页面"></a>渲染页面</h3><p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/core.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/browser_input/process.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://hellogithub2014.github.io/2017/09/24/how-do-network-connect/">从浏览器输入url按回车后发生了什么</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/50043595">浏览器探究&amp;前端优化指南</a></li>

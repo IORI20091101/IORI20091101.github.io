@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/emby.png">
 <meta property="article:published_time" content="2022-08-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-23T08:20:42.265Z">
+<meta property="article:modified_time" content="2024-01-23T08:31:12.829Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="EMBY">
 <meta property="article:tag" content="rclone">
@@ -379,7 +379,7 @@
 
 <h2 id="使用Docker安装开新版"><a href="#使用Docker安装开新版" class="headerlink" title="使用Docker安装开新版"></a>使用Docker安装开新版</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d -e PUID=1000 -e PGID=1000 -v /home:/home -v /root/emby:/config -p 8096:8096 -p 8920:8920 --name=emby xinjiawei1/emby_unlockd:latest<br></code></pre></td></tr></table></figure>
 <p>我自己购买了<code>Premiere</code>版本，如果你喜欢 <code>Emby</code>，请购买支持正版 <code>Emby Premiere</code>！</p>
-<p>如果 rclone 挂载资源盘，EMBY 安装都没有问题，就可以愉快的观影了，效果如下：<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/emby/emby.png" srcset="/img/loading.gif" lazyload><br>enjoy~</p>
+<p>如果 rclone 挂载资源盘，EMBY 安装都没有问题，就可以愉快的观影了，效果如下：<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/emby/emby.png" srcset="/img/loading.gif" lazyload><br>enjoy~</p>
 <p>补充：</p>
 <h2 id="指定域名或IP走软路由"><a href="#指定域名或IP走软路由" class="headerlink" title="指定域名或IP走软路由"></a>指定域名或IP走软路由</h2><p>如果emby服务器线路质量不太好，可以指定域名与IP挂代理访问观看，可以提升观影质量。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">- DOMAIN,xx<span class="hljs-selector-class">.imetyou</span><span class="hljs-selector-class">.com</span>,🔰 节点选择<br>- DOMAIN,xxpilipili<span class="hljs-selector-class">.emby</span><span class="hljs-selector-class">.com</span>,🔰 节点选择<br>- DOMAIN,two<span class="hljs-selector-class">.mulgore</span><span class="hljs-selector-class">.net</span>,🔰 节点选择<br>- IP-CIDR,xxx<span class="hljs-selector-class">.xxx</span><span class="hljs-selector-class">.xxx</span>.xxx/<span class="hljs-number">8</span>,🔰 节点选择<br></code></pre></td></tr></table></figure>

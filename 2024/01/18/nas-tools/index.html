@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/nas-tools.png">
 <meta property="article:published_time" content="2024-01-18T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-23T08:20:42.269Z">
+<meta property="article:modified_time" content="2024-01-23T08:31:12.833Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="Gen8">
 <meta property="article:tag" content="NASTool">
@@ -320,7 +320,7 @@
 </ul>
 <p>文件夹路径需要跟上面相同，以<code>movie</code>为例，<code>NASTool</code>会自动将<code>/video/movie</code>下的电影通过<code>硬连接</code>方式链接到<code>/video/link/movie</code>的文件夹下。</p>
 <h1 id="NASTool的安装配置"><a href="#NASTool的安装配置" class="headerlink" title="NASTool的安装配置"></a><code>NASTool</code>的安装配置</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用<code>Docker</code>来安装配置<code>NASTool</code>,这里我拉取了<a target="_blank" rel="noopener" href="https://hub.docker.com/r/diluka/nas-tools">diluka&#x2F;nas-tools</a>来配置，这里的版本是<code>2.9.1</code>这个版本还支持<code>BT</code>，最新的<a target="_blank" rel="noopener" href="https://hub.docker.com/r/nastool/nas-tools">官方版本</a>里，因为一些不可描述的原因只支持<code>PT</code>。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p><code>/docker</code>文件夹下新建<code>nastools</code>文件夹启动一个新的容器配置如下<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/nas.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p><code>/docker</code>文件夹下新建<code>nastools</code>文件夹启动一个新的容器配置如下<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/nas.png" srcset="/img/loading.gif" lazyload></p>
 <p>然后就可以进入启动页面进行配置 <code>http://192.168.100.xxx:3000</code>,初次登陆账号是：<code>admin</code>, 密码：<code>password</code>, 如何不能登录，可以在输出日志看到账号密码。</p>
 <h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p>媒体里需要一个<code>TMDB API Key</code>, 需要在<a target="_blank" rel="noopener" href="https://www.themoviedb.org/settings/api">https://www.themoviedb.org/settings/api</a>这里注册登陆获取密钥。（注意：配置好后如何在搜索里面无法看到<code>TMDB</code>的热门电影跟电视剧，需要在<code>系统</code>中设置代理服务）</p>
 <h2 id="媒体库"><a href="#媒体库" class="headerlink" title="媒体库"></a>媒体库</h2><p>媒体库需要设置为<code>/video/link</code>下面的文件夹</p>
@@ -340,8 +340,8 @@
 <td>&#x2F;video</td>
 </tr>
 </tbody></table>
-<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/media.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="目录同步"><a href="#目录同步" class="headerlink" title="目录同步"></a>目录同步</h2><p>这里安装如下图片设置需要注意的是同步方式需要为<code>硬连接</code>。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/sync.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/media.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="目录同步"><a href="#目录同步" class="headerlink" title="目录同步"></a>目录同步</h2><p>这里安装如下图片设置需要注意的是同步方式需要为<code>硬连接</code>。<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/sync.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="索引器"><a href="#索引器" class="headerlink" title="索引器"></a>索引器</h2><p>索引器可以使用内建索引，这里我使用了<a target="_blank" rel="noopener" href="https://hub.docker.com/r/linuxserver/jackett"><code>Jackett</code></a>,配置对应文件夹</p>
 <table>
 <thead>
@@ -460,7 +460,7 @@
 </tr>
 </tbody></table>
 <p>最后两个路径如果设置的相同可以不用填写。字幕下载器这里没有测试按钮，但是可以在<code>NASTool</code>的右上角查看实时日志，当添加一部新电影时如果通过<code>ChineseSubFinder</code>去下载字幕了就代表成功了</p>
-<h3 id="手动上传字幕"><a href="#手动上传字幕" class="headerlink" title="手动上传字幕"></a>手动上传字幕</h3><p>如果自动下载字幕失败了，可以通过手动搜索字幕的方式去字幕网站下载，然后上传到媒体库中，这样就可以实现手动下载字幕。<br>在<code>ChineseSubFinder</code>的库中找到没有字幕的电影点击搜索<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/s1.png" srcset="/img/loading.gif" lazyload><br>点击任意一个网址去下载字幕文件<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in-post/nas/s2.png" srcset="/img/loading.gif" lazyload><br>最后在库里的对应电影点击上传按钮将下载的字幕文件上传即可。</p>
+<h3 id="手动上传字幕"><a href="#手动上传字幕" class="headerlink" title="手动上传字幕"></a>手动上传字幕</h3><p>如果自动下载字幕失败了，可以通过手动搜索字幕的方式去字幕网站下载，然后上传到媒体库中，这样就可以实现手动下载字幕。<br>在<code>ChineseSubFinder</code>的库中找到没有字幕的电影点击搜索<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/s1.png" srcset="/img/loading.gif" lazyload><br>点击任意一个网址去下载字幕文件<br><img src="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/nas/s2.png" srcset="/img/loading.gif" lazyload><br>最后在库里的对应电影点击上传按钮将下载的字幕文件上传即可。</p>
 <h2 id="豆瓣"><a href="#豆瓣" class="headerlink" title="豆瓣"></a>豆瓣</h2><p>在豆瓣网站上获取自己豆瓣用户ID 跟 <code>Cookie</code>,这样在豆瓣上对某部电影点了想看，就会自动去下载，方便了很多。</p>
 <h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>至此使用<code>NASTool</code>的安装配置流程，以及相关使用服务的配置都做了简单的介绍，如果你的<code>Nas</code>有足够的空间，就可以愉快的观影追剧了。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="http://www.liuocean.com/2022/09/12/qun-hui-nastools-yi-ge-dong-shi-de-mei-ti-ku/">群晖 + Nas-Tools 一个懂事的媒体库</a>
