@@ -146,6 +146,17 @@ iptables -t nat -I PREROUTING -i br-lan -p tcp --dport 53 -j DNAT --to 192.168.1
 
 ```
 
+### `Netflix解锁彻底解决`
+我的情况是家里软路由订阅机场手机跟电脑解锁没问题，特定机场出现`使用代理`的提示，也有机场有原生节点可以支持奈飞解锁，对于不能解锁的原因如下，引用`github`一位老哥的回答
+
+>如果你使用的代理服务器是DNS解锁的服务器（通俗解释：基于来源请求的域名判断，将访问Netflix的请求通过另一个原本就能观看Netflix的服务器进行代理）
+>那么就要求代理客户端（如 Clash）以域名的方式发起TCP请求，Clash默认是以域名发起请求，
+>但Clash得知请域名的前提是，Netflix APP端以域名的方式发起请求，并且Clash DNS解析过相应的域名，留下了ip与域名的映射关系。
+>但个别盒子比如firestick则直接向8.8.8.8以TCP方式53端口发起DNS查询，然后发起对ip的请求，即便劫持8.8.8.8到Clash DNS，由于Clash不具备解析tcp >dns请求的能力（游戏内核除外），这种情况下Clash便无法得知ip与域名的对应关系，只能同样以ip的方式建立和代理服务器的链接，此时你的代理服务器便无法得知你访问的是Netflix域名，即便你使用全局代理也无法观看，除非这个代理服务器把所有相关ip列入Netflix规则中（此规则非Clash的分流规则）。
+>如果你的代理服务器是原本就可以观看Netflix的（所谓原生节点），那么无论代理客户端以ip还是域名发起请求都可以观看，所以全局代理也一定可以。
+
+最终解决方案就是安装`MosDNS`[^9],开启将`Dnsmasq` 域名解析请求转发到 `MosDNS` 服务器,使用默认配置即可，甚至`OpenClash`，`防火墙`，不需要额外配置。以前提示代理的机场也均可稳定解锁。
+
 # 参考
 
 [^1]: [悟空百科](https://didiboy0702.gitbook.io/wukongdaily/wan-ke-yun-ji-qiao/google-tv-xiu-gai-ntp-fu-wu-qi-di-zhi)
@@ -154,3 +165,10 @@ iptables -t nat -I PREROUTING -i br-lan -p tcp --dport 53 -j DNAT --to 192.168.1
 [^4]: [消除 Android8.1 原生系统无线网感叹号](https://www.jianshu.com/p/23e85be8522a)
 [^5]: [Nvidia Shield TV 2017 国行刷美版固件指南](https://github.com/0neday/Nvidia-Shield-TV-2017-Cookbook)
 [^6]: [Netflix Unblocking Fix For Android TV/Fire TV/Chromecast/PS4](https://www.reddit.com/r/NetflixViaVPN/comments/p9doud/netflix_unblocking_fix_for_android_tvfire/)
+[^7]: [Netflix怎么总是被检测到代理](https://github.com/vernesong/OpenClash/issues/230)
+[^8]: [节点采用解锁服务后，TV端仍检测到代理，怎么破](https://github.com/vernesong/OpenClash/issues/1130)
+[^9]: [OpenWrt 安装 MosDNS v5 超傻瓜方式](https://github.com/IrineSistiana/mosdns/discussions/455)
+[^10]: [OpenWRT+MOSDNS+OpenClash防止dns泄漏](https://www.20040313.xyz/index.php/2023/09/22/openwrtmosdnsopenclash%E9%98%B2%E6%AD%A2dns%E6%B3%84%E6%BC%8F/)
+[^11]: [openclash+mosdns防dns泄漏内核绕过中国ip](https://www.right.com.cn/forum/thread-8293938-1-1.html)
+
+
