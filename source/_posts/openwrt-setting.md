@@ -38,6 +38,22 @@ categories:
 ![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/istore.png)
 有一些我们可能需要的应用这里没有，可以从[Are-u-ok](https://github.com/AUK9527/Are-u-ok)下载到本地，然后在商店的手动安装需要的应用
 
+## 手动卸载
+
+列出已经安装的软件包
+```bash
+opkg list-installed
+```
+ 根据关键词筛选已经安装的软件包
+```bash
+opkg list-installed ｜ grep luci-app-ssr-plus 
+```
+卸载软件
+```bash
+opkg remove luci-app-ssr-plus
+```
+
+
 ## Socat端口转发
 自己配置端口转发也可以，需要在防火墙的端口转发和通信规则里都需要设置，比较繁琐，安装`Socat`做端口转发配置方便。
 
