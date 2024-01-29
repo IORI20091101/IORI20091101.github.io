@@ -58,6 +58,34 @@ opkg remove luci-app-ssr-plus
 自己配置端口转发也可以，需要在防火墙的端口转发和通信规则里都需要设置，比较繁琐，安装`Socat`做端口转发配置方便。
 
 
+
+## 安装`MosDNS`
+配置`MosDNS`可以解决奈飞解锁等相关问题，通过[这篇文章](https://github.com/IrineSistiana/mosdns/discussions/455)，来安装配置。
+
+>- 1，首先OC设置本地DNS劫持，禁用DNS缓存，开启自定义上游DNS，将NS和FallBack都设置为MOS的监听地址。
+>- 2，MOS关闭转发DNS，因为OC已经劫持了DNS并把上游DNS设置为MOS的监听地址了，重复开启没必要，都会抢Dnsmasq，虽然不管开不开启，最终都是由MOS处理DNS，然后高级选项把DNS防泄露和广告过滤一开启即可，至于MOS的国内和国外DNS设置，你如果不会，就用它们设置的，如果想着自定义扩展，比如加几个纯IPV6公开DNS解析，可以自定义输入：
+```bash
+- addr: "2402:4e00::"
+  bootstrap: 119.29.29.29
+  enable_pipeline: false
+  insecure_skip_verify: false
+  idle_timeout: 30
+- addr: "2400:3200:baba::1"
+  bootstrap: 119.29.29.29
+  enable_pipeline: false
+  insecure_skip_verify: false
+  idle_timeout: 30
+```
+分别是腾讯和阿里的公开IPV6 DNS。
+
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/1.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/2.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/3.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/4.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/5.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/6.jpg)
+![](https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/in_post/istore/7.jpg)
+
 ## 内网穿透
 
 - [zerotier](https://www.zerotier.com/)
@@ -93,6 +121,7 @@ opkg remove luci-app-ssr-plus
 
 # 参考
 [^1]: [iStoreOS文档](https://doc.linkease.com/zh/guide/istoreos/)
+[^2]: [OpenWrt 安装 MosDNS v5 超傻瓜方式](https://github.com/IrineSistiana/mosdns/discussions/455)
 
 
 
