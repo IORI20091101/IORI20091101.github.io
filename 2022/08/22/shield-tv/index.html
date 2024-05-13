@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yt-card-system.oss-cn-beijing.aliyuncs.com/blog/index_img/shield.jpeg">
 <meta property="article:published_time" content="2022-08-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-29T09:28:15.820Z">
+<meta property="article:modified_time" content="2024-05-13T08:58:15.960Z">
 <meta property="article:author" content="toshiba">
 <meta property="article:tag" content="Shield TV">
 <meta property="article:tag" content="电视盒子">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.7k 字
+          4.8k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          39 分钟
+          40 分钟
         
       </span>
     
@@ -348,6 +348,7 @@
 <p>如果你使用的代理服务器是DNS解锁的服务器（通俗解释：基于来源请求的域名判断，将访问Netflix的请求通过另一个原本就能观看Netflix的服务器进行代理）<br>那么就要求代理客户端（如 Clash）以域名的方式发起TCP请求，Clash默认是以域名发起请求，<br>但Clash得知请域名的前提是，Netflix APP端以域名的方式发起请求，并且Clash DNS解析过相应的域名，留下了ip与域名的映射关系。<br>但个别盒子比如firestick则直接向8.8.8.8以TCP方式53端口发起DNS查询，然后发起对ip的请求，即便劫持8.8.8.8到Clash DNS，由于Clash不具备解析tcp &gt;dns请求的能力（游戏内核除外），这种情况下Clash便无法得知ip与域名的对应关系，只能同样以ip的方式建立和代理服务器的链接，此时你的代理服务器便无法得知你访问的是Netflix域名，即便你使用全局代理也无法观看，除非这个代理服务器把所有相关ip列入Netflix规则中（此规则非Clash的分流规则）。<br>如果你的代理服务器是原本就可以观看Netflix的（所谓原生节点），那么无论代理客户端以ip还是域名发起请求都可以观看，所以全局代理也一定可以。</p>
 </blockquote>
 <p>最终解决方案就是安装<code>MosDNS</code><sup id="fnref:9" class="footnote-ref"><a href="#fn:9" rel="footnote"><span class="hint--top hint--rounded" aria-label="[OpenWrt 安装 MosDNS v5 超傻瓜方式](https://github.com/IrineSistiana/mosdns/discussions/455)">[9]</span></a></sup>,开启将<code>Dnsmasq</code> 域名解析请求转发到 <code>MosDNS</code> 服务器,使用默认配置即可，甚至<code>OpenClash</code>，<code>防火墙</code>，不需要额外配置。以前提示代理的机场也均可稳定解锁。</p>
+<h3 id="解锁补充"><a href="#解锁补充" class="headerlink" title="解锁补充"></a><code>解锁补充</code></h3><p>在经历了关于<code>Netflix</code>解锁的各种折腾，试用了一下<code>shadowsocksr plus+</code>发现并不存在<code>OpenClash</code>的一系列问题，也不需要安装<code>MosDNS</code>就可以实现解锁奈飞，默认配置就足够用了。想省心直接安装<code>shadowsocksr plus+</code>即可。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://didiboy0702.gitbook.io/wukongdaily/wan-ke-yun-ji-qiao/google-tv-xiu-gai-ntp-fu-wu-qi-di-zhi">悟空百科</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111004889">关于 ANDROID 5.0-7.1.2 网络图标上的感叹号及其解决办法</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/Noisyfox/NoExclamation/issues/2">Android 7.1.2 无法禁用检测</a>
