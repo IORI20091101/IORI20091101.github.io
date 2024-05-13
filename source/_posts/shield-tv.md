@@ -157,6 +157,11 @@ iptables -t nat -I PREROUTING -i br-lan -p tcp --dport 53 -j DNAT --to 192.168.1
 
 最终解决方案就是安装`MosDNS`[^9],开启将`Dnsmasq` 域名解析请求转发到 `MosDNS` 服务器,使用默认配置即可，甚至`OpenClash`，`防火墙`，不需要额外配置。以前提示代理的机场也均可稳定解锁。
 
+
+
+### `解锁补充`
+在经历了关于`Netflix`解锁的各种折腾，试用了一下`shadowsocksr plus+`发现并不存在`OpenClash`的一系列问题，也不需要安装`MosDNS`就可以实现解锁奈飞，默认配置就足够用了。想省心直接安装`shadowsocksr plus+`即可。
+
 # 参考
 
 [^1]: [悟空百科](https://didiboy0702.gitbook.io/wukongdaily/wan-ke-yun-ji-qiao/google-tv-xiu-gai-ntp-fu-wu-qi-di-zhi)
