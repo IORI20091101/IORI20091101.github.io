@@ -50,6 +50,24 @@ acme.sh --install-cert -d yun.sdongzhi.com \
 --reloadcmd     "service nginx force-reload"
 ```
 
+
+
+```bash
+#安装证书工具：
+curl https://get.acme.sh | sh; apt install socat -y || yum install socat -y; ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+
+#三种方式任选其中一种，申请失败则更换方式
+#申请证书方式1： 
+~/.acme.sh/acme.sh  --issue -d 你的域名 --standalone -k ec-256 --force --insecure
+#申请证书方式2： 
+~/.acme.sh/acme.sh --register-account -m "${RANDOM}@chacuo.net" --server buypass --force --insecure && ~/.acme.sh/acme.sh  --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server buypass
+#申请证书方式3： 
+~/.acme.sh/acme.sh --register-account -m "${RANDOM}@chacuo.net" --server zerossl --force --insecure && ~/.acme.sh/acme.sh  --issue -d 你的域名 --standalone -k ec-256 --force --insecure --server zerossl
+
+#安装证书：
+~/.acme.sh/acme.sh --install-cert -d 你的域名 --ecc --key-file /etc/x-ui/server.key --fullchain-file /etc/x-ui/server.crt
+```
+
 ### 遇到的问题和注意点
 
 1. 遇到错误 Can not find conf file for domain 查看 nginx.conf 配置 server*name *: 需要改成 server_name [example.com](http://example.com) 或者 conf.d 下面引入 example.com.conf 的配置 server_name
